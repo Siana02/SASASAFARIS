@@ -9,12 +9,13 @@ import {
 
 const PackagesSection = () => (
   <section className="packages-section" id="packages">
-    <div className="packages-intro-container">
-      <h2 className="packages-title">Safari & Beach Packages</h2>
-      <p className="packages-subtitle">
-        Choose your adventure: classic safaris, family escapes, coastal relaxation and more.
-      </p>
-    </div>
+    <div className="packages-section-container">
+      <div className="packages-intro-container">
+        <h2 className="packages-title">Safari & Beach Packages</h2>
+        <p className="packages-subtitle">
+          Choose your adventure: classic safaris, family escapes, coastal relaxation and more.
+        </p>
+      </div>
     <div className="packages-wrapper" tabIndex={0} aria-label="Safari & Beach Packages">
       {/* Card 1 */}
       <article className="package-card active" style={{opacity: 1, pointerEvents: "auto", zIndex: 10}}>
@@ -32,7 +33,7 @@ const PackagesSection = () => (
             <button className="package-cta-primary">
               Contact Us
               <span className="package-cta-primary-icon">
-                <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
+                <svg viewBox="0 0 48 48" width="24" height="24" aria-hidden="true" focusable="false">
                   <circle cx="24" cy="24" r="20" fill="#fff" />
                   <polyline points="18 30 30 18" fill="none" stroke="var(--cta)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                   <polyline points="18 18 30 18 30 30" fill="none" stroke="var(--cta)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -59,7 +60,7 @@ const PackagesSection = () => (
             <button className="package-cta-primary">
               Contact Us
               <span className="package-cta-primary-icon">
-                <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
+                <svg viewBox="0 0 48 48" width="24" height="24" aria-hidden="true" focusable="false">
                   <circle cx="24" cy="24" r="20" fill="#fff" />
                   <polyline points="18 30 30 18" fill="none" stroke="var(--cta)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                   <polyline points="18 18 30 18 30 30" fill="none" stroke="var(--cta)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -86,7 +87,7 @@ const PackagesSection = () => (
             <button className="package-cta-primary">
               Contact Us
               <span className="package-cta-primary-icon">
-                <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
+                <svg viewBox="0 0 48 48" width="24" height="24" aria-hidden="true" focusable="false">
                   <circle cx="24" cy="24" r="20" fill="#fff" />
                   <polyline points="18 30 30 18" fill="none" stroke="var(--cta)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                   <polyline points="18 18 30 18 30 30" fill="none" stroke="var(--cta)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -113,7 +114,7 @@ const PackagesSection = () => (
             <button className="package-cta-primary">
               Contact Us
               <span className="package-cta-primary-icon">
-                <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
+                <svg viewBox="0 0 48 48" width="24" height="24" aria-hidden="true" focusable="false">
                   <circle cx="24" cy="24" r="20" fill="#fff" />
                   <polyline points="18 30 30 18" fill="none" stroke="var(--cta)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                   <polyline points="18 18 30 18 30 30" fill="none" stroke="var(--cta)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -140,7 +141,7 @@ const PackagesSection = () => (
             <button className="package-cta-primary">
               Contact Us
               <span className="package-cta-primary-icon">
-                <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
+                <svg viewBox="0 0 48 48" width="24" height="24" aria-hidden="true" focusable="false">
                   <circle cx="24" cy="24" r="20" fill="#fff" />
                   <polyline points="18 30 30 18" fill="none" stroke="var(--cta)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                   <polyline points="18 18 30 18 30 30" fill="none" stroke="var(--cta)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -153,12 +154,13 @@ const PackagesSection = () => (
       </article>
       {/* Progress indicator */}
       <div className="package-progress-indicator" aria-label="Package Progress" role="presentation">
-        <div className="progress-dot" data-dot={0} aria-hidden="true"></div>
+        <div className="progress-dot active" data-dot={0} aria-hidden="true"></div>
         <div className="progress-dot" data-dot={1} aria-hidden="true"></div>
         <div className="progress-dot" data-dot={2} aria-hidden="true"></div>
         <div className="progress-dot" data-dot={3} aria-hidden="true"></div>
         <div className="progress-dot" data-dot={4} aria-hidden="true"></div>
       </div>
+    </div>
     </div>
   </section>
 );
