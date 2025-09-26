@@ -1672,6 +1672,97 @@ a:focus-visible, button:focus-visible {
   pointer-events: auto !important;
 }
 
+
+
+
+/* ============================
+   Service Highlights Belt
+=============================== */
+.service-highlights-belt {
+  background: #f8f9fa; /* light neutral bg */
+  padding: 2rem 1rem;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.highlight-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cols on mobile */
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.highlight-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.highlight-icon {
+  font-size: 1.8rem;
+  color: var(--cta, #2e7d32); /* safari green fallback */
+  margin-bottom: 0.75rem;
+}
+
+.highlight-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ============================
+   RESPONSIVENESS
+=============================== */
+@media (min-width: 768px) {
+  .highlight-list {
+    grid-template-columns: repeat(4, 1fr); /* 4 cols on tablets+ */
+  }
+
+  .highlight-card {
+    flex-direction: row;
+    text-align: left;
+    justify-content: flex-start;
+    gap: 0.75rem;
+  }
+
+  .highlight-icon {
+    margin-bottom: 0;
+    font-size: 1.6rem;
+  }
+
+  .highlight-text {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-highlights-belt {
+    padding: 3rem 2rem;
+  }
+
+  .highlight-card {
+    padding: 2rem 1.25rem;
+  }
+}
+
+
+
+
+
 /* ========== FOOTER BASE STYLES ========== */
 .footer {
   background: #111; /* Dark background */
