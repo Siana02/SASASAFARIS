@@ -18,7 +18,7 @@
   --accent: #6d4650;
   --cta: #ff914d;
   --cta-hover: #ff7e1e;
-  --hero-img: url('Safari-hero.jpg');
+  --hero-img: url('/assets/Safari-hero.jpg');;
   --overlay: rgba(109, 70, 80, 0.38);
 }
 
@@ -27,7 +27,7 @@
   --accent: #129490;
   --cta: #1de9b6;
   --cta-hover: #18bfa4;
-  --hero-img: url('Vacation-hero.jpg'); /* FIXED: correct image path */
+  --hero-img: url('/assets/Vacation-hero.jpg');
   --overlay: rgba(18, 148, 144, 0.28);
 }
 
@@ -35,7 +35,7 @@
   --accent: #6d4650;
   --cta: #ff914d;
   --cta-hover: #ff7e1e;
-  --hero-img: url('Safari-hero.jpg');
+  --hero-img: url('/assets/Safari-hero.jpg');
   --overlay: rgba(109, 70, 80, 0.38);
 }
 
