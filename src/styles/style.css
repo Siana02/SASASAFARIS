@@ -1771,105 +1771,144 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ===== Review Section Layout ===== */
+/* === SECTION CONTAINER === */
 .review-section {
-  padding: 4rem 1.5rem;
-  background-color: #f9fafb; /* light gray background */
-}
-
-.review-header {
+  padding: 3rem 1rem;
   text-align: center;
-  margin-bottom: 3rem;
-}
-
-.review-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #111827; /* dark gray */
-}
-
-.review-subtitle {
-  color: #4b5563; /* medium gray */
-  margin-top: 0.5rem;
-}
-
-/* ===== Carousel ===== */
-.review-carousel {
   overflow: hidden;
   position: relative;
 }
 
+/* === TITLE === */
+.review-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: var(--accent-color); /* Uses theme accent color */
+}
+
+/* === CAROUSEL WRAPPER === */
+.review-carousel {
+  overflow-x: auto; /* Allows manual scroll */
+  scroll-behavior: smooth;
+  -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+.review-carousel::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+/* === MOVING TRACK === */
 .review-track {
   display: flex;
   gap: 1.5rem;
+  animation: swipe 25s linear infinite; /* Auto scroll effect */
 }
 
-/* ===== Review Cards ===== */
-.review-card {
-  min-width: 280px;
-  max-width: 420px;
-  max-height: 40vh; /* cards never taller than 40% viewport height */
-  background: white;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.review-track:hover {
+  animation-play-state: paused; /* Pause animation on hover */
+}
 
-  /* floating + subtle shadow */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+/* === REVIEW CARD === */
+.review-card {
+  min-width: 300px;
+  max-width: 320px;
+  flex: 0 0 auto;
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease;
+  position: relative;
 }
 
 .review-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
 }
 
-/* ===== Text & Stars ===== */
+/* === TEXT === */
 .review-text {
-  color: #374151; /* dark gray */
   font-style: italic;
   font-size: 1rem;
-  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* === STARS === */
+.review-stars {
+  display: flex;
+  justify-content: center; /* Center stars below text */
   margin-bottom: 1rem;
 }
 
-.review-stars {
-  display: flex;
-  margin-bottom: 0.5rem;
-}
-
 .star-icon {
-  width: 20px;
-  height: 20px;
-  color: #fbbf24; /* yellow-500 (gold) */
-  fill: currentColor;
+  color: #f4c542; /* Gold color for stars */
+  margin: 0 2px;
 }
 
-.reviewer-name {
+/* === FOOTER (NAME + BADGE) === */
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-name {
   font-weight: 600;
-  font-size: 0.9rem;
-  color: #111827;
-  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  color: #333;
 }
 
-/* ===== Responsiveness ===== */
-@media (min-width: 640px) {
-  .review-card {
-    min-width: 360px;
-  }
+.verified-badge {
+  background: #4caf50; /* Green verified badge */
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
 }
 
-@media (min-width: 768px) {
-  .review-card {
-    min-width: 420px;
-  }
+/* === REVIEW TYPE (extra detail) === */
+.review-type {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 0.5rem;
+  text-align: right;
+}
 
-  .review-title {
-    font-size: 2.5rem;
+/* === ANIMATION (faster swiping with pause between cards) === */
+@keyframes swipe {
+  0% {
+    transform: translateX(0%);
   }
+  20% {
+    transform: translateX(0%); /* Pause first card in view */
   }
-
+  25% {
+    transform: translateX(-100%); /* Move to second card */
+  }
+  45% {
+    transform: translateX(-100%); /* Pause second card */
+  }
+  50% {
+    transform: translateX(-200%); /* Move to third card */
+  }
+  70% {
+    transform: translateX(-200%); /* Pause third card */
+  }
+  75% {
+    transform: translateX(-300%); /* Move to fourth card */
+  }
+  95% {
+    transform: translateX(-300%); /* Pause fourth card */
+  }
+  100% {
+    transform: translateX(-400%); /* Show last card */
+  }
+}
 
 /* ============================
    Service Highlights Belt
