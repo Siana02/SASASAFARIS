@@ -1635,19 +1635,6 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 0 0 4px rgba(255, 145, 77, 0.2);
 }
 
-/* About section hidden until last card */
-.about-section {
-  display: none;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.about-section.revealed {
-  display: block;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
 
 /* Accessibility fallback: vertical stack if JS fails */
 .no-js .package-card {
@@ -1665,13 +1652,146 @@ a:focus-visible, button:focus-visible {
 
 
 
-/* About section when shown in packages navigation */
-.packages-about-section .about-section {
-  display: block !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
+/* Section wrapper */
+.about-section {
+  padding: 3rem 1.5rem;
 }
 
+@media (min-width: 1024px) {
+  .about-section {
+    padding: 3rem 5rem;
+  }
+}
+
+/* Header */
+.about-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.about-mini-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+
+.about-main-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827; /* gray-900 */
+}
+
+@media (min-width: 768px) {
+  .about-main-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* Grid */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Feature Cards */
+.about-feature {
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.about-feature:hover {
+  transform: translateY(-4px);
+}
+
+.about-icon-circle {
+  width: 5rem;
+  height: 5rem;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.about-icon-circle:hover {
+  transform: scale(1.05);
+}
+
+.about-feature-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.about-feature-desc {
+  font-size: 0.95rem;
+  color: #4b5563; /* gray-600 */
+  line-height: 1.5;
+}
+
+/* Learn More Button */
+.about-learn-more-container {
+  text-align: center;
+}
+
+.about-learn-more-cta {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.about-learn-more-cta:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Expanded Content */
+.about-expanded-content {
+  max-width: 48rem;
+  margin: 2rem auto 0;
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.about-detail-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.about-detail-body {
+  color: #374151; /* gray-700 */
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.about-detail-body p + p {
+  margin-top: 1rem;
+}
 
 
 
