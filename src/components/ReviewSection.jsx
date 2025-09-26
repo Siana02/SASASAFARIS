@@ -1,7 +1,9 @@
 import React from "react";
 import { Star } from "lucide-react";
 import { motion } from "framer-motion";
+import "./ReviewSection.css"; // Import the CSS file
 
+// Reviews data
 const reviews = [
   {
     name: "Giulia Romano",
@@ -27,50 +29,40 @@ const reviews = [
 
 const ReviewSection = () => {
   return (
-    <section className="review-section py-16 px-6 lg:px-20 bg-gray-50">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-          Love Stories from Our Travelers
-        </h2>
-        <p className="text-gray-600 mt-2">
+    <section className="review-section">
+      {/* Section Header */}
+      <div className="review-header">
+        <h2 className="review-title">Love Stories from Our Travelers</h2>
+        <p className="review-subtitle">
           Real journeys, real memories, told by couples who explored with us.
         </p>
       </div>
 
       {/* Infinite scrolling container */}
-      <div className="overflow-hidden relative">
+      <div className="review-carousel">
         <motion.div
-          className="flex gap-6"
+          className="review-track"
           animate={{ x: ["0%", "-100%"] }}
           transition={{
             ease: "linear",
-            duration: 45, // adjust scroll speed
+            duration: 45, // Auto scroll speed
             repeat: Infinity,
           }}
         >
+          {/* Duplicate array for seamless looping */}
           {[...reviews, ...reviews].map((review, index) => (
-            <div
-              key={index}
-              className="review-card min-w-[280px] sm:min-w-[360px] md:min-w-[420px] max-h-[40vh] 
-                         bg-white rounded-xl shadow-md hover:shadow-xl 
-                         p-6 flex flex-col justify-between transition-transform 
-                         duration-500 hover:-translate-y-2"
-            >
-              <p className="text-gray-700 italic text-base leading-relaxed mb-4">
-                “{review.text}”
-              </p>
+            <div key={index} className="review-card">
+              {/* Review text */}
+              <p className="review-text">“{review.text}”</p>
+
+              {/* Stars + Reviewer name */}
               <div>
-                {/* Stars */}
-                <div className="flex text-yellow-500 mb-2">
+                <div className="review-stars">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-current" />
+                    <Star key={i} className="star-icon" />
                   ))}
                 </div>
-                {/* Name */}
-                <div className="font-semibold text-gray-900 text-sm tracking-wide">
-                  {review.name}
-                </div>
+                <div className="reviewer-name">{review.name}</div>
               </div>
             </div>
           ))}
