@@ -13,12 +13,12 @@
   --text: #545454;
   --heading-font: 'Martel', serif;
   --body-font: 'Assistant', sans-serif;
+  --hero-img: transparent; /* Placeholder value, will be set dynamically via JavaScript */
 
   /* Safari (Earthy) Theme Defaults */
   --accent: #6d4650;
   --cta: #ff914d;
   --cta-hover: #ff7e1e;
-  --hero-img: url('/assets/Safari-hero.jpg');;
   --overlay: rgba(109, 70, 80, 0.38);
 }
 
@@ -27,7 +27,6 @@
   --accent: #129490;
   --cta: #1de9b6;
   --cta-hover: #18bfa4;
-  --hero-img: url('/assets/Vacation-hero.jpg');
   --overlay: rgba(18, 148, 144, 0.28);
 }
 
@@ -35,7 +34,6 @@
   --accent: #6d4650;
   --cta: #ff914d;
   --cta-hover: #ff7e1e;
-  --hero-img: url('/assets/Safari-hero.jpg');
   --overlay: rgba(109, 70, 80, 0.38);
 }
 
@@ -440,7 +438,10 @@ body.vacation-theme .hero-bg {
   inset: 0;
   width: 100%;
   height: 100%;
-  background: var(--hero-img) center/cover no-repeat;
+  background-image: var(--hero-img);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   z-index: 1;
   transition: background-image 0.4s;
 }
@@ -773,7 +774,7 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   justify-content: center;
   border-radius: 1.3rem 0 0 1.3rem;
-  aspect-ratio: 16/9;
+  aspect-ratio: 1.777777778;
   box-sizing: border-box;
   padding: 0.4rem;
 }
@@ -913,7 +914,7 @@ a:focus-visible, button:focus-visible {
   .offer-img-holder {
     min-width: 90px;
     min-height: 60px;
-    aspect-ratio: 16/9;
+    aspect-ratio: 1.777777778;
     padding: 0.1rem;
   }
   .offer-content {
@@ -1007,7 +1008,7 @@ a:focus-visible, button:focus-visible {
   }
 }
 
-=== Packages Section Intro === */
+/* === Packages Section Intro === */
 .packages-section-intro {
   background: #fff;
   width: 100vw;

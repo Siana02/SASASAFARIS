@@ -1,6 +1,7 @@
 import React from "react";
 import { useMobileNav } from "../hooks/useMobileNav";
 import { useTheme } from "../hooks/useTheme";
+import { FaviconPng } from "../assets/images";
 
 const Header = () => {
   const { isOpen, toggleMenu } = useMobileNav();
@@ -9,7 +10,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo-holder">
-        <img src="/assets/favicon.png" alt="Sule Safaris Logo" className="logo-img" />
+        <img src={FaviconPng} alt="Sule Safaris Logo" className="logo-img" />
       </div>
       <div className="header-title">SASA SAFARIS</div>
       {/* Desktop Nav */}

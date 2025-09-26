@@ -10,7 +10,7 @@ export const packages = [
     duration: "3 days / 2 nights",
     price: 299,
     originalPrice: 399,
-    image: "/assets/classic-safari.jpg", // TODO: Add actual image
+    image: "/src/assets/classic-safari.jpg", // TODO: Add actual image
     features: [
       "Professional safari guide",
       "Game drives twice daily",
@@ -30,7 +30,7 @@ export const packages = [
     duration: "5 days / 4 nights",
     price: 599,
     originalPrice: 799,
-    image: "/assets/premium-safari.jpg", // TODO: Add actual image
+    image: "/src/assets/premium-safari.jpg", // TODO: Add actual image
     features: [
       "Expert wildlife photographer guide",
       "Luxury tented camp accommodation",
@@ -51,7 +51,7 @@ export const packages = [
     duration: "4 days / 3 nights",
     price: 449,
     originalPrice: 549,
-    image: "/assets/family-safari.jpg", // TODO: Add actual image
+    image: "/src/assets/family-safari.jpg", // TODO: Add actual image
     features: [
       "Family-specialized guide",
       "Kid-friendly activities",
@@ -72,7 +72,7 @@ export const packages = [
     duration: "7 days / 6 nights",
     price: 899,
     originalPrice: 1199,
-    image: "/assets/photography-safari.jpg", // TODO: Add actual image
+    image: "/src/assets/photography-safari.jpg", // TODO: Add actual image
     features: [
       "Professional photography guide",
       "Early morning and late evening shoots",
