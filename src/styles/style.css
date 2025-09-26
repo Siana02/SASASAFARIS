@@ -1709,8 +1709,8 @@ a:focus-visible, button:focus-visible {
   justify-content: center;
 }
 .about-icon {
-  width: 55px;  /* bigger icon */
-  height: 55px;
+  width: 60px;  /* bigger icon */
+  height: 60px;
   color: #fff;
 }
 .about-feature-title {
