@@ -1,6 +1,6 @@
 // Animated vertical deck for Safari packages: No tilt, just vertical slide.
-// Cycling "up" (wheel down/swipe up) goes through cards 1-5 then reveals "About".
-// Cycling "down" (wheel up/swipe down) goes back through cards, then reveals "Success Countdown".
+// When user scrolls into packages-wrapper, page scroll locks: only card deck cycles via wheel/touch/keyboard.
+// When user navigates to last card (About) OR first card (Success Countdown), page scroll unlocks.
 // Progress indicator only appears when a card is visible (not for About/Success Countdown).
 // About section has its own animation, not reused from cards.
 
@@ -68,12 +68,10 @@ const packages = [
   }
 ];
 
-// Animations: No tilt, only vertical slide
 const CARD_TRANSITION = { type: "spring", stiffness: 420, damping: 42, duration: 0.45 };
 const CARD_ANIMATION_Y = 120; // px vertical slide
 
-// About section, own animation, only revealed after cycling all cards
-const AboutSection = ({ animate }) => (
+const AboutSection = () => (
   <motion.section
     className="about-section"
     id="about"
@@ -94,36 +92,51 @@ const PackagesSection = () => {
   const [deckPosition, setDeckPosition] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragY, setDragY] = useState(0);
-  const sectionRef = useRef(null);
+  const [deckLocked, setDeckLocked] = useState(false); // Locks page scroll while cycling deck
+  const wrapperRef = useRef(null);
 
-  // Prevent page scroll ONLY when a card is active
+  // Lock/unlock deck depending on position
+  useEffect(() => {
+    // Lock only if deckPosition is in card range
+    setDeckLocked(deckPosition >= 0 && deckPosition < packages.length);
+  }, [deckPosition]);
+
+  // Prevent page scroll only when deck is locked
   useEffect(() => {
     const preventScroll = (e) => {
-      // Only preventDefault if we're on a card (deckPosition in range)
-      if (
-        sectionRef.current &&
-        sectionRef.current.contains(document.activeElement) &&
-        deckPosition >= 0 &&
-        deckPosition < packages.length
-      ) {
+      if (deckLocked) {
         e.preventDefault();
       }
     };
-    document.body.addEventListener("touchmove", preventScroll, { passive: false });
-    document.body.addEventListener("wheel", preventScroll, { passive: false });
+    if (deckLocked) {
+      document.body.addEventListener("wheel", preventScroll, { passive: false });
+      document.body.addEventListener("touchmove", preventScroll, { passive: false });
+    }
     return () => {
-      document.body.removeEventListener("touchmove", preventScroll);
       document.body.removeEventListener("wheel", preventScroll);
+      document.body.removeEventListener("touchmove", preventScroll);
     };
-  }, [deckPosition]);
+  }, [deckLocked]);
 
-  // Keyboard navigation
+  // Focus wrapper on scroll into view
+  useEffect(() => {
+    const onScroll = () => {
+      if (wrapperRef.current) {
+        const rect = wrapperRef.current.getBoundingClientRect();
+        const inView = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+        if (inView && !deckLocked && deckPosition >= 0 && deckPosition < packages.length) {
+          wrapperRef.current.focus();
+        }
+      }
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [deckLocked, deckPosition]);
+
+  // Keyboard navigation (when wrapper focused)
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (
-        sectionRef.current &&
-        sectionRef.current.contains(document.activeElement)
-      ) {
+      if (deckLocked) {
         if (e.key === "ArrowDown" || e.key === "ArrowRight") {
           e.preventDefault();
           nextCard();
@@ -135,39 +148,32 @@ const PackagesSection = () => {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [deckPosition]);
+  }, [deckLocked, deckPosition]);
 
-  // Mouse wheel navigation
+  // Mouse wheel navigation (when wrapper focused)
   useEffect(() => {
     const handleWheel = (e) => {
-      if (
-        sectionRef.current &&
-        sectionRef.current.contains(document.activeElement) &&
-        deckPosition >= -1 &&
-        deckPosition <= packages.length
-      ) {
+      if (deckLocked) {
         e.preventDefault();
         if (e.deltaY > 0) nextCard();
         else if (e.deltaY < 0) prevCard();
       }
     };
-    sectionRef.current?.addEventListener("wheel", handleWheel, { passive: false });
+    const node = wrapperRef.current;
+    if (node && deckLocked) {
+      node.addEventListener("wheel", handleWheel, { passive: false });
+    }
     return () => {
-      sectionRef.current?.removeEventListener("wheel", handleWheel);
+      if (node) node.removeEventListener("wheel", handleWheel);
     };
-  }, [deckPosition]);
+  }, [deckLocked, deckPosition]);
 
-  // Touch/Swipe navigation for mobile
+  // Touch/Swipe navigation for mobile (when wrapper focused)
   useEffect(() => {
     let startY = null;
     let dragging = false;
     const handleTouchStart = (e) => {
-      if (
-        sectionRef.current &&
-        sectionRef.current.contains(document.activeElement) &&
-        deckPosition >= -1 &&
-        deckPosition <= packages.length
-      ) {
+      if (deckLocked) {
         setIsDragging(true);
         dragging = true;
         startY = e.touches[0].clientY;
@@ -190,39 +196,39 @@ const PackagesSection = () => {
       startY = null;
       dragging = false;
     };
-    const node = sectionRef.current;
-    node?.addEventListener("touchstart", handleTouchStart, { passive: false });
-    node?.addEventListener("touchmove", handleTouchMove, { passive: false });
-    node?.addEventListener("touchend", handleTouchEnd, { passive: false });
+    const node = wrapperRef.current;
+    if (node && deckLocked) {
+      node.addEventListener("touchstart", handleTouchStart, { passive: false });
+      node.addEventListener("touchmove", handleTouchMove, { passive: false });
+      node.addEventListener("touchend", handleTouchEnd, { passive: false });
+    }
     return () => {
-      node?.removeEventListener("touchstart", handleTouchStart);
-      node?.removeEventListener("touchmove", handleTouchMove);
-      node?.removeEventListener("touchend", handleTouchEnd);
+      if (node) {
+        node.removeEventListener("touchstart", handleTouchStart);
+        node.removeEventListener("touchmove", handleTouchMove);
+        node.removeEventListener("touchend", handleTouchEnd);
+      }
     };
-  }, [deckPosition, dragY]);
+  }, [deckLocked, deckPosition, dragY]);
 
   // Next: Move deckPosition forward
   const nextCard = () => {
-    // If on last card, go to About; if on About, do nothing
     setDeckPosition((pos) =>
       pos < packages.length ? pos + 1 : pos
     );
   };
   // Previous: Move deckPosition backward
   const prevCard = () => {
-    // If on About, go to last card; if on first card, go to Success Countdown (-1)
     setDeckPosition((pos) =>
       pos > -1 ? pos - 1 : pos
     );
   };
 
-  // Animation direction (for AnimatePresence): "up" or "down"
+  // Animation direction (for AnimatePresence)
   const animationDirection = useRef("up");
   useEffect(() => {
     animationDirection.current = "up";
   }, [deckPosition]);
-
-  // Key for AnimatePresence animation - unique per deck position
   const motionKey =
     deckPosition >= 0 && deckPosition < packages.length
       ? packages[deckPosition].title
@@ -231,7 +237,7 @@ const PackagesSection = () => {
       : "success-countdown";
 
   return (
-    <section className="packages-section" id="packages" ref={sectionRef} tabIndex={0}>
+    <section className="packages-section" id="packages">
       <div className="packages-section-container">
         <div className="packages-intro-container">
           <h2 className="packages-title">Safari & Beach Packages</h2>
@@ -240,7 +246,12 @@ const PackagesSection = () => {
           </p>
         </div>
 
-        <div className="packages-wrapper" aria-label="Safari & Beach Packages">
+        <div
+          className="packages-wrapper"
+          aria-label="Safari & Beach Packages"
+          tabIndex={0}
+          ref={wrapperRef}
+        >
           <AnimatePresence initial={false} custom={animationDirection.current}>
             {/* Show Card if deckPosition is 0-4 */}
             {deckPosition >= 0 && deckPosition < packages.length && (
@@ -308,7 +319,7 @@ const PackagesSection = () => {
             )}
             {/* Show About section if deckPosition is packages.length */}
             {deckPosition === packages.length && (
-              <AboutSection animate={true} key="about"/>
+              <AboutSection key="about"/>
             )}
             {/* No render for Success Countdown, let page scroll naturally */}
           </AnimatePresence>
