@@ -1166,6 +1166,7 @@ a:focus-visible, button:focus-visible {
 }
 
 /* Desktop and up - min-width: 1024px */
+/* Desktop and up - min-width: 1024px */
 @media (min-width: 1024px) {
   .packages-section {
     padding: 4rem 0;
@@ -1187,7 +1188,7 @@ a:focus-visible, button:focus-visible {
   /* Desktop Package Card Layout - Horizontal */
   .package-card {
     display: flex;
-    flex-direction: row;
+    flex-direction: row;                /* Image left, content right */
     max-width: 90%;
     margin: 2rem auto;
     height: 70vh;
@@ -1198,20 +1199,22 @@ a:focus-visible, button:focus-visible {
   
   /* Desktop Package Card Image - Left Half */
   .package-card-image {
-    width: 50%;
+    width: 50%;                         /* Take left half */
     height: 100%;
     object-fit: cover;
+    order: 0;                           /* Ensure image is first (left) */
   }
   
   /* Desktop Package Card Content - Right Half */
   .package-card-content {
-    width: 50%;
+    width: 50%;                         /* Take right half */
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 2rem;
     text-align: center;
+    order: 1;                           /* Ensure content is second (right) */
   }
   
   /* Desktop Typography Scaling */
@@ -1228,6 +1231,7 @@ a:focus-visible, button:focus-visible {
   }
 }
 
+    
 /* Font inheritance from .packages-intro-container */
 .packages-section, .packages-wrapper,
 .package-card, .package-card-content,
