@@ -1,4 +1,5 @@
 import React from "react";
+import { WildebeestMigration, KenyanCoast } from "../assets/images";
 
 const OfferSection = () => (
   <section className="best-offers-section" id="best-offers">
@@ -7,7 +8,7 @@ const OfferSection = () => (
       {/* Offer Card: Masai Mara */}
       <div className="offer-card">
         <div className="offer-img-holder">
-          <img src="/assets/Wildebeest_migration.jpg" alt="Masai Mara Safari" />
+          <img src={WildebeestMigration} alt="Masai Mara Safari" />
         </div>
         <div className="offer-content">
           <div className="offer-top-row">
@@ -25,7 +26,7 @@ const OfferSection = () => (
       {/* Offer Card: Kenyan Coast */}
       <div className="offer-card">
         <div className="offer-img-holder">
-          <img src="/assets/Kenyan_coast_1.jpg" alt="Kenyan Coast" />
+          <img src={KenyanCoast} alt="Kenyan Coast" />
         </div>
         <div className="offer-content">
           <div className="offer-top-row">

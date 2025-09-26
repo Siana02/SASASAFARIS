@@ -11,7 +11,7 @@ export const offers = [
     discountType: "percentage", // "percentage" or "fixed"
     code: "EARLYBIRD20",
     validUntil: "2024-12-31",
-    image: "/assets/early-bird-offer.jpg", // TODO: Add actual image
+    image: "/src/assets/early-bird-offer.jpg", // TODO: Add actual image
     badge: "Limited Time",
     badgeColor: "orange",
     terms: [
@@ -32,7 +32,7 @@ export const offers = [
     discountType: "percentage",
     code: "GROUP15",
     validUntil: "2024-11-30",
-    image: "/assets/group-discount-offer.jpg", // TODO: Add actual image
+    image: "/src/assets/group-discount-offer.jpg", // TODO: Add actual image
     badge: "Popular",
     badgeColor: "green",
     terms: [
@@ -53,7 +53,7 @@ export const offers = [
     discountType: "fixed",
     code: "WEEKEND199",
     validUntil: "2024-10-31",
-    image: "/assets/weekend-explorer-offer.jpg", // TODO: Add actual image
+    image: "/src/assets/weekend-explorer-offer.jpg", // TODO: Add actual image
     badge: "New",
     badgeColor: "blue",
     terms: [
@@ -74,7 +74,7 @@ export const offers = [
     discountType: "bonus",
     code: "PHOTOCLASS",
     validUntil: "2024-12-15",
-    image: "/assets/photography-bonus-offer.jpg", // TODO: Add actual image
+    image: "/src/assets/photography-bonus-offer.jpg", // TODO: Add actual image
     badge: "Exclusive",
     badgeColor: "purple",
     terms: [
@@ -95,7 +95,7 @@ export const offers = [
     discountType: "percentage",
     code: "WELCOME10",
     validUntil: "2024-12-31",
-    image: "/assets/first-timer-offer.jpg", // TODO: Add actual image
+    image: "/src/assets/first-timer-offer.jpg", // TODO: Add actual image
     badge: "Welcome",
     badgeColor: "yellow",
     terms: [

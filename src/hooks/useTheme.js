@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react';
+import { SafariHero, VacationHero } from '../assets/images';
 
 const themes = ['safari-theme', 'vacation-theme'];
 const themeNames = {
   'safari-theme': 'Safari theme',
   'vacation-theme': 'Vacation theme'
+};
+
+const themeImages = {
+  'safari-theme': SafariHero,
+  'vacation-theme': VacationHero
 };
 
 export const useTheme = () => {
@@ -34,13 +40,14 @@ export const useTheme = () => {
       document.body.classList.remove(...themes);
       document.body.classList.add(currentTheme);
       
+      // Set the hero image URL for the theme
+      const heroImageUrl = themeImages[currentTheme];
+      document.documentElement.style.setProperty('--hero-img', `url(${heroImageUrl})`);
+      
       // Preload hero image and fade in
       const heroBg = document.getElementById('hero-bg');
       if (heroBg) {
         heroBg.style.opacity = 0;
-        const style = getComputedStyle(document.body);
-        let imgUrl = style.getPropertyValue('--hero-img').trim();
-        imgUrl = imgUrl.replace(/^url\((['"]?)/, '').replace(/(['"]?)\)$/, '');
         
         const img = new Image();
         img.onload = () => {
@@ -49,7 +56,7 @@ export const useTheme = () => {
         img.onerror = () => {
           heroBg.style.opacity = 1;
         };
-        img.src = imgUrl;
+        img.src = heroImageUrl;
       }
     }
   }, [currentTheme]);
