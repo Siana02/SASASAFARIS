@@ -45,25 +45,32 @@ const ReviewSection = () => {
           animate={{ x: ["0%", "-100%"] }}
           transition={{
             ease: "linear",
-            duration: 40, // adjust speed here
+            duration: 45, // adjust scroll speed
             repeat: Infinity,
           }}
         >
           {[...reviews, ...reviews].map((review, index) => (
             <div
               key={index}
-              className="min-w-[300px] sm:min-w-[400px] bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between"
+              className="review-card min-w-[280px] sm:min-w-[360px] md:min-w-[420px] max-h-[40vh] 
+                         bg-white rounded-xl shadow-md hover:shadow-xl 
+                         p-6 flex flex-col justify-between transition-transform 
+                         duration-500 hover:-translate-y-2"
             >
-              <p className="text-gray-700 italic mb-4">“{review.text}”</p>
+              <p className="text-gray-700 italic text-base leading-relaxed mb-4">
+                “{review.text}”
+              </p>
               <div>
                 {/* Stars */}
-                <div className="flex text-accent mb-2">
+                <div className="flex text-yellow-500 mb-2">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-current text-accent" />
+                    <Star key={i} className="w-5 h-5 fill-current" />
                   ))}
                 </div>
                 {/* Name */}
-                <div className="font-semibold text-gray-900">{review.name}</div>
+                <div className="font-semibold text-gray-900 text-sm tracking-wide">
+                  {review.name}
+                </div>
               </div>
             </div>
           ))}
