@@ -4,6 +4,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './styles/style.css';
 import './index.css';
 import App from './App.jsx';
 import reportWebVitals from './reportWebVitals';
