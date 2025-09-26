@@ -2,35 +2,6 @@
 /* TODO: Update color scheme and branding to match existing design */
 /* TODO: Add responsive breakpoints and mobile-first approach */
 
-/* ========== THEME ROOT VARIABLES ========== */
-:root {
-  --background: #f4efef;
-  --text: #545454;
-  --heading-font: 'Martel', serif;
-  --body-font: 'Assistant', sans-serif;
-
-  /* Safari (Earthy) Theme Defaults */
-  --accent: #6d4650;
-  --cta: #ff914d;
-  --cta-hover: #ff7e1e;
-  --overlay: rgba(109, 70, 80, 0.38);
-}
-
-/* Oceanic Aquamarine Vacation Theme */
-.vacation-theme {
-  --accent: #129490;
-  --cta: #1de9b6;
-  --cta-hover: #18bfa4;
-  --overlay: rgba(18, 148, 144, 0.28);
-}
-
-.safari-theme {
-  --accent: #6d4650;
-  --cta: #ff914d;
-  --cta-hover: #ff7e1e;
-  --overlay: rgba(109, 70, 80, 0.38);
-}
-
 /* Reset and base styles */
 * {
   margin: 0;
@@ -528,4 +499,3 @@ body {
     flex-direction: column;
   }
 }
-/* Additional styles from SuleSafaris */

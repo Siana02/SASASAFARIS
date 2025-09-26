@@ -1,34 +1,40 @@
-// TODO: Migrate main App structure from existing HTML layout
-// TODO: Add routing if the original website had multiple pages
-// TODO: Integrate existing JavaScript functionality and state management
-
 import React from 'react';
 import Header from './components/Header';
+import MobileNav from './components/MobileNav';
 import HeroSection from './components/HeroSection';
-import PackagesSection from './components/PackagesSection';
 import OfferSection from './components/OfferSection';
+import SuccessCountdown from './components/SuccessCountdown';
+import PackagesSection from './components/PackagesSection';
 import AboutSection from './components/AboutSection';
+import HighlightSection from './components/HighlightSection';
 import Footer from './components/Footer';
+import ThemeMessage from './components/ThemeMessage';
 import './styles/style.css';
 
 function App() {
   return (
     <div className="App">
-      {/* TODO: Migrate overall app structure and layout from existing HTML */}
-      
-      {/* Header navigation - migrate from existing header HTML */}
+      {/* Header navigation */}
       <Header />
       
-      {/* Main content sections - migrate from existing page sections */}
+      {/* Mobile Navigation */}
+      <MobileNav />
+      
+      {/* Main content sections */}
       <main>
         <HeroSection />
-        <PackagesSection />
         <OfferSection />
+        <SuccessCountdown />
+        <PackagesSection />
         <AboutSection />
+        <HighlightSection />
       </main>
       
-      {/* Footer - migrate from existing footer HTML */}
+      {/* Footer */}
       <Footer />
+      
+      {/* Theme switching message */}
+      <ThemeMessage />
     </div>
   );
 }

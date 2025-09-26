@@ -1,26 +1,29 @@
 import React from "react";
+import { useCounters } from "../hooks/useCounters";
 
-const SuccessCountdown = () => (
-  <section className="success-countdown">
-    <div className="countdown-grid">
-      <div className="countdown-square">
-        <div className="countdown-number" data-count="20">0</div>
-        <div className="countdown-label">Unique Destinations</div>
+const SuccessCountdown = () => {
+  const { counts, formatCount, ref } = useCounters([20, 5, 100, 50]);
+  const labels = [
+    "Unique Destinations",
+    "Years of Experience", 
+    "Tailored Itineraries",
+    "Successful Safaris"
+  ];
+
+  return (
+    <section className="success-countdown" ref={ref}>
+      <div className="countdown-grid">
+        {counts.map((count, index) => (
+          <div key={index} className="countdown-square">
+            <div className="countdown-number">
+              {formatCount(count, index)}
+            </div>
+            <div className="countdown-label">{labels[index]}</div>
+          </div>
+        ))}
       </div>
-      <div className="countdown-square">
-        <div className="countdown-number" data-count="5">0</div>
-        <div className="countdown-label">Years of Experience</div>
-      </div>
-      <div className="countdown-square">
-        <div className="countdown-number" data-count="100">0</div>
-        <div className="countdown-label">Tailored Itineraries</div>
-      </div>
-      <div className="countdown-square">
-        <div className="countdown-number" data-count="50">0</div>
-        <div className="countdown-label">Successful Safaris</div>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default SuccessCountdown;

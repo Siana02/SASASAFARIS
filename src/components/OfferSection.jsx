@@ -7,7 +7,7 @@ const OfferSection = () => (
       {/* Offer Card: Masai Mara */}
       <div className="offer-card">
         <div className="offer-img-holder">
-          <img src="/assets/Wildebeest migration.jpg" alt="Masai Mara Safari" />
+          <img src="/assets/Wildebeest_migration.jpg" alt="Masai Mara Safari" />
         </div>
         <div className="offer-content">
           <div className="offer-top-row">

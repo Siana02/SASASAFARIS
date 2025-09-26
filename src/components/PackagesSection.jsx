@@ -12,7 +12,7 @@ const PackagesSection = () => (
       {/* Card 1 */}
       <article className="package-card active" style={{opacity: 1, pointerEvents: "auto", zIndex: 10}}>
         <div className="package-card-image">
-          <img src="/assets/Classic Maasai Mara.jpg" alt="Mara & Tsavo Wildlife Safari - lions and elephants in savannah" />
+          <img src="/assets/Classic_Maasai_Mara.jpg" alt="Mara & Tsavo Wildlife Safari - lions and elephants in savannah" />
         </div>
         <div className="package-card-content">
           <h2 className="package-title">Mara &amp; Tsavo Wildlife Safari</h2>
@@ -66,7 +66,7 @@ const PackagesSection = () => (
       {/* Card 3 */}
       <article className="package-card" data-index={2} aria-hidden="true">
         <div className="package-card-image">
-          <img src="/assets/Family Safari.jpg" alt="Family Safari & Beach Holiday - family on Diani Beach" />
+          <img src="/assets/Family_Safari.jpg" alt="Family Safari & Beach Holiday - family on Diani Beach" />
         </div>
         <div className="package-card-content">
           <h2 className="package-title">Family Safari &amp; Beach Holiday</h2>
@@ -93,7 +93,7 @@ const PackagesSection = () => (
       {/* Card 4 */}
       <article className="package-card" data-index={3} aria-hidden="true">
         <div className="package-card-image">
-          <img src="/assets/Romantic Safari.jpg" alt="Romantic Safari & Honeymoon Escape - couple sunset lodge" />
+          <img src="/assets/Romantic_Safari.jpg" alt="Romantic Safari & Honeymoon Escape - couple sunset lodge" />
         </div>
         <div className="package-card-content">
           <h2 className="package-title">Romantic Safari &amp; Honeymoon Escape</h2>
@@ -120,7 +120,7 @@ const PackagesSection = () => (
       {/* Card 5 */}
       <article className="package-card" data-index={4} aria-hidden="true">
         <div className="package-card-image">
-          <img src="/assets/Coastal Experience.jpg" alt="Kenyan Coastal Adventure - snorkeling and beach" />
+          <img src="/assets/Coastal_Experience.jpg" alt="Kenyan Coastal Adventure - snorkeling and beach" />
         </div>
         <div className="package-card-content">
           <h2 className="package-title">Kenyan Coastal Adventure</h2>
