@@ -302,16 +302,7 @@ const PackagesSection = () => {
                 </div>
               </motion.article>
             )}
-            {/* About */}
-            {deckPosition === packages.length && (
-              <div key="about" className="packages-about-section">
-                <AboutSection />
-              </div>
-            )}
-            {/* SuccessCountdown */}
-            {deckPosition === -1 && (
-              <PackagesSuccessCountdown key="success-countdown" />
-            )}
+            
           </AnimatePresence>
 
           {/* Progress indicator */}
