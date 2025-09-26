@@ -6,6 +6,7 @@ import OfferSection from './components/OfferSection';
 import SuccessCountdown from './components/SuccessCountdown';
 import PackagesSection from './components/PackagesSection';
 import AboutSection from './components/AboutSection';
+import ReviewSection from './components/ReviewSection';
 import HighlightSection from './components/HighlightSection';
 import Footer from './components/Footer';
 import ThemeMessage from './components/ThemeMessage';
