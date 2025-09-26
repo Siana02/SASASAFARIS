@@ -1442,15 +1442,15 @@ a:focus-visible, button:focus-visible {
 .package-cta-primary {
   background: var(--cta); /* Background: brand color (safari green or golden yellow) */
   color: white; /* Color: white */
-  font-weight: 600; /* Font-weight: 600 */
-  padding: 0.75rem 1.5rem; /* Padding: 0.75rem 1.5rem */
+  font-weight: 700; /* Font-weight: 600 */
+  padding: 1.0rem ; /* Padding: 0.75rem 1.5rem */
   border-radius: 2rem; /* Border-radius: 2rem (pill shape) */
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
   border: none;
   font-family: 'Assistant', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -1470,7 +1470,7 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   justify-content: center;
   height: 100%;                  /* Full button height */
-  width: auto;                   /* Let width be natural */
+  width: 100%;                   /* Let width be natural */
   margin-left: auto;             /* Push all the way to the right */
   padding-right: 0.10rem;        /* Tiny breathing room if needed */
   border-top-right-radius: inherit;
@@ -1479,8 +1479,8 @@ a:focus-visible, button:focus-visible {
 }
 
 .package-cta-primary-icon svg {
-  height: 120%;                  /* Make it slightly oversized */
-  width: auto;                   /* Keep proportions */
+  height: 100%;                  /* Make it slightly oversized */
+  width: 100%;                   /* Keep proportions */
   transform: translateX(10%);    /* Nudge right so it touches the edge */
 }
 
