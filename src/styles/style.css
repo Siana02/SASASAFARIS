@@ -1466,14 +1466,17 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Primary Button Icon (far right, touching edge padding) */
-.package-cta-primary-icon {
+
+  .package-cta-primary-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  margin-left: 0.5rem;
+  height: 100%;              /* Stretch icon container full button height */
+  aspect-ratio: 1 / 1;       /* Keep square shape */
+  margin-left: auto;         /* Push icon all the way to the right */
+  border-top-right-radius: inherit;   /* Match button rounded corner */
+  border-bottom-right-radius: inherit; 
+  overflow: hidden;          
   transition: transform 0.3s ease;
 }
 
