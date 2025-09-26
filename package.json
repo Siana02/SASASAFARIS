@@ -11,7 +11,8 @@
     "react-dom": "^19.1.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
-    "framer-motion": "^11.11.17"
+    "framer-motion": "^11.11.17",
+     "lucide-react": "^0.441.0"
   },
   "scripts": {
     "start": "react-scripts start",
