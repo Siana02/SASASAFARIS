@@ -71,21 +71,7 @@ const CARD_TRANSITION = { type: "spring", stiffness: 420, damping: 42, duration:
 const CARD_ANIMATION_X = 120; // px horizontal slide
 const AUTO_ADVANCE_INTERVAL = 6000; // ms pause per card
 
-const AboutSection = () => (
-  <motion.section
-    className="about-section"
-    id="about"
-    initial={{ opacity: 0, y: 80 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -80 }}
-    transition={CARD_TRANSITION}
-  >
-    <h2>About SASA Safaris</h2>
-    <p>
-      SASA Safaris is your gateway to unforgettable adventures in Kenya. From classic wildlife safaris to romantic escapes and family holidays, we deliver authentic, personalized journeys with expert guides and warm hospitality. Let us help you create your dream safari experience!
-    </p>
-  </motion.section>
-);
+
 
 const PackagesSection = () => {
   const [deckPosition, setDeckPosition] = useState(0); // -1 = SuccessCountdown, 0-4 = cards, 5 = About
