@@ -1184,13 +1184,47 @@ a:focus-visible, button:focus-visible {
     font-size: 1.25rem;
   }
   
+  /* Desktop Package Card Layout - Horizontal */
   .package-card {
-    height: 700px;
-    padding: 3rem;
+    display: flex;
+    flex-direction: row;
+    max-width: 90%;
+    margin: 2rem auto;
+    height: 70vh;
+    border-radius: 1rem;
+    overflow: hidden;
+    padding: 0; /* Remove padding for cleaner horizontal layout */
   }
   
+  /* Desktop Package Card Image - Left Half */
+  .package-card-image {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Desktop Package Card Content - Right Half */
+  .package-card-content {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  /* Desktop Typography Scaling */
   .package-title {
     font-size: 2.2rem;
+  }
+  
+  .package-duration {
+    font-size: 1.1rem;
+  }
+  
+  .package-description {
+    font-size: 1.05rem;
   }
 }
 
