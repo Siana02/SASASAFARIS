@@ -4,7 +4,7 @@
 // Progress indicator only appears when a card is visible (not for About/Success Countdown).
 // About section has its own animation, not reused from cards.
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ClassicMaasaiMara,
@@ -13,6 +13,7 @@ import {
   RomanticSafari,
   CoastalExperience
 } from "../assets/images";
+import SuccessCountdown from "./SuccessCountdown";
 
 // Card deck data
 const packages = [
@@ -93,50 +94,121 @@ const PackagesSection = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragY, setDragY] = useState(0);
   const [deckLocked, setDeckLocked] = useState(false); // Locks page scroll while cycling deck
+  const [isWrapperFocused, setIsWrapperFocused] = useState(false); // Track wrapper focus state
   const wrapperRef = useRef(null);
 
-  // Lock/unlock deck depending on position
-  useEffect(() => {
-    // Lock only if deckPosition is in card range
-    setDeckLocked(deckPosition >= 0 && deckPosition < packages.length);
-  }, [deckPosition]);
+  // Animation direction tracking for proper slide transitions
+  const animationDirection = useRef("up");
+  const lastPosition = useRef(0);
 
-  // Prevent page scroll only when deck is locked
+  // Next: Move deckPosition forward (up animation)
+  const nextCard = useCallback(() => {
+    setDeckPosition((pos) => {
+      const newPos = pos < packages.length ? pos + 1 : pos;
+      if (newPos > pos) {
+        animationDirection.current = "up";
+        lastPosition.current = pos;
+      }
+      return newPos;
+    });
+  }, []);
+  
+  // Previous: Move deckPosition backward (down animation)
+  const prevCard = useCallback(() => {
+    setDeckPosition((pos) => {
+      const newPos = pos > -1 ? pos - 1 : pos;
+      if (newPos < pos) {
+        animationDirection.current = "down";
+        lastPosition.current = pos;
+      }
+      return newPos;
+    });
+  }, []);
+
+  // Lock/unlock deck depending on position and wrapper focus
+  // Scroll lock is only active when:
+  // 1. deckPosition is in card range (0 to packages.length-1)  
+  // 2. packages-wrapper is focused/active
+  useEffect(() => {
+    const shouldLock = (deckPosition >= 0 && deckPosition < packages.length) && isWrapperFocused;
+    setDeckLocked(shouldLock);
+  }, [deckPosition, isWrapperFocused]);
+
+  // Prevent page scroll only when deck is locked and wrapper is focused
+  // This ensures scroll-lock is scoped to the packages-wrapper interaction only
   useEffect(() => {
     const preventScroll = (e) => {
-      if (deckLocked) {
-        e.preventDefault();
+      // Only prevent scroll if:
+      // 1. Deck is locked (card is visible and wrapper is focused)
+      // 2. The event target is within or related to the packages-wrapper
+      if (deckLocked && wrapperRef.current) {
+        const wrapperRect = wrapperRef.current.getBoundingClientRect();
+        const isNearWrapper = (
+          e.clientY >= wrapperRect.top - 50 && 
+          e.clientY <= wrapperRect.bottom + 50
+        );
+        if (isNearWrapper) {
+          e.preventDefault();
+        }
       }
     };
+    
     if (deckLocked) {
-      document.body.addEventListener("wheel", preventScroll, { passive: false });
-      document.body.addEventListener("touchmove", preventScroll, { passive: false });
+      // Add scroll prevention with passive: false to allow preventDefault
+      document.addEventListener("wheel", preventScroll, { passive: false });
+      document.addEventListener("touchmove", preventScroll, { passive: false });
     }
+    
     return () => {
-      document.body.removeEventListener("wheel", preventScroll);
-      document.body.removeEventListener("touchmove", preventScroll);
+      document.removeEventListener("wheel", preventScroll);
+      document.removeEventListener("touchmove", preventScroll);
     };
   }, [deckLocked]);
 
-  // Focus wrapper on scroll into view
+  // Focus management: Track when packages-wrapper gains/loses focus
+  // This enables proper scoping of interactions to the wrapper only
+  useEffect(() => {
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+
+    const handleFocus = () => setIsWrapperFocused(true);
+    const handleBlur = () => setIsWrapperFocused(false);
+    const handleMouseEnter = () => setIsWrapperFocused(true);
+    const handleMouseLeave = () => setIsWrapperFocused(false);
+
+    wrapper.addEventListener('focus', handleFocus);
+    wrapper.addEventListener('blur', handleBlur);
+    wrapper.addEventListener('mouseenter', handleMouseEnter);
+    wrapper.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      wrapper.removeEventListener('focus', handleFocus);
+      wrapper.removeEventListener('blur', handleBlur);
+      wrapper.removeEventListener('mouseenter', handleMouseEnter);
+      wrapper.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
+  // Auto-focus wrapper when scrolling into view (only for card states)
   useEffect(() => {
     const onScroll = () => {
-      if (wrapperRef.current) {
+      if (wrapperRef.current && deckPosition >= 0 && deckPosition < packages.length) {
         const rect = wrapperRef.current.getBoundingClientRect();
         const inView = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-        if (inView && !deckLocked && deckPosition >= 0 && deckPosition < packages.length) {
+        if (inView && !isWrapperFocused) {
           wrapperRef.current.focus();
         }
       }
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [deckLocked, deckPosition]);
+  }, [deckPosition, isWrapperFocused]);
 
-  // Keyboard navigation (when wrapper focused)
+  // Keyboard navigation - only active when wrapper is focused and deck is locked
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (deckLocked) {
+      // Only handle keyboard navigation when wrapper is focused and deck is locked
+      if (deckLocked && isWrapperFocused) {
         if (e.key === "ArrowDown" || e.key === "ArrowRight") {
           e.preventDefault();
           nextCard();
@@ -148,32 +220,34 @@ const PackagesSection = () => {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [deckLocked, deckPosition]);
+  }, [deckLocked, isWrapperFocused, nextCard, prevCard]);
 
-  // Mouse wheel navigation (when wrapper focused)
+  // Mouse wheel navigation - only active when wrapper is focused and deck is locked
   useEffect(() => {
     const handleWheel = (e) => {
-      if (deckLocked) {
+      // Only handle wheel events when wrapper is focused and deck is locked
+      if (deckLocked && isWrapperFocused) {
         e.preventDefault();
-        if (e.deltaY > 0) nextCard();
-        else if (e.deltaY < 0) prevCard();
+        if (e.deltaY > 0) nextCard(); // Scroll down = next card
+        else if (e.deltaY < 0) prevCard(); // Scroll up = previous card
       }
     };
     const node = wrapperRef.current;
-    if (node && deckLocked) {
+    if (node && deckLocked && isWrapperFocused) {
       node.addEventListener("wheel", handleWheel, { passive: false });
     }
     return () => {
       if (node) node.removeEventListener("wheel", handleWheel);
     };
-  }, [deckLocked, deckPosition]);
+  }, [deckLocked, isWrapperFocused, nextCard, prevCard]);
 
-  // Touch/Swipe navigation for mobile (when wrapper focused)
+  // Touch/Swipe navigation for mobile - only active when wrapper is focused and deck is locked
   useEffect(() => {
     let startY = null;
     let dragging = false;
     const handleTouchStart = (e) => {
-      if (deckLocked) {
+      // Only handle touch events when wrapper is focused and deck is locked
+      if (deckLocked && isWrapperFocused) {
         setIsDragging(true);
         dragging = true;
         startY = e.touches[0].clientY;
@@ -187,6 +261,7 @@ const PackagesSection = () => {
     const handleTouchEnd = () => {
       if (!dragging) return;
       setIsDragging(false);
+      // Swipe up (negative dragY) = next card, Swipe down (positive dragY) = previous card  
       if (dragY < -80) {
         nextCard();
       } else if (dragY > 80) {
@@ -197,7 +272,7 @@ const PackagesSection = () => {
       dragging = false;
     };
     const node = wrapperRef.current;
-    if (node && deckLocked) {
+    if (node && deckLocked && isWrapperFocused) {
       node.addEventListener("touchstart", handleTouchStart, { passive: false });
       node.addEventListener("touchmove", handleTouchMove, { passive: false });
       node.addEventListener("touchend", handleTouchEnd, { passive: false });
@@ -209,26 +284,9 @@ const PackagesSection = () => {
         node.removeEventListener("touchend", handleTouchEnd);
       }
     };
-  }, [deckLocked, deckPosition, dragY]);
+  }, [deckLocked, isWrapperFocused, dragY, nextCard, prevCard]);
 
-  // Next: Move deckPosition forward
-  const nextCard = () => {
-    setDeckPosition((pos) =>
-      pos < packages.length ? pos + 1 : pos
-    );
-  };
-  // Previous: Move deckPosition backward
-  const prevCard = () => {
-    setDeckPosition((pos) =>
-      pos > -1 ? pos - 1 : pos
-    );
-  };
-
-  // Animation direction (for AnimatePresence)
-  const animationDirection = useRef("up");
-  useEffect(() => {
-    animationDirection.current = "up";
-  }, [deckPosition]);
+  // Motion key for AnimatePresence - determines which content to show
   const motionKey =
     deckPosition >= 0 && deckPosition < packages.length
       ? packages[deckPosition].title
@@ -317,11 +375,14 @@ const PackagesSection = () => {
                 </div>
               </motion.article>
             )}
-            {/* Show About section if deckPosition is packages.length */}
+            {/* Show About section if deckPosition is packages.length (5) */}
             {deckPosition === packages.length && (
               <AboutSection key="about"/>
             )}
-            {/* No render for Success Countdown, let page scroll naturally */}
+            {/* Show Success Countdown if deckPosition is -1 (before first card) */}
+            {deckPosition === -1 && (
+              <SuccessCountdown key="success-countdown"/>
+            )}
           </AnimatePresence>
           {/* Progress indicator only for cards */}
           {deckPosition >= 0 && deckPosition < packages.length && (
