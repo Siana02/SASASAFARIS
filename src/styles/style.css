@@ -1450,7 +1450,7 @@ a:focus-visible, button:focus-visible {
   justify-content: space-between;
   border: none;
   font-family: 'Assistant', sans-serif;
-  font-size: 1rem;
+  font-size: 1.5rem;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -1463,31 +1463,31 @@ a:focus-visible, button:focus-visible {
 .package-cta-primary:focus {
   background: var(--cta-hover); /* Hover: slightly darker shade */
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-
-  .package-cta-primary-icon {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);}
+/* Primary Button Icon (fills right corner) */
+.package-cta-primary-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;              /* Stretch icon container full button height */
-  aspect-ratio: 1 / 1;       /* Keep square shape */
-  margin-left: auto;         /* Push icon all the way to the right */
-  border-top-right-radius: inherit;   /* Match button rounded corner */
-  border-bottom-right-radius: inherit; 
-  overflow: hidden;          
-  transition: transform 0.3s ease;
+  height: 100%;                  /* Full button height */
+  width: auto;                   /* Let width be natural */
+  margin-left: auto;             /* Push all the way to the right */
+  padding-right: 0.10rem;        /* Tiny breathing room if needed */
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  overflow: hidden;              /* Clip to rounded corner */
+}
+
+.package-cta-primary-icon svg {
+  height: 120%;                  /* Make it slightly oversized */
+  width: auto;                   /* Keep proportions */
+  transform: translateX(10%);    /* Nudge right so it touches the edge */
 }
 
 .package-cta-primary:hover .package-cta-primary-icon {
   transform: translateX(4px);
 }
 
-.package-cta-primary-icon svg {
-  width: 100%;
-  height: 100%;
-}
 
 /* Secondary Button (View Details) - Mobile First */
 .package-cta-secondary {
