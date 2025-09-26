@@ -1185,36 +1185,42 @@ a:focus-visible, button:focus-visible {
     font-size: 1.25rem;
   }
   
-  /* Desktop Package Card Layout - Horizontal */
-  .package-card {
-    display: flex;
-    flex-direction: row;                /* Image left, content right */
-    max-width: 90%;
+   .package-card {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    width: 90%;
+    max-width: 1200px;
     margin: 2rem auto;
     height: 70vh;
     border-radius: 1rem;
     overflow: hidden;
-    padding: 0; /* Remove padding for cleaner horizontal layout */
+    padding: 0;
+    box-sizing: border-box;
   }
-  
-  /* Desktop Package Card Image - Left Half */
   .package-card-image {
-    width: 50%;                         /* Take left half */
-    height: 100%;
+    width: 50% !important;
+    height: 100% !important;
     object-fit: cover;
-    order: 0;                           /* Ensure image is first (left) */
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    order: 0 !important;
+    flex: 0 0 50% !important;
+    box-sizing: border-box;
   }
-  
-  /* Desktop Package Card Content - Right Half */
   .package-card-content {
-    width: 50%;                         /* Take right half */
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-    text-align: center;
-    order: 1;                           /* Ensure content is second (right) */
+    width: 50% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 2rem !important;
+    text-align: center !important;
+    order: 1 !important;
+    flex: 1 1 50% !important;
+    box-sizing: border-box;
   }
   
   /* Desktop Typography Scaling */
