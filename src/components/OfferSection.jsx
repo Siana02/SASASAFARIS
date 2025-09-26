@@ -1,55 +1,47 @@
-import React from 'react';
+import React from "react";
 
-// TODO: Migrate Offers section HTML structure from existing HTML file
-// TODO: Migrate Offers section CSS styles from existing CSS file
-// TODO: Migrate Offers section JavaScript functionality (offer timers, interactions) from existing JS file
-
-const OfferSection = () => {
-  return (
-    <section className="offers-section">
-      {/* Placeholder offers content - replace with migrated HTML */}
-      <div className="container">
-        <h2 className="section-title">Special Offers</h2>
-        <p className="section-subtitle">Don't miss out on these amazing deals</p>
-        
-        <div className="offers-grid">
-          {/* TODO: Replace with dynamic offer rendering from data/offers.js */}
-          <div className="offer-card">
-            <div className="offer-badge">Limited Time</div>
-            <div className="offer-content">
-              <h3 className="offer-title">Early Bird Special</h3>
-              <p className="offer-description">Book 3 months in advance and save 20%</p>
-              <div className="offer-discount">20% OFF</div>
-              <div className="offer-validity">Valid until Dec 31, 2024</div>
-              <button className="btn btn-primary">Claim Offer</button>
-            </div>
+const OfferSection = () => (
+  <section className="best-offers-section" id="best-offers">
+    <h2 className="best-offers-title">Best Offers This Month</h2>
+    <div className="best-offers-cards">
+      {/* Offer Card: Masai Mara */}
+      <div className="offer-card">
+        <div className="offer-img-holder">
+          <img src="/assets/Wildebeest migration.jpg" alt="Masai Mara Safari" />
+        </div>
+        <div className="offer-content">
+          <div className="offer-top-row">
+            <span className="offer-destination">Maasai Mara</span>
+            <span className="offer-prices">
+              <span className="old-price">€500</span>
+              <span className="new-price">€250</span>
+            </span>
           </div>
-          
-          <div className="offer-card">
-            <div className="offer-badge">Popular</div>
-            <div className="offer-content">
-              <h3 className="offer-title">Group Discount</h3>
-              <p className="offer-description">Bring 5+ friends and get special pricing</p>
-              <div className="offer-discount">15% OFF</div>
-              <div className="offer-validity">Groups of 5 or more</div>
-              <button className="btn btn-primary">Learn More</button>
-            </div>
-          </div>
-          
-          <div className="offer-card">
-            <div className="offer-badge">New</div>
-            <div className="offer-content">
-              <h3 className="offer-title">Weekend Explorer</h3>
-              <p className="offer-description">Perfect 2-day weekend getaway package</p>
-              <div className="offer-discount">$199</div>
-              <div className="offer-validity">Weekends only</div>
-              <button className="btn btn-primary">Book Now</button>
-            </div>
-          </div>
+          <div className="offer-main-text">50% OFF</div>
+          <div className="offer-desc">Wildebeest Migration</div>
+          <button className="offer-details-btn" data-offer="mara">View Details</button>
         </div>
       </div>
-    </section>
-  );
-};
+      {/* Offer Card: Kenyan Coast */}
+      <div className="offer-card">
+        <div className="offer-img-holder">
+          <img src="/assets/Kenyan_coast_1.jpg" alt="Kenyan Coast" />
+        </div>
+        <div className="offer-content">
+          <div className="offer-top-row">
+            <span className="offer-destination">Kenyan Coast</span>
+            <span className="offer-prices">
+              <span className="old-price">€300</span>
+              <span className="new-price">€210</span>
+            </span>
+          </div>
+          <div className="offer-main-text">30% OFF</div>
+          <div className="offer-desc">Malindi to Diani</div>
+          <button className="offer-details-btn" data-offer="coast">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
 export default OfferSection;
