@@ -1574,3 +1574,11 @@ a:focus-visible, button:focus-visible {
   display: none !important;
 }
 
+
+
+/* About section when shown in packages navigation */
+.packages-about-section .about-section {
+  display: block !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}

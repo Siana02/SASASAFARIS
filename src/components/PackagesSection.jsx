@@ -14,6 +14,7 @@ import {
   CoastalExperience
 } from "../assets/images";
 import SuccessCountdown from "./SuccessCountdown";
+import PackagesSuccessCountdown from "./PackagesSuccessCountdown";
 
 // Card deck data
 const packages = [
@@ -204,11 +205,12 @@ const PackagesSection = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [deckPosition, isWrapperFocused]);
 
-  // Keyboard navigation - only active when wrapper is focused and deck is locked
+  // Keyboard navigation - only active when wrapper is focused
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Only handle keyboard navigation when wrapper is focused and deck is locked
-      if (deckLocked && isWrapperFocused) {
+      // Only handle keyboard navigation when wrapper is focused
+      // Navigation should work in all states (Success Countdown, Cards, About)
+      if (isWrapperFocused) {
         if (e.key === "ArrowDown" || e.key === "ArrowRight") {
           e.preventDefault();
           nextCard();
@@ -220,20 +222,23 @@ const PackagesSection = () => {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [deckLocked, isWrapperFocused, nextCard, prevCard]);
+  }, [isWrapperFocused, nextCard, prevCard]);
 
-  // Mouse wheel navigation - only active when wrapper is focused and deck is locked
+  // Mouse wheel navigation - only active when wrapper is focused
   useEffect(() => {
     const handleWheel = (e) => {
-      // Only handle wheel events when wrapper is focused and deck is locked
-      if (deckLocked && isWrapperFocused) {
-        e.preventDefault();
+      // Handle wheel events when wrapper is focused 
+      // Only prevent scroll when deck is locked (during card states)
+      if (isWrapperFocused) {
+        if (deckLocked) {
+          e.preventDefault(); // Only prevent scroll during card cycling
+        }
         if (e.deltaY > 0) nextCard(); // Scroll down = next card
         else if (e.deltaY < 0) prevCard(); // Scroll up = previous card
       }
     };
     const node = wrapperRef.current;
-    if (node && deckLocked && isWrapperFocused) {
+    if (node && isWrapperFocused) {
       node.addEventListener("wheel", handleWheel, { passive: false });
     }
     return () => {
@@ -241,20 +246,23 @@ const PackagesSection = () => {
     };
   }, [deckLocked, isWrapperFocused, nextCard, prevCard]);
 
-  // Touch/Swipe navigation for mobile - only active when wrapper is focused and deck is locked
+  // Touch/Swipe navigation for mobile - only active when wrapper is focused  
   useEffect(() => {
     let startY = null;
     let dragging = false;
     const handleTouchStart = (e) => {
-      // Only handle touch events when wrapper is focused and deck is locked
-      if (deckLocked && isWrapperFocused) {
-        setIsDragging(true);
+      // Handle touch events when wrapper is focused
+      // Only handle dragging for card states (when deck is locked)
+      if (isWrapperFocused) {
+        if (deckLocked) {
+          setIsDragging(true);
+        }
         dragging = true;
         startY = e.touches[0].clientY;
       }
     };
     const handleTouchMove = (e) => {
-      if (dragging && startY !== null) {
+      if (dragging && startY !== null && deckLocked) {
         setDragY(e.touches[0].clientY - startY);
       }
     };
@@ -272,7 +280,7 @@ const PackagesSection = () => {
       dragging = false;
     };
     const node = wrapperRef.current;
-    if (node && deckLocked && isWrapperFocused) {
+    if (node && isWrapperFocused) {
       node.addEventListener("touchstart", handleTouchStart, { passive: false });
       node.addEventListener("touchmove", handleTouchMove, { passive: false });
       node.addEventListener("touchend", handleTouchEnd, { passive: false });
@@ -377,11 +385,13 @@ const PackagesSection = () => {
             )}
             {/* Show About section if deckPosition is packages.length (5) */}
             {deckPosition === packages.length && (
-              <AboutSection key="about"/>
+              <div key="about" className="packages-about-section">
+                <AboutSection/>
+              </div>
             )}
             {/* Show Success Countdown if deckPosition is -1 (before first card) */}
             {deckPosition === -1 && (
-              <SuccessCountdown key="success-countdown"/>
+              <PackagesSuccessCountdown key="success-countdown"/>
             )}
           </AnimatePresence>
           {/* Progress indicator only for cards */}
