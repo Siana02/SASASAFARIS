@@ -1770,6 +1770,106 @@ a:focus-visible, button:focus-visible {
   margin-top: 1rem;
 }
 
+/* ===== Review Section Layout ===== */
+.review-section {
+  padding: 4rem 1.5rem;
+  background-color: #f9fafb; /* light gray background */
+}
+
+.review-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.review-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827; /* dark gray */
+}
+
+.review-subtitle {
+  color: #4b5563; /* medium gray */
+  margin-top: 0.5rem;
+}
+
+/* ===== Carousel ===== */
+.review-carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.review-track {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* ===== Review Cards ===== */
+.review-card {
+  min-width: 280px;
+  max-width: 420px;
+  max-height: 40vh; /* cards never taller than 40% viewport height */
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* floating + subtle shadow */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Text & Stars ===== */
+.review-text {
+  color: #374151; /* dark gray */
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.review-stars {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.star-icon {
+  width: 20px;
+  height: 20px;
+  color: #fbbf24; /* yellow-500 (gold) */
+  fill: currentColor;
+}
+
+.reviewer-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #111827;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Responsiveness ===== */
+@media (min-width: 640px) {
+  .review-card {
+    min-width: 360px;
+  }
+}
+
+@media (min-width: 768px) {
+  .review-card {
+    min-width: 420px;
+  }
+
+  .review-title {
+    font-size: 2.5rem;
+  }
+  }
+
 
 /* ============================
    Service Highlights Belt
