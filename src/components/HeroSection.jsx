@@ -1,29 +1,29 @@
-import React from 'react';
+import React from "react";
 
-// TODO: Migrate Hero section HTML structure from existing HTML file
-// TODO: Migrate Hero section CSS styles from existing CSS file
-// TODO: Migrate Hero section JavaScript functionality (animations, interactions) from existing JS file
-
-const HeroSection = () => {
-  return (
-    <section className="hero-section">
-      {/* Placeholder hero content - replace with migrated HTML */}
-      <div className="hero-content">
-        <h1 className="hero-title">Discover Amazing Safari Adventures</h1>
-        <p className="hero-subtitle">
-          Experience the wild beauty of nature with our expertly guided safari tours
-        </p>
-        <div className="hero-actions">
-          <button className="btn btn-primary">Explore Packages</button>
-          <button className="btn btn-secondary">Watch Video</button>
-        </div>
+const HeroSection = () => (
+  <section className="hero">
+    <div className="hero-bg" id="hero-bg">
+      <div className="hero-overlay"></div>
+    </div>
+    <div className="hero-content">
+      <h1 className="hero-title">CRAFTED SAFARIS, JUST FOR YOU</h1>
+      <p className="hero-desc">SEAMLESS SAFARIS TAILORED TO MATCH YOUR DESTINATIONS.</p>
+      <div className="hero-ctas">
+        <a href="#packages" className="cta-btn">View Packages</a>
+        <button className="cta-secondary">
+          Contact Us
+          <span className="cta-secondary-icon">
+            {/* SVG Icon */}
+            <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
+              <circle cx="24" cy="24" r="20" fill="var(--cta)" />
+              <polyline points="18 30 30 18" fill="none" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+              <polyline points="18 18 30 18 30 30" fill="none" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </span>
+        </button>
       </div>
-      <div className="hero-image">
-        {/* TODO: Add safari hero image from assets */}
-        <div className="placeholder-image">Safari Hero Image</div>
-      </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default HeroSection;
