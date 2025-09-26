@@ -1019,12 +1019,12 @@ a:focus-visible, button:focus-visible {
   justify-content: center;
 }
 
+/* Intro Container - Mobile First */
 .packages-intro-container {
-  max-width: 800px;
+  max-width: 100%;
   width: 100%;
-  margin: 0 auto;
-  margin-bottom: 4rem;
-  padding: 2rem 1rem;
+  margin: 0 auto 1.5rem auto; /* margin-bottom: 1.5rem */
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1043,16 +1043,17 @@ a:focus-visible, button:focus-visible {
   }
 }
 
-/* Title Styling */
+/* Title - Mobile First */
 .packages-title {
-  font-family: "Playfair Display", serif, "Poppins", sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.2;
+  font-family: var(--heading-font, 'Martel', serif);
+  font-size: 1.6rem; /* 1.6rem mobile */
+  font-weight: 700; /* 700 weight */
   color: #222;
-  text-align: center;
+  text-align: center; /* centered */
   margin: 0 auto 0.75rem auto;
+  max-width: 90%;
   letter-spacing: -0.02em;
+  line-height: 1.2;
   position: relative;
   /* Fade-in animation */
   opacity: 0;
@@ -1078,16 +1079,16 @@ a:focus-visible, button:focus-visible {
   }
 }
 
-/* Subtitle Styling */
+/* Subtitle - Mobile First */
 .packages-subtitle {
   font-family: var(--body-font, 'Assistant', sans-serif);
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #555;
-  text-align: center;
+  font-size: 1rem; /* 1rem mobile */
+  font-weight: 400; /* 400 weight */
+  line-height: 1.4;
+  color: #6b7280; /* muted grey */
+  text-align: center; /* centered */
   margin: 1rem auto 0 auto;
-  max-width: 600px;
+  max-width: 80%; /* max-width: 80%, centered */
   opacity: 0;
   animation: packagesSubtitleFade 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.7s forwards;
 }
@@ -1098,159 +1099,98 @@ a:focus-visible, button:focus-visible {
   }
 }
 
-/* Tablet Styles */
-@media (max-width: 1023px) {
+/* === RESPONSIVE BREAKPOINTS - MOBILE FIRST === */
+
+/* Tablet and up - min-width: 768px */
+@media (min-width: 768px) {
+  /* Section Container */
   .packages-section {
-    padding: 4rem 1.5rem;
+    padding: 2rem 0; /* Increase padding for larger screens */
   }
-
+  
+  /* Intro Container */
   .packages-intro-container {
-    max-width: 90vw;
-    margin-bottom: 3rem;
-    padding: 1.5rem 1rem;
-  }
-
-  .packages-title {
-    font-size: 2rem;
-    max-width: 90%;
-  }
-
-  .packages-subtitle {
-    font-size: 1rem;
-    max-width: 600px;
-  }
-
-  .packages-wrapper {
-    height: 500px;
-  }
-
-  .package-card {
-    grid-template-columns: 1fr;
-    grid-template-rows: 200px 1fr;
+    max-width: 800px;
+    margin-bottom: 2rem;
     padding: 1.5rem;
-    border-radius: 16px;
   }
-
+  
+  /* Title */
+  .packages-title {
+    font-size: 2rem; /* Larger title */
+  }
+  
+  /* Subtitle */
+  .packages-subtitle {
+    font-size: 1.125rem; /* Larger subtitle */
+    max-width: 600px; /* Wider max-width */
+  }
+  
+  /* Package Card */
+  .package-card {
+    height: 600px; /* Fixed height instead of 100vh */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Side by side layout */
+    grid-template-rows: 1fr;
+    padding: 2rem;
+  }
+  
+  /* Image and Content */
+  .package-card-image {
+    height: 100%; /* Full height of grid area */
+  }
+  
   .package-card-content {
-    text-align: center;
-    align-items: center;
-  }
-
-  .package-badge {
-    align-self: center;
-  }
-
-  .package-ctas {
+    height: 100%; /* Full height of grid area */
     justify-content: center;
-    flex-wrap: wrap;
   }
-
-  .progress-dot {
-    width: 10px;
-    height: 10px;
+  
+  /* Typography adjustments */
+  .package-title {
+    font-size: 1.8rem;
   }
-
-  .package-progress-indicator {
-    right: 1.5rem;
-    gap: 0.5rem;
+  
+  .package-duration {
+    font-size: 1.1rem;
+  }
+  
+  .package-description {
+    font-size: 1rem;
+  }
+  
+  /* CTAs */
+  .package-ctas {
+    flex-direction: row; /* Side by side on larger screens */
+    gap: 1rem;
   }
 }
 
-/* Mobile Styles */
-@media (max-width: 767px) {
+/* Desktop and up - min-width: 1024px */
+@media (min-width: 1024px) {
   .packages-section {
-    padding: 3rem 1rem;
+    padding: 4rem 0;
   }
-
+  
   .packages-intro-container {
-    max-width: 100vw;
-    margin-bottom: 2rem;
-    padding: 1rem 0.5rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
   }
-
+  
   .packages-title {
-    font-size: 1.75rem;
-    max-width: 95%;
+    font-size: 2.5rem;
   }
-
-  .packages-title::after {
-    bottom: -0.5rem;
-    width: 50px;
-    height: 2px;
-  }
-
+  
   .packages-subtitle {
-    font-size: 0.875rem;
-    max-width: 90vw;
-  }
-
-  .packages-wrapper {
-    height: 450px;
-  }
-
-  .package-card {
-    grid-template-rows: 140px 1fr;
-    padding: 1rem;
-    border-radius: 12px;
-  }
-
-  .package-card-image {
-    border-radius: 8px;
-  }
-
-  .package-card-image img {
-    border-radius: 8px;
-  }
-
-  .package-card-content {
-    gap: 0.75rem;
-  }
-
-  .package-title {
     font-size: 1.25rem;
   }
-
-  .package-duration {
-    font-size: 0.875rem;
+  
+  .package-card {
+    height: 700px;
+    padding: 3rem;
   }
-
-  .package-description {
-    font-size: 0.875rem;
-    line-height: 1.4;
-  }
-
-  .package-badge {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.75rem;
-  }
-
-  .package-ctas {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .package-cta-primary {
-    font-size: 0.875rem;
-    padding: 0.625rem 1.25rem;
-    min-width: 120px;
-  }
-
-  .package-cta-secondary {
-    font-size: 0.875rem;
-  }
-
-  .progress-dot {
-    width: 8px;
-    height: 8px;
-  }
-
-  .progress-dot.active {
-    transform: scale(1.5);
-  }
-
-  .package-progress-indicator {
-    right: 1rem;
-    gap: 0.5rem;
+  
+  .package-title {
+    font-size: 2.2rem;
   }
 }
 
@@ -1263,11 +1203,13 @@ a:focus-visible, button:focus-visible {
   box-sizing: border-box;
 }
 
-/* Section setup */
+/* === MOBILE-FIRST PACKAGES SECTION === */
+/* Section Container - Mobile Base */
 .packages-section {
   width: 100%;
-  padding: 6rem 2rem;
-  background: linear-gradient(to bottom, #fafafa, #fff);
+  background: #fff; /* clean white background */
+  padding: 1rem 0; /* 1rem top/bottom, full width */
+  text-align: center; /* center align text */
   position: relative;
   overflow: hidden;
   /* Fade-in scroll animation */
@@ -1290,35 +1232,30 @@ a:focus-visible, button:focus-visible {
   }
 }
 /* Wrapper for stacking */
+/* Wrapper for cards - Mobile First */
 .packages-wrapper {
   position: relative;
   width: 100%;
-  height: 600px;
-  max-width: 1000px;
+  height: auto; /* Allow natural height */
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   /* Only one .package-card visible at a time with fade-in/out animation */
   perspective: 1000px;
 }
 
 
-/* Floating card styles and transitions */
+/* Card Container - Mobile First */
 .package-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), 0 4px 15px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
-  align-items: center;
+  position: relative; /* Changed from absolute for mobile-first */
+  width: 90%; /* Max-width: 90% (centered with margin: 0 auto) */
+  height: 100vh; /* Height: 100vh (each card fills one screen) */
+  max-width: 90%;
+  margin: 0 auto; /* centered with margin: 0 auto */
+  background: white; /* Background: white */
+  border-radius: 1rem; /* Border-radius: 1rem */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* subtle, soft box-shadow */
+  overflow: hidden; /* Overflow: hidden */
+  display: flex; /* Display: flex */
+  flex-direction: column; /* flex-direction: column (image top, content bottom) */
   opacity: 0;
   pointer-events: none;
   z-index: 1;
@@ -1345,13 +1282,11 @@ a:focus-visible, button:focus-visible {
   transform: translateY(-40px) scale(0.95);
 }
 
-
-
-/* Responsive layout: Desktop 2-col, Tablet/Mobile stacked */
+/* Image - Mobile First */
 .package-card-image {
-  width: 100%;
-  height: 100%;
-  border-radius: 16px;
+  width: 100%; /* Width: 100% */
+  height: 50%; /* Height: 50% of card (or 45% if needed) */
+  border-radius: 0; /* Rounded top corners (card has global radius) - handled by card overflow */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1360,11 +1295,10 @@ a:focus-visible, button:focus-visible {
 }
 
 .package-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 100%; /* Width: 100% */
+  height: 100%; /* Object-fit: cover */
+  object-fit: cover; /* Object-fit: cover */
   object-position: center;
-  border-radius: 16px;
   display: block;
   transition: transform 0.3s ease;
 }
@@ -1374,55 +1308,60 @@ a:focus-visible, button:focus-visible {
   transform: scale(1.05);
 }
 
-/* Content column */
+/* Card Content - Mobile First */
 .package-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  height: 100%;
-  justify-content: center;
-  /* Strong typography hierarchy */
+  height: 50%; /* Height: 50% of card */
+  display: flex; /* Display: flex */
+  flex-direction: column; /* flex-direction: column */
+  align-items: center; /* Align-items: center */
+  justify-content: center; /* Justify-content: center */
+  padding: 1rem; /* Padding: 1rem */
 }
 
+/* Inside Content - Typography Hierarchy (Mobile First) */
 /* Title styling */
 .package-title {
-  font-size: 2.1rem;
-  font-weight: 700;
-  margin-bottom: 0.3em;
+  font-size: 1.4rem; /* Font-size: 1.4rem */
+  font-weight: 700; /* Font-weight: 700 */
+  margin-bottom: 0.5rem; /* Margin-bottom: 0.5rem */
   color: #222;
+  text-align: center; /* Centered */
   letter-spacing: -0.02em;
 }
 
 /* Duration styling */
 .package-duration {
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: #787878;
-  margin-bottom: 0.8em;
+  font-size: 1rem; /* Font-size: 1rem */
+  font-weight: 500; /* Font-weight: 500 */
+  color: #4b5563; /* Color: dark grey */
+  margin-bottom: 0.3rem; /* Margin-bottom: 0.3rem */
+  text-align: center; /* Centered */
 }
 
-/* Description */
-.package-description {
-  font-size: 1.12rem;
-  color: #222;
-  margin-bottom: 1.1em;
-  line-height: 1.5;
-}
-
-/* Badges */
+/* Badge styling */
 .package-badge {
+  background-color: #fbbf24; /* soft accent (light orange/blue, theme-based) */
+  padding: 0.3rem 0.6rem; /* Padding: 0.3rem 0.6rem */
+  border-radius: 9999px; /* Border-radius: 9999px (pill style) */
+  font-size: 0.85rem; /* Font-size: 0.85rem */
+  margin-bottom: 1rem; /* Margin-bottom: 1rem */
+  text-align: center; /* Centered */
   display: inline-block;
-  font-size: 0.85rem;
   font-weight: 600;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 50px; /* rounded-pill */
-  background: #FF6B35;
-  box-shadow: 0 2px 8px rgba(255,107,53,0.2);
-  align-self: flex-start;
+  color: #1f2937;
+  align-self: center;
 }
 
-/* Badge category styles */
+/* Description styling */
+.package-description {
+  font-size: 0.95rem; /* Font-size: 0.95rem */
+  line-height: 1.4; /* Line-height: 1.4 */
+  color: #6b7280; /* Color: medium grey */
+  text-align: center; /* Text-align: center */
+  margin-bottom: 1rem; /* Margin-bottom: 1rem */
+}
+
+/* Badge category styles - Keep existing theme-based badges */
 .badge-popular, .badge-family {
   background: linear-gradient(135deg, #ffd700, #ffed4e);
   color: #222;
@@ -1431,39 +1370,43 @@ a:focus-visible, button:focus-visible {
 
 .badge-adventure { 
   background: linear-gradient(135deg, #FF6B35, #ff8c42);
+  color: #fff;
   box-shadow: 0 2px 8px rgba(255,107,53,0.3);
 }
 
 .badge-romantic { 
   background: linear-gradient(135deg, #D96098, #e879ac);
+  color: #fff;
   box-shadow: 0 2px 8px rgba(217,96,152,0.3);
 }
 
 .badge-coastal { 
   background: linear-gradient(135deg, #36C9FF, #4dd7ff);
+  color: #fff;
   box-shadow: 0 2px 8px rgba(54,201,255,0.3);
 }
 
+/* CTAs (Buttons) - Mobile First */
 .package-ctas {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  margin-top: auto;
-  align-items: center;
+  display: flex; /* Display: flex */
+  flex-direction: column; /* Flex-direction: column */
+  align-items: center; /* Align-items: center */
+  gap: 0.75rem; /* Gap: 0.75rem */
 }
 
+/* Primary Button (Contact Us) - Mobile First */
 .package-cta-primary {
+  background: var(--cta); /* Background: brand color (safari green or golden yellow) */
+  color: white; /* Color: white */
+  font-weight: 600; /* Font-weight: 600 */
+  padding: 0.75rem 1.5rem; /* Padding: 0.75rem 1.5rem */
+  border-radius: 2rem; /* Border-radius: 2rem (pill shape) */
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--cta);
-  color: #fff;
   border: none;
-  border-radius: 50px;
   font-family: 'Assistant', sans-serif;
-  font-weight: 700;
   font-size: 1rem;
-  padding: 0.75rem 1.5rem;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -1471,13 +1414,15 @@ a:focus-visible, button:focus-visible {
   min-width: 140px;
 }
 
+/* Primary Button Hover */
 .package-cta-primary:hover,
 .package-cta-primary:focus {
-  background: var(--cta-hover);
+  background: var(--cta-hover); /* Hover: slightly darker shade */
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* Primary Button Icon (far right, touching edge padding) */
 .package-cta-primary-icon {
   display: flex;
   align-items: center;
@@ -1497,11 +1442,13 @@ a:focus-visible, button:focus-visible {
   height: 100%;
 }
 
+/* Secondary Button (View Details) - Mobile First */
 .package-cta-secondary {
-  color: var(--cta);
+  color: var(--cta); /* Color: brand accent */
   text-decoration: none;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Font-size: 0.9rem */
+  text-align: center; /* Centered under primary */
   position: relative;
   transition: all 0.3s ease;
 }
