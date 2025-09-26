@@ -1,5 +1,5 @@
-// Animated vertical deck for Safari packages with auto-advance and pause
-// Includes hover-pause, scroll lock/unlock, keyboard + wheel + touch navigation
+// Animated horizontal deck for Safari packages with auto-advance and pause
+// Includes hover-pause, keyboard + wheel + touch navigation
 // Progress indicator only visible for cards, not About/SuccessCountdown
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
@@ -68,7 +68,7 @@ const packages = [
 ];
 
 const CARD_TRANSITION = { type: "spring", stiffness: 420, damping: 42, duration: 0.45 };
-const CARD_ANIMATION_Y = 120; // px vertical slide
+const CARD_ANIMATION_X = 120; // px horizontal slide
 const AUTO_ADVANCE_INTERVAL = 6000; // ms pause per card
 
 const AboutSection = () => (
@@ -90,19 +90,18 @@ const AboutSection = () => (
 const PackagesSection = () => {
   const [deckPosition, setDeckPosition] = useState(0); // -1 = SuccessCountdown, 0-4 = cards, 5 = About
   const [isDragging, setIsDragging] = useState(false);
-  const [dragY, setDragY] = useState(0);
-  const [deckLocked, setDeckLocked] = useState(false);
+  const [dragX, setDragX] = useState(0);
   const [isWrapperFocused, setIsWrapperFocused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   const wrapperRef = useRef(null);
-  const animationDirection = useRef("up");
+  const animationDirection = useRef("right");
   const autoTimer = useRef(null);
 
   const nextCard = useCallback(() => {
     setDeckPosition((pos) => {
       const newPos = pos < packages.length ? pos + 1 : pos;
-      if (newPos > pos) animationDirection.current = "up";
+      if (newPos > pos) animationDirection.current = "right";
       return newPos;
     });
   }, []);
@@ -110,7 +109,7 @@ const PackagesSection = () => {
   const prevCard = useCallback(() => {
     setDeckPosition((pos) => {
       const newPos = pos > -1 ? pos - 1 : pos;
-      if (newPos < pos) animationDirection.current = "down";
+      if (newPos < pos) animationDirection.current = "left";
       return newPos;
     });
   }, []);
@@ -123,35 +122,14 @@ const PackagesSection = () => {
     return () => clearTimeout(autoTimer.current);
   }, [deckPosition, isHovered, isDragging, nextCard]);
 
-  // Lock/unlock deck depending on position
-  useEffect(() => {
-    const shouldLock = deckPosition >= 0 && deckPosition < packages.length && isWrapperFocused;
-    setDeckLocked(shouldLock);
-  }, [deckPosition, isWrapperFocused]);
-
-  // Scroll prevention
-  useEffect(() => {
-    const preventScroll = (e) => {
-      if (deckLocked) e.preventDefault();
-    };
-    if (deckLocked) {
-      document.addEventListener("wheel", preventScroll, { passive: false });
-      document.addEventListener("touchmove", preventScroll, { passive: false });
-    }
-    return () => {
-      document.removeEventListener("wheel", preventScroll);
-      document.removeEventListener("touchmove", preventScroll);
-    };
-  }, [deckLocked]);
-
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (isWrapperFocused) {
-        if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
           e.preventDefault();
           nextCard();
-        } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
           e.preventDefault();
           prevCard();
         }
@@ -160,6 +138,77 @@ const PackagesSection = () => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isWrapperFocused, nextCard, prevCard]);
+
+  // Mouse wheel navigation
+  useEffect(() => {
+    const handleWheel = (e) => {
+      if (isWrapperFocused && deckPosition >= 0 && deckPosition < packages.length) {
+        e.preventDefault();
+        if (e.deltaY > 0 || e.deltaX > 0) {
+          nextCard();
+        } else if (e.deltaY < 0 || e.deltaX < 0) {
+          prevCard();
+        }
+      }
+    };
+    
+    const wrapper = wrapperRef.current;
+    if (wrapper) {
+      wrapper.addEventListener("wheel", handleWheel, { passive: false });
+    }
+    return () => {
+      if (wrapper) {
+        wrapper.removeEventListener("wheel", handleWheel);
+      }
+    };
+  }, [isWrapperFocused, deckPosition, nextCard, prevCard]);
+
+  // Touch swipe navigation
+  useEffect(() => {
+    let touchStartX = null;
+    let touchStartY = null;
+
+    const handleTouchStart = (e) => {
+      if (deckPosition >= 0 && deckPosition < packages.length) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    };
+
+    const handleTouchEnd = (e) => {
+      if (touchStartX !== null && touchStartY !== null && deckPosition >= 0 && deckPosition < packages.length) {
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
+        const deltaX = touchStartX - touchEndX;
+        const deltaY = touchStartY - touchEndY;
+        
+        // Only process horizontal swipes (ignore vertical scrolling)
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+          e.preventDefault();
+          if (deltaX > 0) {
+            nextCard(); // Swipe left to go to next card
+          } else {
+            prevCard(); // Swipe right to go to previous card
+          }
+        }
+        
+        touchStartX = null;
+        touchStartY = null;
+      }
+    };
+
+    const wrapper = wrapperRef.current;
+    if (wrapper) {
+      wrapper.addEventListener("touchstart", handleTouchStart, { passive: true });
+      wrapper.addEventListener("touchend", handleTouchEnd, { passive: false });
+    }
+    return () => {
+      if (wrapper) {
+        wrapper.removeEventListener("touchstart", handleTouchStart);
+        wrapper.removeEventListener("touchend", handleTouchEnd);
+      }
+    };
+  }, [deckPosition, nextCard, prevCard]);
 
   // Motion key
   const motionKey =
@@ -197,20 +246,42 @@ const PackagesSection = () => {
                 className="package-card"
                 initial={{
                   opacity: 0,
-                  y: animationDirection.current === "up" ? CARD_ANIMATION_Y : -CARD_ANIMATION_Y,
+                  x: animationDirection.current === "right" ? CARD_ANIMATION_X : -CARD_ANIMATION_X,
                   scale: 0.96
                 }}
                 animate={{
                   opacity: 1,
-                  y: isDragging ? dragY : 0,
+                  x: isDragging ? dragX : 0,
                   scale: 1
                 }}
                 exit={{
                   opacity: 0,
-                  y: animationDirection.current === "up" ? -CARD_ANIMATION_Y : CARD_ANIMATION_Y,
+                  x: animationDirection.current === "right" ? -CARD_ANIMATION_X : CARD_ANIMATION_X,
                   scale: 0.96
                 }}
                 transition={CARD_TRANSITION}
+                drag="x"
+                dragConstraints={{ left: -50, right: 50 }}
+                dragElastic={0.2}
+                onDragStart={() => {
+                  setIsDragging(true);
+                  clearTimeout(autoTimer.current);
+                }}
+                onDrag={(event, info) => {
+                  setDragX(info.offset.x);
+                }}
+                onDragEnd={(event, info) => {
+                  setIsDragging(false);
+                  setDragX(0);
+                  
+                  // Trigger navigation based on drag distance
+                  const threshold = 50;
+                  if (info.offset.x > threshold) {
+                    prevCard();
+                  } else if (info.offset.x < -threshold) {
+                    nextCard();
+                  }
+                }}
               >
                 <div className="package-card-image">
                   <img
