@@ -1602,33 +1602,30 @@ a:focus-visible, button:focus-visible {
 }
 
 
-/* === PROGRESS DOTS === */
+/* === PROGRESS DOTS (centered at bottom, minimal weight) === */
 .package-progress-indicator {
-  top: 50%;
-  transform: translateY(-50%);
+  position: absolute;       /* fixed relative to the card */
+  bottom: 12px;             /* distance from bottom of card */
+  left: 50%;                /* center horizontally */
+  transform: translateX(-50%); /* truly center horizontally */
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 2rem;
-  z-index: 20;
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  flex-direction: row;      /* horizontal layout */
+  gap: 6px;                 /* very small spacing */
+  z-index: 10;              /* above card content */
+  pointer-events: none;     /* allow clicks to pass through if needed */
 }
+
 .progress-dot {
-  width: 10px;
-  height: 10px;
+  width: 6px;               /* very small size */
+  height: 6px;
   border-radius: 50%;
-  transition: background 0.3s;
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  border: 2px solid transparent;
+  pointer-events: auto;     /* make dots clickable if needed */
 }
+
 .progress-dot.active {
-  background: var(--accent, #e67e22);
+  background: var(--accent, #e67e22); /* accent color for active */
 }
 /* Accessibility fallback: vertical stack if JS fails */
 .no-js .package-card {
