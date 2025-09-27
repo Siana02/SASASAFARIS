@@ -282,6 +282,7 @@ const PackagesSection = () => {
                     <a className="package-cta-secondary" href={packages[card.idx].ctaDetails}>View Details</a>
                   </div>
                 </div>
+        </div>
               </motion.article>
             ))}
           </AnimatePresence>
