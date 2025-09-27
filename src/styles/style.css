@@ -1187,7 +1187,7 @@ a:focus-visible, button:focus-visible {
   
    .package-card {
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: row !important; /* Desktop: image left, content right */
     align-items: stretch !important;
     width: 90%;
     max-width: 1200px;
@@ -1199,18 +1199,14 @@ a:focus-visible, button:focus-visible {
     box-sizing: border-box;
   }
   .package-card-image {
-    width: 50% !important;
+    width: 50% !important; /* Desktop: 50% width */
     height: 100% !important;
-    object-fit: cover;
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    order: 0 !important;
+    order: 0 !important; /* Image on left */
     flex: 0 0 50% !important;
     box-sizing: border-box;
   }
   .package-card-content {
-    width: 50% !important;
+    width: 50% !important; /* Desktop: 50% width */
     height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1218,7 +1214,7 @@ a:focus-visible, button:focus-visible {
     align-items: center !important;
     padding: 2rem !important;
     text-align: center !important;
-    order: 1 !important;
+    order: 1 !important; /* Content on right */
     flex: 1 1 50% !important;
     box-sizing: border-box;
   }
@@ -1271,7 +1267,7 @@ a:focus-visible, button:focus-visible {
 .packages-wrapper {
   position: relative;
   width: 100%;
-  min-height: 420px; /* adjust to your tallest card */
+  min-height: 500px; /* accommodate tallest card to prevent cutting off */
   overflow: visible; /* allow cards to animate outside wrapper */
   margin: 0 auto;
   perspective: 1000px;
@@ -1279,12 +1275,15 @@ a:focus-visible, button:focus-visible {
 }
 
 /* Ensure each card is on top of wrapper but under the section for safe stacking */
-.package-card {
-  position: absolute; /* so they stack and overlap properly */
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 6; /* above wrapper, below section z-index */
+/* For desktop: absolute positioning for overlapping animations */
+@media (min-width: 1024px) {
+  .package-card {
+    position: absolute; /* Desktop: stack and overlap properly for animations */
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6; /* above wrapper, below section z-index */
+  }
 }
 
 @keyframes packagesSectionFadeIn {
@@ -1296,7 +1295,24 @@ a:focus-visible, button:focus-visible {
 /* Wrapper for stacking */
 /* Wrapper for cards - Mobile First */
 
-  
+/* Package Card Base Styles - Mobile First */
+.package-card {
+  /* Mobile: relative positioning for natural stacking */
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  min-height: 500px;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* Mobile: image top, content bottom */
+  z-index: 6;
+  transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out;
+}
+
 /* Only active card is visible and interactive */
 .package-card.active {
   opacity: 1;
@@ -1592,21 +1608,14 @@ a:focus-visible, button:focus-visible {
 /* === PROGRESS DOTS (centered at bottom, minimal weight) === */
 .package-progress-indicator {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 18px; /* adjust as needed */
-  display: flex;
-  justify-content: center;
-  z-index: 3;
-  position: absolute;       /* fixed relative to the card */
-  bottom: 12px;             /* distance from bottom of card */
-  left: 50%;                /* center horizontally */
+  bottom: 12px; /* distance from bottom of packages-wrapper */
+  left: 50%; /* center horizontally */
   transform: translateX(-50%); /* truly center horizontally */
   display: flex;
-  flex-direction: row;      /* horizontal layout */
-  gap: 6px;                 /* very small spacing */
-  z-index: 10;              /* above card content */
-  pointer-events: none;     /* allow clicks to pass through if needed */
+  flex-direction: row; /* horizontal layout */
+  gap: 6px; /* small spacing */
+  z-index: 10; /* above card content */
+  pointer-events: auto; /* make dots clickable */
 }
 
 .progress-dot {
