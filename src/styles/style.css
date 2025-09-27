@@ -1231,7 +1231,19 @@ a:focus-visible, button:focus-visible {
   transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 .progress-dot.active { background: var(--accent,#e67e22); }
+/* Mobile-first stacking: content first, image second */
+.package-card {
+  display: flex;
+  flex-direction: column; /* stack vertically on mobile */
+}
 
+.package-card-content {
+  order: 0; /* content comes first */
+}
+
+.package-card-image {
+  order: 1; /* image comes after */
+}
 /* === MEDIA QUERIES === */
 @media (max-width: 600px) {
   .package-card { max-width: 95%; }
