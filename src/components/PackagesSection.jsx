@@ -215,45 +215,54 @@ const PackagesSection = () => {
           onFocus={() => setIsWrapperFocused(true)}
           onBlur={() => setIsWrapperFocused(false)}
         >
-          <AnimatePresence initial={false}>
-            {cardsForRender.map(card => (
-              <motion.article
-                key={card.key}
-                className="package-card"
-                initial={card.initial}
-                animate={card.animate}
-                exit={card.exit}
-                transition={CARD_TRANSITION}
-                drag={pendingDirection ? false : "x"}
-                dragConstraints={{ left: -50, right: 50 }}
-                dragElastic={0.2}
-                style={{
-                  position: "absolute",
-                  width: "100%",
-                  left: 0,
-                  top: 0,
-                  zIndex: card.key.includes("-next") ? 2 : 1,
-                  pointerEvents: pendingDirection ? "none" : "auto"
-                }}
-                onDragEnd={(event, info) => {
-  if (animating) return; // ❌ Prevent double-triggering
-  setIsDragging(false);
-  setDragX(0);
+           <AnimatePresence initial={false}>
+  {cardsForRender.map(card => (
+    <motion.article
+      key={card.key}
+      className="package-card"
+      initial={card.initial}
+      animate={card.animate}
+      exit={card.exit}
+      transition={CARD_TRANSITION}
+      drag={pendingDirection ? false : "x"}
+      dragConstraints={{ left: -70, right: 70 }} // Slightly more room for smoother drag
+      dragElastic={0.35} // More elastic for smooth, natural feeling
+      style={{
+        position: "absolute",
+        width: "100%",
+        left: 0,
+        top: 0,
+        zIndex: card.key.includes("-next") ? 2 : 1,
+        pointerEvents: pendingDirection ? "none" : "auto"
+      }}
+      onDragStart={() => {
+        setIsDragging(true);
+        clearTimeout(autoTimer.current); // Stop auto-advance while dragging
+      }}
+      onDrag={(event, info) => setDragX(info.offset.x)}
+      onDragEnd={(event, info) => {
+        if (animating) return; // Prevent double-triggering
+        setIsDragging(false);
+        setDragX(0);
 
-  const swipeThreshold = 100; // px
-  const velocityThreshold = 500; // px/sec
+        const swipeThreshold = 100; // px
+        const velocityThreshold = 500; // px/sec
 
-  const offset = info.offset.x;
-  const velocity = info.velocity.x;
+        const offset = info.offset.x;
+        const velocity = info.velocity.x;
 
-  // Decide swipe direction
-  if (offset + velocity * 0.2 < -swipeThreshold || velocity < -velocityThreshold) {
-    nextCard();
-  } else if (offset + velocity * 0.2 > swipeThreshold || velocity > velocityThreshold) {
-    prevCard();
-  }
-};
-              >
+        // Decide swipe direction
+        if (offset + velocity * 0.2 < -swipeThreshold || velocity < -velocityThreshold) {
+          nextCard();
+        } else if (offset + velocity * 0.2 > swipeThreshold || velocity > velocityThreshold) {
+          prevCard();
+        }
+      }}
+    >
+      {/* Card content stays unchanged */}
+    </motion.article>
+  ))}
+</AnimatePresence>             
                 <div className="package-card-image">
                   <img
                     src={packages[card.idx].image}
