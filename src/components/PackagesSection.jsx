@@ -236,6 +236,7 @@ const PackagesSection = () => {
                   pointerEvents: pendingDirection ? "none" : "auto"
                 }}
                 onDragEnd={(event, info) => {
+  if (animating) return; // ❌ Prevent double-triggering
   setIsDragging(false);
   setDragX(0);
 
@@ -245,12 +246,13 @@ const PackagesSection = () => {
   const offset = info.offset.x;
   const velocity = info.velocity.x;
 
+  // Decide swipe direction
   if (offset + velocity * 0.2 < -swipeThreshold || velocity < -velocityThreshold) {
     nextCard();
   } else if (offset + velocity * 0.2 > swipeThreshold || velocity > velocityThreshold) {
     prevCard();
   }
-}}
+};
               >
                 <div className="package-card-image">
                   <img
