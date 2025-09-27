@@ -235,13 +235,22 @@ const PackagesSection = () => {
                   zIndex: card.key.includes("-next") ? 2 : 1,
                   pointerEvents: pendingDirection ? "none" : "auto"
                 }}
-                onDragStart={() => { setIsDragging(true); clearTimeout(autoTimer.current); }}
-                onDrag={(event, info) => setDragX(info.offset.x)}
                 onDragEnd={(event, info) => {
-                  setIsDragging(false); setDragX(0);
-                  if (info.offset.x > 50) prevCard();
-                  else if (info.offset.x < -50) nextCard();
-                }}
+  setIsDragging(false);
+  setDragX(0);
+
+  const swipeThreshold = 100; // px
+  const velocityThreshold = 500; // px/sec
+
+  const offset = info.offset.x;
+  const velocity = info.velocity.x;
+
+  if (offset + velocity * 0.2 < -swipeThreshold || velocity < -velocityThreshold) {
+    nextCard();
+  } else if (offset + velocity * 0.2 > swipeThreshold || velocity > velocityThreshold) {
+    prevCard();
+  }
+}}
               >
                 <div className="package-card-image">
                   <img
