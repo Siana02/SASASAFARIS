@@ -1009,7 +1009,287 @@ a:focus-visible, button:focus-visible {
 }
 
 
+/* =======================
+   PACKAGES SECTION - MOBILE FIRST
+======================= */
+.packages-section {
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  padding: 2rem 0;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
 
+.packages-section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+
+.packages-intro-container {
+  max-width: 100%;
+  margin: 0 auto 1.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: packagesIntroFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+@keyframes packagesIntroFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.packages-title {
+  font-family: var(--heading-font, 'Martel', serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.75rem;
+  position: relative;
+  opacity: 0;
+  animation: packagesTitleFade 0.8s cubic-bezier(0.4,0,0.2,1) 0.5s forwards;
+}
+
+.packages-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--cta);
+  border-radius: 2px;
+}
+
+@keyframes packagesTitleFade { to { opacity: 1; } }
+
+.packages-subtitle {
+  font-family: var(--body-font, 'Assistant', sans-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6b7280;
+  text-align: center;
+  max-width: 80%;
+  margin: 1rem auto 0;
+  opacity: 0;
+  animation: packagesSubtitleFade 0.8s cubic-bezier(0.4,0,0.2,1) 0.7s forwards;
+}
+
+@keyframes packagesSubtitleFade { to { opacity: 1; } }
+
+.packages-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 90vh; /* mobile fixed height */
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+/* -----------------------
+   PACKAGE CARD - MOBILE
+----------------------- */
+.package-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.package-card.active { z-index: 10; pointer-events: auto; }
+.package-card.outgoing { z-index: 9; pointer-events: none; }
+
+.package-card-image {
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+}
+
+.package-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.package-card-image img:hover { transform: scale(1.05); }
+
+.package-card-content {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.package-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.package-duration {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 0.3rem;
+}
+
+.package-badge {
+  padding: 0.3rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  font-weight: 600;
+  text-align: center;
+}
+
+.badge-popular { background: linear-gradient(135deg, #ffd700, #ffed4e); color:#222; }
+.badge-adventure { background: linear-gradient(135deg, #FF6B35, #ff8c42); color:#fff; }
+.badge-family { background: linear-gradient(135deg, #36C9FF, #4dd7ff); color:#fff; }
+.badge-romantic { background: linear-gradient(135deg, #D96098, #e879ac); color:#fff; }
+.badge-coastal { background: linear-gradient(135deg, #36C9FF, #4dd7ff); color:#fff; }
+
+.package-description {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.package-ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.package-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--cta);
+  color: #fff;
+  font-weight: 600;
+  font-family: 'Assistant', sans-serif;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 2em;
+  min-height: 52px;
+  padding-left: 1.2em;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.package-cta-primary-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  width: 52px;
+  margin-left: auto;
+  margin-right: -2.5px;
+  background: rgba(255,255,255,0.15);
+  border-top-right-radius: 2em;
+  border-bottom-right-radius: 2em;
+}
+
+.package-cta-primary:hover { transform: translateY(-2px) scale(1.05); }
+
+.package-cta-secondary {
+  color: var(--cta);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  position: relative;
+}
+
+.package-cta-secondary::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--cta);
+  transition: width 0.3s ease;
+}
+
+.package-cta-secondary:hover::after { width: 100%; }
+
+/* -----------------------
+   PROGRESS DOTS
+----------------------- */
+.package-progress-indicator {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.progress-dot.active { background: var(--accent, #e67e22); }
+
+/* =======================
+   RESPONSIVE STYLING
+======================= */
+
+/* Tablet breakpoint (900px) */
+@media (min-width: 900px) {
+  .package-card { width: 80%; height: 100%; }
+}
+
+/* Desktop breakpoint (1024px) */
+@media (min-width: 1024px) {
+  .package-card { flex-direction: row; width: 100%; height: 100%; }
+  .package-card-image { width: 50%; height: 100%; }
+  .package-card-content { width: 50%; height: 100%; padding: 2rem; justify-content: center; }
+  .package-title { font-size: 2.2rem; }
+  .package-duration { font-size: 1.1rem; }
+  .package-description { font-size: 1.05rem; }
+  }
 
 
 
