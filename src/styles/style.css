@@ -1250,6 +1250,10 @@ a:focus-visible, button:focus-visible {
 /* === MOBILE-FIRST PACKAGES SECTION === */
 /* Section Container - Mobile Base */
 .packages-section {
+  position: relative;
+  z-index: 2; /* higher than About if About uses z-index */
+  background: #fff; /* or your background color */
+  padding: 2rem 0; /* add spacing */
   width: 100%;
   background: #fff; /* clean white background */
   padding: 1rem 0; /* 1rem top/bottom, full width */
@@ -1277,7 +1281,12 @@ a:focus-visible, button:focus-visible {
 }
 /* Wrapper for stacking */
 /* Wrapper for cards - Mobile First */
-.packages-wrapper {
+
+  .packages-wrapper {
+  position: relative;
+  min-height: 420px; /* or to match your card height; adjust as needed */
+  padding-bottom: 44px; /* ensures space for progress dots */
+  overflow: visible;
   position: relative;
   width: 100%;
   height: auto; /* Allow natural height */
@@ -1604,6 +1613,13 @@ a:focus-visible, button:focus-visible {
 
 /* === PROGRESS DOTS (centered at bottom, minimal weight) === */
 .package-progress-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px; /* adjust as needed */
+  display: flex;
+  justify-content: center;
+  z-index: 3;
   position: absolute;       /* fixed relative to the card */
   bottom: 12px;             /* distance from bottom of card */
   left: 50%;                /* center horizontally */
@@ -1643,7 +1659,7 @@ a:focus-visible, button:focus-visible {
 
 
 
-.about-section {
+.about-section {z-index: 1;
   padding: 3rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
