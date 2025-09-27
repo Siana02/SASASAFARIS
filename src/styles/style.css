@@ -1249,28 +1249,42 @@ a:focus-visible, button:focus-visible {
 
 /* === MOBILE-FIRST PACKAGES SECTION === */
 /* Section Container - Mobile Base */
+/* === MOBILE-FIRST PACKAGES SECTION FIXED === */
 .packages-section {
   position: relative;
-  z-index: 2; /* higher than About if About uses z-index */
-  background: #fff; /* or your background color */
-  padding: 2rem 0; /* add spacing */
+  z-index: 10; /* Higher than About */
+  background: #fff;
+  padding: 2rem 0;
   width: 100%;
-  background: #fff; /* clean white background */
-  padding: 1rem 0; /* 1rem top/bottom, full width */
-  text-align: center; /* center align text */
-  position: relative;
-  overflow: hidden;
-  /* Fade-in scroll animation */
-  opacity: 0;
-  transform: translateY(20px);
-  animation: packagesSectionFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+  text-align: center;
+  overflow: hidden; /* Keep cards contained */
 }
 
-/* Container for centering content */
 .packages-section-container {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.packages-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 420px; /* adjust to your tallest card */
+  overflow: visible; /* allow cards to animate outside wrapper */
+  margin: 0 auto;
+  perspective: 1000px;
+  z-index: 5;
+}
+
+/* Ensure each card is on top of wrapper but under the section for safe stacking */
+.package-card {
+  position: absolute; /* so they stack and overlap properly */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6; /* above wrapper, below section z-index */
 }
 
 @keyframes packagesSectionFadeIn {
@@ -1282,43 +1296,7 @@ a:focus-visible, button:focus-visible {
 /* Wrapper for stacking */
 /* Wrapper for cards - Mobile First */
 
-  .packages-wrapper {
-  position: relative;
-  min-height: 420px; /* or to match your card height; adjust as needed */
-  padding-bottom: 44px; /* ensures space for progress dots */
-  overflow: visible;
-  position: relative;
-  width: 100%;
-  height: auto; /* Allow natural height */
-  margin: 0 auto;
-  /* Only one .package-card visible at a time with fade-in/out animation */
-  perspective: 1000px;
-}
-
-
-/* Card Container - Mobile First */
-.package-card {
-  position: relative; /* Changed from absolute for mobile-first */
-  width: 90%; /* Max-width: 90% (centered with margin: 0 auto) */
-  height: 100vh; /* Height: 100vh (each card fills one screen) */
-  max-width: 90%;
-  margin: 0 auto; /* centered with margin: 0 auto */
-  background: white; /* Background: white */
-  border-radius: 1rem; /* Border-radius: 1rem */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* subtle, soft box-shadow */
-  overflow: hidden; /* Overflow: hidden */
-  display: flex; /* Display: flex */
-  flex-direction: column; /* flex-direction: column (image top, content bottom) */
-  opacity: 0;
-  pointer-events: none;
-  z-index: 1;
-  transform: translateY(40px) scale(0.95);
-  transition: 
-    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: opacity, transform;
-}
-
+  
 /* Only active card is visible and interactive */
 .package-card.active {
   opacity: 1;
