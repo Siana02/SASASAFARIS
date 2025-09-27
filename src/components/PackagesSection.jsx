@@ -262,7 +262,8 @@ const PackagesSection = () => {
       {/* Card content stays unchanged */}
     </motion.article>
   ))}
-</AnimatePresence>             
+</AnimatePresence>      
+          </div>
                 <div className="package-card-image">
                   <img
                     src={packages[card.idx].image}
