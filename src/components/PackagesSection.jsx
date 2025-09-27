@@ -204,66 +204,66 @@ const PackagesSection = () => {
             Choose your adventure: classic safaris, family escapes, coastal relaxation and more.
           </p>
         </div>
-
         <div
-          className="packages-wrapper"
-          aria-label="Safari & Beach Packages"
-          tabIndex={0}
-          ref={wrapperRef}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onFocus={() => setIsWrapperFocused(true)}
-          onBlur={() => setIsWrapperFocused(false)}
-        >
-           <AnimatePresence initial={false}>
-  {cardsForRender.map(card => (
-    <motion.article
-      key={card.key}
-      className="package-card"
-      initial={card.initial}
-      animate={card.animate}
-      exit={card.exit}
-      transition={CARD_TRANSITION}
-      drag={pendingDirection ? false : "x"}
-      dragConstraints={{ left: -70, right: 70 }} // Slightly more room for smoother drag
-      dragElastic={0.35} // More elastic for smooth, natural feeling
-      style={{
-        position: "absolute",
-        width: "100%",
-        left: 0,
-        top: 0,
-        zIndex: card.key.includes("-next") ? 2 : 1,
-        pointerEvents: pendingDirection ? "none" : "auto"
-      }}
-      onDragStart={() => {
-        setIsDragging(true);
-        clearTimeout(autoTimer.current); // Stop auto-advance while dragging
-      }}
-      onDrag={(event, info) => setDragX(info.offset.x)}
-      onDragEnd={(event, info) => {
-        if (animating) return; // Prevent double-triggering
-        setIsDragging(false);
-        setDragX(0);
+  className="packages-wrapper"
+  aria-label="Safari & Beach Packages"
+  tabIndex={0}
+  ref={wrapperRef}
+  onMouseEnter={() => setIsHovered(true)}
+  onMouseLeave={() => setIsHovered(false)}
+  onFocus={() => setIsWrapperFocused(true)}
+  onBlur={() => setIsWrapperFocused(false)}
+>
+  <AnimatePresence initial={false}>
+    {cardsForRender.map(card => (
+      <motion.article
+        key={card.key}
+        className="package-card"
+        initial={card.initial}
+        animate={card.animate}
+        exit={card.exit}
+        transition={CARD_TRANSITION}
+        drag={pendingDirection ? false : "x"}
+        dragConstraints={{ left: -80, right: 80 }} // slightly more room for smooth drag
+        dragElastic={0.4} // smooth, natural elasticity
+        style={{
+          position: "absolute",
+          width: "100%",
+          left: 0,
+          top: 0,
+          zIndex: card.key.includes("-next") ? 2 : 1,
+          pointerEvents: pendingDirection ? "none" : "auto"
+        }}
+        onDragStart={() => {
+          setIsDragging(true);
+          clearTimeout(autoTimer.current); // pause auto-advance while dragging
+        }}
+        onDrag={(event, info) => setDragX(info.offset.x)}
+        onDragEnd={(event, info) => {
+          if (animating) return; // prevent double-triggering
+          setIsDragging(false);
+          setDragX(0);
 
-        const swipeThreshold = 100; // px
-        const velocityThreshold = 500; // px/sec
+          const swipeThreshold = 120; // px
+          const velocityThreshold = 600; // px/sec
 
-        const offset = info.offset.x;
-        const velocity = info.velocity.x;
+          const offset = info.offset.x;
+          const velocity = info.velocity.x;
 
-        // Decide swipe direction
-        if (offset + velocity * 0.2 < -swipeThreshold || velocity < -velocityThreshold) {
-          nextCard();
-        } else if (offset + velocity * 0.2 > swipeThreshold || velocity > velocityThreshold) {
-          prevCard();
-        }
-      }}
-    >
-      {/* Card content stays unchanged */}
-    </motion.article>
-  ))}
-</AnimatePresence>      
-          </div>
+          // Only trigger one card movement per swipe
+          if (offset + velocity * 0.25 < -swipeThreshold || velocity < -velocityThreshold) {
+            nextCard();
+          } else if (offset + velocity * 0.25 > swipeThreshold || velocity > velocityThreshold) {
+            prevCard();
+          }
+        }}
+      >
+        {/* Card content stays unchanged */}
+      </motion.article>
+    ))}
+  </AnimatePresence>
+</div>
+        
                 <div className="package-card-image">
                   <img
                     src={packages[card.idx].image}
