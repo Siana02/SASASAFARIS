@@ -284,6 +284,7 @@ const PackagesSection = () => {
                 </div>
         </div>
       </section>
+    
               </motion.article>
             ))}
           </AnimatePresence>
