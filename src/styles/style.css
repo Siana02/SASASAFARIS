@@ -1477,14 +1477,14 @@ a:focus-visible, button:focus-visible {
   font-style: Italic;
   font-weight: 600;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--cta);
   margin-bottom: 0.5rem;
   letter-spacing: 1px;
 }
 .about-main-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--accent);
 }
 
 /* Grid */
@@ -1594,7 +1594,7 @@ a:focus-visible, button:focus-visible {
   font-size: 1.5rem;
   margin-bottom: 2rem;
   font-weight: bold;
-  color: var(--accent-color); /* Uses theme accent color */
+  color: var(--cta); /* Uses theme accent color */
 }
 
 /* === CAROUSEL WRAPPER === */
@@ -1890,7 +1890,7 @@ a:focus-visible, button:focus-visible {
 
 /* Submit Button */
 .safari-inquiry-form button[type="submit"] {
-  background: #ff914d; /* light bg for contrast */
+  background: var (--cta); /* light bg for contrast */
   color: #fff; /* accent text */
   font-size: 1.07em;
   font-weight: 700;
@@ -1906,7 +1906,7 @@ a:focus-visible, button:focus-visible {
 }
 .safari-inquiry-form button[type="submit"]:hover,
 .safari-inquiry-form button[type="submit"]:focus {
-  background: var(--cta, #ff914d); /* accent background on hover */
+  background: var(--accent); /* accent background on hover */
   color: #fff; /* text becomes light */
   transform: translateY(-2px) scale(1.04);
 }
