@@ -27,10 +27,25 @@ const MobileNav = () => {
       <div className="mobile-nav-header"></div>
       <div className="menu-divider"></div>
       <ul className="mobile-nav-list">
-        <li><a href="#packages" onClick={handleLinkClick}>Packages / Pricing</a></li>
-        <li><a href="#about" onClick={handleLinkClick}>About</a></li>
-        <li><a href="#contacts" onClick={handleLinkClick}>Contacts</a></li>
-        <li>
+
+  <li>
+    <Link to="/">Home</Link>
+  </li> 
+  <li>
+    <Link to="/packages">Packages</Link>
+  </li>
+  <li>
+    <Link to="/offers"> Offers</Link>
+  </li>
+  <li>
+    <Link to="/about">About Us</Link>
+  </li>
+  <li>
+    <Link to="/contact">Contacts</Link>
+  </li>
+     
+
+    
           <button onClick={handleThemeSwitch} aria-label="Switch Theme">
             <i className="fas fa-adjust"></i>
           </button>
