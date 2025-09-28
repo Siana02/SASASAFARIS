@@ -10,7 +10,9 @@ const HeroSection = () => (
       <p className="hero-desc">SEAMLESS SAFARIS TAILORED TO MATCH YOUR DESTINATIONS.</p>
       <div className="hero-ctas">
         <a href="#packages" className="cta-btn">View Packages</a>
-        <button className="cta-secondary">
+
+        
+        <Link to="/contact" className="cta-secondary">
           Contact Us
           <span className="cta-secondary-icon">
             {/* SVG Icon */}
@@ -20,7 +22,8 @@ const HeroSection = () => (
               <polyline points="18 18 30 18 30 30" fill="none" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </span>
-        </button>
+        </Link>
+        
       </div>
     </div>
   </section>
