@@ -10,11 +10,12 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
-  // Scroll to top when component mounts
+
+const Footer = () => {
+  // ✅ CORRECT: useEffect is inside the component
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
 
 
 const Footer = () => {
