@@ -1184,10 +1184,11 @@ a:focus-visible, button:focus-visible {
   position: relative;
   width: 100%;
   min-height: 80vh; /* mobile fixed height */
-  overflow: hidden;
+  overflow: visible;
   perspective: 1000px;
   /* Carousel-specific adjustments for movement */
   display: flex;
+  flex-direction:column;
   align-items: center;
   justify-content: center;
   user-select: none;
@@ -1203,13 +1204,13 @@ a:focus-visible, button:focus-visible {
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  height: 80%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   background: #fff;
   border-radius: 1rem;
   box-shadow: 0 6px 24px rgba(0,0,0,0.1);
-  overflow: hidden;
+  overflow: visible;
   z-index: 1;
   /* Movement transitions */
   opacity: 0;
@@ -1310,6 +1311,7 @@ a:focus-visible, button:focus-visible {
 }
 
 .package-ctas {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1317,6 +1319,7 @@ a:focus-visible, button:focus-visible {
 }
 
 .package-cta-primary {
+  position: absolute;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1386,7 +1389,7 @@ a:focus-visible, button:focus-visible {
   font-weight: 600;
   font-size: 0.9rem;
   text-align: center;
-  position: relative;
+  position: absolute;
 }
 
 .package-cta-secondary::after {
@@ -1407,7 +1410,7 @@ a:focus-visible, button:focus-visible {
 ----------------------- */
 .package-progress-indicator {
   position: absolute;
-  top: 1px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -1827,6 +1830,7 @@ a:focus-visible, button:focus-visible {
 
 .contact-form-section > p {
   font-family: var(--body-font, 'Assistant', sans-serif);
+font-style: italics;
   font-size: 1.06em;
   color: var(--text, #545454);
   margin: 0 0 0.4em 0;
