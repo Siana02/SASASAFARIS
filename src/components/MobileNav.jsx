@@ -46,8 +46,7 @@ const MobileNav = () => {
   </li>
      
 
-    
-          <button onClick={handleThemeSwitch} aria-label="Switch Theme">
+    <li> <button onClick={handleThemeSwitch} aria-label="Switch Theme">
             <i className="fas fa-adjust"></i>
           </button>
         </li>
