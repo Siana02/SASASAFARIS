@@ -2766,6 +2766,22 @@ font-style: Bold;
   animation: fadeIn 0.8s;
 }
 
+.view-details-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 1.3em;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure all child content appears above the overlay */
+.view-details-page > * {
+  position: relative;
+  z-index: 2;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(40px);}
   to { opacity: 1; transform: translateY(0);}

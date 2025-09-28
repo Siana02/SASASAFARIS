@@ -10,8 +10,9 @@ test('renders SASA SAFARIS header', () => {
 
 test('renders hero section', () => {
   render(<App />);
-  // Check for the actual hero title that's rendered
-  const heroElement = screen.getByText(/CRAFTED SAFARIS, JUST FOR YOU/i);
+  // Check for the hero title element (text is now split into individual letters)
+  const heroElement = screen.getByRole('heading', { level: 1 });
+  expect(heroElement).toHaveClass('hero-title');
   expect(heroElement).toBeInTheDocument();
 });
 
