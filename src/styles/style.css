@@ -1791,6 +1791,7 @@ a:focus-visible, button:focus-visible {
   font-weight: 800;
   color: var(--accent, #6d4650);
   font-family: var(--heading-font, 'Martel', serif);
+  font-style: italics;
   letter-spacing: -0.3px;
 }
 
