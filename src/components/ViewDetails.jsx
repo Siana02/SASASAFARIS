@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { packagesData } from "../data/packagesdata";
+import { packagesData } from "../data/packagesData";
 import Header from "./Header";
 import Footer from "./Footer";
 
