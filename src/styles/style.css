@@ -1327,8 +1327,8 @@ a:focus-visible, button:focus-visible {
     align-items: center;
   justify-content: center;
   background: rgba(255,255,255,0.13);
-  color: #fff;
-  border: 2.5px solid #fff;
+  color: var(--cta);
+  border: 2.5px solid var (--cta);
   font-weight: 700;
   cursor: pointer;
   padding: 0 0 0 1.2em; /* Padding only on left for text */
@@ -1359,8 +1359,8 @@ a:focus-visible, button:focus-visible {
 .package-cta-primary:hover,
 .package-cta-primary:focus {
   background: rgba(255,255,255,0.23);
-  color: #fff;
-  border-color: #fff;
+  color: var(--cta);
+  border-color: var(--cta);
 }
 
 .package-cta-primary:hover .cta-secondary-icon svg circle,
@@ -1472,7 +1472,7 @@ a:focus-visible, button:focus-visible {
   margin-bottom: 2.5rem;
 }
 .about-mini-title {
-  font-size: 1.0rem;
+  font-size: 1.5rem;
   font-style: Italic;
   font-weight: 600;
   text-transform: uppercase;
@@ -1582,7 +1582,7 @@ a:focus-visible, button:focus-visible {
 /* ===== Review Section Layout ===== */
 /* === SECTION CONTAINER === */
 .review-section {
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
   text-align: center;
   overflow: hidden;
   position: relative;
