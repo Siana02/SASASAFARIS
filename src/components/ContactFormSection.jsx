@@ -8,7 +8,7 @@ export default function ContactFormSection() {
     <section className="contact-form-section">
       <div className="contact-info-header">
         
-        <h3>Book Your Safari Experience!</h3>
+        <h3>♡Book Your Safari Experience♡</h3>
       </div>
       <div className="contact-info-details">
   <Info size={28} />
