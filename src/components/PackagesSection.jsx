@@ -283,9 +283,12 @@ const PackagesSection = () => {
                   <button className="package-cta-primary">
                     Contact Us<span className="package-cta-primary-icon">→</span>
                   </button>
-                  <a className="package-cta-secondary" href={card.ctaDetails}>
-                    View Details
-                  </a>
+                  <Link
+  className="package-cta-secondary"
+  to={`/viewdetails/${card.id}`}
+>
+  View Details
+</Link>
                 </div>
               </div>
             </article>
