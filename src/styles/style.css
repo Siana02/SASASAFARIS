@@ -1382,9 +1382,6 @@ a:focus-visible, button:focus-visible {
     height: 40px;
     min-width: 40px;
   }
-}
-
-
 
 
 .package-cta-secondary {
@@ -1809,19 +1806,7 @@ a:focus-visible, button:focus-visible {
 
 .contact-info-header {
   display: flex;
-  align-items: center;
-  gap: 0.85em;
-  margin-bottom: 0.5em;
-}
-.contact-info-header svg {
-  background: var(--cta, #ff914d); /* keep accent */
-  color: #fff;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  padding: 7px;
-  box-shadow: 0 2px 12px rgba(255,145,77,0.13);
-}
+  align-items: center}
 .contact-info-header h3 {
   margin: 0;
   font-size: 1.2em;
@@ -1831,7 +1816,22 @@ a:focus-visible, button:focus-visible {
 font-style: Bold;
   letter-spacing: -0.3px;
 }
+.contact-info-details {background: var(--cta, #ff914d); /* keep accent */
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 7px;
+  box-shadow: 0 2px 12px rgba(255,145,77,0.13);
+  display: flex;
+  align-items: flex-start; /* Align icon to the top of the paragraph */
+  gap: 0.5em; /* Adjust spacing between icon and text */
+}
 
+.contact-info-details svg {
+  flex-shrink: 0; /* Prevent icon from shrinking */
+  margin-top: 2px; /* Adjust vertical alignment if needed */
+  }
 .contact-form-section > p {
   font-family: var(--body-font, 'Assistant', sans-serif);
   font-style: Italic;
