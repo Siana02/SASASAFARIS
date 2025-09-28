@@ -1519,7 +1519,7 @@ a:focus-visible, button:focus-visible {
 .about-icon {
   width: 60px;  /* bigger icon */
   height: 60px;
-  color: #fff;
+  color: var(--cta) !important;
 }
 .about-feature-title {
   font-size: 1.25rem;
