@@ -20,7 +20,12 @@ const OfferSection = () => (
           </div>
           <div className="offer-main-text">50% OFF</div>
           <div className="offer-desc">Wildebeest Migration</div>
-          <button className="offer-details-btn" data-offer="mara">View Details</button>
+          <Link
+      className="offer-details-btn"
+      to={`/viewdetails/wildebeest-migration`}
+    >
+      View Details
+    </Link>
         </div>
       </div>
       {/* Offer Card: Kenyan Coast */}
