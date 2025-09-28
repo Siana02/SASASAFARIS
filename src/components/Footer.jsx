@@ -63,23 +63,22 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">Quick Links</h4>
             <ul className="footer-links">
-              
-              <li>
-                <a href="#home">Home</a>
-              </li>
-              <li>
-                <a href="#packages">Packages</a>
-              </li>
-              <li>
-                <a href="#offers">Special Offers</a>
-              </li>
-              <li>
-                <a href="#about">About Us</a>
-              </li>
-              <li>
-  <Link to="/contact">Contacts</Link>
-</li>
-            </ul>
+  <li>
+    <Link to="/">Home</Link>
+  </li>
+  <li>
+    <Link to="/packages">Packages</Link>
+  </li>
+  <li>
+    <Link to="/offers">Special Offers</Link>
+  </li>
+  <li>
+    <Link to="/about">About Us</Link>
+  </li>
+  <li>
+    <Link to="/contact">Contacts</Link>
+  </li>
+</ul>
           </div>
 
           {/* Contact info */}
