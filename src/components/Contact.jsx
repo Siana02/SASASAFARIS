@@ -1,15 +1,24 @@
-import ContactHours from "./ContactHours";
-import ContactFormSection from "./ContactFormSection";
-import ContactSocials from "./ContactSocials";
-import ContactLocation from "./ContactLocation";
+import React from "react";
+import Header from "./components/Header";
+import MobileNav from "./components/MobileNav";
+import Footer from "./components/Footer";
+import ContactHours from "./components/ContactHours";
+import ContactFormSection from "./components/ContactFormSection";
+import ContactSocials from "./components/ContactSocials";
+import ContactLocation from "./components/ContactLocation";
 
 export default function Contact() {
   return (
-    <div className="contact-page">
-      <ContactHours />    {/* Only on contact page! */}
-      <ContactFormSection />
-      <ContactSocials />
-      <ContactLocation />
-    </div>
+    <>
+      <Header />
+      <MobileNav />
+      <main className="contact-page">
+        <ContactHours />          {/* Only visible on Contact page */}
+        <ContactFormSection />
+        <ContactSocials />
+        <ContactLocation />
+      </main>
+      <Footer />
+    </>
   );
 }
