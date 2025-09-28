@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Phone, Mail, Contact2, X } from "lucide-react";
+import { Phone, Mail, MessageCircleHeart, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa"; // WhatsApp icon from FontAwesome
 
 const PHONE_NUMBER = "+254708482145";
@@ -38,7 +38,7 @@ const ContactWidget = () => {
         aria-label={open ? "Close contact options" : "Contact us"}
         onClick={() => setOpen(!open)}
       >
-        {open ? <X size={30} /> : <Contact2 size={30} />}
+        {open ? <X size={30} /> : <MessageCircleHeart size={30} />}
       </button>
     </div>
   );
