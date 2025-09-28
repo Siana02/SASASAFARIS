@@ -1734,8 +1734,7 @@ a:focus-visible, button:focus-visible {
   position: relative;
 }
 
-.contact-hours-icon {
-  background: var(--cta, #ff914d);
+.contact-hours-icon{ background: var(--cta, #ff914d);
   color: #fff;
   border-radius: 50%;
   width: 62px;
@@ -1890,7 +1889,7 @@ a:focus-visible, button:focus-visible {
 
 /* Submit Button */
 .safari-inquiry-form button[type="submit"] {
-  background: var (--accent); /* light bg for contrast */
+  background: var (--cta); /* light bg for contrast */
   color: #fff; /* accent text */
   font-size: 1.07em;
   font-weight: 700;
@@ -1906,7 +1905,7 @@ a:focus-visible, button:focus-visible {
 }
 .safari-inquiry-form button[type="submit"]:hover,
 .safari-inquiry-form button[type="submit"]:focus {
-  background: var(--cta); /* accent background on hover */
+  background: var (--cta-hover); /* accent background on hover */
   color: #fff; /* text becomes light */
   transform: translateY(-2px) scale(1.04);
 }
