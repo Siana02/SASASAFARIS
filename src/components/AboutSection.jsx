@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Footprints, BadgeDollarSign, Calendar, Scissors } from "lucide-react";
+import { Footprints, DollarSign, Calendar, Scissors, Smile, MapPin } from "lucide-react";
 
 const AboutSection = () => {
   const [expanded, setExpanded] = useState(false);
@@ -11,9 +11,10 @@ const AboutSection = () => {
         <div className="about-mini-title">Why Us?</div>
         <h2 className="about-main-title">Your Safari, Made Simple</h2>
       </div>
-
+      
       {/* Features Grid */}
       <div className="about-grid">
+        {/* 1. Best Tour Guides */}
         <div className="about-feature">
           <div className="about-icon-circle">
             <Footprints className="about-icon" strokeWidth={2.5} />
@@ -24,9 +25,32 @@ const AboutSection = () => {
           </div>
         </div>
 
+        {/* 2. Client Satisfaction */}
         <div className="about-feature">
           <div className="about-icon-circle">
-            <BadgeDollarSign className="about-icon" strokeWidth={2.5} />
+            <Smile className="about-icon" strokeWidth={2.5} />
+          </div>
+          <div className="about-feature-title">Client Satisfaction</div>
+          <div className="about-feature-desc">
+            We go above and beyond to ensure every guest leaves with a smile and lifelong memories.
+          </div>
+        </div>
+
+        {/* 3. Unique Destinations */}
+        <div className="about-feature">
+          <div className="about-icon-circle">
+            <MapPin className="about-icon" strokeWidth={2.5} />
+          </div>
+          <div className="about-feature-title">Unique Destinations</div>
+          <div className="about-feature-desc">
+            Discover one-of-a-kind safari locations and hidden gems you won’t find anywhere else.
+          </div>
+        </div>
+
+        {/* 4. Best Price Guarantee (updated icon) */}
+        <div className="about-feature">
+          <div className="about-icon-circle">
+            <DollarSign className="about-icon" strokeWidth={2.5} />
           </div>
           <div className="about-feature-title">Best Price Guarantee</div>
           <div className="about-feature-desc">
@@ -34,6 +58,7 @@ const AboutSection = () => {
           </div>
         </div>
 
+        {/* 5. Easy & Fast Booking */}
         <div className="about-feature">
           <div className="about-icon-circle">
             <Calendar className="about-icon" strokeWidth={2.5} />
@@ -44,6 +69,7 @@ const AboutSection = () => {
           </div>
         </div>
 
+        {/* 6. Tailored Safaris */}
         <div className="about-feature">
           <div className="about-icon-circle">
             <Scissors className="about-icon" strokeWidth={2.5} />
@@ -54,6 +80,7 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
+
 
       {/* Learn More CTA */}
       <div className="about-learn-more-container">
