@@ -1183,7 +1183,7 @@ a:focus-visible, button:focus-visible {
 .packages-wrapper {
   position: relative;
   width: 100%;
-  min-height: 90vh; /* mobile fixed height */
+  min-height: 80vh; /* mobile fixed height */
   overflow: hidden;
   perspective: 1000px;
   /* Carousel-specific adjustments for movement */
@@ -1203,7 +1203,7 @@ a:focus-visible, button:focus-visible {
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  height: 90%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -1376,8 +1376,9 @@ a:focus-visible, button:focus-visible {
    PROGRESS DOTS
 ----------------------- */
 .package-progress-indicator {
+  padding: 2px;
   position: absolute;
-  bottom: 12px;
+  bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
