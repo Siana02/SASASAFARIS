@@ -11,6 +11,7 @@ import ReviewSection from './components/ReviewSection';
 import HighlightSection from './components/HighlightSection';
 import Footer from './components/Footer';
 import ThemeMessage from './components/ThemeMessage';
+import ContactWidget from './components/ContactWidget';
 import ViewDetails from './components/ViewDetails'; // adjust path if needed
 import './styles/style.css';
 
@@ -38,6 +39,7 @@ function HomePage() {
 function App() {
   return (
     <BrowserRouter>
+      <ContactWidget /> 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/viewdetails/:id" element={<ViewDetails />} />
