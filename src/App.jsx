@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import MobileNav from './components/MobileNav';
 import HeroSection from './components/HeroSection';
@@ -10,18 +11,15 @@ import ReviewSection from './components/ReviewSection';
 import HighlightSection from './components/HighlightSection';
 import Footer from './components/Footer';
 import ThemeMessage from './components/ThemeMessage';
+import ViewDetails from './components/ViewDetails'; // adjust path if needed
 import './styles/style.css';
 
-function App() {
+// Main landing page content
+function HomePage() {
   return (
-    <div className="App">
-      {/* Header navigation */}
+    <>
       <Header />
-      
-      {/* Mobile Navigation */}
       <MobileNav />
-      
-      {/* Main content sections */}
       <main>
         <HeroSection />
         <OfferSection />
@@ -31,13 +29,21 @@ function App() {
         <ReviewSection />
         <HighlightSection />
       </main>
-      
-      {/* Footer */}
       <Footer />
-      
-      {/* Theme switching message */}
       <ThemeMessage />
-    </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/viewdetails/:id" element={<ViewDetails />} />
+        {/* add other routes as needed */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
