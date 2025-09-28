@@ -32,7 +32,7 @@ const ViewDetails = () => {
   } = packageDetails;
 
   return (
-    <div className="view-details-page">
+    <div className={`view-details-page package-bg-${id}`}>
       <h1>{title}</h1>
       <p>{overview}</p>
 
