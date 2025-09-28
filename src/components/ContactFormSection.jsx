@@ -8,7 +8,7 @@ export default function ContactFormSection() {
     <section className="contact-form-section">
       <div className="contact-info-header">
         <Info size={32} />
-        <h3>Tell Us About Your Dream Safari!</h3>
+        <h3>TALK TO US!</h3>
       </div>
       <p>
         Let us know where you’d love to tour in Kenya, your budget, travel dates, number of travelers, preferred activities, or any special requests. The more details you provide, the better we can customize your safari experience!
