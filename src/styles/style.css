@@ -1108,9 +1108,12 @@ a:focus-visible, button:focus-visible {
 ======================= */
 .packages-section {
   position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   z-index: 10;
   background: #fff;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   width: 100%;
   overflow: hidden;
   text-align: center;
@@ -1126,7 +1129,7 @@ a:focus-visible, button:focus-visible {
 .packages-intro-container {
   max-width: 100%;
   margin: 0 auto 1.5rem;
-  padding: 1rem;
+  padding: 0.9rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1204,7 +1207,7 @@ a:focus-visible, button:focus-visible {
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  height: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -1824,13 +1827,13 @@ a:focus-visible, button:focus-visible {
   font-weight: 800;
   color: var(--accent, #6d4650);
   font-family: var(--heading-font, 'Martel', serif);
-  font-style: italics;
+  font-style: Italic;
   letter-spacing: -0.3px;
 }
 
 .contact-form-section > p {
   font-family: var(--body-font, 'Assistant', sans-serif);
-font-style: italics;
+font-style: Italic;
   font-size: 1.06em;
   color: var(--text, #545454);
   margin: 0 0 0.4em 0;
