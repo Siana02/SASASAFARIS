@@ -1,5 +1,6 @@
 import React from "react";
 import { WildebeestMigration, KenyanCoast } from "../assets/images";
+import { Link } from "react-router-dom";
 
 const OfferSection = () => (
   <section className="best-offers-section" id="best-offers">
