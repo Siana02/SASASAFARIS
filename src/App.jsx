@@ -47,6 +47,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/viewdetails/:id" element={<ViewDetails />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
         {/* add other routes as needed */}
       </Routes>
       <Footer />
