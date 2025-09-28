@@ -1322,7 +1322,7 @@ a:focus-visible, button:focus-visible {
 }
 
 .package-cta-primary {
-  border: 2px solid var(--accent)
+  border: 2px solid var(--accent);
   
   display: inline-flex;
     align-items: center;
