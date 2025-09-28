@@ -1406,9 +1406,8 @@ a:focus-visible, button:focus-visible {
    PROGRESS DOTS
 ----------------------- */
 .package-progress-indicator {
-  padding: 2px;
   position: absolute;
-  bottom: 2px;
+  top: 1px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
