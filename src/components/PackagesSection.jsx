@@ -279,9 +279,17 @@ const PackagesSection = () => {
                 <div className={`package-badge ${card.badgeClass}`}>{card.badge}</div>
                 <div className="package-description">{card.description}</div>
                 <div className="package-ctas">
-                  <button className="package-cta-primary">
-                    Contact Us<span className="package-cta-primary-icon">→</span>
-                  </button>
+                  <Link className="package-cta-primary" to="/contact">
+  Contact Us
+  <span className="package-cta-primary-icon">
+    {/* SVG Icon */}
+    <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
+      <circle cx="24" cy="24" r="20" fill="var(--cta)" />
+      <polyline points="18 30 30 18" fill="none" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+      <polyline points="18 18 30 18 30 30" fill="none" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </span>
+</Link>
                   <Link
                     className="package-cta-secondary"
                     to={`/viewdetails/${card.id}`}
