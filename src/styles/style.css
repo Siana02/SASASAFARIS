@@ -1793,8 +1793,9 @@ a:focus-visible, button:focus-visible {
 }
 
 /* --- Contact Form Section --- */
+/* --- Contact Form Section --- */
 .contact-form-section {
-  background: #fff;
+  background: var(--accent, #6d4650); /* darkest color as background */
   border-radius: 1.2em;
   box-shadow: 0 2px 18px rgba(0,0,0,0.07);
   padding: 2.3em 2em 2em 2em;
@@ -1814,7 +1815,7 @@ a:focus-visible, button:focus-visible {
   margin-bottom: 0.5em;
 }
 .contact-info-header svg {
-  background: var(--cta, #ff914d);
+  background: var(--cta, #ff914d); /* keep accent */
   color: #fff;
   border-radius: 50%;
   width: 40px;
@@ -1826,7 +1827,7 @@ a:focus-visible, button:focus-visible {
   margin: 0;
   font-size: 1.2em;
   font-weight: 800;
-  color: var(--accent, #6d4650);
+  color: #fff; /* swap to light for contrast on dark bg */
   font-family: var(--heading-font, 'Martel', serif);
   font-style: Italic;
   letter-spacing: -0.3px;
@@ -1834,9 +1835,9 @@ a:focus-visible, button:focus-visible {
 
 .contact-form-section > p {
   font-family: var(--body-font, 'Assistant', sans-serif);
-font-style: Italic;
+  font-style: Italic;
   font-size: 1.06em;
-  color: var(--text, #545454);
+  color: #fff; /* swap to light for contrast */
   margin: 0 0 0.4em 0;
   line-height: 1.6;
   text-align: center;
@@ -1854,7 +1855,7 @@ font-style: Italic;
 /* Label and input styling */
 .safari-inquiry-form label {
   font-size: 0.98em;
-  color: var(--accent, #6d4650);
+  color: var(--cta, #ff914d); /* use accent for labels */
   font-weight: 700;
   margin-bottom: 0.18em;
   display: flex;
@@ -1867,17 +1868,17 @@ font-style: Italic;
   font-size: 1em;
   padding: 0.7em 1em;
   border-radius: 0.7em;
-  border: 1.7px solid #ededed;
-  background: #fcfaf8;
-  color: var(--text, #545454);
-  box-shadow: 0 1px 6px rgba(109,70,80,0.06);
+  border: 1.7px solid var(--cta, #ff914d); /* accent border */
+  background: #fff; /* light background for contrast */
+  color: var(--accent, #6d4650);        /* dark text for contrast */
+  box-shadow: 0 1px 6px rgba(255,145,77,0.09); /* accent shadow */
   margin-top: 0.06em;
   transition: border-color 0.2s, box-shadow 0.2s;
   outline: none;
 }
 .safari-inquiry-form input:focus,
 .safari-inquiry-form textarea:focus {
-  border-color: var(--cta, #ff914d);
+  border-color: var(--cta-hover, #ff7e1e); /* hover accent */
   box-shadow: 0 3px 14px rgba(255,145,77,0.14);
 }
 
@@ -1889,15 +1890,15 @@ font-style: Italic;
 
 /* Submit Button */
 .safari-inquiry-form button[type="submit"] {
-  background: var(--cta, #ff914d);
-  color: #fff;
+  background: #fff; /* light bg for contrast */
+  color: var(--cta, #ff914d); /* accent text */
   font-size: 1.07em;
   font-weight: 700;
   font-family: var(--body-font, 'Assistant', sans-serif);
   border: none;
   border-radius: 2em;
   padding: 0.75em 1.55em;
-  box-shadow: 0 3px 14px rgba(0,0,0,0.09);
+  box-shadow: 0 3px 14px rgba(255,145,77,0.14); /* accent shadow */
   cursor: pointer;
   margin-top: 0.2em;
   transition: background 0.18s, transform 0.13s;
@@ -1905,7 +1906,8 @@ font-style: Italic;
 }
 .safari-inquiry-form button[type="submit"]:hover,
 .safari-inquiry-form button[type="submit"]:focus {
-  background: var(--cta-hover, #ff7e1e);
+  background: var(--cta, #ff914d); /* accent background on hover */
+  color: #fff; /* text becomes light */
   transform: translateY(-2px) scale(1.04);
 }
 
@@ -1915,7 +1917,7 @@ font-style: Italic;
   top: 0;
   left: 50%;
   transform: translate(-50%, -120%);
-  background: var(--cta, #ff914d);
+  background: var(--cta, #ff914d); /* accent background */
   color: #fff;
   padding: 0.95em 1.4em;
   border-radius: 1em;
@@ -1926,7 +1928,7 @@ font-style: Italic;
   z-index: 10;
   animation: fadeIn 0.5s;
 }
-
+  
 /* Responsive tweaks */
 @media (max-width: 700px) {
   .contact-form-section {
