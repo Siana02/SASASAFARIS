@@ -723,11 +723,22 @@ a:focus-visible, button:focus-visible {
 
 .contact-widget-container {
   position: fixed;
-  bottom: 2.2rem;
-  right: 2rem;
+  bottom: 0.8rem;      /* Lowered to be at the bottomest margin */
+  right: 1.2rem;       /* Tighter to the right edge for mobile friendliness */
   z-index: 3000;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column-reverse; /* Options will stack upward from the button */
+  align-items: flex-end;
+}
+
+/* Main sticky button */
+.contact-widget-container {
+  position: fixed;
+  bottom: 0.8rem;      /* Lowered to be at the bottomest margin */
+  right: 1.2rem;       /* Tighter to the right edge for mobile friendliness */
+  z-index: 3000;
+  display: flex;
+  flex-direction: column-reverse; /* Options will stack upward from the button */
   align-items: flex-end;
 }
 
@@ -762,13 +773,15 @@ a:focus-visible, button:focus-visible {
   margin-bottom: 0.5rem;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(30px) scale(0.95);
+  /* Start below the button, animate up when open */
+  transform: translateY(60px) scale(0.95);
   transition: opacity 0.23s, transform 0.32s cubic-bezier(.7,1.5,.5,1.01);
 }
 
 .contact-widget-container.open .contact-widget-options {
   opacity: 1;
   pointer-events: auto;
+  /* Animate upward - options “shoot up” above the button */
   transform: translateY(-15px) scale(1.02);
 }
 
@@ -796,8 +809,8 @@ a:focus-visible, button:focus-visible {
 
 @media (max-width: 700px) {
   .contact-widget-container {
-    bottom: 1.1rem;
-    right: 1.1rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
   }
 }
 
