@@ -15,6 +15,9 @@ import Footer from './components/Footer';
 import ThemeMessage from './components/ThemeMessage';
 import ContactWidget from './components/ContactWidget';
 import ViewDetails from './components/ViewDetails'; // adjust path if needed
+import Contact from "./components/Contact";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsOfService from "./components/TermsOfService";
 import './styles/style.css';
 
 // Main landing page content
