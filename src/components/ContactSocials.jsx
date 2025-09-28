@@ -12,7 +12,7 @@ export default function ContactSocials() {
         <a href="tel:+254708482145" title="Call Direct">
           <Phone size={28} />
         </a>
-        <a href="https://instagram.com/sasasafaris" target="_blank" rel="noopener noreferrer" title="Instagram">
+        <a href="https://www.instagram.com/sasa_safaris_africa?igsh=OWFjajg4enVlMjlh" target="_blank" rel="noopener noreferrer" title="Instagram">
           <FaInstagram size={28} />
         </a>
         <a href="https://tiktok.com/@sasasafaris" target="_blank" rel="noopener noreferrer" title="TikTok">
