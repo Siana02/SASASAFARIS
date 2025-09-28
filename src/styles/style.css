@@ -1322,13 +1322,14 @@ a:focus-visible, button:focus-visible {
 }
 
 .package-cta-primary {
+  border: 2px solid var(--accent)
   
   display: inline-flex;
     align-items: center;
   justify-content: center;
   background: rgba(255,255,255,0.13);
   color: var(--cta);
-  border: 2.5px solid var (--cta);
+ 
   font-weight: 700;
   cursor: pointer;
   padding: 0 0 0 1.2em; /* Padding only on left for text */
