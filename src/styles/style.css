@@ -2706,3 +2706,226 @@ a:focus-visible, button:focus-visible {
     padding: 0.6em 1em;
   }
 }
+
+
+/* --- View Details Page --- */
+.view-details-page {
+  background: #fff;
+  border-radius: 1.3em;
+  box-shadow: 0 6px 32px rgba(109,70,80,0.10);
+  padding: 2.9em 2em 2em 2em;
+  max-width: 820px;
+  margin: 4.5em auto 3em auto; /* Top margin ensures it's below header */
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  position: relative;
+  animation: fadeIn 0.8s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* --- Title --- */
+.view-details-page h1 {
+  font-family: var(--heading-font, 'Martel', serif);
+  font-size: 2.5em;
+  font-weight: 900;
+  color: var(--cta, #ff914d);
+  margin-bottom: 0.05em;
+  margin-top: 0.0em;
+  text-align: center;
+  letter-spacing: -1.3px;
+  text-shadow: 0 2px 12px rgba(255,145,77,0.07);
+  z-index: 2;
+  position: relative;
+}
+
+/* --- Overview --- */
+.view-details-page > p {
+  font-size: 1.18em;
+  color: var(--text, #545454);
+  font-family: var(--body-font, 'Assistant', sans-serif);
+  text-align: center;
+  margin: 0.7em auto 1.5em auto;
+  max-width: 650px;
+  background: #fff7f2;
+  border-radius: 0.9em;
+  padding: 1em 1em 0.8em 1em;
+  font-weight: 500;
+  box-shadow: 0 1px 6px rgba(255,145,77,0.04);
+}
+
+/* --- Section Titles --- */
+.view-details-page h2 {
+  font-family: var(--heading-font, 'Martel', serif);
+  font-size: 1.22em;
+  color: var(--accent, #6d4650);
+  font-weight: 800;
+  margin-bottom: 0.4em;
+  letter-spacing: -0.2px;
+  margin-top: 2em;
+  border-left: 5px solid var(--cta, #ff914d);
+  padding-left: 0.5em;
+  background: #fff3e6;
+  border-radius: 0.6em;
+  display: inline-block;
+}
+
+/* --- Lists --- */
+.view-details-page ul {
+  margin: 0.8em 0 0 1.6em;
+  padding: 0;
+  list-style-type: disc;
+  font-size: 1.09em;
+  color: #444;
+  line-height: 1.7;
+  font-family: var(--body-font, 'Assistant', sans-serif);
+  font-weight: 500;
+  transition: background 0.18s;
+}
+
+.view-details-page li {
+  margin-bottom: 0.43em;
+  position: relative;
+  padding-left: 0.15em;
+  transition: color 0.18s;
+}
+
+.view-details-page ul:hover li {
+  color: var(--cta, #ff914d);
+}
+
+/* --- Interactive List Items --- */
+.view-details-page ul li::before {
+  content: "🦁";
+  position: absolute;
+  left: -1.7em;
+  font-size: 1em;
+  opacity: 0.6;
+  color: var(--cta, #ff914d);
+  transition: color 0.18s;
+}
+
+.view-details-page ul li:hover::before {
+  color: var(--accent, #6d4650);
+  opacity: 1;
+  transform: scale(1.15) rotate(-10deg);
+}
+
+/* --- CTA Section --- */
+.view-details-cta {
+  background: linear-gradient(90deg, var(--cta, #ff914d) 70%, var(--accent, #6d4650) 100%);
+  color: #fff;
+  border-radius: 1em;
+  text-align: center;
+  padding: 1.2em 1em;
+  font-size: 1.13em;
+  margin: 2em auto 1em auto;
+  box-shadow: 0 2px 24px rgba(255,145,77,0.09);
+  font-weight: 700;
+  animation: pulseCta 2.2s infinite alternate;
+}
+
+@keyframes pulseCta {
+  to { box-shadow: 0 6px 32px rgba(255,145,77,0.16); }
+}
+
+.view-details-cta .cta-btn {
+  display: inline-block;
+  background: #fff;
+  color: var(--cta, #ff914d);
+  padding: 0.7em 1.5em;
+  border-radius: 2.2em;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.07em;
+  box-shadow: 0 2px 12px rgba(255,145,77,0.10);
+  transition: background 0.18s, color 0.16s, transform 0.13s;
+  margin-left: 0.5em;
+}
+.view-details-cta .cta-btn:hover,
+.view-details-cta .cta-btn:focus {
+  background: var(--cta, #ff914d);
+  color: #fff;
+  transform: scale(1.04);
+}
+
+.view-details-page .cta-btn {
+  background: var(--cta, #ff914d);
+  color: #fff;
+  padding: 0.7em 1.3em;
+  border-radius: 2em;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1em;
+  box-shadow: 0 2px 12px rgba(255,145,77,0.10);
+  transition: background 0.18s, transform 0.13s;
+  margin: 2em auto 0 auto;
+  display: inline-block;
+}
+.view-details-page .cta-btn:hover,
+.view-details-page .cta-btn:focus {
+  background: var(--cta-hover, #ff7e1e);
+  transform: scale(1.05);
+}
+
+/* --- Responsive --- */
+@media (max-width: 700px) {
+  .view-details-page {
+    padding: 1.2em 0.5em 1em 0.5em;
+    max-width: 98vw;
+    margin-top: 3.8em;
+    margin-bottom: 1.2em;
+    gap: 1.2em;
+  }
+  .view-details-page h1 {
+    font-size: 1.6em;
+    margin-top: 0.6em;
+  }
+  .view-details-page > p {
+    font-size: 1em;
+    padding: 0.7em 0.2em 0.6em 0.2em;
+    max-width: 97vw;
+  }
+  .view-details-page h2 {
+    font-size: 1em;
+    padding-left: 0.3em;
+    margin-top: 1.2em;
+  }
+  .view-details-page ul {
+    font-size: 0.97em;
+    margin-left: 1em;
+  }
+  .view-details-cta {
+    font-size: 1em;
+    padding: 0.8em 0.3em;
+    margin: 1em auto 0.7em auto;
+  }
+  .view-details-cta .cta-btn,
+  .view-details-page .cta-btn {
+    font-size: 0.97em;
+    padding: 0.6em 1em;
+  }
+}
+
+/* --- Fix overlap of title and header/logo --- */
+.header + .view-details-page {
+  margin-top: 4.5em; /* ensures title is below header/logo */
+}
+
+@media (max-width: 700px) {
+  .header + .view-details-page {
+    margin-top: 3.6em;
+  }
+}
+
+/* --- Fun pulse for section titles --- */
+.view-details-page h2 {
+  animation: pulseTitle 2.8s infinite alternate;
+}
+@keyframes pulseTitle {
+  to { background: #ffe2c3; }
+}
