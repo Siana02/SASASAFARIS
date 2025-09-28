@@ -96,6 +96,28 @@ const PackagesSection = () => {
     return () => clearTimeout(autoTimer.current);
   }, [deckPosition, isHovered, nextCard, animating]);
 
+
+    useEffect(() => {
+    const handleWheel = (e) => {
+      if (!isWrapperFocused) return;
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        if (e.deltaX > 0) nextCard();
+        else if (e.deltaX < 0) prevCard();
+        e.preventDefault(); // <-- Add this line!
+      } else {
+        if (e.deltaY > 0) nextCard();
+        else if (e.deltaY < 0) prevCard();
+        e.preventDefault(); // <-- And this line!
+      }
+    };
+    const wrapper = wrapperRef.current;
+    if (wrapper) wrapper.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      if (wrapper) wrapper.removeEventListener("wheel", handleWheel);
+    };
+  }, [isWrapperFocused, nextCard, prevCard]);
+
+  
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -107,18 +129,7 @@ const PackagesSection = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isWrapperFocused, nextCard, prevCard]);
 
-  // Mouse wheel navigation
-  useEffect(() => {
-    const handleWheel = (e) => {
-      if (!isWrapperFocused) return;
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-        if (e.deltaX > 0) nextCard();
-        else if (e.deltaX < 0) prevCard();
-      } else {
-        if (e.deltaY > 0) nextCard();
-        else if (e.deltaY < 0) prevCard();
-      }
-    };
+  
     const wrapper = wrapperRef.current;
     if (wrapper) wrapper.addEventListener("wheel", handleWheel, { passive: false });
     return () => {
