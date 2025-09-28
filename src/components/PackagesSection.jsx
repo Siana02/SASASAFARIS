@@ -19,6 +19,7 @@
  */
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import {
   ClassicMaasaiMara,
   Amboseli,
@@ -26,7 +27,7 @@ import {
   RomanticSafari,
   CoastalExperience
 } from "../assets/images";
-import { Link } from "react-router-dom";
+
 
 const packages = [
   { image: ClassicMaasaiMara, title: "Mara & Tsavo Wildlife Safari", duration: "5 Days / 4 Nights", badge: "⭐ 4.9/5 · Most Popular", badgeClass: "badge-popular", description: "Experience the iconic Big 5 across two legendary parks. Witness lions, elephants, and cheetahs in their natural habitat, with expert-guided game drives and evening sundowners.", ctaDetails: "#details-mara-tsavo" },
