@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "./components/Header";
-import MobileNav from "./components/MobileNav";
-import Footer from "./components/Footer";
-import ContactHours from "./components/ContactHours";
-import ContactFormSection from "./components/ContactFormSection";
-import ContactSocials from "./components/ContactSocials";
-import ContactLocation from "./components/ContactLocation";
+import Header from "./Header";
+import MobileNav from "./MobileNav";
+import Footer from "./Footer";
+import ContactHours from "./ContactHours";
+import ContactFormSection from "./ContactFormSection";
+import ContactSocials from "./ContactSocials";
+import ContactLocation from "./ContactLocation";
 
 export default function Contact() {
   return (
