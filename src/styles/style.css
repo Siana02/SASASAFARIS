@@ -1092,10 +1092,16 @@ a:focus-visible, button:focus-visible {
   min-height: 90vh; /* mobile fixed height */
   overflow: hidden;
   perspective: 1000px;
+  /* Carousel-specific adjustments for movement */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: pan-x;
 }
 
 /* -----------------------
-   PACKAGE CARD - MOBILE
+   PACKAGE CARD - MOBILE (with movement classes)
 ----------------------- */
 .package-card {
   position: absolute;
@@ -1111,10 +1117,35 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 6px 24px rgba(0,0,0,0.1);
   overflow: hidden;
   z-index: 1;
+  /* Movement transitions */
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.38s cubic-bezier(.4,.85,.8,1),
+    transform 0.53s cubic-bezier(.4,.85,.8,1);
 }
 
-.package-card.active { z-index: 10; pointer-events: auto; }
-.package-card.outgoing { z-index: 9; pointer-events: none; }
+/* Current card in view */
+.package-card.current {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Next card animates in from the right */
+.package-card.next {
+  opacity: 0.45;
+  z-index: 1;
+  transform: translateX(50px) scale(0.94); /* 50px right from center */
+}
+
+/* Previous card animates in from the left */
+.package-card.prev {
+  opacity: 0.45;
+  z-index: 1;
+  transform: translateX(-150px) scale(0.94); /* 100px left from center (-50 -100 = -150) */
+}
 
 .package-card-image {
   width: 100%;
