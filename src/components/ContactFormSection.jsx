@@ -7,12 +7,15 @@ export default function ContactFormSection() {
   return (
     <section className="contact-form-section">
       <div className="contact-info-header">
-        <Info size={32} />
+        
         <h3>Book Your Safari Experience!</h3>
       </div>
+      <div className="contact-info-details">
+  <Info size={28} />
       <p>
         Let us know where you’d love to tour in Kenya, your budget, travel dates, number of travelers, preferred activities, or any special requests. The more details you provide, the better we can customize your safari experience!
       </p>
+      </div>
       <form
         className="safari-inquiry-form"
         action="https://formspree.io/f/meoreded"
