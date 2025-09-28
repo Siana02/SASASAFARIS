@@ -12,7 +12,8 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
     "framer-motion": "^11.11.17",
-     "lucide-react": "^0.441.0"
+    "lucide-react": "^0.441.0",
+    "react-router-dom": "^6.22.3"
   },
   "scripts": {
     "start": "react-scripts start",
