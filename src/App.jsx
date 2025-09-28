@@ -53,6 +53,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/about" element={<AboutSection />} />
+        <Route path="/packages" element={<PackagesSection />} />
+        <Route path="/offers" element={<OfferSection />} />
+        {/* add other routes as needed */}
         {/* add other routes as needed */}
       </Routes>
       <Footer />
