@@ -1890,8 +1890,8 @@ a:focus-visible, button:focus-visible {
 
 /* Submit Button */
 .safari-inquiry-form button[type="submit"] {
-  background: #fff; /* light bg for contrast */
-  color: var(--cta, #ff914d); /* accent text */
+  background: #ff914d; /* light bg for contrast */
+  color: #fff; /* accent text */
   font-size: 1.07em;
   font-weight: 700;
   font-family: var(--body-font, 'Assistant', sans-serif);
@@ -1917,7 +1917,7 @@ a:focus-visible, button:focus-visible {
   top: 0;
   left: 50%;
   transform: translate(-50%, -120%);
-  background: var(--cta, #ff914d); /* accent background */
+  background: #222; /* accent background */
   color: #fff;
   padding: 0.95em 1.4em;
   border-radius: 1em;
