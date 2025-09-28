@@ -2988,3 +2988,53 @@ font-style: Bold;
 @keyframes pulseTitle {
   to { background: #ffe2c3; }
 }
+
+/* --- Package-specific background images for ViewDetails pages --- */
+.package-bg-mara-tsavo {
+  background-image: url('../assets/Classic_Maasai_Mara.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.package-bg-amboseli-chyulu {
+  background-image: url('../assets/Amboseli.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.package-bg-family-safari-beach {
+  background-image: url('../assets/Family_Safari.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.package-bg-romantic-safari {
+  background-image: url('../assets/Romantic_Safari.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.package-bg-coastal-adventure {
+  background-image: url('../assets/Coastal_Experience.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.package-bg-wildebeest-migration {
+  background-image: url('../assets/Wildebeest_migration.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.package-bg-coast-offer {
+  background-image: url('../assets/Kenyan_coast_1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
