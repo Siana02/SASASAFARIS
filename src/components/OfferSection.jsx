@@ -43,7 +43,12 @@ const OfferSection = () => (
           </div>
           <div className="offer-main-text">30% OFF</div>
           <div className="offer-desc">Malindi to Diani</div>
-          <button className="offer-details-btn" data-offer="coast">View Details</button>
+          <Link
+  className="offer-details-btn"
+  to={`/viewdetails/coast-offer`}
+>
+  View Details
+</Link>
         </div>
       </div>
     </div>
