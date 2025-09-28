@@ -1202,6 +1202,7 @@ a:focus-visible, button:focus-visible {
    PACKAGE CARD - MOBILE (with movement classes)
 ----------------------- */
 .package-card {
+  align-items: center;
   position: absolute;
   top: 0;
   left: 50%;
@@ -1314,7 +1315,6 @@ a:focus-visible, button:focus-visible {
 }
 
 .package-ctas {
-  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1322,9 +1322,9 @@ a:focus-visible, button:focus-visible {
 }
 
 .package-cta-primary {
-  position: absolute;
+  
   display: inline-flex;
-  align-items: center;
+    align-items: center;
   justify-content: center;
   background: rgba(255,255,255,0.13);
   color: #fff;
@@ -1392,7 +1392,7 @@ a:focus-visible, button:focus-visible {
   font-weight: 600;
   font-size: 0.9rem;
   text-align: center;
-  position: absolute;
+  position: relative;
 }
 
 .package-cta-secondary::after {
