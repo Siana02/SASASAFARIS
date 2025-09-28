@@ -33,7 +33,7 @@ const Footer = () => {
                 <Facebook size={20} />
               </a>
               <a
-                href="https://instagram.com/sasasafaris"
+                href="https://www.instagram.com/sasa_safaris_africa?igsh=OWFjajg4enVlMjlh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
@@ -63,6 +63,7 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">Quick Links</h4>
             <ul className="footer-links">
+              
               <li>
                 <a href="#home">Home</a>
               </li>
