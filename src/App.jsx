@@ -19,8 +19,7 @@ import './styles/style.css';
 function HomePage() {
   return (
     <>
-      <Header />
-      <MobileNav />
+      
       <main>
         <HeroSection />
         <OfferSection />
@@ -30,8 +29,7 @@ function HomePage() {
         <ReviewSection />
         <HighlightSection />
       </main>
-      <Footer />
-      <ThemeMessage />
+      
     </>
   );
 }
@@ -39,12 +37,16 @@ function HomePage() {
 function App() {
   return (
     <BrowserRouter>
-      <ContactWidget /> 
+      <Header />
+      <MobileNav />
+      <ContactWidget />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/viewdetails/:id" element={<ViewDetails />} />
         {/* add other routes as needed */}
       </Routes>
+      <Footer />
+      <ThemeMessage />
     </BrowserRouter>
   );
 }
