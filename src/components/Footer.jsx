@@ -87,15 +87,13 @@ const Footer = () => {
             <div className="contact-info">
               <p>
                 <Mail size={16} style={{ marginRight: "8px" }} />{" "}
-                info@sasasafaris.com
+                SASASAFARISAFRICA@gmail.com
               </p>
               <p>
-                <Phone size={16} style={{ marginRight: "8px" }} /> +1 (555)
-                123-4567
+                <Phone size={16} style={{ marginRight: "8px" }} /> +254708482145
               </p>
               <p>
-                <MapPin size={16} style={{ marginRight: "8px" }} /> Safari
-                Street, Adventure City
+                <MapPin size={16} style={{ marginRight: "8px" }} /> Jacaranda, Watamu, Kenya
               </p>
             </div>
           </div>
