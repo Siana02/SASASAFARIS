@@ -1319,20 +1319,18 @@ a:focus-visible, button:focus-visible {
 .package-cta-primary {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  background: var(--cta);
+  justify-content: center;
+  background: rgba(255,255,255,0.13);
   color: #fff;
-  font-weight: 600;
-  font-family: 'Assistant', sans-serif;
-  font-size: 1rem;
-  border: none;
+  border: 2.5px solid #fff;
+  font-weight: 700;
   cursor: pointer;
+  padding: 0 0 0 1.2em; /* Padding only on left for text */
+  font-size: 1.18rem;
   border-radius: 2em;
-  min-height: 52px;
-  padding-left: 1.2em;
+  min-height: 52px;       /* Force button to be tall enough for icon */
+  transition: border-color 0.18s, background 0.18s, color 0.18s;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
 }
 
 .package-cta-primary-icon {
@@ -1341,14 +1339,46 @@ a:focus-visible, button:focus-visible {
   justify-content: center;
   height: 52px;
   width: 52px;
-  margin-left: auto;
-  margin-right: -2.5px;
-  background: rgba(255,255,255,0.15);
-  border-top-right-radius: 2em;
-  border-bottom-right-radius: 2em;
+  min-width: 52px;
+  margin-left: 0.85em;
+  margin-right: -2.5px;  /* Ensures the circle touches the border */
 }
 
-.package-cta-primary:hover { transform: translateY(-2px) scale(1.05); }
+.package-cta-primary-icon svg {
+  width: 52px;
+  height: 52px;
+  display: block;
+}
+
+.package-cta-primary:hover,
+.package-cta-primary:focus {
+  background: rgba(255,255,255,0.23);
+  color: #fff;
+  border-color: #fff;
+}
+
+.package-cta-primary:hover .cta-secondary-icon svg circle,
+.package-cta-primary:focus .cta-secondary-icon svg circle {
+  fill: var(--cta);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .package-cta-ptimary {
+    font-size: 1.02rem;
+    min-height: 40px;
+    padding-left: 0.7em;
+  }
+  .package-cta-primary-icon,
+  .package-cta-primary-icon svg {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+}
+
+
+
 
 .package-cta-secondary {
   color: var(--cta);
