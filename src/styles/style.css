@@ -1511,7 +1511,7 @@ a:focus-visible, button:focus-visible {
   height: 90px;
   margin: 0 auto 1rem;
   border-radius: 50%;
-  background: var(--accent);
+  background: #F2EBE3;
   display: flex;
   align-items: center;
   justify-content: center;
