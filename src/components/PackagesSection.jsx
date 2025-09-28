@@ -130,12 +130,6 @@ const PackagesSection = () => {
   }, [isWrapperFocused, nextCard, prevCard]);
 
   
-    const wrapper = wrapperRef.current;
-    if (wrapper) wrapper.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      if (wrapper) wrapper.removeEventListener("wheel", handleWheel);
-    };
-  }, [isWrapperFocused, nextCard, prevCard]);
 
   // Touch swipe navigation (RTL and LTR)
   useEffect(() => {
