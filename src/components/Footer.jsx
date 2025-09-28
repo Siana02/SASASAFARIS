@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Facebook,
   Instagram,
@@ -75,8 +76,8 @@ const Footer = () => {
                 <a href="#about">About Us</a>
               </li>
               <li>
-                <a href="#contact">Contact</a>
-              </li>
+  <Link to="/contact">Contacts</Link>
+</li>
             </ul>
           </div>
 
@@ -120,8 +121,8 @@ const Footer = () => {
             <p>&copy; 2024 SASA Safaris. All rights reserved.</p>
           </div>
           <div className="footer-legal">
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
+            <Link to="/privacy">Privacy Policy</Link>
+<Link to="/terms">Terms of Service</Link>
           </div>
         </div>
       </div>
