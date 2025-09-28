@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useMobileNav } from "../hooks/useMobileNav";
 import { useTheme } from "../hooks/useTheme";
 import { FaviconPng } from "../assets/images";
@@ -16,9 +17,11 @@ const Header = () => {
         <div className="header-title">SASA SAFARIS</div>
         <nav className="nav desktop-nav">
           <ul className="nav-links">
-            <li><a href="#packages">Packages / Pricing</a></li>
+            <li><a href="#packages">Packages/Pricing</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#contacts">Contacts</a></li>
+            <li>
+  <Link to="/contact">Contacts</Link>
+</li>
             <li>
               <button onClick={toggleTheme} id="theme-switcher" aria-label="Switch Theme">
                 <i className="fas fa-adjust"></i>
@@ -56,8 +59,8 @@ const Header = () => {
             <a href="#about" onClick={toggleMenu}>About</a>
           </li>
           <li>
-            <a href="#contacts" onClick={toggleMenu}>Contacts</a>
-          </li>
+  <Link to="/contact">Contacts</Link>
+</li>
           <li>
             <button
               onClick={() => { toggleTheme(); toggleMenu(); }}
