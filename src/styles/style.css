@@ -720,6 +720,87 @@ a:focus-visible, button:focus-visible {
     transform: translateY(0);
   }
 }
+
+.contact-widget-container {
+  position: fixed;
+  bottom: 2.2rem;
+  right: 2rem;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+}
+
+/* Main sticky button */
+.contact-widget-toggle {
+  background: var(--cta, #ff914d);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.14);
+  width: 57px;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.17s, box-shadow 0.17s;
+  font-size: 1.4rem;
+  outline: none;
+}
+.contact-widget-toggle:hover,
+.contact-widget-toggle:focus {
+  background: var(--cta-hover, #ff7e1e);
+  box-shadow: 0 8px 36px rgba(255,145,77,0.17);
+}
+
+/* Contact options (hidden by default) */
+.contact-widget-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 0.23s, transform 0.32s cubic-bezier(.7,1.5,.5,1.01);
+}
+
+.contact-widget-container.open .contact-widget-options {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-15px) scale(1.02);
+}
+
+.contact-widget-icon {
+  background: #fff;
+  color: var(--accent, #6d4650);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.11);
+  font-size: 1.1rem;
+  transition: background 0.18s, color 0.18s, transform 0.14s;
+}
+.contact-widget-icon:hover, .contact-widget-icon:focus {
+  background: var(--cta, #ff914d);
+  color: #fff;
+  transform: scale(1.13) translateY(-4px);
+}
+.contact-widget-icon.whatsapp { color: #25D366; }
+.contact-widget-icon.phone { color: var(--accent, #6d4650); }
+.contact-widget-icon.email { color: #1877f2; }
+
+@media (max-width: 700px) {
+  .contact-widget-container {
+    bottom: 1.1rem;
+    right: 1.1rem;
+  }
+}
+
 /* Best Offers Section */
 .best-offers-section {
   margin: 4rem auto 0 auto;
