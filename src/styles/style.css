@@ -1828,7 +1828,7 @@ a:focus-visible, button:focus-visible {
   font-weight: 800;
   color: #fff; /* swap to light for contrast on dark bg */
   font-family: var(--heading-font, 'Martel', serif);
-  font-style: Italic;
+font-style: Bold;
   letter-spacing: -0.3px;
 }
 
@@ -1889,7 +1889,7 @@ a:focus-visible, button:focus-visible {
 
 /* Submit Button */
 .safari-inquiry-form button[type="submit"] {
-  background: var (--cta); /* light bg for contrast */
+  background:  var(--cta) !important;/* light bg for contrast */
   color: #fff; /* accent text */
   font-size: 1.07em;
   font-weight: 700;
@@ -1905,7 +1905,7 @@ a:focus-visible, button:focus-visible {
 }
 .safari-inquiry-form button[type="submit"]:hover,
 .safari-inquiry-form button[type="submit"]:focus {
-  background: var (--cta-hover); /* accent background on hover */
+  background: var(--cta-hover) !important; /* accent background on hover */
   color: #fff; /* text becomes light */
   transform: translateY(-2px) scale(1.04);
 }
