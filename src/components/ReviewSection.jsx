@@ -24,12 +24,15 @@ const reviews = [
   },
   {
     name: "Matteo Moretti",
-    text: "Taking my parents to Diani was the best decision ever. Memories we’ll cherish forever.",
+    text: "Taking my parents to Diani was the best decision ever. Memories we'll cherish forever.",
     type: "Family Bonding",
   },
 ];
 
 export default function ReviewSection() {
+  // Duplicate reviews for seamless infinite loop
+  const duplicatedReviews = [...reviews, ...reviews];
+
   return (
     <section className="review-section">
       {/* Title */}
@@ -38,9 +41,9 @@ export default function ReviewSection() {
       {/* Review Container */}
       <div className="review-carousel">
         <div className="review-track">
-          {reviews.map((review, index) => (
+          {duplicatedReviews.map((review, index) => (
             <div className="review-card" key={index}>
-              <p className="review-text">“{review.text}”</p>
+              <p className="review-text">"{review.text}"</p>
               <div className="review-stars">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} size={18} className="star-icon" />
@@ -57,4 +60,4 @@ export default function ReviewSection() {
       </div>
     </section>
   );
-    }
+}

@@ -1687,34 +1687,13 @@ a:focus-visible, button:focus-visible {
   text-align: right;
 }
 
-/* === ANIMATION (faster swiping with pause between cards) === */
+/* === ANIMATION (seamless infinite loop) === */
 @keyframes swipe {
   0% {
     transform: translateX(0%);
   }
-  20% {
-    transform: translateX(0%); /* Pause first card in view */
-  }
-  25% {
-    transform: translateX(-100%); /* Move to second card */
-  }
-  45% {
-    transform: translateX(-100%); /* Pause second card */
-  }
-  50% {
-    transform: translateX(-200%); /* Move to third card */
-  }
-  70% {
-    transform: translateX(-200%); /* Pause third card */
-  }
-  75% {
-    transform: translateX(-300%); /* Move to fourth card */
-  }
-  95% {
-    transform: translateX(-300%); /* Pause fourth card */
-  }
   100% {
-    transform: translateX(-400%); /* Show last card */
+    transform: translateX(-500%); /* Move through all 5 original cards */
   }
 }
 .contact-hours {
