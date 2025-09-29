@@ -1,4 +1,5 @@
 import React from "react";
+import { useLanguage } from "../hooks/useLanguage";
 
 
 // Minimal Africa SVG, with East Africa highlighted
@@ -50,26 +51,29 @@ const AfricaMap = () => (
   </svg>
 );
 
-const ComingSoon = () => (
-  <section className="coming-soon" aria-label="Coming Soon Hero Section">
-    <div className="coming-soon-content">
-      {/* Glitch Heading */}
-      <h1
-        className="coming-soon-heading"
-        aria-label="COMING SOON // EXPANDING TO EAST AFRICA & BEYOND"
-      >
-        <span
-          className="glitch"
-          data-text="COMING SOON // EXPANDING TO EAST AFRICA & BEYOND"
+const ComingSoon = () => {
+  const { t } = useLanguage();
+  
+  return (
+    <section className="coming-soon" aria-label="Coming Soon Hero Section">
+      <div className="coming-soon-content">
+        {/* Glitch Heading */}
+        <h1
+          className="coming-soon-heading"
+          aria-label={t('comingSoon.title')}
         >
-          COMING SOON // EXPANDING TO EAST AFRICA & BEYOND
-        </span>
-      </h1>
+          <span
+            className="glitch"
+            data-text={t('comingSoon.title')}
+          >
+            {t('comingSoon.title')}
+          </span>
+        </h1>
 
-      {/* Tagline */}
-      <p className="coming-soon-subtext">
-        Powered by innovation, inspired by Africa.
-      </p>
+        {/* Tagline */}
+        <p className="coming-soon-subtext">
+          {t('comingSoon.subtitle')}
+        </p>
 
       {/* Sparks Flicker Animation */}
       <div className="coming-soon-sparks" aria-hidden="true">
@@ -87,9 +91,10 @@ const ComingSoon = () => (
       </div>
 
       {/* Glitch Button */}
-      <button className="coming-soon-btn">Stay Tuned</button>
+      <button className="coming-soon-btn">{t('comingSoon.stayTuned')}</button>
     </div>
   </section>
 );
+};
 
 export default ComingSoon;

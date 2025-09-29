@@ -22,9 +22,11 @@
     "coastalTour": "Da Malindi a Diani"
   },
   "packages": {
-    "title": "I Nostri Pacchetti Safari",
+    "title": "Pacchetti Safari e Mare",
+    "subtitle": "Scegli la tua avventura: safari classici, fughe familiari, relax costiero e molto altro.",
     "viewDetails": "Visualizza Dettagli",
-    "bookNow": "Prenota Ora"
+    "bookNow": "Prenota Ora",
+    "contactUs": "Contattaci"
   },
   "about": {
     "miniTitle": "Perché Noi?",

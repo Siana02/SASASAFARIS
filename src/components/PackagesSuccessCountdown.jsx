@@ -1,15 +1,18 @@
 import React from "react";
 import { useCounters } from "../hooks/useCounters";
+import { useLanguage } from "../hooks/useLanguage";
 
 // Success Countdown component specifically for the packages section navigation
 // This shows different values than the main SuccessCountdown component
 const PackagesSuccessCountdown = () => {
   const { counts, formatCount, ref } = useCounters([15, 3, 95, 35]);
+  const { t } = useLanguage();
+  
   const labels = [
-    "Hidden Gems",
-    "Safari Experts", 
-    "Success Rate",
-    "Happy Travelers"
+    t('packagesSuccessCountdown.hiddenGems'),
+    t('packagesSuccessCountdown.safariExperts'), 
+    t('packagesSuccessCountdown.successRate'),
+    t('packagesSuccessCountdown.happyTravelers')
   ];
 
   return (

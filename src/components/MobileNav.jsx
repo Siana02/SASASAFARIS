@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useMobileNav } from "../hooks/useMobileNav";
 import { useTheme } from "../hooks/useTheme";
+import { useLanguage } from "../hooks/useLanguage";
 
 const MobileNav = () => {
   const { isOpen, mobileNavRef, closeMenu } = useMobileNav();
   const { toggleTheme } = useTheme();
+  const { t } = useLanguage();
 
   const handleThemeSwitch = () => {
     toggleTheme();
@@ -29,22 +31,22 @@ const MobileNav = () => {
       <div className="menu-divider"></div>
       <ul className="mobile-nav-list">
         <li>
-          <Link to="/" onClick={handleLinkClick}>Home</Link>
+          <Link to="/" onClick={handleLinkClick}>{t('nav.home')}</Link>
         </li> 
         <li>
-          <Link to="/packages" onClick={handleLinkClick}>Packages</Link>
+          <Link to="/packages" onClick={handleLinkClick}>{t('nav.packages')}</Link>
         </li>
         <li>
-          <Link to="/offers" onClick={handleLinkClick}>Offers</Link>
+          <Link to="/offers" onClick={handleLinkClick}>{t('nav.offers')}</Link>
         </li>
         <li>
-          <Link to="/about" onClick={handleLinkClick}>About Us</Link>
+          <Link to="/about" onClick={handleLinkClick}>{t('nav.about')}</Link>
         </li>
         <li>
-          <Link to="/contact" onClick={handleLinkClick}>Contacts</Link>
+          <Link to="/contact" onClick={handleLinkClick}>{t('nav.contacts')}</Link>
         </li>
         <li>
-          <button onClick={handleThemeSwitch} aria-label="Switch Theme">
+          <button onClick={handleThemeSwitch} aria-label={t('mobileNav.switchTheme')}>
             <i className="fas fa-adjust"></i>
           </button>
         </li>

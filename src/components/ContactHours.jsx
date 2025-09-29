@@ -1,16 +1,17 @@
 import { Headset } from "lucide-react";
+import { useLanguage } from "../hooks/useLanguage";
 
 export default function ContactHours() {
+  const { t } = useLanguage();
+  
   return (
     <section className="contact-hours">
       <div className="contact-hours-icon">
         <Headset size={38} />
       </div>
-      <h2>24/7 Customer Service</h2>
+      <h2>{t('contactHours.title')}</h2>
       <p>
-        Our team is available <b>24/7</b> to answer any queries.<br />
-        Contact us through the options below.<br />
-        Typical response time: <b>10–30 minutes</b>.
+        {t('contactHours.description')}
       </p>
     </section>
   );

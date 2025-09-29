@@ -22,9 +22,11 @@
     "coastalTour": "Malindi to Diani"
   },
   "packages": {
-    "title": "Our Safari Packages",
+    "title": "Safari & Beach Packages",
+    "subtitle": "Choose your adventure: classic safaris, family escapes, coastal relaxation and more.",
     "viewDetails": "View Details",
-    "bookNow": "Book Now"
+    "bookNow": "Book Now",
+    "contactUs": "Contact Us"
   },
   "about": {
     "miniTitle": "Why Us?",
