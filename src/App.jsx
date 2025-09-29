@@ -19,6 +19,7 @@ import ViewDetails from './components/ViewDetails'; // adjust path if needed
 import Contact from "./components/Contact";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
+import Gallery from "./pages/Gallery";
 import './styles/style.css';
 
 // Main landing page content
@@ -55,6 +56,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<AboutSection />} />
         <Route path="/packages" element={<PackagesSection />} />
         <Route path="/offers" element={<OfferSection />} />
