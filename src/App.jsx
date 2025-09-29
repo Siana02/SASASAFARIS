@@ -19,7 +19,7 @@ import ViewDetails from './components/ViewDetails'; // adjust path if needed
 import Contact from "./components/Contact";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
-import Gallery from "./pages/Gallery";
+import Gallery from "./components/Gallery";
 import './styles/style.css';
 
 // Main landing page content
