@@ -10,6 +10,7 @@ import AboutSection from './components/AboutSection';
 import ReviewSection from './components/ReviewSection';
 import ContactFormSection from "./components/ContactFormSection";
 import ContactSocials from "./components/ContactSocials";
+import ComingSoon from "./components/ComingSoon";
 import HighlightSection from './components/HighlightSection';
 import Footer from './components/Footer';
 import ThemeMessage from './components/ThemeMessage';
@@ -34,6 +35,7 @@ function HomePage() {
         <ReviewSection />
         <ContactFormSection />
         <ContactSocials />
+        <Comingsoon />
         <HighlightSection />
       </main>
       
