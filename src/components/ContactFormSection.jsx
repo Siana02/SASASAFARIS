@@ -1,19 +1,21 @@
 import { Info } from "lucide-react";
 import React, { useState } from "react";
+import { useLanguage } from "../hooks/useLanguage";
 
 export default function ContactFormSection() {
   const [submitted, setSubmitted] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <section className="contact-form-section">
       <div className="contact-info-header">
         
-        <h3>♡Book Your Safari Experience♡</h3>
+        <h3>{t('contact.title')}</h3>
       </div>
       <div className="contact-info-details">
   <Info size={28} />
       <p>
-        Let us know where you’d love to tour in Kenya, your budget, travel dates, number of travelers, preferred activities, or any special requests. The more details you provide, the better we can customize your safari experience!
+        {t('contact.description')}
       </p>
       </div>
       <form
@@ -23,23 +25,23 @@ export default function ContactFormSection() {
         onSubmit={() => setSubmitted(true)}
       >
         <label>
-          Your email
+          {t('contact.emailLabel')}
           <input type="email" name="email" required placeholder="you@example.com" />
         </label>
         <label>
-          Your message or safari preferences
+          {t('contact.messageLabel')}
           <textarea
             name="message"
             required
-            placeholder="Where in Kenya would you like to tour? What's your budget, preferred dates, number of travelers, special interests, etc.?"
+            placeholder={t('contact.messagePlaceholder')}
             rows={5}
           />
         </label>
-        <button type="submit">Send Inquiry</button>
+        <button type="submit">{t('contact.submitButton')}</button>
       </form>
       {submitted && (
         <div className="form-success-popup">
-          Our team is reviewing your message and will reach out in 10-30 minutes!
+          {t('contact.successMessage')}
         </div>
       )}
     </section>

@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "packages": "Pacchetti/Prezzi",
+    "about": "Chi Siamo",
+    "contacts": "Contatti"
+  },
+  "hero": {
+    "title": "SASA SAFARIS"
+  },
+  "reviews": {
+    "title": "Storie d'Amore dai Nostri Viaggiatori"
+  },
+  "contact": {
+    "title": "♡Prenota la Tua Esperienza Safari♡",
+    "description": "Facci sapere dove vorresti viaggiare in Kenya, il tuo budget, le date di viaggio, il numero di viaggiatori, le attività preferite, o qualsiasi richiesta speciale. Più dettagli fornisci, meglio possiamo personalizzare la tua esperienza safari!",
+    "emailLabel": "La tua email",
+    "messageLabel": "Il tuo messaggio o preferenze safari",
+    "messagePlaceholder": "Dove vorresti viaggiare in Kenya? Qual è il tuo budget, date preferite, numero di viaggiatori, interessi speciali, ecc.?",
+    "submitButton": "Invia Richiesta",
+    "successMessage": "Il nostro team sta esaminando il tuo messaggio e ti contatterà in 10-30 minuti!"
+  },
+  "cookie": {
+    "title": "Consenso Cookie",
+    "description": "Utilizziamo i cookie per migliorare la tua esperienza di navigazione e fornire contenuti personalizzati. La tua privacy è importante per noi.",
+    "accept": "Accetta",
+    "decline": "Rifiuta",
+    "learnMore": "Scopri di Più"
+  },
+  "languageBanner": {
+    "availableInItalian": "Questo sito è disponibile in Italiano 🇮🇹 — Vuoi passare?",
+    "switchButton": "Passa all'Italiano"
+  }
+}

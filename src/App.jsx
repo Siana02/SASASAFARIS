@@ -15,9 +15,12 @@ import HighlightSection from './components/HighlightSection';
 import Footer from './components/Footer';
 import ThemeMessage from './components/ThemeMessage';
 import ContactWidget from './components/ContactWidget';
+import CookiePopup from './components/CookiePopup';
+import LanguageBanner from './components/LanguageBanner';
 import ViewDetails from './components/ViewDetails'; // adjust path if needed
 import Contact from "./components/Contact";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import CookiePolicy from "./components/CookiePolicy";
 import TermsOfService from "./components/TermsOfService";
 import Gallery from "./components/Gallery";
 import './styles/style.css';
@@ -55,6 +58,7 @@ function App() {
         <Route path="/viewdetails/:id" element={<ViewDetails />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/cookies" element={<CookiePolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<AboutSection />} />
@@ -65,6 +69,8 @@ function App() {
       </Routes>
       <Footer />
       <ThemeMessage />
+      <LanguageBanner />
+      <CookiePopup />
     </BrowserRouter>
   );
 }

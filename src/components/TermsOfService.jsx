@@ -124,6 +124,7 @@ export default function TermsOfService() {
           <h2>11. Privacy Policy</h2>
           <p>
             Your personal information is handled according to our <Link to="/privacy">Privacy Policy</Link>.
+            Information about cookies and tracking technologies can be found in our <Link to="/cookies">Cookie Policy</Link>.
           </p>
         </section>
 
