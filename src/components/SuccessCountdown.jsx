@@ -1,13 +1,16 @@
 import React from "react";
 import { useCounters } from "../hooks/useCounters";
+import { useLanguage } from "../hooks/useLanguage";
 
 const SuccessCountdown = () => {
   const { counts, formatCount, ref } = useCounters([20, 5, 100, 50]);
+  const { t } = useLanguage();
+  
   const labels = [
-    "Unique Destinations",
-    "Years of Experience", 
-    "Tailored Itineraries",
-    "Successful Safaris"
+    t('successCountdown.uniqueDestinations'),
+    t('successCountdown.yearsExperience'), 
+    t('successCountdown.tailoredItineraries'),
+    t('successCountdown.successfulSafaris')
   ];
 
   return (

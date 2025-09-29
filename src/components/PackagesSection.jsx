@@ -27,6 +27,7 @@ import {
   RomanticSafari,
   CoastalExperience
 } from "../assets/images";
+import { useLanguage } from "../hooks/useLanguage";
 
 const packages = [
   { id: "mara-tsavo", image: ClassicMaasaiMara, title: "Mara & Tsavo Wildlife Safari", duration: "5 Days / 4 Nights", badge: "⭐ 4.9/5 · Most Popular", badgeClass: "badge-popular", description: "Experience the iconic Big 5 across two legendary parks. Witness lions, elephants, and cheetahs in their natural habitat, with expert-guided game drives and evening sundowners.", ctaDetails: "#details-mara-tsavo" },
@@ -50,6 +51,7 @@ const PackagesSection = () => {
   const [animating, setAnimating] = useState(false);
   const [transitionDirection, setTransitionDirection] = useState(null); // "left" or "right" for animation
   const [swipeOffset, setSwipeOffset] = useState(0);
+  const { t } = useLanguage();
 
   const wrapperRef = useRef(null);
   const autoTimer = useRef(null);
@@ -236,14 +238,14 @@ const PackagesSection = () => {
     <section className="packages-section" id="packages">
       <div className="packages-section-container">
         <div className="packages-intro-container">
-          <h2 className="packages-title">Safari & Beach Packages</h2>
+          <h2 className="packages-title">{t('packages.title')}</h2>
           <p className="packages-subtitle">
-            Choose your adventure: classic safaris, family escapes, coastal relaxation and more.
+            {t('packages.subtitle')}
           </p>
         </div>
         <div
           className="packages-wrapper"
-          aria-label="Safari & Beach Packages"
+          aria-label={t('packages.title')}
           tabIndex={0}
           ref={wrapperRef}
           onMouseEnter={() => setIsHovered(true)}
@@ -280,7 +282,7 @@ const PackagesSection = () => {
                 <div className="package-description">{card.description}</div>
                 <div className="package-ctas">
                   <Link className="package-cta-primary" to="/contact">
-  Contact Us
+  {t('packages.contactUs')}
   <span className="package-cta-primary-icon">
     {/* SVG Icon */}
     <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
@@ -294,7 +296,7 @@ const PackagesSection = () => {
                     className="package-cta-secondary"
                     to={`/viewdetails/${card.id}`}
                   >
-                    View Details
+                    {t('packages.viewDetails')}
                   </Link>
                 </div>
               </div>

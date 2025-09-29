@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Phone, Mail, MessageCircleHeart, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa"; // WhatsApp icon from FontAwesome
+import { useLanguage } from "../hooks/useLanguage";
 
 const PHONE_NUMBER = "+254708482145";
 const WHATSAPP_NUMBER = "254708482145";
@@ -12,6 +13,7 @@ const emailLink = `mailto:${EMAIL_ADDRESS}`;
 
 const ContactWidget = () => {
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <div className={`contact-widget-container${open ? " open" : ""}`}>
@@ -21,21 +23,21 @@ const ContactWidget = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="contact-widget-icon whatsapp"
-          title="Chat on WhatsApp"
+          title={t('contactWidget.whatsapp')}
         >
           <FaWhatsapp size={28} />
         </a>
-        <a href={phoneLink} className="contact-widget-icon phone" title="Call us">
+        <a href={phoneLink} className="contact-widget-icon phone" title={t('contactWidget.phone')}>
           <Phone size={28} />
         </a>
-        <a href={emailLink} className="contact-widget-icon email" title="Email us">
+        <a href={emailLink} className="contact-widget-icon email" title={t('contactWidget.email')}>
           <Mail size={28} />
         </a>
       </div>
       <button
         className="contact-widget-toggle"
-        title="Contact us"
-        aria-label={open ? "Close contact options" : "Contact us"}
+        title={t('contactWidget.title')}
+        aria-label={open ? t('contactWidget.close') : t('contactWidget.title')}
         onClick={() => setOpen(!open)}
       >
         {open ? <X size={30} /> : <MessageCircleHeart size={30} />}

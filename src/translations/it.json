@@ -1,11 +1,53 @@
 {
   "nav": {
+    "home": "Home",
     "packages": "Pacchetti/Prezzi",
+    "offers": "Offerte",
     "about": "Chi Siamo",
-    "contacts": "Contatti"
+    "contacts": "Contatti",
+    "gallery": "Galleria"
   },
   "hero": {
-    "title": "SASA SAFARIS"
+    "title": "SAFARI ARTIGIANALI, SOLO PER TE",
+    "description": "SAFARI SENZA PROBLEMI PERSONALIZZATI PER LE TUE DESTINAZIONI.",
+    "viewPackages": "Visualizza Pacchetti",
+    "contactUs": "Contattaci"
+  },
+  "offers": {
+    "title": "Migliori Offerte di Questo Mese",
+    "viewDetails": "Visualizza Dettagli",
+    "discount50": "50% DI SCONTO",
+    "discount30": "30% DI SCONTO",
+    "wildebeestMigration": "Migrazione degli Gnu",
+    "coastalTour": "Da Malindi a Diani"
+  },
+  "packages": {
+    "title": "Pacchetti Safari e Mare",
+    "subtitle": "Scegli la tua avventura: safari classici, fughe familiari, relax costiero e molto altro.",
+    "viewDetails": "Visualizza Dettagli",
+    "bookNow": "Prenota Ora",
+    "contactUs": "Contattaci"
+  },
+  "about": {
+    "miniTitle": "Perché Noi?",
+    "title": "Il Tuo Safari, Reso Semplice",
+    "bestGuides": "Migliori Guide Turistiche",
+    "bestGuidesDesc": "Esperti locali che conoscono ogni gemma nascosta e rendono la tua avventura indimenticabile.",
+    "satisfaction": "Soddisfazione del Cliente",
+    "satisfactionDesc": "Facciamo di tutto per assicurarci che ogni ospite parta con un sorriso e ricordi che durano una vita.",
+    "uniqueDestinations": "Destinazioni Uniche",
+    "uniqueDestinationsDesc": "Scopri location safari uniche nel loro genere e gemme nascoste che non troverai da nessun'altra parte.",
+    "bestPrice": "Garanzia Miglior Prezzo",
+    "bestPriceDesc": "Ottieni il miglior valore per la tua avventura safari con i nostri prezzi competitivi e servizio di qualità.",
+    "flexible": "Programmazione Flessibile",
+    "flexibleDesc": "Viaggia alle tue condizioni con date flessibili e itinerari personalizzabili che si adattano al tuo programma.",
+    "sustainability": "Eco e Sostenibilità",
+    "sustainabilityDesc": "Siamo impegnati nel turismo responsabile che protegge la fauna selvatica e supporta le comunità locali.",
+    "learnMore": "Scopri di Più",
+    "showLess": "Mostra Meno",
+    "ourStoryTitle": "La Nostra Storia e Missione",
+    "ourStoryDesc1": "Da umili inizi a guidare safari in tutta l'Africa, il nostro team è appassionato di creare viaggi che celebrano la fauna selvatica, la cultura e lo spirito di avventura. La nostra missione: rendere ogni safari personale, sicuro e straordinario per ogni ospite.",
+    "ourStoryDesc2": "Che tu stia viaggiando da solo, in famiglia o con amici, i nostri itinerari su misura e la competenza locale garantiscono un'esperienza che non dimenticherai mai."
   },
   "reviews": {
     "title": "Storie d'Amore dai Nostri Viaggiatori"
@@ -19,6 +61,93 @@
     "submitButton": "Invia Richiesta",
     "successMessage": "Il nostro team sta esaminando il tuo messaggio e ti contatterà in 10-30 minuti!"
   },
+  "contactSocials": {
+    "title": "Seguici e Mettiti in Contatto"
+  },
+  "contactHours": {
+    "title": "Servizio Clienti 24/7",
+    "description": "Il nostro team è disponibile 24/7 per rispondere a qualsiasi domanda. Contattaci attraverso le opzioni qui sotto. Tempo di risposta tipico: 10–30 minuti."
+  },
+  "contactLocation": {
+    "title": "I Nostri Uffici",
+    "address": "Jacaranda, Watamu, Kenya",
+    "poBox": "P.O. Box 802802-00100"
+  },
+  "contactWidget": {
+    "title": "Contattaci",
+    "whatsapp": "Chatta su WhatsApp",
+    "phone": "Chiamaci",
+    "email": "Inviaci una email",
+    "close": "Chiudi opzioni di contatto"
+  },
+  "comingSoon": {
+    "title": "PROSSIMAMENTE // ESPANSIONE IN AFRICA ORIENTALE E OLTRE",
+    "subtitle": "Alimentato dall'innovazione, ispirato dall'Africa.",
+    "stayTuned": "Resta Sintonizzato"
+  },
+  "highlights": {
+    "valueForMoney": "Rapporto Qualità-Prezzo",
+    "securePayments": "Pagamenti Sicuri",
+    "tailoredTrips": "Viaggi su Misura",
+    "support247": "Supporto 24/7"
+  },
+  "successCountdown": {
+    "uniqueDestinations": "Destinazioni Uniche",
+    "yearsExperience": "Anni di Esperienza",
+    "tailoredItineraries": "Itinerari su Misura",
+    "successfulSafaris": "Safari di Successo"
+  },
+  "packagesSuccessCountdown": {
+    "hiddenGems": "Gemme Nascoste",
+    "safariExperts": "Esperti Safari",
+    "successRate": "Tasso di Successo",
+    "happyTravelers": "Viaggiatori Felici"
+  },
+  "footer": {
+    "brand": "SASA Safaris",
+    "description": "La tua destinazione principale per autentiche esperienze safari africane. Creando ricordi che durano una vita.",
+    "quickLinks": "Link Rapidi",
+    "home": "Home",
+    "gallery": "Galleria",
+    "packages": "Pacchetti",
+    "offers": "Offerte Speciali",
+    "about": "Chi Siamo",
+    "contacts": "Contatti",
+    "contactInfo": "Informazioni di Contatto",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Iscriviti per ricevere aggiornamenti su nuovi pacchetti e offerte",
+    "emailPlaceholder": "Inserisci la tua email",
+    "subscribe": "Iscriviti",
+    "copyright": "2024 SASA Safaris. Tutti i diritti riservati.",
+    "privacyPolicy": "Politica sulla Privacy",
+    "termsOfService": "Termini di Servizio"
+  },
+  "gallery": {
+    "title": "Ricordi"
+  },
+  "viewDetails": {
+    "packageNotFound": "Pacchetto non trovato",
+    "backToHome": "Torna alla Home",
+    "suggestedActivities": "Attività Suggerite",
+    "included": "Incluso",
+    "customizableOptions": "Opzioni Personalizzabili",
+    "notIncluded": "Non Incluso",
+    "notes": "Note",
+    "ctaText": "Vuoi personalizzare il tuo viaggio o discutere i prezzi?",
+    "contactUs": "Contattaci",
+    "backToPackages": "← Torna ai Pacchetti"
+  },
+  "themeMessage": {
+    "lightTheme": "Tema Chiaro",
+    "darkTheme": "Tema Scuro",
+    "currentlyViewing": "Stai attualmente visualizzando il",
+    "wouldLikeTry": "Vorresti provare il",
+    "yes": "Sì",
+    "no": "No"
+  },
+  "mobileNav": {
+    "switchTheme": "Cambia Tema"
+  },
   "cookie": {
     "title": "Consenso Cookie",
     "description": "Utilizziamo i cookie per migliorare la tua esperienza di navigazione e fornire contenuti personalizzati. La tua privacy è importante per noi.",
@@ -27,7 +156,9 @@
     "learnMore": "Scopri di Più"
   },
   "languageBanner": {
+    "availableInEnglish": "Questo sito è disponibile in Inglese 🇬🇧 — Cambia ora?",
     "availableInItalian": "Questo sito è disponibile in Italiano 🇮🇹 — Vuoi passare?",
-    "switchButton": "Passa all'Italiano"
+    "switchToEnglish": "Passa all'Inglese",
+    "switchToItalian": "Passa all'Italiano"
   }
 }

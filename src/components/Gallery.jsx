@@ -1,4 +1,5 @@
 import React from "react";
+import { useLanguage } from "../hooks/useLanguage";
 
 import {
   Amboseli,
@@ -30,11 +31,14 @@ const safariImages = [
   WildernessExplorer,
 ];
 
-const Gallery = () => (
-  <section className="gallery-page">
-    <h1 className="gallery-title">
-      Memories <span role="img" aria-label="love">❤️</span>
-    </h1>
+const Gallery = () => {
+  const { t } = useLanguage();
+  
+  return (
+    <section className="gallery-page">
+      <h1 className="gallery-title">
+        {t('gallery.title')} <span role="img" aria-label="love">❤️</span>
+      </h1>
     <div className="gallery-grid">
       {safariImages.map((src, idx) => (
         <div className="gallery-img-container" key={idx}>
@@ -45,5 +49,6 @@ const Gallery = () => (
     {/* Upload/infinite scroll functionality can be added later */}
   </section>
 );
+};
 
 export default Gallery;

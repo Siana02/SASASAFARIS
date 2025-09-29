@@ -9,8 +9,11 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
+import { useLanguage } from "../hooks/useLanguage";
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   // useEffect is inside the component; only ONE Footer function
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -23,10 +26,9 @@ const Footer = () => {
         <div className="footer-content">
           {/* Brand/About section */}
           <div className="footer-section">
-            <h3 className="footer-title">SASA Safaris</h3>
+            <h3 className="footer-title">{t('footer.brand')}</h3>
             <p className="footer-description">
-              Your premier destination for authentic African safari experiences.
-              Creating memories that last a lifetime.
+              {t('footer.description')}
             </p>
             <div className="social-links">
               <a
@@ -66,32 +68,32 @@ const Footer = () => {
 
           {/* Quick links */}
           <div className="footer-section">
-            <h4 className="footer-heading">Quick Links</h4>
+            <h4 className="footer-heading">{t('footer.quickLinks')}</h4>
             <ul className="footer-links">
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/">{t('footer.home')}</Link>
               </li>
               <li>
-                  <Link to="/gallery" className="footer-link">Gallery</Link>
+                  <Link to="/gallery" className="footer-link">{t('footer.gallery')}</Link>
                 </li>
               <li>
-                <Link to="/packages">Packages</Link>
+                <Link to="/packages">{t('footer.packages')}</Link>
               </li>
               <li>
-                <Link to="/offers">Special Offers</Link>
+                <Link to="/offers">{t('footer.offers')}</Link>
               </li>
               <li>
-                <Link to="/about">About Us</Link>
+                <Link to="/about">{t('footer.about')}</Link>
               </li>
               <li>
-                <Link to="/contact">Contacts</Link>
+                <Link to="/contact">{t('footer.contacts')}</Link>
               </li>
             </ul>
           </div>
 
           {/* Contact info */}
           <div className="footer-section">
-            <h4 className="footer-heading">Contact Info</h4>
+            <h4 className="footer-heading">{t('footer.contactInfo')}</h4>
             <div className="contact-info">
               <p>
                 <Mail size={16} style={{ marginRight: "8px" }} />{" "}
@@ -108,15 +110,15 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div className="footer-section">
-            <h4 className="footer-heading">Newsletter</h4>
-            <p>Subscribe to get updates on new packages and offers</p>
+            <h4 className="footer-heading">{t('footer.newsletter')}</h4>
+            <p>{t('footer.newsletterDesc')}</p>
             <div className="newsletter-form">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t('footer.emailPlaceholder')}
                 className="email-input"
               />
-              <button className="btn btn-primary">Subscribe</button>
+              <button className="btn btn-primary">{t('footer.subscribe')}</button>
             </div>
           </div>
         </div>
@@ -124,11 +126,11 @@ const Footer = () => {
         {/* Footer bottom */}
         <div className="footer-bottom">
           <div className="footer-copyright">
-            <p>&copy; 2024 SASA Safaris. All rights reserved.</p>
+            <p>&copy; {t('footer.copyright')}</p>
           </div>
           <div className="footer-legal">
-            <Link to="/privacy">Privacy Policy</Link>
-            <Link to="/terms">Terms of Service</Link>
+            <Link to="/privacy">{t('footer.privacyPolicy')}</Link>
+            <Link to="/terms">{t('footer.termsOfService')}</Link>
           </div>
         </div>
       </div>

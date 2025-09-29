@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../hooks/useLanguage";
 
 const HeroSection = () => {
   const heroTitleRef = useRef(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const animateHeroTitle = () => {
@@ -58,14 +60,14 @@ const HeroSection = () => {
         <div className="hero-overlay"></div>
       </div>
       <div className="hero-content">
-        <h1 className="hero-title" ref={heroTitleRef}>CRAFTED SAFARIS, JUST FOR YOU</h1>
-        <p className="hero-desc">SEAMLESS SAFARIS TAILORED TO MATCH YOUR DESTINATIONS.</p>
+        <h1 className="hero-title" ref={heroTitleRef}>{t('hero.title')}</h1>
+        <p className="hero-desc">{t('hero.description')}</p>
         <div className="hero-ctas">
-          <a href="#packages" className="cta-btn">View Packages</a>
+          <a href="#packages" className="cta-btn">{t('hero.viewPackages')}</a>
 
           
           <Link to="/contact" className="cta-secondary">
-            Contact Us
+            {t('hero.contactUs')}
             <span className="cta-secondary-icon">
               {/* SVG Icon */}
               <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
