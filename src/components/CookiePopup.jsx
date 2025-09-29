@@ -4,7 +4,7 @@ import { useLanguage } from '../hooks/useLanguage';
 
 const CookiePopup = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const { t } = useLanguage();
+  const { t, triggerLanguageBannerAfterCookie } = useLanguage();
 
   useEffect(() => {
     // Check if user has already made a choice
@@ -18,6 +18,12 @@ const CookiePopup = () => {
     localStorage.setItem('cookieConsent', 'accepted');
     localStorage.setItem('trackingEnabled', 'true');
     setShowPopup(false);
+    
+    // Trigger language banner if needed
+    if (triggerLanguageBannerAfterCookie) {
+      triggerLanguageBannerAfterCookie();
+    }
+    
     // Enable tracking
     initializeTracking();
   };
@@ -26,6 +32,11 @@ const CookiePopup = () => {
     localStorage.setItem('cookieConsent', 'declined');
     localStorage.setItem('trackingEnabled', 'false');
     setShowPopup(false);
+    
+    // Trigger language banner if needed
+    if (triggerLanguageBannerAfterCookie) {
+      triggerLanguageBannerAfterCookie();
+    }
   };
 
   const initializeTracking = () => {

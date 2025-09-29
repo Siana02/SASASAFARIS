@@ -50,7 +50,35 @@
     "ourStoryDesc2": "Che tu stia viaggiando da solo, in famiglia o con amici, i nostri itinerari su misura e la competenza locale garantiscono un'esperienza che non dimenticherai mai."
   },
   "reviews": {
-    "title": "Storie d'Amore dai Nostri Viaggiatori"
+    "title": "Storie d'Amore dai Nostri Viaggiatori",
+    "verified": "Verificato",
+    "reviews": [
+      {
+        "name": "Alessandro Bianchi",
+        "text": "Ho trascorso il momento migliore a Watamu, Kenya con la mia famiglia. Le spiagge erano mozzafiato e i tramonti indimenticabili.",
+        "type": "Viaggio in Famiglia"
+      },
+      {
+        "name": "Giulia Rossi",
+        "text": "Viaggiare da sola attraverso Amboseli è stato un sogno. Mi sono sentita al sicuro, ispirata e completamente in sintonia con la natura.",
+        "type": "Viaggiatrice Solitaria"
+      },
+      {
+        "name": "Lorenzo Romano",
+        "text": "La nostra luna di miele nel Masai Mara è stata oltre ogni romanticismo. I safari della fauna selvatica erano magici!",
+        "type": "Esperienza di Coppia"
+      },
+      {
+        "name": "Chiara Conti",
+        "text": "Io e le mie amiche abbiamo esplorato Tsavo e riso senza fine. Era avventura mescolata a pura gioia.",
+        "type": "Viaggio tra Amiche"
+      },
+      {
+        "name": "Matteo Moretti", 
+        "text": "Portare i miei genitori a Diani è stata la decisione migliore di sempre. Ricordi che custodiremo per sempre.",
+        "type": "Legame Familiare"
+      }
+    ]
   },
   "contact": {
     "title": "♡Prenota la Tua Esperienza Safari♡",
