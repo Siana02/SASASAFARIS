@@ -23,19 +23,28 @@ export const useLanguage = () => {
       // First visit - detect browser language
       const detectedLanguage = ['en', 'it'].includes(browserLanguage) ? browserLanguage : 'en';
       setCurrentLanguage(detectedLanguage);
-
-      // Show banner if there's a mismatch (only on first visit)
-      const bannerShown = localStorage.getItem('languageBannerShown');
-      if (!bannerShown) {
-        // If browser is Italian but site loaded in English, or vice versa
-        if (browserLanguage === 'it' && detectedLanguage === 'en') {
-          setShowLanguageBanner(true);
-        } else if (browserLanguage === 'en' && detectedLanguage === 'it') {
-          setShowLanguageBanner(true);
-        }
-      }
     }
   }, []);
+
+  const checkAndShowLanguageBanner = () => {
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+    const bannerShown = localStorage.getItem('languageBannerShown');
+    const browserLanguage = navigator.language.split('-')[0];
+    
+    // Only show banner on first visit and if there's a language mismatch
+    if (!savedLanguage && !bannerShown) {
+      if (browserLanguage === 'it' && currentLanguage === 'en') {
+        setShowLanguageBanner(true);
+      } else if (browserLanguage === 'en' && currentLanguage === 'it') {
+        setShowLanguageBanner(true);
+      }
+    }
+  };
+
+  const triggerLanguageBannerAfterCookie = () => {
+    // Called after cookie consent is given
+    checkAndShowLanguageBanner();
+  };
 
   const switchLanguage = (newLanguage) => {
     if (newLanguage && ['en', 'it'].includes(newLanguage)) {
@@ -94,6 +103,7 @@ export const useLanguage = () => {
     toggleLanguage,
     dismissBanner,
     acceptLanguageSwitch,
+    triggerLanguageBannerAfterCookie,
     t,
     isItalian: currentLanguage === 'it'
   };

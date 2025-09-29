@@ -50,7 +50,35 @@
     "ourStoryDesc2": "Whether you're traveling solo, as a family, or with friends, our tailored itineraries and local expertise guarantee an experience you'll never forget."
   },
   "reviews": {
-    "title": "Love Stories From Our Travelers"
+    "title": "Love Stories From Our Travelers",
+    "verified": "Verified",
+    "reviews": [
+      {
+        "name": "Alessandro Bianchi",
+        "text": "I had the best time in Watamu, Kenya with my family. The beaches were breathtaking, and the sunsets unforgettable.",
+        "type": "Family Trip"
+      },
+      {
+        "name": "Giulia Rossi", 
+        "text": "Traveling solo through Amboseli was a dream. I felt safe, inspired, and completely in tune with nature.",
+        "type": "Solo Traveler"
+      },
+      {
+        "name": "Lorenzo Romano",
+        "text": "Our honeymoon in the Masai Mara was beyond romantic. The wildlife safaris were magical!",
+        "type": "Couple Experience"
+      },
+      {
+        "name": "Chiara Conti",
+        "text": "My friends and I explored Tsavo and laughed endlessly. It was adventure mixed with pure joy.",
+        "type": "Friends Trip"
+      },
+      {
+        "name": "Matteo Moretti",
+        "text": "Taking my parents to Diani was the best decision ever. Memories we'll cherish forever.",
+        "type": "Family Bonding"
+      }
+    ]
   },
   "contact": {
     "title": "♡Book Your Safari Experience♡",

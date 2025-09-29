@@ -7,10 +7,15 @@ import { useLanguage } from "../hooks/useLanguage";
 const MobileNav = () => {
   const { isOpen, mobileNavRef, closeMenu } = useMobileNav();
   const { toggleTheme } = useTheme();
-  const { t } = useLanguage();
+  const { t, toggleLanguage, currentLanguage } = useLanguage();
 
   const handleThemeSwitch = () => {
     toggleTheme();
+    closeMenu();
+  };
+
+  const handleLanguageSwitch = () => {
+    toggleLanguage();
     closeMenu();
   };
 
@@ -44,6 +49,11 @@ const MobileNav = () => {
         </li>
         <li>
           <Link to="/contact" onClick={handleLinkClick}>{t('nav.contacts')}</Link>
+        </li>
+        <li>
+          <button onClick={handleLanguageSwitch} aria-label="Switch Language">
+            {currentLanguage === 'en' ? '🇮🇹 IT' : '🇬🇧 EN'}
+          </button>
         </li>
         <li>
           <button onClick={handleThemeSwitch} aria-label={t('mobileNav.switchTheme')}>

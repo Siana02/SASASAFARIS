@@ -1,37 +1,16 @@
 import React from "react";
 import { Star } from "lucide-react";
 import { useLanguage } from "../hooks/useLanguage";
-
-const reviews = [
-  {
-    name: "Alessandro Bianchi",
-    text: "I had the best time in Watamu, Kenya with my family. The beaches were breathtaking, and the sunsets unforgettable.",
-    type: "Family Trip",
-  },
-  {
-    name: "Giulia Rossi",
-    text: "Traveling solo through Amboseli was a dream. I felt safe, inspired, and completely in tune with nature.",
-    type: "Solo Traveler",
-  },
-  {
-    name: "Lorenzo Romano",
-    text: "Our honeymoon in the Masai Mara was beyond romantic. The wildlife safaris were magical!",
-    type: "Couple Experience",
-  },
-  {
-    name: "Chiara Conti",
-    text: "My friends and I explored Tsavo and laughed endlessly. It was adventure mixed with pure joy.",
-    type: "Friends Trip",
-  },
-  {
-    name: "Matteo Moretti",
-    text: "Taking my parents to Diani was the best decision ever. Memories we'll cherish forever.",
-    type: "Family Bonding",
-  },
-];
+import enTranslations from '../translations/en.json';
+import itTranslations from '../translations/it.json';
 
 export default function ReviewSection() {
-  const { t } = useLanguage();
+  const { t, currentLanguage } = useLanguage();
+  
+  // Get reviews from the appropriate translation file
+  const translations = currentLanguage === 'it' ? itTranslations : enTranslations;
+  const reviews = translations.reviews.reviews;
+  
   // Duplicate reviews for seamless infinite loop
   const duplicatedReviews = [...reviews, ...reviews];
 
@@ -53,7 +32,7 @@ export default function ReviewSection() {
               </div>
               <div className="review-footer">
                 <span className="review-name">— {review.name}</span>
-                <span className="verified-badge">✔ Verified</span>
+                <span className="verified-badge">✔ {t('reviews.verified')}</span>
               </div>
               <p className="review-type">{review.type}</p>
             </div>
