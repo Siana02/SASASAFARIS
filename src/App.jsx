@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 import ThemeMessage from './components/ThemeMessage';
 import ContactWidget from './components/ContactWidget';
 import CookiePopup from './components/CookiePopup';
+import LanguageBanner from './components/LanguageBanner';
 import ViewDetails from './components/ViewDetails'; // adjust path if needed
 import Contact from "./components/Contact";
 import PrivacyPolicy from "./components/PrivacyPolicy";
@@ -68,6 +69,7 @@ function App() {
       </Routes>
       <Footer />
       <ThemeMessage />
+      <LanguageBanner />
       <CookiePopup />
     </BrowserRouter>
   );

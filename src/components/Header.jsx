@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useMobileNav } from "../hooks/useMobileNav";
 import { useTheme } from "../hooks/useTheme";
+import { useLanguage } from "../hooks/useLanguage";
 import { FaviconPng } from "../assets/images";
 
 const Header = () => {
   const { isOpen, toggleMenu } = useMobileNav();
   const { toggleTheme } = useTheme();
+  const { toggleLanguage, currentLanguage, t } = useLanguage();
 
   return (
     <>
@@ -17,11 +19,16 @@ const Header = () => {
         <div className="header-title">SASA SAFARIS</div>
         <nav className="nav desktop-nav">
           <ul className="nav-links">
-            <li><a href="#packages">Packages/Pricing</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#packages">{t('nav.packages')}</a></li>
+            <li><a href="#about">{t('nav.about')}</a></li>
             <li>
-  <Link to="/contact">Contacts</Link>
+  <Link to="/contact">{t('nav.contacts')}</Link>
 </li>
+            <li>
+              <button onClick={toggleLanguage} id="language-switcher" aria-label="Switch Language">
+                {currentLanguage === 'en' ? '🇮🇹' : '🇬🇧'}
+              </button>
+            </li>
             <li>
               <button onClick={toggleTheme} id="theme-switcher" aria-label="Switch Theme">
                 <i className="fas fa-adjust"></i>
@@ -53,14 +60,23 @@ const Header = () => {
         <div className="menu-divider"></div>
         <ul className="mobile-nav-list">
           <li>
-            <a href="#packages" onClick={toggleMenu}>Packages / Pricing</a>
+            <a href="#packages" onClick={toggleMenu}>{t('nav.packages')}</a>
           </li>
           <li>
-            <a href="#about" onClick={toggleMenu}>About</a>
+            <a href="#about" onClick={toggleMenu}>{t('nav.about')}</a>
           </li>
           <li>
-  <Link to="/contact">Contacts</Link>
+  <Link to="/contact">{t('nav.contacts')}</Link>
 </li>
+          <li>
+            <button
+              onClick={() => { toggleLanguage(); toggleMenu(); }}
+              id="language-switcher-mobile"
+              aria-label="Switch Language"
+            >
+              {currentLanguage === 'en' ? '🇮🇹 IT' : '🇬🇧 EN'}
+            </button>
+          </li>
           <li>
             <button
               onClick={() => { toggleTheme(); toggleMenu(); }}

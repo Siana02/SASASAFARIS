@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../hooks/useLanguage';
 
 const CookiePopup = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     // Check if user has already made a choice
@@ -68,20 +70,19 @@ const CookiePopup = () => {
   return (
     <div className="cookie-popup-overlay">
       <div className="cookie-popup">
-        <h3>Cookie Consent</h3>
+        <h3>{t('cookie.title')}</h3>
         <p>
-          We use cookies to enhance your browsing experience and provide personalized content. 
-          Your privacy is important to us.
+          {t('cookie.description')}
         </p>
         <div className="cookie-popup-buttons">
           <button onClick={handleAccept} className="cookie-btn accept">
-            Accept
+            {t('cookie.accept')}
           </button>
           <button onClick={handleDecline} className="cookie-btn decline">
-            Decline
+            {t('cookie.decline')}
           </button>
           <Link to="/cookies" className="cookie-btn learn-more" onClick={() => setShowPopup(false)}>
-            Learn More
+            {t('cookie.learnMore')}
           </Link>
         </div>
       </div>

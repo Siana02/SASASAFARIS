@@ -1,5 +1,6 @@
 import React from "react";
 import { Star } from "lucide-react";
+import { useLanguage } from "../hooks/useLanguage";
 
 const reviews = [
   {
@@ -30,13 +31,14 @@ const reviews = [
 ];
 
 export default function ReviewSection() {
+  const { t } = useLanguage();
   // Duplicate reviews for seamless infinite loop
   const duplicatedReviews = [...reviews, ...reviews];
 
   return (
     <section className="review-section">
       {/* Title */}
-      <h2 className="review-title">Love Stories From Our Travelers</h2>
+      <h2 className="review-title">{t('reviews.title')}</h2>
 
       {/* Review Container */}
       <div className="review-carousel">

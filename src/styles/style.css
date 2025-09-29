@@ -3482,3 +3482,121 @@ font-style: Bold;
     justify-content: center;
   }
 }
+
+/* ===== Language Switcher Styles ===== */
+#language-switcher,
+#language-switcher-mobile {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--cta);
+  margin-right: 0.5rem;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  transition: all 0.2s ease;
+}
+
+#language-switcher:hover,
+#language-switcher-mobile:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
+}
+
+#language-switcher-mobile {
+  margin-right: 0;
+  margin-left: 0.2rem;
+  font-size: 1rem;
+}
+
+/* ===== Language Banner Styles ===== */
+.language-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(30, 144, 255, 0.95);
+  backdrop-filter: blur(4px);
+  animation: slideDown 0.3s ease-out;
+}
+
+.language-banner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.language-banner-text {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.language-banner-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.language-banner-btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.language-banner-btn.accept {
+  background: white;
+  color: #1e90ff;
+}
+
+.language-banner-btn.accept:hover {
+  background: #f0f8ff;
+  transform: translateY(-1px);
+}
+
+.language-banner-btn.dismiss {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.language-banner-btn.dismiss:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideDown {
+  from { 
+    transform: translateY(-100%); 
+  }
+  to { 
+    transform: translateY(0); 
+  }
+}
+
+@media (max-width: 600px) {
+  .language-banner-content {
+    padding: 0.5rem 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .language-banner-text {
+    font-size: 0.8rem;
+  }
+}
