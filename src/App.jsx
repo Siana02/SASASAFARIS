@@ -35,7 +35,7 @@ function HomePage() {
         <ReviewSection />
         <ContactFormSection />
         <ContactSocials />
-        <Comingsoon />
+        <ComingSoon />
         <HighlightSection />
       </main>
       
