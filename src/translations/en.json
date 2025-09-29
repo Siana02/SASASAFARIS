@@ -1,11 +1,51 @@
 {
   "nav": {
+    "home": "Home",
     "packages": "Packages/Pricing",
+    "offers": "Offers",
     "about": "About",
-    "contacts": "Contacts"
+    "contacts": "Contacts",
+    "gallery": "Gallery"
   },
   "hero": {
-    "title": "SASA SAFARIS"
+    "title": "CRAFTED SAFARIS, JUST FOR YOU",
+    "description": "SEAMLESS SAFARIS TAILORED TO MATCH YOUR DESTINATIONS.",
+    "viewPackages": "View Packages",
+    "contactUs": "Contact Us"
+  },
+  "offers": {
+    "title": "Best Offers This Month",
+    "viewDetails": "View Details",
+    "discount50": "50% OFF",
+    "discount30": "30% OFF",
+    "wildebeestMigration": "Wildebeest Migration",
+    "coastalTour": "Malindi to Diani"
+  },
+  "packages": {
+    "title": "Our Safari Packages",
+    "viewDetails": "View Details",
+    "bookNow": "Book Now"
+  },
+  "about": {
+    "miniTitle": "Why Us?",
+    "title": "Your Safari, Made Simple",
+    "bestGuides": "Best Tour Guides",
+    "bestGuidesDesc": "Local experts who know every hidden gem and make your adventure unforgettable.",
+    "satisfaction": "Client Satisfaction",
+    "satisfactionDesc": "We go above and beyond to ensure every guest leaves with a smile and lifelong memories.",
+    "uniqueDestinations": "Unique Destinations",
+    "uniqueDestinationsDesc": "Discover one-of-a-kind safari locations and hidden gems you won't find anywhere else.",
+    "bestPrice": "Best Price Guarantee",
+    "bestPriceDesc": "Get the best value for your safari adventure with our competitive pricing and quality service.",
+    "flexible": "Flexible Scheduling",
+    "flexibleDesc": "Travel on your terms with flexible dates and customizable itineraries that fit your schedule.",
+    "sustainability": "Eco & Sustainability",
+    "sustainabilityDesc": "We're committed to responsible tourism that protects wildlife and supports local communities.",
+    "learnMore": "Learn More",
+    "showLess": "Show Less",
+    "ourStoryTitle": "Our Story & Mission",
+    "ourStoryDesc1": "From humble beginnings to leading safaris across Africa, our team is passionate about crafting journeys that celebrate wildlife, culture, and the spirit of adventure. Our mission: to make every safari personal, safe, and extraordinary for every guest.",
+    "ourStoryDesc2": "Whether you're traveling solo, as a family, or with friends, our tailored itineraries and local expertise guarantee an experience you'll never forget."
   },
   "reviews": {
     "title": "Love Stories From Our Travelers"
@@ -19,6 +59,93 @@
     "submitButton": "Send Inquiry",
     "successMessage": "Our team is reviewing your message and will reach out in 10-30 minutes!"
   },
+  "contactSocials": {
+    "title": "Follow Us & Get in Touch"
+  },
+  "contactHours": {
+    "title": "24/7 Customer Service",
+    "description": "Our team is available 24/7 to answer any queries. Contact us through the options below. Typical response time: 10–30 minutes."
+  },
+  "contactLocation": {
+    "title": "Our Offices",
+    "address": "Jacaranda, Watamu, Kenya",
+    "poBox": "P.O. Box 802802-00100"
+  },
+  "contactWidget": {
+    "title": "Contact us",
+    "whatsapp": "Chat on WhatsApp",
+    "phone": "Call us",
+    "email": "Email us",
+    "close": "Close contact options"
+  },
+  "comingSoon": {
+    "title": "COMING SOON // EXPANDING TO EAST AFRICA & BEYOND",
+    "subtitle": "Powered by innovation, inspired by Africa.",
+    "stayTuned": "Stay Tuned"
+  },
+  "highlights": {
+    "valueForMoney": "Value for Money",
+    "securePayments": "Secure Payments",
+    "tailoredTrips": "Tailored Trips",
+    "support247": "24/7 Support"
+  },
+  "successCountdown": {
+    "uniqueDestinations": "Unique Destinations",
+    "yearsExperience": "Years of Experience",
+    "tailoredItineraries": "Tailored Itineraries",
+    "successfulSafaris": "Successful Safaris"
+  },
+  "packagesSuccessCountdown": {
+    "hiddenGems": "Hidden Gems",
+    "safariExperts": "Safari Experts",
+    "successRate": "Success Rate",
+    "happyTravelers": "Happy Travelers"
+  },
+  "footer": {
+    "brand": "SASA Safaris",
+    "description": "Your premier destination for authentic African safari experiences. Creating memories that last a lifetime.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "gallery": "Gallery",
+    "packages": "Packages",
+    "offers": "Special Offers",
+    "about": "About Us",
+    "contacts": "Contacts",
+    "contactInfo": "Contact Info",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Subscribe to get updates on new packages and offers",
+    "emailPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "copyright": "2024 SASA Safaris. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "gallery": {
+    "title": "Memories"
+  },
+  "viewDetails": {
+    "packageNotFound": "Package not found",
+    "backToHome": "Back to Home",
+    "suggestedActivities": "Suggested Activities",
+    "included": "Included",
+    "customizableOptions": "Customizable Options",
+    "notIncluded": "Not Included",
+    "notes": "Notes",
+    "ctaText": "Want to customize your journey or discuss pricing?",
+    "contactUs": "Contact us",
+    "backToPackages": "← Back to Packages"
+  },
+  "themeMessage": {
+    "lightTheme": "Light Theme",
+    "darkTheme": "Dark Theme",
+    "currentlyViewing": "You are currently viewing the",
+    "wouldLikeTry": "Would you like to try the",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "mobileNav": {
+    "switchTheme": "Switch Theme"
+  },
   "cookie": {
     "title": "Cookie Consent",
     "description": "We use cookies to enhance your browsing experience and provide personalized content. Your privacy is important to us.",
@@ -27,7 +154,9 @@
     "learnMore": "Learn More"
   },
   "languageBanner": {
-    "availableInItalian": "This website is available in English 🇬🇧 — Switch now?",
-    "switchButton": "Switch to English"
+    "availableInEnglish": "This website is available in English 🇬🇧 — Switch now?",
+    "availableInItalian": "This website is available in Italian 🇮🇹 — Switch now?",
+    "switchToEnglish": "Switch to English",
+    "switchToItalian": "Switch to Italian"
   }
 }

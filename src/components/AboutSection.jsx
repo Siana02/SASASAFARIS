@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { Footprints, DollarSign, Calendar, Scissors, Smile, MapPin } from "lucide-react";
+import { useLanguage } from "../hooks/useLanguage";
 
 const AboutSection = () => {
   const [expanded, setExpanded] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <section className="about-section" id="about">
       {/* Header */}
       <div className="about-header">
-        <div className="about-mini-title">Why Us?</div>
-        <h2 className="about-main-title">Your Safari, Made Simple</h2>
+        <div className="about-mini-title">{t('about.miniTitle')}</div>
+        <h2 className="about-main-title">{t('about.title')}</h2>
       </div>
       
       {/* Features Grid */}
@@ -19,9 +21,9 @@ const AboutSection = () => {
           <div className="about-icon-circle">
             <Footprints className="about-icon" strokeWidth={2.5} />
           </div>
-          <div className="about-feature-title">Best Tour Guides</div>
+          <div className="about-feature-title">{t('about.bestGuides')}</div>
           <div className="about-feature-desc">
-            Local experts who know every hidden gem and make your adventure unforgettable.
+            {t('about.bestGuidesDesc')}
           </div>
         </div>
 
@@ -30,9 +32,9 @@ const AboutSection = () => {
           <div className="about-icon-circle">
             <Smile className="about-icon" strokeWidth={2.5} />
           </div>
-          <div className="about-feature-title">Client Satisfaction</div>
+          <div className="about-feature-title">{t('about.satisfaction')}</div>
           <div className="about-feature-desc">
-            We go above and beyond to ensure every guest leaves with a smile and lifelong memories.
+            {t('about.satisfactionDesc')}
           </div>
         </div>
 
@@ -41,7 +43,7 @@ const AboutSection = () => {
           <div className="about-icon-circle">
             <MapPin className="about-icon" strokeWidth={2.5} />
           </div>
-          <div className="about-feature-title">Unique Destinations</div>
+          <div className="about-feature-title">{t('about.uniqueDestinations')}</div>
           <div className="about-feature-desc">
             Discover one-of-a-kind safari locations and hidden gems you won’t find anywhere else.
           </div>

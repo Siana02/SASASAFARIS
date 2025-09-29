@@ -1,10 +1,14 @@
 import React from "react";
 import { WildebeestMigration, KenyanCoast } from "../assets/images";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../hooks/useLanguage";
 
-const OfferSection = () => (
-  <section className="best-offers-section" id="best-offers">
-    <h2 className="best-offers-title">Best Offers This Month</h2>
+const OfferSection = () => {
+  const { t } = useLanguage();
+  
+  return (
+    <section className="best-offers-section" id="best-offers">
+      <h2 className="best-offers-title">{t('offers.title')}</h2>
     <div className="best-offers-cards">
       {/* Offer Card: Masai Mara */}
       <div className="offer-card">
@@ -19,13 +23,13 @@ const OfferSection = () => (
               <span className="new-price">€250</span>
             </span>
           </div>
-          <div className="offer-main-text">50% OFF</div>
-          <div className="offer-desc">Wildebeest Migration</div>
+          <div className="offer-main-text">{t('offers.discount50')}</div>
+          <div className="offer-desc">{t('offers.wildebeestMigration')}</div>
           <Link
       className="offer-details-btn"
       to={`/viewdetails/wildebeest-migration`}
     >
-      View Details
+      {t('offers.viewDetails')}
     </Link>
         </div>
       </div>
@@ -42,18 +46,19 @@ const OfferSection = () => (
               <span className="new-price">€210</span>
             </span>
           </div>
-          <div className="offer-main-text">30% OFF</div>
-          <div className="offer-desc">Malindi to Diani</div>
+          <div className="offer-main-text">{t('offers.discount30')}</div>
+          <div className="offer-desc">{t('offers.coastalTour')}</div>
           <Link
   className="offer-details-btn"
   to={`/viewdetails/coast-offer`}
 >
-  View Details
+  {t('offers.viewDetails')}
 </Link>
         </div>
       </div>
     </div>
   </section>
 );
+};
 
 export default OfferSection;
