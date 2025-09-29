@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 
 const LanguageBanner = () => {
-  const { showLanguageBanner, acceptLanguageSwitch, dismissBanner } = useLanguage();
+  const { showLanguageBanner, acceptLanguageSwitch, dismissBanner, t } = useLanguage();
   
   if (!showLanguageBanner) return null;
 
@@ -11,10 +11,12 @@ const LanguageBanner = () => {
   const isItalianBrowser = browserLanguage === 'it';
   
   const bannerText = isItalianBrowser 
-    ? "Questo sito è disponibile in Italiano 🇮🇹 — Vuoi passare?"
-    : "This website is available in English 🇬🇧 — Switch now?";
+    ? t('languageBanner.availableInItalian')
+    : t('languageBanner.availableInEnglish');
     
-  const switchButtonText = isItalianBrowser ? "Passa all'Italiano" : "Switch to English";
+  const switchButtonText = isItalianBrowser 
+    ? t('languageBanner.switchToItalian')
+    : t('languageBanner.switchToEnglish');
 
   return (
     <div className="language-banner">

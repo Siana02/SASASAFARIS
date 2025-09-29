@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import MobileNav from './components/MobileNav';
@@ -17,13 +17,15 @@ import ThemeMessage from './components/ThemeMessage';
 import ContactWidget from './components/ContactWidget';
 import CookiePopup from './components/CookiePopup';
 import LanguageBanner from './components/LanguageBanner';
-import ViewDetails from './components/ViewDetails'; // adjust path if needed
-import Contact from "./components/Contact";
-import PrivacyPolicy from "./components/PrivacyPolicy";
-import CookiePolicy from "./components/CookiePolicy";
-import TermsOfService from "./components/TermsOfService";
-import Gallery from "./components/Gallery";
 import './styles/style.css';
+
+// Lazy load less critical components
+const ViewDetails = React.lazy(() => import('./components/ViewDetails'));
+const Contact = React.lazy(() => import('./components/Contact'));
+const PrivacyPolicy = React.lazy(() => import('./components/PrivacyPolicy'));
+const CookiePolicy = React.lazy(() => import('./components/CookiePolicy'));
+const TermsOfService = React.lazy(() => import('./components/TermsOfService'));
+const Gallery = React.lazy(() => import('./components/Gallery'));
 
 // Main landing page content
 function HomePage() {
@@ -53,20 +55,20 @@ function App() {
       <Header />
       <MobileNav />
       <ContactWidget />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/viewdetails/:id" element={<ViewDetails />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
-        <Route path="/cookies" element={<CookiePolicy />} />
-        <Route path="/terms" element={<TermsOfService />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/about" element={<AboutSection />} />
-        <Route path="/packages" element={<PackagesSection />} />
-        <Route path="/offers" element={<OfferSection />} />
-        {/* add other routes as needed */}
-        {/* add other routes as needed */}
-      </Routes>
+      <Suspense fallback={<div style={{ textAlign: 'center', padding: '2rem' }}>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/viewdetails/:id" element={<ViewDetails />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/cookies" element={<CookiePolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/about" element={<AboutSection />} />
+          <Route path="/packages" element={<PackagesSection />} />
+          <Route path="/offers" element={<OfferSection />} />
+        </Routes>
+      </Suspense>
       <Footer />
       <ThemeMessage />
       <LanguageBanner />

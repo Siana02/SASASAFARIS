@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { packagesData } from "../data/packagesData";
 import { useLanguage } from "../hooks/useLanguage";
 
 const ViewDetails = () => {
@@ -12,9 +11,10 @@ const ViewDetails = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const packageDetails = packagesData.find(pkg => pkg.id === id);
-
-  if (!packageDetails) {
+  // Get package details from translations
+  const packageDetails = t(`packagesData.${id}`);
+  
+  if (!packageDetails || packageDetails === `packagesData.${id}`) {
     return (
       <div style={{ textAlign: "center", marginTop: "3rem" }}>
         <h2>{t('viewDetails.packageNotFound')}</h2>
@@ -23,54 +23,54 @@ const ViewDetails = () => {
     );
   }
 
-  const {
-    title,
-    overview,
-    activities,
-    included,
-    customizable,
-    notIncluded,
-    notes
-  } = packageDetails;
+  // Handle the case where packageDetails is an object (from translation)
+  const getDetailProperty = (property) => {
+    return t(`packagesData.${id}.${property}`);
+  };
+
+  const getDetailArray = (property) => {
+    const item = t(`packagesData.${id}.${property}`);
+    return Array.isArray(item) ? item : [];
+  };
 
   return (
     <div className={`view-details-page package-bg-${id}`}>
-      <h1>{title}</h1>
-      <p>{overview}</p>
+      <h1>{getDetailProperty('title')}</h1>
+      <p>{getDetailProperty('overview')}</p>
 
       <h2>{t('viewDetails.suggestedActivities')}</h2>
       <ul>
-        {activities.map((activity, idx) => (
+        {getDetailArray('activities').map((activity, idx) => (
           <li key={idx}>{activity}</li>
         ))}
       </ul>
 
       <h2>{t('viewDetails.included')}</h2>
       <ul>
-        {included.map((item, idx) => (
+        {getDetailArray('included').map((item, idx) => (
           <li key={idx}>{item}</li>
         ))}
       </ul>
 
       <h2>{t('viewDetails.customizableOptions')}</h2>
       <ul>
-        {customizable.map((item, idx) => (
+        {getDetailArray('customizable').map((item, idx) => (
           <li key={idx}>{item}</li>
         ))}
       </ul>
 
       <h2>{t('viewDetails.notIncluded')}</h2>
       <ul>
-        {notIncluded.map((item, idx) => (
+        {getDetailArray('notIncluded').map((item, idx) => (
           <li key={idx}>{item}</li>
         ))}
       </ul>
 
-      {notes && notes.length > 0 && (
+      {getDetailArray('notes').length > 0 && (
         <>
           <h2>{t('viewDetails.notes')}</h2>
           <ul>
-            {notes.map((note, idx) => (
+            {getDetailArray('notes').map((note, idx) => (
               <li key={idx}>{note}</li>
             ))}
           </ul>

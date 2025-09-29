@@ -20,12 +20,16 @@ const CookiePopup = () => {
     setShowPopup(false);
     // Enable tracking
     initializeTracking();
+    // Trigger event for language banner
+    window.dispatchEvent(new CustomEvent('cookieConsentGiven'));
   };
 
   const handleDecline = () => {
     localStorage.setItem('cookieConsent', 'declined');
     localStorage.setItem('trackingEnabled', 'false');
     setShowPopup(false);
+    // Still trigger language banner event even on decline
+    window.dispatchEvent(new CustomEvent('cookieConsentGiven'));
   };
 
   const initializeTracking = () => {

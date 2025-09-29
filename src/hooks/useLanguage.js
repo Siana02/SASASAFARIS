@@ -24,9 +24,11 @@ export const useLanguage = () => {
       const detectedLanguage = ['en', 'it'].includes(browserLanguage) ? browserLanguage : 'en';
       setCurrentLanguage(detectedLanguage);
 
-      // Show banner if there's a mismatch (only on first visit)
+      // Show banner if there's a mismatch (only after cookie consent is given)
+      const cookieConsent = localStorage.getItem('cookieConsent');
       const bannerShown = localStorage.getItem('languageBannerShown');
-      if (!bannerShown) {
+      
+      if (cookieConsent && !bannerShown) {
         // If browser is Italian but site loaded in English, or vice versa
         if (browserLanguage === 'it' && detectedLanguage === 'en') {
           setShowLanguageBanner(true);
@@ -36,6 +38,38 @@ export const useLanguage = () => {
       }
     }
   }, []);
+
+  // Listen for cookie consent to trigger banner
+  useEffect(() => {
+    const checkCookieConsent = () => {
+      const cookieConsent = localStorage.getItem('cookieConsent');
+      const bannerShown = localStorage.getItem('languageBannerShown');
+      const savedLanguage = localStorage.getItem('preferredLanguage');
+      const browserLanguage = navigator.language.split('-')[0];
+      
+      if (cookieConsent && !bannerShown && !savedLanguage) {
+        // Show banner after cookie consent if there's language mismatch
+        if ((browserLanguage === 'it' && currentLanguage === 'en') ||
+            (browserLanguage === 'en' && currentLanguage === 'it')) {
+          setShowLanguageBanner(true);
+        }
+      }
+    };
+
+    // Check immediately
+    checkCookieConsent();
+
+    // Listen for storage changes (cookie consent)
+    window.addEventListener('storage', checkCookieConsent);
+    
+    // Custom event listener for when cookie consent is given on same tab
+    window.addEventListener('cookieConsentGiven', checkCookieConsent);
+
+    return () => {
+      window.removeEventListener('storage', checkCookieConsent);
+      window.removeEventListener('cookieConsentGiven', checkCookieConsent);
+    };
+  }, [currentLanguage]);
 
   const switchLanguage = (newLanguage) => {
     if (newLanguage && ['en', 'it'].includes(newLanguage)) {

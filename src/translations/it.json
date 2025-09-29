@@ -160,5 +160,263 @@
     "availableInItalian": "Questo sito è disponibile in Italiano 🇮🇹 — Vuoi passare?",
     "switchToEnglish": "Passa all'Inglese",
     "switchToItalian": "Passa all'Italiano"
+  },
+  "packagesData": {
+    "mara-tsavo": {
+      "title": "Safari Fauna Mara & Tsavo",
+      "duration": "5 Giorni / 4 Notti",
+      "badge": "⭐ 4.9/5 · Più Popolare",
+      "description": "Vivi l'esperienza dei leggendari Big 5 in due parchi iconici. Osserva leoni, elefanti e ghepardi nel loro habitat naturale, con safari guidati da esperti e aperitivi al tramonto.",
+      "overview": "Esplora due parchi iconici in un viaggio — dalle pianure ondulate del Maasai Mara ai paesaggi aspri del Tsavo. Questo safari è ricco di fauna dei Big 5 e offre contrasti scenici drammatici.",
+      "activities": [
+        "Safari mattutini e serali",
+        "Aperitivi nella boscaglia",
+        "Safari a piedi guidati (dove consentito)",
+        "Visita culturale al villaggio (Maasai)",
+        "Osservazione degli uccelli",
+        "Soste fotografiche panoramiche",
+        "Giro in mongolfiera opzionale"
+      ],
+      "included": [
+        "Veicolo da safari e autista-guida professionale",
+        "Tariffe di ingresso ai parchi (Maasai Mara & Tsavo)",
+        "Alloggio e pasti (lodge/campo di fascia media)",
+        "Safari secondo programma",
+        "Transfer aeroporto / lodge"
+      ],
+      "customizable": [
+        "Upgrade a campo di lusso o lodge tendato",
+        "Opzioni campeggio / budget",
+        "Safari notturni (se consentito)",
+        "Volo domestico invece di trasferimenti su strada",
+        "Cambiare ordine o durata delle attività"
+      ],
+      "notIncluded": [
+        "Voli internazionali",
+        "Visti e assicurazione di viaggio",
+        "Spese personali, mance, souvenir",
+        "Bevande fuori dai pasti"
+      ],
+      "notes": [
+        "Questa è una lista suggerita di attività — sei libero di scegliere solo quello che ti piace.",
+        "Puoi accorciare o estendere il viaggio o cambiare altri parchi o destinazioni.",
+        "I giri in mongolfiera sono soggetti a disponibilità e condizioni meteorologiche."
+      ]
+    },
+    "amboseli-chyulu": {
+      "title": "Esploratore Amboseli & Chyulu",
+      "duration": "4 Giorni / 3 Notti",
+      "badge": "⭐ 4.8/5 · Scelta Avventura",
+      "description": "Ammira i maestosi elefanti di Amboseli sullo sfondo del Monte Kilimanjaro ed esplora i sentieri nascosti delle Chyulu Hills per un'avventura nella fauna selvatica serena.",
+      "overview": "Osserva maestosi elefanti sullo sfondo del Monte Kilimanjaro, poi esplora i misteriosi paesaggi lavici delle Chyulu Hills su sentieri e scenari guidati.",
+      "activities": [
+        "Safari ad Amboseli",
+        "Caccia fotografica serale",
+        "Passeggiate guidate sui sentieri lavici Chyulu",
+        "Picnic nella boscaglia",
+        "Osservazione degli uccelli",
+        "Tour culturale della comunità Maasai",
+        "Trekking o ciclismo sul terreno Chyulu"
+      ],
+      "included": [
+        "Veicolo da safari e guida esperta",
+        "Tariffe di parco e accesso",
+        "Alloggio e pasti (lodge safari)",
+        "Trasferimenti tra i parchi"
+      ],
+      "customizable": [
+        "Upgrade classe lodge",
+        "Sostituire strada con segmenti aerei leggeri",
+        "Aggiungere tour culturali o del villaggio",
+        "Estendere soggiorno a Chyulu o nelle vicinanze"
+      ],
+      "notIncluded": [
+        "Voli internazionali",
+        "Visti e assicurazione",
+        "Costi personali e mance"
+      ],
+      "notes": [
+        "Viaggio flessibile: puoi dedicare più tempo a Chyulu o Amboseli come preferisci.",
+        "Alcuni sentieri a piedi potrebbero dipendere dal tempo."
+      ]
+    },
+    "family-safari-beach": {
+      "title": "Safari Famiglia & Vacanza al Mare",
+      "duration": "7 Giorni / 6 Notti",
+      "badge": "⭐ 4.9/5 · Favorito Famiglie",
+      "description": "Un perfetto mix familiare di emozioni safari e relax in spiaggia. Goditi safari guidati sicuri, costruzione di castelli di sabbia a Diani Beach e attività costiere divertenti per tutte le età.",
+      "overview": "Mescola avventura nella fauna selvatica con rilassamento costiero — perfetto per famiglie che vogliono il brivido dei safari e la calma della spiaggia in una fuga.",
+      "activities": [
+        "Safari adatti alle famiglie",
+        "Esperienze culturali per bambini",
+        "Giornate in spiaggia con snorkeling e nuoto",
+        "Costruzione di castelli di sabbia e giochi da spiaggia",
+        "Tour in barca nel parco marino",
+        "Pesca costiera / crociera in dhow",
+        "Passeggiate nella fauna selvatica per bambini"
+      ],
+      "included": [
+        "Veicolo da safari e guida per famiglie",
+        "Tariffe di parco per la parte safari",
+        "Alloggio e pasti durante il safari",
+        "Trasferimenti tra zone safari e spiaggia"
+      ],
+      "customizable": [
+        "Scegli alloggio costiero (resort, villa, ostello)",
+        "Pasti opzionali a pensione completa in spiaggia",
+        "Sport acquatici extra (kitesurf, immersioni)",
+        "Safari o escursioni aggiuntive"
+      ],
+      "notIncluded": [
+        "Voli internazionali",
+        "Alloggio costiero (se separato) salvo richiesta",
+        "Costi personali e mance"
+      ],
+      "notes": [
+        "Scegli tu quante notti trascorrere al mare vs safari.",
+        "Le attività sono flessibili — salta o sostituisci quelle che non ti piacciono."
+      ]
+    },
+    "romantic-safari": {
+      "title": "Safari Romantico & Fuga di Luna di Miele",
+      "duration": "6 Giorni / 5 Notti",
+      "badge": "⭐ 5/5 · Fuga Romantica",
+      "description": "Concediti la fuga da sogno di una coppia con lodge safari privati, cene a lume di candela sotto le stelle e tramonti tranquilli sulla spiaggia per un'esperienza romantica indimenticabile.",
+      "overview": "Progettato per coppie che cercano privacy, romanticismo e fauna selvatica — goditi lodge isolati, cene a lume di candela sotto le stelle e momenti safari intimi.",
+      "activities": [
+        "Safari privati",
+        "Cene nella boscaglia e pasti sotto le stelle",
+        "Safari al tramonto o all'alba",
+        "Aggiunta spa o benessere",
+        "Passeggiate guidate nella riserva",
+        "Tour di birdwatching e fotografia"
+      ],
+      "included": [
+        "Veicolo da safari e guida esperta",
+        "Tariffe di ingresso ai parchi",
+        "Alloggio e pasti (lodge romantici)",
+        "Trasferimenti"
+      ],
+      "customizable": [
+        "Upgrade a alloggio ultra-lusso",
+        "Aggiungi spa / extra romantici",
+        "Estendi soggiorno in spiaggia",
+        "Personalizza il ritmo secondo voi entrambi"
+      ],
+      "notIncluded": [
+        "Voli internazionali",
+        "Alcolici, mance, spese personali"
+      ],
+      "notes": [
+        "La tua luna di miele o viaggio romantico, a modo tuo — scegli solo quello che ami.",
+        "Alcuni extra (spa, cene private) potrebbero comportare costi aggiuntivi."
+      ]
+    },
+    "coastal-adventure": {
+      "title": "Avventura Costiera Keniota",
+      "duration": "5 Giorni / 4 Notti",
+      "badge": "⭐ 4.7/5 · Fuga Costiera",
+      "description": "Scopri la splendida costa del Kenya con spiagge baciate dal sole, avventure di snorkeling ed esplorazioni culturali da Watamu a Diani. Un perfetto mix di avventura e relax.",
+      "overview": "Immergiti nella costa del Kenya — culture vibranti, vita marina, spiagge incontaminate e avventure acquatiche ti aspettano da Watamu a Diani.",
+      "activities": [
+        "Snorkeling e immersioni subacquee",
+        "Crociere al tramonto in dhow",
+        "Visite al parco marino",
+        "Gite di pesca",
+        "Escursione Safari Blue (barca con fondo di vetro)",
+        "Tour culturali del villaggio e del mercato",
+        "Giri in bici lungo la costa"
+      ],
+      "included": [
+        "Trasporto tra zone costiere",
+        "Tour costieri guidati",
+        "Certi pasti durante le escursioni"
+      ],
+      "customizable": [
+        "Scegli il tuo alloggio costiero (villa, resort, budget)",
+        "Pasti a mezza pensione o pensione completa",
+        "Aggiungi estensione safari",
+        "Esperienze marine o culturali extra"
+      ],
+      "notIncluded": [
+        "Voli internazionali",
+        "Alloggio (salvo accordi)",
+        "Costi personali"
+      ],
+      "notes": [
+        "Questa è la tua fuga costiera personalizzabile — scegli la vita da spiaggia che desideri.",
+        "Alcuni sport acquatici potrebbero dipendere da maree e tempo."
+      ]
+    },
+    "wildebeest-migration": {
+      "title": "Spettacolo Migrazione Gnu",
+      "duration": "6 Giorni / 5 Notti",
+      "badge": "⭐ 5/5 · Meraviglia Naturale",
+      "description": "Testimonia una delle più grandi meraviglie naturali — la Grande Migrazione degli Gnu attraverso il Maasai Mara. Perfetto per amanti della natura che cercano dramma senza pari.",
+      "overview": "Testimonia una delle più grandi meraviglie naturali — la Grande Migrazione degli Gnu attraverso il Maasai Mara. Perfetto per amanti della natura che cercano dramma senza pari.",
+      "activities": [
+        "Safari ai guadi dei fiumi",
+        "Tour fotografici",
+        "Passeggiate guidate (dove consentito)",
+        "Giro in mongolfiera sui percorsi di migrazione",
+        "Brunch e aperitivi nella boscaglia",
+        "Osservazione degli uccelli"
+      ],
+      "included": [
+        "Veicolo da safari e guida",
+        "Tariffe di ingresso ai parchi (Maasai Mara)",
+        "Alloggio e pasti",
+        "Trasferimenti"
+      ],
+      "customizable": [
+        "Estendi soggiorno oltre finestra di migrazione",
+        "Upgrade lodge di lusso",
+        "Aggiungi viaggio collaterale al Serengeti",
+        "Cambia livello di campeggio / lodge"
+      ],
+      "notIncluded": [
+        "Voli internazionali",
+        "Visti e assicurazione",
+        "Costi personali"
+      ],
+      "notes": [
+        "Pacchetto stagionale: disponibile circa giugno–ottobre.",
+        "I tempi dei guadi sono dipendenti dalla natura—flessibilità consigliata."
+      ]
+    },
+    "coast-offer": {
+      "title": "Esploratore Costa Keniota (Offerta)",
+      "duration": "5 Giorni / 4 Notti",
+      "badge": "⭐ 4.7/5 · Offerta Speciale",
+      "description": "Esplora le gemme costiere del Kenya da Malindi, Watamu a Diani — spiagge, vita marina, cultura e relax tutto in un viaggio.",
+      "overview": "Esplora le gemme costiere del Kenya da Malindi, Watamu a Diani — spiagge, vita marina, cultura e relax tutto in un viaggio.",
+      "activities": [
+        "Relax in spiaggia e passeggiate",
+        "Snorkeling e visite al parco marino",
+        "Crociera in dhow",
+        "Tour culturali e mercati",
+        "Giri in bici costieri",
+        "Gita di un giorno a Wasini o barriere Kisite"
+      ],
+      "included": [
+        "Trasporto tra città costiere",
+        "Tour culturali e marini guidati"
+      ],
+      "customizable": [
+        "Scegli il tuo alloggio",
+        "Pasti come desiderato (mezza / pensione completa)",
+        "Aggiungi estensione safari",
+        "Sport acquatici e avventure marine extra"
+      ],
+      "notIncluded": [
+        "Voli internazionali",
+        "Alloggio salvo accordi",
+        "Shopping / mance personali"
+      ],
+      "notes": [
+        "Grande offerta che combina più città costiere in un'avventura.",
+        "Ideale per viaggiatori che vogliono mare + cultura."
+      ]
+    }
   }
 }

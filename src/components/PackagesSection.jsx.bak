@@ -29,23 +29,19 @@ import {
 } from "../assets/images";
 import { useLanguage } from "../hooks/useLanguage";
 
-const getPackagesFromTranslations = (t) => [
-  { id: "mara-tsavo", image: ClassicMaasaiMara, title: t('packagesData.mara-tsavo.title'), duration: t('packagesData.mara-tsavo.duration'), badge: t('packagesData.mara-tsavo.badge'), badgeClass: "badge-popular", description: t('packagesData.mara-tsavo.description'), ctaDetails: "#details-mara-tsavo" },
-  { id: "amboseli-chyulu", image: Amboseli, title: t('packagesData.amboseli-chyulu.title'), duration: t('packagesData.amboseli-chyulu.duration'), badge: t('packagesData.amboseli-chyulu.badge'), badgeClass: "badge-adventure", description: t('packagesData.amboseli-chyulu.description'), ctaDetails: "#details-amboseli-chyulu" },
-  { id: "family-safari-beach", image: FamilySafari, title: t('packagesData.family-safari-beach.title'), duration: t('packagesData.family-safari-beach.duration'), badge: t('packagesData.family-safari-beach.badge'), badgeClass: "badge-family", description: t('packagesData.family-safari-beach.description'), ctaDetails: "#details-family-safari-beach" },
-  { id: "romantic-safari", image: RomanticSafari, title: t('packagesData.romantic-safari.title'), duration: t('packagesData.romantic-safari.duration'), badge: t('packagesData.romantic-safari.badge'), badgeClass: "badge-romantic", description: t('packagesData.romantic-safari.description'), ctaDetails: "#details-romantic-safari" },
-  { id: "coastal-adventure", image: CoastalExperience, title: t('packagesData.coastal-adventure.title'), duration: t('packagesData.coastal-adventure.duration'), badge: t('packagesData.coastal-adventure.badge'), badgeClass: "badge-coastal", description: t('packagesData.coastal-adventure.description'), ctaDetails: "#details-coastal-adventure" }
+const packages = [
+  { id: "mara-tsavo", image: ClassicMaasaiMara, title: "Mara & Tsavo Wildlife Safari", duration: "5 Days / 4 Nights", badge: "⭐ 4.9/5 · Most Popular", badgeClass: "badge-popular", description: "Experience the iconic Big 5 across two legendary parks. Witness lions, elephants, and cheetahs in their natural habitat, with expert-guided game drives and evening sundowners.", ctaDetails: "#details-mara-tsavo" },
+  { id: "amboseli-chyulu", image: Amboseli, title: "Amboseli & Chyulu Explorer", duration: "4 Days / 3 Nights", badge: "⭐ 4.8/5 · Adventure Pick", badgeClass: "badge-adventure", description: "Marvel at Amboseli’s majestic elephants against Mount Kilimanjaro’s backdrop and explore the hidden trails of Chyulu Hills for a serene wildlife adventure.", ctaDetails: "#details-amboseli-chyulu" },
+  { id: "family-safari-beach", image: FamilySafari, title: "Family Safari & Beach Holiday", duration: "7 Days / 6 Nights", badge: "⭐ 4.9/5 · Family Favorite", badgeClass: "badge-family", description: "A perfect family mix of safari excitement and beach relaxation. Enjoy safe guided game drives, sandcastle building on Diani Beach, and fun-filled coastal activities for all ages.", ctaDetails: "#details-family-safari-beach" },
+  { id: "romantic-safari", image: RomanticSafari, title: "Romantic Safari & Honeymoon Escape", duration: "6 Days / 5 Nights", badge: "⭐ 5/5 · Romantic Getaway", badgeClass: "badge-romantic", description: "Indulge in a couple’s dream getaway with private safari lodges, candlelit dinners under the stars, and tranquil beachside sunsets for an unforgettable romantic experience.", ctaDetails: "#details-romantic-safari" },
+  { id: "coastal-adventure", image: CoastalExperience, title: "Kenyan Coastal Adventure", duration: "5 Days / 4 Nights", badge: "⭐ 4.7/5 · Coastal Escape", badgeClass: "badge-coastal", description: "Discover Kenya’s stunning coastline with sun-soaked beaches, snorkeling adventures, and cultural explorations from Watamu to Diani. A perfect blend of adventure and relaxation.", ctaDetails: "#details-coastal-adventure" }
 ];
 
 const AUTO_ADVANCE_INTERVAL = 6000;
 
-const preloadImage = (src) => {
-  return new Promise((resolve) => {
-    const img = new window.Image();
-    img.onload = resolve;
-    img.onerror = resolve; // Still resolve on error to prevent hanging
-    img.src = src;
-  });
+const preloadImage = src => {
+  const img = new window.Image();
+  img.src = src;
 };
 
 const PackagesSection = () => {
@@ -57,23 +53,16 @@ const PackagesSection = () => {
   const [swipeOffset, setSwipeOffset] = useState(0);
   const { t } = useLanguage();
 
-  // Get packages with translations
-  const packages = getPackagesFromTranslations(t);
-
   const wrapperRef = useRef(null);
   const autoTimer = useRef(null);
 
-  // Preload next/prev images with error handling
+  // Preload next/prev images
   useEffect(() => {
     const nextIdx = (deckPosition + 1) % packages.length;
     const prevIdx = (deckPosition - 1 + packages.length) % packages.length;
-    
-    // Preload images in background without blocking UI
-    Promise.allSettled([
-      preloadImage(packages[nextIdx].image),
-      preloadImage(packages[prevIdx].image)
-    ]);
-  }, [deckPosition, packages]);
+    preloadImage(packages[nextIdx].image);
+    preloadImage(packages[prevIdx].image);
+  }, [deckPosition]);
 
   // Infinite navigation
   const nextCard = useCallback(() => {
@@ -86,7 +75,7 @@ const PackagesSection = () => {
       setTransitionDirection(null);
       setSwipeOffset(0);
     }, 500); // Adjust for CSS transition duration
-  }, [animating, packages.length]);
+  }, [animating]);
 
   const prevCard = useCallback(() => {
     if (animating) return;
@@ -98,7 +87,7 @@ const PackagesSection = () => {
       setTransitionDirection(null);
       setSwipeOffset(0);
     }, 500); // Adjust for CSS transition duration
-  }, [animating, packages.length]);
+  }, [animating]);
 
   // Auto-advance
   useEffect(() => {
