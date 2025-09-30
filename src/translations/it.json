@@ -188,5 +188,37 @@
     "availableInItalian": "Questo sito è disponibile in Italiano 🇮🇹 — Vuoi passare?",
     "switchToEnglish": "Passa all'Inglese",
     "switchToItalian": "Passa all'Italiano"
+  },
+  "packagesData": {
+    "mara-tsavo": {
+      "title": "Safari Fauna Mara & Tsavo",
+      "duration": "5 Giorni / 4 Notti",
+      "badge": "⭐ 4.9/5 · Più Popolare",
+      "description": "Vivi l'esperienza dei leggendari Big 5 in due parchi iconici. Ammira leoni, elefanti e ghepardi nel loro habitat naturale, con game drive guidate da esperti e aperitivi al tramonto."
+    },
+    "amboseli-chyulu": {
+      "title": "Esploratore Amboseli & Chyulu",
+      "duration": "4 Giorni / 3 Notti", 
+      "badge": "⭐ 4.8/5 · Scelta Avventura",
+      "description": "Ammira i maestosi elefanti di Amboseli contro lo sfondo del Monte Kilimanjaro ed esplora i sentieri nascosti delle Colline Chyulu per un'avventura naturale serena."
+    },
+    "family-safari-beach": {
+      "title": "Safari Famiglia & Vacanza Mare",
+      "duration": "7 Giorni / 6 Notti",
+      "badge": "⭐ 4.9/5 · Preferito Famiglie", 
+      "description": "Un perfetto mix familiare di eccitazione safari e relax sulla spiaggia. Goditi game drive guidate sicure, costruzioni di castelli di sabbia a Diani Beach e attività costiere divertenti per tutte le età."
+    },
+    "romantic-safari": {
+      "title": "Safari Romantico & Fuga Luna di Miele",
+      "duration": "6 Giorni / 5 Notti",
+      "badge": "⭐ 5/5 · Fuga Romantica",
+      "description": "Concediti una fuga da sogno per coppie con lodge safari privati, cene a lume di candela sotto le stelle e tramonti tranquilli sulla spiaggia per un'esperienza romantica indimenticabile."
+    },
+    "coastal-adventure": {
+      "title": "Avventura Costiera Keniota", 
+      "duration": "5 Giorni / 4 Notti",
+      "badge": "⭐ 4.7/5 · Fuga Costiera",
+      "description": "Scopri la splendida costa del Kenya con spiagge baciate dal sole, avventure di snorkeling ed esplorazioni culturali da Watamu a Diani. Un perfetto mix di avventura e relax."
+    }
   }
 }
