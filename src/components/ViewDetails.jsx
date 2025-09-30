@@ -5,7 +5,7 @@ import { useLanguage } from "../hooks/useLanguage";
 
 const ViewDetails = () => {
   const { id } = useParams();
-  const { t } = useLanguage();
+  const { t, currentLanguage } = useLanguage();
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -23,6 +23,14 @@ const ViewDetails = () => {
     );
   }
 
+  // Helper function to get translated content
+  const getTranslatedContent = (content) => {
+    if (typeof content === 'object' && content[currentLanguage]) {
+      return content[currentLanguage];
+    }
+    return content; // fallback to original if no translation
+  };
+
   const {
     title,
     overview,
@@ -35,42 +43,42 @@ const ViewDetails = () => {
 
   return (
     <div className={`view-details-page package-bg-${id}`}>
-      <h1>{title}</h1>
-      <p>{overview}</p>
+      <h1>{getTranslatedContent(title)}</h1>
+      <p>{getTranslatedContent(overview)}</p>
 
       <h2>{t('viewDetails.suggestedActivities')}</h2>
       <ul>
-        {activities.map((activity, idx) => (
+        {getTranslatedContent(activities).map((activity, idx) => (
           <li key={idx}>{activity}</li>
         ))}
       </ul>
 
       <h2>{t('viewDetails.included')}</h2>
       <ul>
-        {included.map((item, idx) => (
+        {getTranslatedContent(included).map((item, idx) => (
           <li key={idx}>{item}</li>
         ))}
       </ul>
 
       <h2>{t('viewDetails.customizableOptions')}</h2>
       <ul>
-        {customizable.map((item, idx) => (
+        {getTranslatedContent(customizable).map((item, idx) => (
           <li key={idx}>{item}</li>
         ))}
       </ul>
 
       <h2>{t('viewDetails.notIncluded')}</h2>
       <ul>
-        {notIncluded.map((item, idx) => (
+        {getTranslatedContent(notIncluded).map((item, idx) => (
           <li key={idx}>{item}</li>
         ))}
       </ul>
 
-      {notes && notes.length > 0 && (
+      {notes && getTranslatedContent(notes).length > 0 && (
         <>
           <h2>{t('viewDetails.notes')}</h2>
           <ul>
-            {notes.map((note, idx) => (
+            {getTranslatedContent(notes).map((note, idx) => (
               <li key={idx}>{note}</li>
             ))}
           </ul>

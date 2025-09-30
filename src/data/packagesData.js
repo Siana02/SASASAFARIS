@@ -3,80 +3,174 @@
 export const packagesData = [
   {
     id: "mara-tsavo",
-    title: "Mara & Tsavo Wildlife Safari",
-    overview:
-      "Explore two iconic parks in one trip — from the rolling plains of Maasai Mara to the rugged landscapes of Tsavo. This safari is rich in Big 5 wildlife and offers dramatic scenic contrasts.",
-    activities: [
-      "Morning & evening game drives",
-      "Bush sundowners",
-      "Guided walking safaris (where permitted)",
-      "Cultural village visit (Maasai)",
-      "Bird watching",
-      "Scenic photography stops",
-      "Optional hot air balloon ride"
-    ],
-    included: [
-      "Safari vehicle & professional driver-guide",
-      "Park entry fees (Maasai Mara & Tsavo)",
-      "Accommodation & meals (mid-range lodge/camp)",
-      "Game drives as per schedule",
-      "Airport / lodge transfers"
-    ],
-    customizable: [
-      "Upgrade to luxury camp or tented lodge",
-      "Camping / budget options",
-      "Night game drives (if permitted)",
-      "Domestic flight instead of road transfers",
-      "Change order or length of activities"
-    ],
-    notIncluded: [
-      "International flights",
-      "Visas & travel insurance",
-      "Personal expenses, tips, souvenirs",
-      "Drinks outside meals"
-    ],
-    notes: [
-      "This is a suggested list of activities — you are free to pick only what you like.",
-      "You can shorten or extend the trip or swap in other parks or destinations.",
-      "Hot air balloon rides are subject to availability and weather."
-    ]
+    title: {
+      en: "Mara & Tsavo Wildlife Safari",
+      it: "Safari Fauna Mara & Tsavo"
+    },
+    overview: {
+      en: "Explore two iconic parks in one trip — from the rolling plains of Maasai Mara to the rugged landscapes of Tsavo. This safari is rich in Big 5 wildlife and offers dramatic scenic contrasts.",
+      it: "Esplora due parchi iconici in un unico viaggio — dalle pianure ondulate del Maasai Mara ai paesaggi aspri di Tsavo. Questo safari è ricco di fauna dei Big 5 e offre contrasti scenici drammatici."
+    },
+    activities: {
+      en: [
+        "Morning & evening game drives",
+        "Bush sundowners",
+        "Guided walking safaris (where permitted)",
+        "Cultural village visit (Maasai)",
+        "Bird watching",
+        "Scenic photography stops",
+        "Optional hot air balloon ride"
+      ],
+      it: [
+        "Safari fotografici mattutini e serali",
+        "Aperitivi nel bush",
+        "Safari a piedi guidati (dove permesso)",
+        "Visita culturale al villaggio (Maasai)",
+        "Birdwatching",
+        "Fermate fotografiche panoramiche",
+        "Giro in mongolfiera opzionale"
+      ]
+    },
+    included: {
+      en: [
+        "Safari vehicle & professional driver-guide",
+        "Park entry fees (Maasai Mara & Tsavo)",
+        "Accommodation & meals (mid-range lodge/camp)",
+        "Game drives as per schedule",
+        "Airport / lodge transfers"
+      ],
+      it: [
+        "Veicolo safari e guida-autista professionale",
+        "Tariffe d'ingresso ai parchi (Maasai Mara & Tsavo)",
+        "Alloggio e pasti (lodge/campo di fascia media)",
+        "Safari fotografici secondo programma",
+        "Trasferimenti aeroporto / lodge"
+      ]
+    },
+    customizable: {
+      en: [
+        "Upgrade to luxury camp or tented lodge",
+        "Camping / budget options",
+        "Night game drives (if permitted)",
+        "Domestic flight instead of road transfers",
+        "Change order or length of activities"
+      ],
+      it: [
+        "Upgrade a campo di lusso o lodge tendato",
+        "Opzioni camping / budget",
+        "Safari notturni (se permessi)",
+        "Volo domestico invece di trasferimenti su strada",
+        "Cambiare ordine o durata delle attività"
+      ]
+    },
+    notIncluded: {
+      en: [
+        "International flights",
+        "Visas & travel insurance",
+        "Personal expenses, tips, souvenirs",
+        "Drinks outside meals"
+      ],
+      it: [
+        "Voli internazionali",
+        "Visti e assicurazione di viaggio",
+        "Spese personali, mance, souvenir",
+        "Bevande fuori dai pasti"
+      ]
+    },
+    notes: {
+      en: [
+        "This is a suggested list of activities — you are free to pick only what you like.",
+        "You can shorten or extend the trip or swap in other parks or destinations.",
+        "Hot air balloon rides are subject to availability and weather."
+      ],
+      it: [
+        "Questa è una lista suggerita di attività — sei libero di scegliere solo quello che ti piace.",
+        "Puoi accorciare o estendere il viaggio o scambiare con altri parchi o destinazioni.",
+        "I giri in mongolfiera sono soggetti a disponibilità e condizioni meteorologiche."
+      ]
+    }
   },
 
   {
     id: "amboseli-chyulu",
-    title: "Amboseli & Chyulu Explorer",
-    overview:
-      "Witness majestic elephants set against Mount Kilimanjaro, then explore the mysterious lava landscapes of Chyulu Hills on trails and scenic drives.",
-    activities: [
-      "Game drives in Amboseli",
-      "Evening photography hunt",
-      "Guided walks in Chyulu lava trails",
-      "Bush picnic",
-      "Bird watching",
-      "Cultural tour of Maasai community",
-      "Hiking or biking on Chyulu terrain"
-    ],
-    included: [
-      "Safari vehicle & experienced guide",
-      "Park & access fees",
-      "Accommodation & meals (safari lodges)",
-      "Transfers between parks"
-    ],
-    customizable: [
-      "Upgrade lodge class",
-      "Replace road with light aircraft segments",
-      "Add cultural or village tours",
-      "Extend stay in Chyulu or nearby"
-    ],
-    notIncluded: [
-      "International flights",
-      "Visas & insurance",
-      "Personal costs & tips"
-    ],
-    notes: [
-      "Flexible trip: you can allocate more time to Chyulu or Amboseli as you prefer.",
-      "Some walking trails may be weather dependent."
-    ]
+    title: {
+      en: "Amboseli & Chyulu Explorer",
+      it: "Esploratore Amboseli & Chyulu"
+    },
+    overview: {
+      en: "Witness majestic elephants set against Mount Kilimanjaro, then explore the mysterious lava landscapes of Chyulu Hills on trails and scenic drives.",
+      it: "Ammira maestosi elefanti sullo sfondo del Monte Kilimanjaro, poi esplora i misteriosi paesaggi lavici delle Chyulu Hills su sentieri e drive panoramici."
+    },
+    activities: {
+      en: [
+        "Game drives in Amboseli",
+        "Evening photography hunt",
+        "Guided walks in Chyulu lava trails",
+        "Bush picnic",
+        "Bird watching",
+        "Cultural tour of Maasai community",
+        "Hiking or biking on Chyulu terrain"
+      ],
+      it: [
+        "Safari fotografici in Amboseli",
+        "Caccia fotografica serale",
+        "Passeggiate guidate sui sentieri lavici di Chyulu",
+        "Picnic nel bush",
+        "Birdwatching",
+        "Tour culturale della comunità Maasai",
+        "Trekking o ciclismo sui terreni di Chyulu"
+      ]
+    },
+    included: {
+      en: [
+        "Safari vehicle & experienced guide",
+        "Park & access fees",
+        "Accommodation & meals (safari lodges)",
+        "Transfers between parks"
+      ],
+      it: [
+        "Veicolo safari e guida esperta",
+        "Tariffe parchi e accessi",
+        "Alloggio e pasti (lodge safari)",
+        "Trasferimenti tra i parchi"
+      ]
+    },
+    customizable: {
+      en: [
+        "Upgrade lodge class",
+        "Replace road with light aircraft segments",
+        "Add cultural or village tours",
+        "Extend stay in Chyulu or nearby"
+      ],
+      it: [
+        "Upgrade classe lodge",
+        "Sostituire strada con segmenti di aereo leggero",
+        "Aggiungere tour culturali o del villaggio",
+        "Estendere soggiorno a Chyulu o nelle vicinanze"
+      ]
+    },
+    notIncluded: {
+      en: [
+        "International flights",
+        "Visas & insurance",
+        "Personal costs & tips"
+      ],
+      it: [
+        "Voli internazionali",
+        "Visti e assicurazione",
+        "Costi personali e mance"
+      ]
+    },
+    notes: {
+      en: [
+        "Flexible trip: you can allocate more time to Chyulu or Amboseli as you prefer.",
+        "Some walking trails may be weather dependent."
+      ],
+      it: [
+        "Viaggio flessibile: puoi allocare più tempo a Chyulu o Amboseli come preferisci.",
+        "Alcuni sentieri possono dipendere dalle condizioni meteorologiche."
+      ]
+    }
   },
 
   {

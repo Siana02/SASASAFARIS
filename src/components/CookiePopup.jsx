@@ -4,25 +4,40 @@ import { useLanguage } from '../hooks/useLanguage';
 
 const CookiePopup = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const { t, triggerLanguageBannerAfterCookie } = useLanguage();
+  const { t, showLanguageBanner } = useLanguage();
 
   useEffect(() => {
     // Check if user has already made a choice
     const cookieConsent = localStorage.getItem('cookieConsent');
-    if (!cookieConsent) {
+    const bannerShown = localStorage.getItem('languageBannerShown');
+    
+    // Only show cookie popup if:
+    // 1. No cookie consent has been given AND
+    // 2. Language banner is not currently showing AND
+    // 3. Language banner has been shown/dismissed (bannerShown exists) OR it's not the first visit
+    if (!cookieConsent && !showLanguageBanner && (bannerShown || localStorage.getItem('preferredLanguage'))) {
       setShowPopup(true);
     }
-  }, []);
+    
+    // Listen for language banner dismissal
+    const handleLanguageBannerDismissed = () => {
+      const cookieConsent = localStorage.getItem('cookieConsent');
+      if (!cookieConsent) {
+        setShowPopup(true);
+      }
+    };
+    
+    window.addEventListener('languageBannerDismissed', handleLanguageBannerDismissed);
+    
+    return () => {
+      window.removeEventListener('languageBannerDismissed', handleLanguageBannerDismissed);
+    };
+  }, [showLanguageBanner]);
 
   const handleAccept = () => {
     localStorage.setItem('cookieConsent', 'accepted');
     localStorage.setItem('trackingEnabled', 'true');
     setShowPopup(false);
-    
-    // Trigger language banner if needed
-    if (triggerLanguageBannerAfterCookie) {
-      triggerLanguageBannerAfterCookie();
-    }
     
     // Enable tracking
     initializeTracking();
@@ -32,11 +47,6 @@ const CookiePopup = () => {
     localStorage.setItem('cookieConsent', 'declined');
     localStorage.setItem('trackingEnabled', 'false');
     setShowPopup(false);
-    
-    // Trigger language banner if needed
-    if (triggerLanguageBannerAfterCookie) {
-      triggerLanguageBannerAfterCookie();
-    }
   };
 
   const initializeTracking = () => {

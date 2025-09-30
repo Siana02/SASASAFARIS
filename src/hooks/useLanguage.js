@@ -15,6 +15,7 @@ export const useLanguage = () => {
     // Check if user has already chosen a language
     const savedLanguage = localStorage.getItem('preferredLanguage');
     const browserLanguage = navigator.language.split('-')[0]; // 'it-IT' becomes 'it'
+    const bannerShown = localStorage.getItem('languageBannerShown');
     
     if (savedLanguage) {
       // User has made a choice before
@@ -23,6 +24,11 @@ export const useLanguage = () => {
       // First visit - detect browser language
       const detectedLanguage = ['en', 'it'].includes(browserLanguage) ? browserLanguage : 'en';
       setCurrentLanguage(detectedLanguage);
+      
+      // Show language banner on first visit if not already shown
+      if (!bannerShown) {
+        setShowLanguageBanner(true);
+      }
     }
   }, []);
 
@@ -63,12 +69,22 @@ export const useLanguage = () => {
   const dismissBanner = () => {
     setShowLanguageBanner(false);
     localStorage.setItem('languageBannerShown', 'true');
+    
+    // Trigger cookie popup to show after dismissing language banner
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('languageBannerDismissed'));
+    }, 300);
   };
 
   const acceptLanguageSwitch = () => {
     const browserLanguage = navigator.language.split('-')[0];
     const targetLanguage = browserLanguage === 'it' ? 'it' : 'en';
     switchLanguage(targetLanguage);
+    
+    // Trigger cookie popup to show after language switch
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('languageBannerDismissed'));
+    }, 300);
   };
 
   // Translation helper function

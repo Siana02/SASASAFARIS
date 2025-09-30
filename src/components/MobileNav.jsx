@@ -51,11 +51,6 @@ const MobileNav = () => {
           <Link to="/contact" onClick={handleLinkClick}>{t('nav.contacts')}</Link>
         </li>
         <li>
-          <button onClick={handleLanguageSwitch} aria-label="Switch Language">
-            {currentLanguage === 'en' ? '🇮🇹 IT' : '🇬🇧 EN'}
-          </button>
-        </li>
-        <li>
           <button onClick={handleThemeSwitch} aria-label={t('mobileNav.switchTheme')}>
             <i className="fas fa-adjust"></i>
           </button>
