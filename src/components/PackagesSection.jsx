@@ -30,7 +30,7 @@ import {
 import { useLanguage } from "../hooks/useLanguage";
 
 const packages = [
-  { id: "mara-tsavo", image: ClassicMaasaiMara, title: "Mara & Tsavo Wildlife Safari", duration: "5 Days / 4 Nights", badge: "⭐ 4.9/5 · Most Popular", badgeClass: "badge-popular", description: "Experience the iconic Big 5 across two legendary parks. Witness lions, elephants, and cheetahs in their natural habitat, with expert-guided game drives and evening sundowners.", ctaDetails: "#details-mara-tsavo" },
+  { id: "mara-tsavo", image: ClassicMaasaiMara, duration: "5 Days / 4 Nights", badge: "⭐ 4.9/5 · Most Popular", badgeClass: "badge-popular", ctaDetails: "#details-mara-tsavo" },
   { id: "amboseli-chyulu", image: Amboseli, title: "Amboseli & Chyulu Explorer", duration: "4 Days / 3 Nights", badge: "⭐ 4.8/5 · Adventure Pick", badgeClass: "badge-adventure", description: "Marvel at Amboseli’s majestic elephants against Mount Kilimanjaro’s backdrop and explore the hidden trails of Chyulu Hills for a serene wildlife adventure.", ctaDetails: "#details-amboseli-chyulu" },
   { id: "family-safari-beach", image: FamilySafari, title: "Family Safari & Beach Holiday", duration: "7 Days / 6 Nights", badge: "⭐ 4.9/5 · Family Favorite", badgeClass: "badge-family", description: "A perfect family mix of safari excitement and beach relaxation. Enjoy safe guided game drives, sandcastle building on Diani Beach, and fun-filled coastal activities for all ages.", ctaDetails: "#details-family-safari-beach" },
   { id: "romantic-safari", image: RomanticSafari, title: "Romantic Safari & Honeymoon Escape", duration: "6 Days / 5 Nights", badge: "⭐ 5/5 · Romantic Getaway", badgeClass: "badge-romantic", description: "Indulge in a couple’s dream getaway with private safari lodges, candlelit dinners under the stars, and tranquil beachside sunsets for an unforgettable romantic experience.", ctaDetails: "#details-romantic-safari" },
@@ -270,16 +270,16 @@ const PackagesSection = () => {
               <div className="package-card-image">
                 <img
                   src={card.image}
-                  alt={card.title}
+                  alt={t(`packages.${card.id}.title`) || card.title}
                   draggable={false}
                   loading="lazy"
                 />
               </div>
               <div className="package-card-content">
-                <h2 className="package-title">{card.title}</h2>
+                <h2 className="package-title">{t(`packages.${card.id}.title`) || card.title}</h2>
                 <div className="package-duration">{card.duration}</div>
                 <div className={`package-badge ${card.badgeClass}`}>{card.badge}</div>
-                <div className="package-description">{card.description}</div>
+                <div className="package-description">{t(`packages.${card.id}.overview`) || card.description}</div>
                 <div className="package-ctas">
                   <Link className="package-cta-primary" to="/contact">
   {t('packages.contactUs')}

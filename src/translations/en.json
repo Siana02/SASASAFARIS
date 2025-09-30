@@ -185,8 +185,70 @@
   },
   "languageBanner": {
     "availableInEnglish": "This website is available in English 🇬🇧 — Switch now?",
-    "availableInItalian": "This website is available in Italian 🇮🇹 — Switch now?",
-    "switchToEnglish": "Switch to English",
-    "switchToItalian": "Switch to Italian"
+    "availableInItalian": "Questo sito è disponibile in Italiano 🇮🇹 — Vuoi passare?",
+    "switchToEnglish": "Switch",
+    "switchToItalian": "Switch"
+  },
+  "packages": {
+    "mara-tsavo": {
+      "title": "Mara & Tsavo Wildlife Safari",
+      "overview": "Explore two iconic parks in one trip — from the rolling plains of Maasai Mara to the rugged landscapes of Tsavo. This safari is rich in Big 5 wildlife and offers dramatic scenic contrasts.",
+      "activities": [
+        "Morning & evening game drives",
+        "Bush sundowners", 
+        "Guided walking safaris (where permitted)",
+        "Cultural village visit (Maasai)",
+        "Bird watching",
+        "Scenic photography stops",
+        "Optional hot air balloon ride"
+      ],
+      "included": [
+        "Safari vehicle & professional driver-guide",
+        "Park entry fees (Maasai Mara & Tsavo)",
+        "Accommodation & meals (mid-range lodge/camp)",
+        "Game drives as per schedule",
+        "Airport / lodge transfers"
+      ],
+      "customizable": [
+        "Upgrade to luxury camp or tented lodge",
+        "Camping / budget options",
+        "Night game drives (if permitted)",
+        "Domestic flight instead of road transfers",
+        "Change order or length of activities"
+      ],
+      "notIncluded": [
+        "International flights",
+        "Visas & travel insurance",
+        "Personal expenses, tips, souvenirs",
+        "Drinks outside meals"
+      ],
+      "notes": [
+        "This is a suggested list of activities — you are free to pick only what you like.",
+        "You can shorten or extend the trip or swap in other parks or destinations.",
+        "Hot air balloon rides are subject to availability and weather."
+      ]
+    },
+    "amboseli-chyulu": {
+      "title": "Amboseli & Chyulu Explorer",
+      "overview": "Marvel at Amboseli's majestic elephants against Mount Kilimanjaro's backdrop and explore the hidden trails of Chyulu Hills for a serene wildlife adventure."
+    },
+    "family-safari-beach": {
+      "title": "Family Safari & Beach Holiday",
+      "overview": "A perfect family mix of safari excitement and beach relaxation. Enjoy safe guided game drives, sandcastle building on Diani Beach, and fun-filled coastal activities for all ages."
+    },
+    "romantic-safari": {
+      "title": "Romantic Safari & Honeymoon Escape",
+      "overview": "Indulge in a couple's dream getaway with private safari lodges, candlelit dinners under the stars, and tranquil beachside sunsets for an unforgettable romantic experience."
+    },
+    "coastal-adventure": {
+      "title": "Kenyan Coastal Adventure",
+      "overview": "Discover Kenya's stunning coastline with sun-soaked beaches, snorkeling adventures, and cultural explorations from Watamu to Diani. A perfect blend of adventure and relaxation."
+    },
+    "wildebeest-migration": {
+      "title": "Wildebeest Migration Special"
+    },
+    "coast-offer": {
+      "title": "Coast Special Offer"
+    }
   }
 }

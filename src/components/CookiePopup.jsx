@@ -8,14 +8,14 @@ const CookiePopup = () => {
 
   useEffect(() => {
     // Check if user has already made a choice
-    const cookieConsent = localStorage.getItem('cookieConsent');
+    const cookieConsent = localStorage.getItem('cookie_consent');
     if (!cookieConsent) {
       setShowPopup(true);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem('cookieConsent', 'accepted');
+    localStorage.setItem('cookie_consent', 'accepted');
     localStorage.setItem('trackingEnabled', 'true');
     setShowPopup(false);
     
@@ -29,7 +29,7 @@ const CookiePopup = () => {
   };
 
   const handleDecline = () => {
-    localStorage.setItem('cookieConsent', 'declined');
+    localStorage.setItem('cookie_consent', 'declined');
     localStorage.setItem('trackingEnabled', 'false');
     setShowPopup(false);
     

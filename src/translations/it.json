@@ -184,9 +184,71 @@
     "learnMore": "Scopri di Più"
   },
   "languageBanner": {
-    "availableInEnglish": "Questo sito è disponibile in Inglese 🇬🇧 — Cambia ora?",
+    "availableInEnglish": "This website is available in English 🇬🇧 — Switch now?",
     "availableInItalian": "Questo sito è disponibile in Italiano 🇮🇹 — Vuoi passare?",
-    "switchToEnglish": "Passa all'Inglese",
-    "switchToItalian": "Passa all'Italiano"
+    "switchToEnglish": "Switch",
+    "switchToItalian": "Switch"
+  },
+  "packages": {
+    "mara-tsavo": {
+      "title": "Safari Fauna Mara & Tsavo",
+      "overview": "Esplora due parchi iconici in un viaggio — dalle pianure ondulate del Maasai Mara ai paesaggi aspri del Tsavo. Questo safari è ricco di fauna Big 5 e offre contrasti scenici drammatici.",
+      "activities": [
+        "Safari mattutini e serali",
+        "Aperitivi nel bush",
+        "Safari a piedi guidati (dove permesso)",
+        "Visita al villaggio culturale (Maasai)",
+        "Birdwatching",
+        "Soste fotografiche panoramiche",
+        "Volo opzionale in mongolfiera"
+      ],
+      "included": [
+        "Veicolo safari e guida-autista professionale",
+        "Tasse d'ingresso ai parchi (Maasai Mara & Tsavo)",
+        "Alloggio e pasti (lodge/campo di fascia media)",
+        "Safari come da programma",
+        "Trasferimenti aeroporto / lodge"
+      ],
+      "customizable": [
+        "Upgrade a campo di lusso o lodge tenda",
+        "Camping / opzioni economiche",
+        "Safari notturni (se permesso)",
+        "Volo domestico invece di trasferimenti su strada",
+        "Cambiare ordine o durata delle attività"
+      ],
+      "notIncluded": [
+        "Voli internazionali",
+        "Visti e assicurazione di viaggio",
+        "Spese personali, mance, souvenir",
+        "Bevande fuori dai pasti"
+      ],
+      "notes": [
+        "Questa è una lista suggerita di attività — sei libero di scegliere solo quello che ti piace.",
+        "Puoi accorciare o estendere il viaggio o sostituirlo con altri parchi o destinazioni.",
+        "I voli in mongolfiera sono soggetti a disponibilità e condizioni meteorologiche."
+      ]
+    },
+    "amboseli-chyulu": {
+      "title": "Esploratore Amboseli & Chyulu",
+      "overview": "Ammira i maestosi elefanti di Amboseli sullo sfondo del Monte Kilimanjaro ed esplora i sentieri nascosti delle Chyulu Hills per un'avventura faunistica serena."
+    },
+    "family-safari-beach": {
+      "title": "Safari Famiglia & Vacanza Mare",
+      "overview": "Un mix perfetto per famiglie di emozioni safari e relax in spiaggia. Divertiti con safari guidati sicuri, costruzione di castelli di sabbia sulla spiaggia di Diani e attività costiere divertenti per tutte le età."
+    },
+    "romantic-safari": {
+      "title": "Safari Romantico & Fuga Luna di Miele",
+      "overview": "Concediti la fuga dei sogni di una coppia con lodge safari privati, cene a lume di candela sotto le stelle e tramonti tranquilli in riva al mare per un'esperienza romantica indimenticabile."
+    },
+    "coastal-adventure": {
+      "title": "Avventura Costiera Keniota",
+      "overview": "Scopri la splendida costa del Kenya con spiagge baciate dal sole, avventure di snorkeling ed esplorazioni culturali da Watamu a Diani. Un perfetto mix di avventura e relax."
+    },
+    "wildebeest-migration": {
+      "title": "Speciale Migrazione Gnu"
+    },
+    "coast-offer": {
+      "title": "Offerta Speciale Costa"
+    }
   }
 }

@@ -35,34 +35,34 @@ const ViewDetails = () => {
 
   return (
     <div className={`view-details-page package-bg-${id}`}>
-      <h1>{title}</h1>
-      <p>{overview}</p>
+      <h1>{t(`packages.${id}.title`) || title}</h1>
+      <p>{t(`packages.${id}.overview`) || overview}</p>
 
       <h2>{t('viewDetails.suggestedActivities')}</h2>
       <ul>
         {activities.map((activity, idx) => (
-          <li key={idx}>{activity}</li>
+          <li key={idx}>{t(`packages.${id}.activities.${idx}`) || activity}</li>
         ))}
       </ul>
 
       <h2>{t('viewDetails.included')}</h2>
       <ul>
         {included.map((item, idx) => (
-          <li key={idx}>{item}</li>
+          <li key={idx}>{t(`packages.${id}.included.${idx}`) || item}</li>
         ))}
       </ul>
 
       <h2>{t('viewDetails.customizableOptions')}</h2>
       <ul>
         {customizable.map((item, idx) => (
-          <li key={idx}>{item}</li>
+          <li key={idx}>{t(`packages.${id}.customizable.${idx}`) || item}</li>
         ))}
       </ul>
 
       <h2>{t('viewDetails.notIncluded')}</h2>
       <ul>
         {notIncluded.map((item, idx) => (
-          <li key={idx}>{item}</li>
+          <li key={idx}>{t(`packages.${id}.notIncluded.${idx}`) || item}</li>
         ))}
       </ul>
 
@@ -71,7 +71,7 @@ const ViewDetails = () => {
           <h2>{t('viewDetails.notes')}</h2>
           <ul>
             {notes.map((note, idx) => (
-              <li key={idx}>{note}</li>
+              <li key={idx}>{t(`packages.${id}.notes.${idx}`) || note}</li>
             ))}
           </ul>
         </>

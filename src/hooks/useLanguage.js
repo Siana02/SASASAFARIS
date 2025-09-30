@@ -13,7 +13,7 @@ export const useLanguage = () => {
 
   useEffect(() => {
     // Check if user has already chosen a language
-    const savedLanguage = localStorage.getItem('preferredLanguage');
+    const savedLanguage = localStorage.getItem('site_language');
     const browserLanguage = navigator.language.split('-')[0]; // 'it-IT' becomes 'it'
     
     if (savedLanguage) {
@@ -23,11 +23,23 @@ export const useLanguage = () => {
       // First visit - detect browser language
       const detectedLanguage = ['en', 'it'].includes(browserLanguage) ? browserLanguage : 'en';
       setCurrentLanguage(detectedLanguage);
+      
+      // Show language banner immediately if there's a mismatch
+      const bannerShown = localStorage.getItem('languageBannerShown');
+      
+      // Only show banner on first visit and if there's a language mismatch
+      if (!savedLanguage && !bannerShown) {
+        if (browserLanguage === 'it' && detectedLanguage === 'en') {
+          setShowLanguageBanner(true);
+        } else if (browserLanguage === 'en' && detectedLanguage === 'it') {
+          setShowLanguageBanner(true);
+        }
+      }
     }
   }, []);
 
   const checkAndShowLanguageBanner = () => {
-    const savedLanguage = localStorage.getItem('preferredLanguage');
+    const savedLanguage = localStorage.getItem('site_language');
     const bannerShown = localStorage.getItem('languageBannerShown');
     const browserLanguage = navigator.language.split('-')[0];
     
@@ -49,7 +61,7 @@ export const useLanguage = () => {
   const switchLanguage = (newLanguage) => {
     if (newLanguage && ['en', 'it'].includes(newLanguage)) {
       setCurrentLanguage(newLanguage);
-      localStorage.setItem('preferredLanguage', newLanguage);
+      localStorage.setItem('site_language', newLanguage);
       setShowLanguageBanner(false);
       localStorage.setItem('languageBannerShown', 'true');
     }
