@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../hooks/useLanguage";
-import watamuMain from "../assets/images/watamu-main.jpg"; // ✅ direct import
+import watamuMain from "../assets/watamu-main.jpg"; // ✅ direct import
 
 const ExploreWatamu = () => {
   const navigate = useNavigate();
