@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 const ExploreWatamu = () => {
   const navigate = useNavigate();
 
+  
   const handleViewDetails = () => {
-    // Navigate to the specific package (adjust ID if needed)
-    navigate("/viewdetails/watamu");
+    navigate("/viewdetails/explore-watamu");
   };
 
   return (
