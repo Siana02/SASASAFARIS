@@ -3622,40 +3622,23 @@ padding: 1rem 1.5rem;
   display: none;
 }
 
-/* Mobile-first: small screens */
 .explore-image-container {
-  width: 100%;           /* full width of screen */
-  max-width: 100%;       /* ensures no floating space */
-  height: auto;          /* maintains natural aspect ratio */
-  margin: 0;             /* no extra spacing */
-  border-radius: 0;      /* no rounding for edge-to-edge */
+  width: 100%;             /* full width of parent */
+  max-width: 100%;         /* prevent overflow */
+  margin: 0 auto 2rem auto;
+  border-radius: 16px;
   overflow: hidden;
+  display: flex;
+  justify-content: center; /* center image horizontally */
+  align-items: center;     /* center image vertically */
 }
 
 .explore-image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;     /* fills container, may crop slightly */
+  width: 100%;             /* stretch to container width */
+  height: auto;            /* keep original proportions */
+  object-fit: contain;     /* shows entire image, may leave whitespace */
   display: block;
-}
-
-/* Tablets and small laptops */
-@media (min-width: 768px) {
-  .explore-image-container {
-    max-width: 720px;    /* larger but still contained */
-    margin: 0 auto;      /* center on wider screens */
-    border-radius: 12px; /* slight rounding for aesthetic */
-  }
-}
-
-/* Laptops / desktops */
-@media (min-width: 1024px) {
-  .explore-image-container {
-    max-width: 1000px;   /* big but not too huge */
-    margin: 2rem auto;   /* adds vertical spacing from sections */
-    border-radius: 16px; /* subtle rounding */
-  }
-}
+      }
 
 /* Slight hover zoom for desktop only */
 @media (hover: hover) {
