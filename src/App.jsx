@@ -48,6 +48,25 @@ function HomePage() {
 }
 
 function App() {
+  // Add this at the top of your entry file (e.g., App.jsx)
+useEffect(() => {
+  window.onerror = function(message, source, lineno, colno, error) {
+    const div = document.createElement("div");
+    div.style.position = "fixed";
+    div.style.bottom = "0";
+    div.style.left = "0";
+    div.style.width = "100%";
+    div.style.background = "rgba(0,0,0,0.85)";
+    div.style.color = "#fff";
+    div.style.fontSize = "13px";
+    div.style.lineHeight = "1.4";
+    div.style.padding = "8px";
+    div.style.zIndex = "99999";
+    div.textContent = `Error: ${message} at ${source}:${lineno}:${colno}`;
+    document.body.appendChild(div);
+  };
+}, []);
+  
   return (
     <BrowserRouter>
       <Header />
