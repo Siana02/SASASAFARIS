@@ -96,36 +96,30 @@ const PackagesSection = () => {
     }
     return () => clearTimeout(autoTimer.current);
   }, [deckPosition, isHovered, nextCard, animating]);
-
-  // Mouse wheel navigation: left/right for carousel, up/down for page scroll
+// ✅ Fixed mouse wheel navigation: horizontal scroll controls carousel, vertical scroll always scrolls page
 useEffect(() => {
   const handleWheel = (e) => {
     if (!isWrapperFocused) return;
 
-    const isHorizontalScroll =
-      Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 10;
-    const isVerticalScroll =
-      Math.abs(e.deltaY) >= Math.abs(e.deltaX);
+    const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
 
-    // Handle horizontal scroll (carousel navigation)
-    if (isHorizontalScroll) {
+    if (isHorizontal && Math.abs(e.deltaX) > 10) {
+      // Left/right scroll → control carousel
       if (e.deltaX > 0) nextCard();
-      else if (e.deltaX < 0) prevCard();
+      else prevCard();
 
-      // Prevent only horizontal scroll from affecting page
+      // Prevent page scroll only for horizontal gesture
       e.preventDefault();
-    }
-
-    // Let vertical scroll bubble up for normal page scrolling
-    if (isVerticalScroll) {
-      return; // do not preventDefault — page scrolls naturally
+    } else {
+      // Vertical gesture → let it scroll page normally
+      e.stopPropagation(); // don’t trap scroll inside wrapper
     }
   };
 
   const wrapper = wrapperRef.current;
-  if (wrapper)
+  if (wrapper) {
     wrapper.addEventListener("wheel", handleWheel, { passive: false });
-
+  }
   return () => {
     if (wrapper) wrapper.removeEventListener("wheel", handleWheel);
   };
