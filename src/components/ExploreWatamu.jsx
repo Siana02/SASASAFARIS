@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./ExploreWatamu.css";
+
 
 const ExploreWatamu = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const ExploreWatamu = () => {
 
       <div className="explore-image-container">
         <img
-          src="/images/watamu-main.jpg"
+          src="/assets/images/watamu-main.jpg"
           alt="Explore Watamu"
           className="explore-image"
         />
