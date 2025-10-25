@@ -1115,7 +1115,7 @@ a:focus-visible, button:focus-visible {
   background: #fff;
   padding: 1.5rem 0;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   text-align: center;
 }
 
@@ -1195,7 +1195,7 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   justify-content: center;
   user-select: none;
-  touch-action: pan-x;
+  touch-action: pan-y pan-x;
 }
 
 /* -----------------------
