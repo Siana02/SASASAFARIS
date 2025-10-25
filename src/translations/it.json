@@ -166,13 +166,12 @@
     "backToPackages": "← Torna ai Pacchetti"
   },
   "themeMessage": {
-    "lightTheme": "Tema Chiaro",
-    "darkTheme": "Tema Scuro",
-    "currentlyViewing": "Stai attualmente visualizzando il",
-    "wouldLikeTry": "Vorresti provare il",
-    "yes": "Sì",
-    "no": "No"
-  },
+  "safariTheme": "Tema Safari",
+  "vacationTheme": "Tema Vacanza",
+  "currentlyViewing": "Stai visualizzando il {{current}}. Vuoi passare al {{other}}?",
+  "yes": "Sì",
+  "no": "No"
+  }
   "mobileNav": {
     "switchTheme": "Cambia Tema"
   },
