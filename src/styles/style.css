@@ -3624,6 +3624,7 @@ font-style: Bold;
 .explore-image-container {
   width: 100%;
   max-width: 900px;
+ aspect-ratio: 16 / 9; /* maintains a clean rectangular shape */
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -3634,8 +3635,7 @@ font-style: Bold;
 .explore-image {
   width: 100%;
   height: 100%;
-  max-height: 450px; /* keeps it balanced */
-  object-fit: contain; /* ensures full image shows */
+  object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
 }
@@ -3691,6 +3691,7 @@ font-style: Bold;
   }
 
   .explore-image-container {
+      aspect-ratio: 4 / 3; /* slightly taller for mobile screens */
     margin-bottom: 1.2rem;
   }
 
