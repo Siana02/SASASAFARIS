@@ -3608,7 +3608,9 @@ font-style: Bold;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem 1rem; /* reduced padding */
+   margin-top: 0;
+  padding-top: 0; /* this is the main one */
+padding: 1rem 1.5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -3622,22 +3624,20 @@ font-style: Bold;
 
 /* Image container */
 .explore-image-container {
+  .explore-image-container {
   width: 100%;
-  max-width: 900px;
- aspect-ratio: 16 / 9; /* maintains a clean rectangular shape */
+  max-width: 500px; /* limits width so tall image doesn’t stretch too wide */
+  margin: 0 auto 2rem auto;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
 }
 
-/* Image should fully fit inside container */
 .explore-image {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto; /* keeps natural portrait proportions */
+  object-fit: contain; /* ensures entire image shows */
   display: block;
-  transition: transform 0.4s ease;
 }
 
 /* Slight hover zoom for desktop only */
