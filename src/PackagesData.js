@@ -256,4 +256,51 @@ export const PackagesData = [
       "Ideal for travelers wanting sea + culture."
     ]
   }
-];
+]
+},
+
+
+{
+  id: "explore-watamu",
+  title: "Explore Watamu — The Hidden Gem of the Coast",
+  overview:
+    "Dive into the coastal charm of Watamu — a serene paradise where turquoise waters, coral reefs, vibrant culture, and unforgettable sunsets meet. From beach dining to marine adventures and local artistry, this experience celebrates the best of coastal living.",
+  activities: [
+    "Visit Watamu Marine National Park — snorkel, dive, or take a glass-bottom boat ride over coral reefs",
+    "Enjoy sunset drinks at Lichthaus or Ocean Sports Beach Bar",
+    "Dine at Papa Remo Beach for Italian-inspired coastal cuisine",
+    "Walk the mangrove boardwalk and enjoy seafood at Crab Shack Dabaso",
+    "Explore Mida Creek — a serene lagoon ideal for kayaking or dhow cruises",
+    "Discover the ancient Gede Ruins and the history of Swahili civilization",
+    "Tour Bio-Ken Snake Farm and learn about local reptile conservation",
+    "Relax at Garoda Beach or Watamu Turtle Bay, known for white sands and calm tides",
+    "Shop local art and crafts at Blue Marmalade, Tribe Earth, or EcoWorld shops",
+    "Experience nightlife — live music and beach vibes at Lichthaus or Pili Pan",
+    "Take a day trip to Marafa Depression (Hell’s Kitchen) near Malindi for surreal landscapes"
+  ],
+  included: [
+    "Guided cultural & marine tours",
+    "Entry fees to Gede Ruins and Marine Park",
+    "Transport within Watamu (optional tuk-tuk or private transfers)",
+    "Assistance with restaurant reservations and local experiences"
+  ],
+  customizable: [
+    "Add snorkeling or diving lessons",
+    "Include spa or yoga sessions on the beach",
+    "Add a full-day trip to Tsavo East National Park (2.5 hrs away)",
+    "Include photography or drone packages",
+    "Private dhow cruise or romantic sunset dinner setup"
+  ],
+  notIncluded: [
+    "Accommodation (available on request: villas, resorts, or boutique stays)",
+    "International or domestic flights",
+    "Meals unless pre-arranged",
+    "Personal shopping, drinks, or tips"
+  ],
+  notes: [
+    "Watamu is best explored slowly — enjoy each beach, bar, and breeze.",
+    "You can choose a relaxed beach itinerary or an adventure-filled week.",
+    "Most experiences are walkable or tuk-tuk distance apart.",
+    "Book in advance during high season (Dec–March, July–Sept)."
+  ]
+}
