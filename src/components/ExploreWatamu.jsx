@@ -1,9 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useLanguage } from "../hooks/useLanguage";
+import watamuMain from "../assets/images/watamu-main.jpg"; // ✅ direct import
 
 const ExploreWatamu = () => {
   const navigate = useNavigate();
+  
 
   
   const handleViewDetails = () => {
@@ -15,10 +17,10 @@ const ExploreWatamu = () => {
       <h2 className="explore-title">Explore Watamu</h2>
 
       <div className="explore-image-container">
-        <img
-          src="/src/assets/watamu-main.jpg"
-          alt="Explore Watamu"
-          className="explore-image"
+         <img
+          src={watamuMain}
+          alt="Watamu Coastline"
+          className="explore-watamu-img"
         />
       </div>
 
