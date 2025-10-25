@@ -98,22 +98,39 @@ const PackagesSection = () => {
   }, [deckPosition, isHovered, nextCard, animating]);
 
   // Mouse wheel navigation: left/right for carousel, up/down for page scroll
-  useEffect(() => {
-    const handleWheel = (e) => {
-      if (!isWrapperFocused) return;
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 0) {
-        if (e.deltaX > 0) nextCard();
-        else if (e.deltaX < 0) prevCard();
-        e.preventDefault(); // Only block horizontal scroll from scrolling page
-      }
-      // Do NOT preventDefault for vertical scroll: let page scroll naturally
-    };
-    const wrapper = wrapperRef.current;
-    if (wrapper) wrapper.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      if (wrapper) wrapper.removeEventListener("wheel", handleWheel);
-    };
-  }, [isWrapperFocused, nextCard, prevCard]);
+useEffect(() => {
+  const handleWheel = (e) => {
+    if (!isWrapperFocused) return;
+
+    const isHorizontalScroll =
+      Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 10;
+    const isVerticalScroll =
+      Math.abs(e.deltaY) >= Math.abs(e.deltaX);
+
+    // Handle horizontal scroll (carousel navigation)
+    if (isHorizontalScroll) {
+      if (e.deltaX > 0) nextCard();
+      else if (e.deltaX < 0) prevCard();
+
+      // Prevent only horizontal scroll from affecting page
+      e.preventDefault();
+    }
+
+    // Let vertical scroll bubble up for normal page scrolling
+    if (isVerticalScroll) {
+      return; // do not preventDefault — page scrolls naturally
+    }
+  };
+
+  const wrapper = wrapperRef.current;
+  if (wrapper)
+    wrapper.addEventListener("wheel", handleWheel, { passive: false });
+
+  return () => {
+    if (wrapper) wrapper.removeEventListener("wheel", handleWheel);
+  };
+}, [isWrapperFocused, nextCard, prevCard]);
+
 
   // Keyboard navigation
   useEffect(() => {
