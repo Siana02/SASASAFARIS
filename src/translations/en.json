@@ -166,13 +166,13 @@
     "backToPackages": "← Back to Packages"
   },
   "themeMessage": {
-    "lightTheme": "Light Theme",
-    "darkTheme": "Dark Theme",
-    "currentlyViewing": "You are currently viewing the",
-    "wouldLikeTry": "Would you like to try the",
-    "yes": "Yes",
-    "no": "No"
+  "safariTheme": "Safari Theme",
+  "vacationTheme": "Vacation Theme",
+  "currentlyViewing": "You're currently viewing the {{current}}. Would you like to switch to the {{other}}?",
+  "yes": "Yes",
+  "no": "No"
   },
+  
   "mobileNav": {
     "switchTheme": "Switch Theme"
   },
