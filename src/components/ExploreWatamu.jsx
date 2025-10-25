@@ -16,7 +16,7 @@ const ExploreWatamu = () => {
 
       <div className="explore-image-container">
         <img
-          src="/assets/watamu-main.jpg"
+          src="/src/assets/watamu-main.jpg"
           alt="Explore Watamu"
           className="explore-image"
         />
