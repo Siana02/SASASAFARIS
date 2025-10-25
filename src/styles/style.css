@@ -3624,7 +3624,6 @@ padding: 1rem 1.5rem;
 
 /* Image container */
 .explore-image-container {
-  .explore-image-container {
   width: 100%;
   max-width: 500px; /* limits width so tall image doesn’t stretch too wide */
   margin: 0 auto 2rem auto;
