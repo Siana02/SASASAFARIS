@@ -14,7 +14,7 @@ const ExploreWatamu = () => {
 
   return (
     <section className="explore-watamu-section">
-      <h2 className="explore-title">Explore Watamu</h2>
+      <h2 className="explore-title"></h2>
 
       <div className="explore-image-container">
          <img
