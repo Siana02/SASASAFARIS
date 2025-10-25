@@ -3622,20 +3622,24 @@ padding: 1rem 1.5rem;
   display: none;
 }
 
-/* Image container */
 .explore-image-container {
   width: 100%;
-  max-width: 500px; /* limits width so tall image doesn’t stretch too wide */
+  max-width: 600px;
+  height: auto;
+  aspect-ratio: 4 / 3; /* keeps a nice rectangle shape */
   margin: 0 auto 2rem auto;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .explore-image {
   width: 100%;
-  height: auto; /* keeps natural portrait proportions */
-  object-fit: contain; /* ensures entire image shows */
+  height: 100%;
+  object-fit: contain; /* ensures entire image fits */
   display: block;
 }
 
