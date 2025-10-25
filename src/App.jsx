@@ -87,9 +87,9 @@ useEffect(() => {
         {/* add other routes as needed */}
       </Routes>
       <Footer />
-      <ThemeMessage />
-      <LanguageBanner />
-      <CookiePopup />
+      {/* <ThemeMessage /> */}
+{/* <LanguageBanner /> */}
+{/* <CookiePopup /> */}
     </BrowserRouter>
   );
 }
