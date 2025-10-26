@@ -4,8 +4,6 @@ import Header from './components/Header';
 import MobileNav from './components/MobileNav';
 import HeroSection from './components/HeroSection';
 
-import ExploreWatamu from "./components/ExploreWatamu";
-
 import OfferSection from './components/OfferSection';
 import SuccessCountdown from './components/SuccessCountdown';
 import PackagesSection from './components/PackagesSection';
@@ -35,7 +33,7 @@ function HomePage() {
       
       <main>
         <HeroSection />
-        <ExploreWatamu />
+        
         <OfferSection />
         <SuccessCountdown />
         <PackagesSection />
