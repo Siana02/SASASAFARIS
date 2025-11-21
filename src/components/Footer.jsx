@@ -97,10 +97,10 @@ const Footer = () => {
             <div className="contact-info">
               <p>
                 <Mail size={16} style={{ marginRight: "8px" }} />{" "}
-                SASASAFARISAFRICA@gmail.com
+                info@sasasafaris.com
               </p>
               <p>
-                <Phone size={16} style={{ marginRight: "8px" }} /> +254708482145
+                <Phone size={16} style={{ marginRight: "8px" }} /> +254711589004
               </p>
               <p>
                 <MapPin size={16} style={{ marginRight: "8px" }} /> Jacaranda, Watamu, Kenya
