@@ -3,9 +3,9 @@ import { Phone, Mail, MessageCircleHeart, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa"; // WhatsApp icon from FontAwesome
 import { useLanguage } from "../hooks/useLanguage";
 
-const PHONE_NUMBER = "+254708482145";
-const WHATSAPP_NUMBER = "254708482145";
-const EMAIL_ADDRESS = "SASASAFARISAFRICA@gmail.com";
+const PHONE_NUMBER = "+254711589004";
+const WHATSAPP_NUMBER = "254711589004";
+const EMAIL_ADDRESS = "info@sasasafaris.com";
 
 const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}`;
 const phoneLink = `tel:${PHONE_NUMBER}`;
