@@ -91,17 +91,18 @@ body.vacation-theme .hero-bg {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
+  Justify-content: center;
 }
 
 .logo-img {
-  width: 100px;
-  height: 100px;
+  width: 140px;          /* increase from 100px to desired size */
+  height: 140px;         /* keep square aspect ratio */
   object-fit: cover;
   border-radius: 50%;
   border: 2.5px solid var(--accent);
   background: #eee;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  /* REMOVED: loading: lazy; (invalid CSS) */
+  flex-shrink: 0;        /* prevent shrinking in flex layout */
 }
 
 /* ========== HEADER TITLE ========== */
