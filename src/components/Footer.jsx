@@ -128,7 +128,7 @@ const Footer = () => {
   <div className="footer-copyright">
     <p>&copy; {new Date().getFullYear()}</p>
   </div>
-</div>
+
           <div className="footer-legal">
             <Link to="/privacy">{t('footer.privacyPolicy')}</Link>
             <Link to="/terms">{t('footer.termsOfService')}</Link>
