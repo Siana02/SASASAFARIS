@@ -84,14 +84,14 @@ body.vacation-theme .hero-bg {
   left: 0;
   width: 100%;
   z-index: 1000;
-  min-height: 64px;
+  min-height: 150px;
 }
 
 .logo-holder {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  Justify-content: center;
+  justify-content: center;
 }
 
 .logo-img {
