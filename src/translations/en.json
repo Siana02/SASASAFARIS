@@ -188,5 +188,37 @@
     "availableInItalian": "This website is available in Italian 🇮🇹 — Switch now?",
     "switchToEnglish": "Switch to English",
     "switchToItalian": "Switch to Italian"
+  },
+  "packagesData": {
+    "mara-tsavo": {
+      "title": "Mara & Tsavo Wildlife Safari",
+      "duration": "5 Days / 4 Nights",
+      "badge": "⭐ 4.9/5 · Most Popular",
+      "description": "Experience the iconic Big 5 across two legendary parks. Witness lions, elephants, and cheetahs in their natural habitat, with expert-guided game drives and evening sundowners."
+    },
+    "amboseli-chyulu": {
+      "title": "Amboseli & Chyulu Explorer",
+      "duration": "4 Days / 3 Nights", 
+      "badge": "⭐ 4.8/5 · Adventure Pick",
+      "description": "Marvel at Amboseli's majestic elephants against Mount Kilimanjaro's backdrop and explore the hidden trails of Chyulu Hills for a serene wildlife adventure."
+    },
+    "family-safari-beach": {
+      "title": "Family Safari & Beach Holiday",
+      "duration": "7 Days / 6 Nights",
+      "badge": "⭐ 4.9/5 · Family Favorite", 
+      "description": "A perfect family mix of safari excitement and beach relaxation. Enjoy safe guided game drives, sandcastle building on Diani Beach, and fun-filled coastal activities for all ages."
+    },
+    "romantic-safari": {
+      "title": "Romantic Safari & Honeymoon Escape",
+      "duration": "6 Days / 5 Nights",
+      "badge": "⭐ 5/5 · Romantic Getaway",
+      "description": "Indulge in a couple's dream getaway with private safari lodges, candlelit dinners under the stars, and tranquil beachside sunsets for an unforgettable romantic experience."
+    },
+    "coastal-adventure": {
+      "title": "Kenyan Coastal Adventure", 
+      "duration": "5 Days / 4 Nights",
+      "badge": "⭐ 4.7/5 · Coastal Escape",
+      "description": "Discover Kenya's stunning coastline with sun-soaked beaches, snorkeling adventures, and cultural explorations from Watamu to Diani. A perfect blend of adventure and relaxation."
+    }
   }
 }
