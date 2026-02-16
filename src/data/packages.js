@@ -8,8 +8,6 @@ export const packages = [
     title: "Classic Safari Adventure",
     description: "Experience the authentic African safari with our 3-day classic package. Perfect for first-time safari goers.",
     duration: "3 days / 2 nights",
-    price: 299,
-    originalPrice: 399,
     image: "/src/assets/classic-safari.jpg", // TODO: Add actual image
     features: [
       "Professional safari guide",
@@ -28,8 +26,6 @@ export const packages = [
     title: "Premium Safari Experience",
     description: "Luxury 5-day safari with premium accommodations and exclusive wildlife viewing opportunities.",
     duration: "5 days / 4 nights",
-    price: 599,
-    originalPrice: 799,
     image: "/src/assets/premium-safari.jpg", // TODO: Add actual image
     features: [
       "Expert wildlife photographer guide",
@@ -49,8 +45,6 @@ export const packages = [
     title: "Family Safari Adventure",
     description: "Family-friendly 4-day safari designed for adventurers of all ages with kid-friendly activities.",
     duration: "4 days / 3 nights",
-    price: 449,
-    originalPrice: 549,
     image: "/src/assets/family-safari.jpg", // TODO: Add actual image
     features: [
       "Family-specialized guide",
@@ -70,8 +64,6 @@ export const packages = [
     title: "Photography Safari",
     description: "7-day specialized safari for photography enthusiasts with expert guidance and prime locations.",
     duration: "7 days / 6 nights",
-    price: 899,
-    originalPrice: 1199,
     image: "/src/assets/photography-safari.jpg", // TODO: Add actual image
     features: [
       "Professional photography guide",

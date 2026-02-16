@@ -18,10 +18,6 @@ const OfferSection = () => {
         <div className="offer-content">
           <div className="offer-top-row">
             <span className="offer-destination">Maasai Mara</span>
-            <span className="offer-prices">
-              <span className="old-price">€500</span>
-              <span className="new-price">€250</span>
-            </span>
           </div>
           <div className="offer-main-text">{t('offers.discount50')}</div>
           <div className="offer-desc">{t('offers.wildebeestMigration')}</div>
@@ -41,10 +37,6 @@ const OfferSection = () => {
         <div className="offer-content">
           <div className="offer-top-row">
             <span className="offer-destination">Kenyan Coast</span>
-            <span className="offer-prices">
-              <span className="old-price">€300</span>
-              <span className="new-price">€210</span>
-            </span>
           </div>
           <div className="offer-main-text">{t('offers.discount30')}</div>
           <div className="offer-desc">{t('offers.coastalTour')}</div>
