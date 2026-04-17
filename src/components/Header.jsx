@@ -22,6 +22,9 @@ const Header = () => {
             <Link to="/contact">{t('nav.contacts')}</Link>
           </li>
           <li>
+            <Link to="/blog">{t('nav.blog')}</Link>
+          </li>
+          <li>
             <Link to="/privacy">{t('nav.privacy')}</Link>
           </li>
         </ul>

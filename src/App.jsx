@@ -26,6 +26,8 @@ import CookiePolicy from "./components/CookiePolicy";
 import TermsOfService from "./components/TermsOfService";
 import Gallery from "./components/Gallery";
 import DestinationsSection from "./components/DestinationsSection";
+import BlogPreviewSection from "./components/BlogPreviewSection";
+import BlogPage from "./components/BlogPage";
 import { MobileNavProvider } from './contexts/MobileNavContext';
 import './styles/style.css';
 
@@ -46,6 +48,7 @@ function HomePage() {
         <HowWeWork />
         <WhyChooseUs />
         <DestinationsSection />
+        <BlogPreviewSection />
         <AboutSection />
         <ReviewSection />
         <ContactFormSection />
@@ -97,6 +100,7 @@ useEffect(() => {
         <Route path="/cookies" element={<CookiePolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/blog" element={<BlogPage />} />
         <Route path="/about" element={<AboutSection />} />
         <Route path="/packages" element={<PackagesSection />} />
         <Route path="/offers" element={<OfferSection />} />
