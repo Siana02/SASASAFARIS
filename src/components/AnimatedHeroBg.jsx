@@ -131,9 +131,9 @@ const Elephant = ({ x, y, scale = 1, color = '#0c0300' }) => (
 /* ═══════════════════════════════════════════════════════════
    Savannah grass tuft — animated sway
    ═══════════════════════════════════════════════════════════ */
-const GrassTuft = ({ x, yBase, color, cls }) => (
+const GrassTuft = ({ x, yBase, color, className }) => (
   <g transform={`translate(${x}, ${yBase})`}>
-    <g className={cls} style={{ transformBox: 'fill-box', transformOrigin: 'center bottom' }}>
+    <g className={className} style={{ transformBox: 'fill-box', transformOrigin: 'center bottom' }}>
       <line x1="-5" y1="0" x2="-12" y2="-28" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
       <line x1="0"  y1="0" x2="0"   y2="-35" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
       <line x1="5"  y1="0" x2="13"  y2="-26" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
@@ -144,16 +144,16 @@ const GrassTuft = ({ x, yBase, color, cls }) => (
 );
 
 const GRASS_POSITIONS = [
-  { x: 45,  cls: 'hero-grass-1' }, { x: 62,  cls: 'hero-grass-2' },
-  { x: 88,  cls: 'hero-grass-3' }, { x: 130, cls: 'hero-grass-2' },
-  { x: 168, cls: 'hero-grass-1' }, { x: 208, cls: 'hero-grass-3' },
-  { x: 252, cls: 'hero-grass-2' }, { x: 338, cls: 'hero-grass-1' },
-  { x: 395, cls: 'hero-grass-3' }, { x: 458, cls: 'hero-grass-2' },
-  { x: 512, cls: 'hero-grass-1' }, { x: 572, cls: 'hero-grass-3' },
-  { x: 628, cls: 'hero-grass-2' }, { x: 692, cls: 'hero-grass-1' },
-  { x: 742, cls: 'hero-grass-3' }, { x: 796, cls: 'hero-grass-2' },
-  { x: 852, cls: 'hero-grass-1' }, { x: 902, cls: 'hero-grass-3' },
-  { x: 952, cls: 'hero-grass-2' }, { x: 978, cls: 'hero-grass-1' },
+  { x: 45,  className: 'hero-grass-1' }, { x: 62,  className: 'hero-grass-2' },
+  { x: 88,  className: 'hero-grass-3' }, { x: 130, className: 'hero-grass-2' },
+  { x: 168, className: 'hero-grass-1' }, { x: 208, className: 'hero-grass-3' },
+  { x: 252, className: 'hero-grass-2' }, { x: 338, className: 'hero-grass-1' },
+  { x: 395, className: 'hero-grass-3' }, { x: 458, className: 'hero-grass-2' },
+  { x: 512, className: 'hero-grass-1' }, { x: 572, className: 'hero-grass-3' },
+  { x: 628, className: 'hero-grass-2' }, { x: 692, className: 'hero-grass-1' },
+  { x: 742, className: 'hero-grass-3' }, { x: 796, className: 'hero-grass-2' },
+  { x: 852, className: 'hero-grass-1' }, { x: 902, className: 'hero-grass-3' },
+  { x: 952, className: 'hero-grass-2' }, { x: 978, className: 'hero-grass-1' },
 ];
 
 /* ── Bird group — gold-tinted V shapes ── */
@@ -306,7 +306,8 @@ const AnimatedHeroBg = () => (
       {/* ── Ground ── */}
       <rect x="0" y="470" width="1000" height="130" fill="url(#hbg-ground)" />
 
-      {/* ── Distant rolling koppies / hills ── */}
+      {/* ── Distant rolling koppies / hills — cubic bezier curves tracing
+           undulating silhouette across the horizon (y≈418–442) ── */}
       <path
         d="M0,470 C120,444 280,436 420,442 C510,436 640,428 780,434 C880,428 950,422 1000,418 L1000,470 Z"
         fill="#100502"
@@ -320,7 +321,7 @@ const AnimatedHeroBg = () => (
 
       {/* ── Savannah grass tufts ── */}
       {GRASS_POSITIONS.map((g, i) => (
-        <GrassTuft key={i} x={g.x} yBase={470} color="#140602" cls={g.cls} />
+        <GrassTuft key={i} x={g.x} yBase={470} color="#140602" className={g.className} />
       ))}
 
       {/* ── Acacia trees: small far-left, large landmark right, tiny far-right ── */}
