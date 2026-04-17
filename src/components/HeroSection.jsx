@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import { useLanguage } from "../hooks/useLanguage";
 import AnimatedHeroBg from "./AnimatedHeroBg";
 

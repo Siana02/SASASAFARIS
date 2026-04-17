@@ -1,36 +1,58 @@
 import React from 'react';
 
-/* ── Acacia tree SVG component ── */
-const AcaciaTree = ({ x, y, scale = 1, color = '#1a0a04' }) => (
+/* ── Single statement acacia tree — detailed silhouette ── */
+const AcaciaTree = ({ x, y, scale = 1, color = '#0e0501' }) => (
   <g transform={`translate(${x}, ${y}) scale(${scale})`}>
-    {/* Trunk */}
-    <path d="M-3,85 C-3,85 -2,45 0,0 C2,45 3,85 3,85 Z" fill={color} />
-    {/* Left main branch */}
-    <line x1="-1" y1="28" x2="-38" y2="-8" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
-    {/* Right main branch */}
-    <line x1="1" y1="18" x2="40" y2="-12" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
-    {/* Left sub-branches */}
-    <line x1="-38" y1="-8" x2="-54" y2="-22" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
-    <line x1="-38" y1="-8" x2="-24" y2="-24" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
-    {/* Right sub-branches */}
-    <line x1="40" y1="-12" x2="26" y2="-28" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
-    <line x1="40" y1="-12" x2="54" y2="-24" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
-    {/* Canopy — flat umbrella layers */}
-    <ellipse cx="0" cy="-42" rx="62" ry="17" fill={color} />
-    <ellipse cx="-26" cy="-30" rx="30" ry="11" fill={color} />
-    <ellipse cx="30" cy="-32" rx="28" ry="10" fill={color} />
-    <ellipse cx="0" cy="-52" rx="50" ry="13" fill={color} />
+    {/* Root spread */}
+    <path d="M-6,0 C-8,0 -10,-2 -6,-4 L-3,-3 L0,-60 L3,-3 L6,-4 C10,-2 8,0 6,0 Z" fill={color} />
+    {/* Lower trunk */}
+    <rect x="-3.5" y="-120" width="7" height="60" rx="2" fill={color} />
+    {/* Mid trunk with slight lean */}
+    <path d="M-3,-120 C-3,-120 -2,-170 0,-190 C2,-170 3,-120 3,-120 Z" fill={color} />
+    {/* Left lower branch */}
+    <path d="M-2,-130 C-2,-130 -28,-148 -52,-142" stroke={color} strokeWidth="4" fill="none" strokeLinecap="round" />
+    {/* Left lower sub-branch */}
+    <path d="M-52,-142 C-52,-142 -66,-152 -72,-148" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+    <path d="M-52,-142 C-52,-142 -48,-158 -44,-162" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+    {/* Right lower branch */}
+    <path d="M2,-140 C2,-140 30,-156 58,-148" stroke={color} strokeWidth="4" fill="none" strokeLinecap="round" />
+    <path d="M58,-148 C58,-148 70,-156 78,-150" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+    <path d="M58,-148 C58,-148 54,-164 50,-168" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+    {/* Left upper branch */}
+    <path d="M-1,-175 C-1,-175 -22,-188 -40,-182" stroke={color} strokeWidth="3" fill="none" strokeLinecap="round" />
+    <path d="M-40,-182 C-40,-182 -52,-190 -58,-186" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" />
+    <path d="M-40,-182 C-40,-182 -36,-198 -32,-204" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" />
+    {/* Right upper branch */}
+    <path d="M1,-178 C1,-178 24,-192 44,-186" stroke={color} strokeWidth="3" fill="none" strokeLinecap="round" />
+    <path d="M44,-186 C44,-186 56,-194 62,-190" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" />
+    <path d="M44,-186 C44,-186 40,-202 36,-208" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" />
+    {/* Top canopy — layered flat umbrella (classic acacia profile) */}
+    <ellipse cx="0"   cy="-230" rx="88"  ry="22" fill={color} />
+    <ellipse cx="0"   cy="-218" rx="72"  ry="16" fill={color} />
+    <ellipse cx="-28" cy="-210" rx="40"  ry="12" fill={color} />
+    <ellipse cx="30"  cy="-212" rx="38"  ry="12" fill={color} />
+    <ellipse cx="0"   cy="-244" rx="64"  ry="16" fill={color} />
+    <ellipse cx="-18" cy="-255" rx="36"  ry="10" fill={color} />
+    <ellipse cx="20"  cy="-258" rx="34"  ry="10" fill={color} />
+    <ellipse cx="0"   cy="-265" rx="48"  ry="12" fill={color} />
+    {/* Secondary canopy over lower branches */}
+    <ellipse cx="-50" cy="-162" rx="32"  ry="10" fill={color} />
+    <ellipse cx="56"  cy="-166" rx="30"  ry="9"  fill={color} />
+    <ellipse cx="-38" cy="-200" rx="26"  ry="8"  fill={color} />
+    <ellipse cx="42"  cy="-202" rx="24"  ry="8"  fill={color} />
   </g>
 );
 
-/* ── Grass tufts ── */
-const GrassTufts = ({ color = '#1a0a04', yBase = 470 }) => (
+/* ── Sparse grass tufts along the ground ── */
+const GrassTufts = ({ color = '#0e0501', yBase = 470 }) => (
   <>
-    {[40, 120, 210, 310, 430, 510, 600, 680, 790, 880, 960].map((x, i) => (
-      <g key={i} transform={`translate(${x}, ${yBase})`} opacity={0.75}>
-        <line x1="0" y1="0" x2="-5" y2="-20" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
-        <line x1="0" y1="0" x2="0" y2="-26" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
-        <line x1="0" y1="0" x2="6" y2="-18" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
+    {[60, 160, 280, 400, 540, 650, 760, 860, 940].map((x, i) => (
+      <g key={i} transform={`translate(${x}, ${yBase})`} opacity={0.6}>
+        <line x1="0"  y1="0" x2="-6"  y2="-22" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+        <line x1="0"  y1="0" x2="0"   y2="-28" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+        <line x1="0"  y1="0" x2="7"   y2="-20" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+        <line x1="0"  y1="0" x2="-12" y2="-14" stroke={color} strokeWidth="1"   strokeLinecap="round" />
+        <line x1="0"  y1="0" x2="13"  y2="-12" stroke={color} strokeWidth="1"   strokeLinecap="round" />
       </g>
     ))}
   </>
@@ -38,34 +60,30 @@ const GrassTufts = ({ color = '#1a0a04', yBase = 470 }) => (
 
 /* ── Bird group (abstract V-shapes) ── */
 const BirdGroup = ({ cx, cy, className }) => (
-  <g className={className} transform={`translate(${cx}, ${cy})`} opacity={0.5}>
-    {[0, 14, 26, 40, 52].map((dx, i) => (
-      <g key={i} transform={`translate(${dx}, ${i % 2 === 0 ? 0 : 6})`}>
-        <path d="M0,0 C-4,-3 -8,-2 -11,0" stroke="#fff" strokeWidth="1.1" fill="none" strokeLinecap="round" />
-        <path d="M0,0 C4,-3 8,-2 11,0" stroke="#fff" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+  <g className={className} transform={`translate(${cx}, ${cy})`} opacity={0.45}>
+    {[0, 16, 30, 46, 60].map((dx, i) => (
+      <g key={i} transform={`translate(${dx}, ${i % 2 === 0 ? 0 : 7})`}>
+        <path d="M0,0 C-4,-3 -8,-2 -11,0" stroke="#ffe9b0" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+        <path d="M0,0 C4,-3 8,-2 11,0"  stroke="#ffe9b0" strokeWidth="1.2" fill="none" strokeLinecap="round" />
       </g>
     ))}
   </g>
 );
 
-/* ── Star data ── */
+/* ── Twinkling stars — only in upper half of sky ── */
 const STARS = [
-  { x: 4,  y: 4,  r: 1.4, t: 1 }, { x: 12, y: 2,  r: 0.9, t: 2 }, { x: 22, y: 7,  r: 1.4, t: 3 },
-  { x: 34, y: 3,  r: 0.9, t: 1 }, { x: 45, y: 6,  r: 1.7, t: 2 }, { x: 57, y: 2,  r: 0.9, t: 3 },
-  { x: 66, y: 8,  r: 1.4, t: 1 }, { x: 75, y: 4,  r: 0.9, t: 2 }, { x: 85, y: 7,  r: 1.6, t: 3 },
-  { x: 93, y: 3,  r: 0.9, t: 1 }, { x: 9,  y: 14, r: 0.9, t: 2 }, { x: 20, y: 18, r: 1.4, t: 3 },
-  { x: 32, y: 12, r: 0.9, t: 1 }, { x: 42, y: 17, r: 1.7, t: 2 }, { x: 53, y: 11, r: 0.9, t: 3 },
-  { x: 63, y: 16, r: 1.4, t: 1 }, { x: 72, y: 9,  r: 0.9, t: 2 }, { x: 82, y: 15, r: 1.6, t: 3 },
-  { x: 91, y: 12, r: 0.9, t: 1 }, { x: 3,  y: 24, r: 1.4, t: 2 }, { x: 16, y: 28, r: 0.9, t: 3 },
-  { x: 28, y: 21, r: 0.9, t: 1 }, { x: 38, y: 26, r: 1.4, t: 2 }, { x: 49, y: 22, r: 0.9, t: 3 },
-  { x: 60, y: 27, r: 1.7, t: 1 }, { x: 70, y: 20, r: 0.9, t: 2 }, { x: 80, y: 25, r: 1.4, t: 3 },
-  { x: 88, y: 29, r: 0.9, t: 1 }, { x: 97, y: 18, r: 1.4, t: 2 },
+  { x: 5,  y: 5,  r: 1.5, t: 1 }, { x: 14, y: 3,  r: 1.0, t: 2 }, { x: 24, y: 8,  r: 1.5, t: 3 },
+  { x: 36, y: 4,  r: 1.0, t: 1 }, { x: 47, y: 7,  r: 1.8, t: 2 }, { x: 59, y: 3,  r: 1.0, t: 3 },
+  { x: 68, y: 9,  r: 1.5, t: 1 }, { x: 77, y: 5,  r: 1.0, t: 2 }, { x: 87, y: 8,  r: 1.7, t: 3 },
+  { x: 94, y: 4,  r: 1.0, t: 1 }, { x: 10, y: 16, r: 1.0, t: 2 }, { x: 21, y: 20, r: 1.5, t: 3 },
+  { x: 33, y: 13, r: 1.0, t: 1 }, { x: 43, y: 18, r: 1.8, t: 2 }, { x: 55, y: 12, r: 1.0, t: 3 },
+  { x: 65, y: 17, r: 1.5, t: 1 }, { x: 74, y: 10, r: 1.0, t: 2 }, { x: 84, y: 16, r: 1.7, t: 3 },
+  { x: 92, y: 13, r: 1.0, t: 1 }, { x: 4,  y: 25, r: 1.5, t: 2 }, { x: 17, y: 29, r: 1.0, t: 3 },
 ];
 
 /* ════════════════════════════════════
    AnimatedHeroBg
-   Full-screen animated safari SVG hero background.
-   Matches the preload screen's earthy-gold aesthetic.
+   Single-acacia safari sunset — earthy gold.
    ════════════════════════════════════ */
 const AnimatedHeroBg = () => (
   <div className="hero-animated-bg" aria-hidden="true">
@@ -76,99 +94,100 @@ const AnimatedHeroBg = () => (
       style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
     >
       <defs>
-        {/* Night-to-dawn sky */}
+        {/* Sunset sky: deep dusk at top → warm amber → fiery orange near horizon */}
         <linearGradient id="hbg-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stopColor="#030100" />
-          <stop offset="40%"  stopColor="#0d0603" />
-          <stop offset="68%"  stopColor="#1e0c04" />
-          <stop offset="82%"  stopColor="#3a1508" />
-          <stop offset="92%"  stopColor="#5a2a0a" />
-          <stop offset="100%" stopColor="#7a3b10" />
+          <stop offset="0%"   stopColor="#0d0401" />
+          <stop offset="28%"  stopColor="#1c0803" />
+          <stop offset="52%"  stopColor="#3d1505" />
+          <stop offset="68%"  stopColor="#7a2e08" />
+          <stop offset="80%"  stopColor="#b84a10" />
+          <stop offset="90%"  stopColor="#d96820" />
+          <stop offset="100%" stopColor="#e88030" />
         </linearGradient>
 
-        {/* Horizon sun glow radial */}
-        <radialGradient id="hbg-sun" cx="50%" cy="100%" r="55%">
-          <stop offset="0%"   stopColor="#ffcf6a" stopOpacity="0.95" />
-          <stop offset="25%"  stopColor="#ffb347" stopOpacity="0.65" />
-          <stop offset="50%"  stopColor="#ff8c42" stopOpacity="0.35" />
-          <stop offset="75%"  stopColor="#ff6200" stopOpacity="0.12" />
-          <stop offset="100%" stopColor="#c84400" stopOpacity="0" />
+        {/* Sun radial glow — centred just above horizon */}
+        <radialGradient id="hbg-sun-glow" cx="72%" cy="78%" r="42%">
+          <stop offset="0%"   stopColor="#ffe066" stopOpacity="0.95" />
+          <stop offset="18%"  stopColor="#ffb347" stopOpacity="0.80" />
+          <stop offset="38%"  stopColor="#ff8c42" stopOpacity="0.52" />
+          <stop offset="62%"  stopColor="#e05a10" stopOpacity="0.24" />
+          <stop offset="100%" stopColor="#7a2e08" stopOpacity="0"    />
         </radialGradient>
 
-        {/* Horizon line glow */}
-        <linearGradient id="hbg-horizon" x1="0" y1="0" x2="1" y2="0">
+        {/* Horizon afterglow band */}
+        <linearGradient id="hbg-afterglow" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%"   stopColor="transparent" />
-          <stop offset="18%"  stopColor="#ff8c42" stopOpacity="0.6" />
-          <stop offset="50%"  stopColor="#ffb347" stopOpacity="0.9" />
-          <stop offset="82%"  stopColor="#ff8c42" stopOpacity="0.6" />
+          <stop offset="25%"  stopColor="#ff8c42" stopOpacity="0.45" />
+          <stop offset="55%"  stopColor="#ffcc55" stopOpacity="0.80" />
+          <stop offset="78%"  stopColor="#ff8c42" stopOpacity="0.55" />
           <stop offset="100%" stopColor="transparent" />
         </linearGradient>
 
-        {/* Ground */}
+        {/* Ground: dark earth */}
         <linearGradient id="hbg-ground" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"  stopColor="#1a0a04" />
-          <stop offset="100%" stopColor="#0a0301" />
+          <stop offset="0%"   stopColor="#150601" />
+          <stop offset="100%" stopColor="#080200" />
         </linearGradient>
+
+        {/* Clip above horizon for sun disc */}
+        <clipPath id="hbg-above-horizon">
+          <rect x="0" y="0" width="1000" height="468" />
+        </clipPath>
       </defs>
 
-      {/* Sky */}
+      {/* ── Sky wash ── */}
       <rect width="1000" height="600" fill="url(#hbg-sky)" />
 
-      {/* Horizon glow */}
-      <ellipse cx="500" cy="472" rx="580" ry="260" fill="url(#hbg-sun)" />
+      {/* ── Sun atmospheric glow — large, soft ── */}
+      <rect width="1000" height="600" fill="url(#hbg-sun-glow)" />
 
-      {/* Stars */}
+      {/* ── Twinkling stars (upper sky only) ── */}
       {STARS.map((s, i) => (
         <circle
           key={i}
           cx={`${s.x}%`}
-          cy={`${s.y * 1.3}%`}
+          cy={`${s.y}%`}
           r={s.r}
-          fill="#fff"
+          fill="#fff8e8"
           className={`star-t${s.t}`}
         />
       ))}
 
-      {/* Flying birds — three groups at different heights/delays */}
-      <BirdGroup cx={80} cy={90} className="hero-bird-group" />
-      <BirdGroup cx={80} cy={115} className="hero-bird-group" />
-      <BirdGroup cx={80} cy={70} className="hero-bird-group" />
+      {/* ── Flying birds ── */}
+      <BirdGroup cx={80}  cy={95}  className="hero-bird-group" />
+      <BirdGroup cx={80}  cy={120} className="hero-bird-group" />
+      <BirdGroup cx={80}  cy={74}  className="hero-bird-group" />
 
-      {/* Horizon glow line */}
-      <rect x="0" y="470" width="1000" height="2" fill="url(#hbg-horizon)" />
-
-      {/* Rising half-sun */}
-      <ellipse cx="500" cy="470" rx="52" ry="26"
-        fill="none"
-        clipPath="url(#hbg-sun-clip)"
+      {/* ── Sun disc just above horizon (right-of-centre) ── */}
+      <ellipse
+        cx="720" cy="468"
+        rx="48" ry="48"
+        fill="#ffe566"
+        opacity="0.90"
+        clipPath="url(#hbg-above-horizon)"
+        style={{ filter: 'blur(3px)' }}
       />
-      <defs>
-        <clipPath id="hbg-sun-clip">
-          <rect x="0" y="0" width="1000" height="470" />
-        </clipPath>
-      </defs>
-      <ellipse cx="500" cy="471" rx="52" ry="27"
-        fill="#ffcf6a"
-        opacity="0.82"
-        clipPath="url(#hbg-sun-clip)"
-        style={{ filter: 'blur(2px)' }}
+      {/* Inner bright core */}
+      <ellipse
+        cx="720" cy="466"
+        rx="28" ry="28"
+        fill="#fff4a0"
+        opacity="0.95"
+        clipPath="url(#hbg-above-horizon)"
+        style={{ filter: 'blur(1px)' }}
       />
 
-      {/* Ground plane */}
-      <rect x="0" y="470" width="1000" height="130" fill="url(#hbg-ground)" />
+      {/* ── Horizon afterglow line ── */}
+      <rect x="0" y="466" width="1000" height="4" fill="url(#hbg-afterglow)" />
 
-      {/* Ground line */}
-      <line x1="0" y1="471" x2="1000" y2="471" stroke="#0a0301" strokeWidth="1" opacity={0.4} />
+      {/* ── Ground plane ── */}
+      <rect x="0" y="468" width="1000" height="132" fill="url(#hbg-ground)" />
 
-      {/* Grass tufts */}
-      <GrassTufts color="#1a0a04" yBase={471} />
+      {/* ── Sparse grass tufts ── */}
+      <GrassTufts color="#0e0501" yBase={469} />
 
-      {/* Acacia silhouettes */}
-      <AcaciaTree x={108}  y={471} scale={1.35} color="#150704" />
-      <AcaciaTree x={290}  y={471} scale={0.65} color="#1a0a04" />
-      <AcaciaTree x={870}  y={471} scale={1.12} color="#150704" />
-      <AcaciaTree x={720}  y={471} scale={0.82} color="#1a0a04" />
-      <AcaciaTree x={500}  y={471} scale={0.48} color="#200c05" />
+      {/* ── Single prominent acacia tree — left-of-centre ── */}
+      <AcaciaTree x={310} y={469} scale={1.55} color="#0b0300" />
     </svg>
   </div>
 );
