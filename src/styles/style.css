@@ -4685,7 +4685,7 @@ padding: 1rem 1.5rem;
 .dest-text-half > .dest-accent-img-wrap {
   position: relative;
   width: 100%;
-  flex: 1 1 0;
+  flex: 1 1 160px;
   min-height: 160px;
   max-height: 45vh;
   overflow: hidden;
@@ -4989,7 +4989,7 @@ padding: 1rem 1.5rem;
     justify-content: center;
     gap: 0.5rem;
     font-family: var(--body-font);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
