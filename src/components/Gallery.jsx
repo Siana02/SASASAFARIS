@@ -110,7 +110,7 @@ const Gallery = () => {
         {filtered.map((img, idx) => (
           <div
             className={`gallery-item${img.featured ? " gallery-item--featured" : ""}`}
-            key={`${activeCategory}-${idx}`}
+            key={img.src}
           >
             <LazyImage src={img.src} alt={img.label} />
             <div className="gallery-item__overlay" aria-hidden="true">
