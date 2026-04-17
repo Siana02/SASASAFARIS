@@ -1,18 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useMobileNav } from "../hooks/useMobileNav";
-import { useTheme } from "../hooks/useTheme";
 import { useLanguage } from "../hooks/useLanguage";
 
 const MobileNav = () => {
   const { isOpen, mobileNavRef, closeMenu } = useMobileNav();
-  const { toggleTheme } = useTheme();
   const { t, toggleLanguage, currentLanguage } = useLanguage();
-
-  const handleThemeSwitch = () => {
-    toggleTheme();
-    closeMenu();
-  };
 
   const handleLanguageSwitch = () => {
     toggleLanguage();
@@ -36,28 +29,20 @@ const MobileNav = () => {
       <div className="menu-divider"></div>
       <ul className="mobile-nav-list">
         <li>
-          <Link to="/" onClick={handleLinkClick}>{t('nav.home')}</Link>
-        </li> 
-        <li>
-          <Link to="/packages" onClick={handleLinkClick}>{t('nav.packages')}</Link>
+          <a href="#packages" onClick={handleLinkClick}>{t('nav.packages')}</a>
         </li>
         <li>
-          <Link to="/offers" onClick={handleLinkClick}>{t('nav.offers')}</Link>
-        </li>
-        <li>
-          <Link to="/about" onClick={handleLinkClick}>{t('nav.about')}</Link>
+          <a href="#about" onClick={handleLinkClick}>{t('nav.about')}</a>
         </li>
         <li>
           <Link to="/contact" onClick={handleLinkClick}>{t('nav.contacts')}</Link>
         </li>
         <li>
-          <button onClick={handleLanguageSwitch} aria-label="Switch Language">
-            {currentLanguage === 'en' ? '🇮🇹 IT' : '🇬🇧 EN'}
-          </button>
+          <Link to="/privacy" onClick={handleLinkClick}>{t('nav.privacy')}</Link>
         </li>
         <li>
-          <button onClick={handleThemeSwitch} aria-label={t('mobileNav.switchTheme')}>
-            <i className="fas fa-adjust"></i>
+          <button onClick={handleLanguageSwitch} aria-label="Switch Language">
+            {currentLanguage === 'en' ? '🇮🇹 IT' : '🇬🇧 EN'}
           </button>
         </li>
       </ul>
