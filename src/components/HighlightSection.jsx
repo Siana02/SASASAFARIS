@@ -111,15 +111,6 @@ const EcoReminderSection = () => {
   const navigate   = useNavigate();
   const sectionRef = useRef(null);
   const [pledged,  setPledged]  = useState(false);
-  const [fading,   setFading]   = useState(false);
-  const [hidden,   setHidden]   = useState(false);
-
-  /* Hide immediately if already pledged this session */
-  useEffect(() => {
-    if (sessionStorage.getItem("ecoPledged") === "1") {
-      setHidden(true);
-    }
-  }, []);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -139,14 +130,6 @@ const EcoReminderSection = () => {
 
   const handlePledge = useCallback(() => {
     setPledged(true);
-    /* After 30 s start fade-out, then hide and save session flag */
-    setTimeout(() => {
-      setFading(true);
-      setTimeout(() => {
-        sessionStorage.setItem("ecoPledged", "1");
-        setHidden(true);
-      }, 1200);
-    }, 30000);
   }, []);
 
   const pledges = [
@@ -158,12 +141,10 @@ const EcoReminderSection = () => {
     { icon: "fa-solid fa-leaf",               key: "pledge.wildlife"  },
   ];
 
-  if (hidden) return null;
-
   return (
     <section
       ref={sectionRef}
-      className={`eco-reminder-section${pledged ? " has-pledged" : ""}${fading ? " is-fading" : ""}`}
+      className={`eco-reminder-section${pledged ? " has-pledged" : ""}`}
       aria-label={t("ecoReminder.ariaLabel")}
     >
       {/* Ambient background fish */}
@@ -206,14 +187,17 @@ const EcoReminderSection = () => {
 
         {/* Drag-to-pledge block */}
         <div className="eco-pledge-cta-block">
-          <p className="eco-pledge-prompt">{t("ecoReminder.pledgePrompt")}</p>
-          <PledgeSlider
-            onPledge={handlePledge}
-            labelIdle={t("ecoReminder.slideIdle")}
-            labelDone={t("ecoReminder.slideDone")}
-          />
-          {pledged && (
+          {pledged ? (
             <p className="eco-pledge-thanks">{t("ecoReminder.pledgeThanks")}</p>
+          ) : (
+            <>
+              <p className="eco-pledge-prompt">{t("ecoReminder.pledgePrompt")}</p>
+              <PledgeSlider
+                onPledge={handlePledge}
+                labelIdle={t("ecoReminder.slideIdle")}
+                labelDone={t("ecoReminder.slideDone")}
+              />
+            </>
           )}
         </div>
 
