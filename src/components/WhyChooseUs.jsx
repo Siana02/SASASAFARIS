@@ -27,7 +27,6 @@ const LazyHeroImg = ({ src, alt }) => {
 
   return (
     <div ref={wrapRef} className={`wcu-moment-img-wrap ${loaded ? "wcu-img-loaded" : ""}`}>
-      {/* shimmer shown while image is loading */}
       {!loaded && <div className="wcu-img-shimmer" aria-hidden="true" />}
       {inView && (
         <img
@@ -43,14 +42,14 @@ const LazyHeroImg = ({ src, alt }) => {
   );
 };
 
-/* ── Stagger-in cards via IntersectionObserver ── */
-const CARD_STAGGER = 0.12;
+/* ── Card data ── */
+const CARD_STAGGER = 0.13;
 
 const CARDS = [
-  { key: "card1", Icon: MapPin },
-  { key: "card2", Icon: Scissors },
-  { key: "card3", Icon: Shield },
-  { key: "card4", Icon: Sparkles },
+  { key: "card1", Icon: MapPin,    num: "01" },
+  { key: "card2", Icon: Scissors,  num: "02" },
+  { key: "card3", Icon: Shield,    num: "03" },
+  { key: "card4", Icon: Sparkles,  num: "04" },
 ];
 
 const WhyChooseUs = () => {
@@ -58,27 +57,27 @@ const WhyChooseUs = () => {
   const cardsRef = useRef(null);
   const stripRef = useRef(null);
 
-  /* Cards entrance */
+  /* Cards entrance — slide in from left */
   useEffect(() => {
     const el = cardsRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.querySelectorAll(".wcu-card").forEach((card, i) => {
+          el.querySelectorAll(".wcu-panel").forEach((card, i) => {
             card.style.transitionDelay = `${i * CARD_STAGGER}s`;
-            card.classList.add("wcu-card--in");
+            card.classList.add("wcu-panel--in");
           });
           io.disconnect();
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
-  /* Strip text entrance */
+  /* Strip entrance */
   useEffect(() => {
     const el = stripRef.current;
     if (!el) return;
@@ -106,22 +105,9 @@ const WhyChooseUs = () => {
           <span className="wcu-orn-diamond" />
           <span className="wcu-orn-line" />
         </div>
-
-        {/* ── Experience Cards ── */}
-        <div className="wcu-cards" ref={cardsRef}>
-          {CARDS.map(({ key, Icon }) => (
-            <div className="wcu-card" key={key}>
-              <div className="wcu-card-icon-ring">
-                <Icon size={28} strokeWidth={1.4} className="wcu-card-icon" />
-              </div>
-              <div className="wcu-card-title">{t(`whyChooseUs.${key}Title`)}</div>
-              <div className="wcu-card-desc">{t(`whyChooseUs.${key}Desc`)}</div>
-            </div>
-          ))}
-        </div>
       </div>
 
-      {/* ── Human Moment Strip ── */}
+      {/* ── Human Moment Strip (FIRST — breaks pattern, sets emotion) ── */}
       <div className="wcu-moment-strip" ref={stripRef}>
         <LazyHeroImg src={ElephantSunset} alt="Elephants at a lake during golden sunset in Africa" />
         <div className="wcu-moment-overlay" aria-hidden="true" />
@@ -129,6 +115,32 @@ const WhyChooseUs = () => {
           <span className="wcu-moment-quote">&#8220;</span>
           {t("whyChooseUs.humanMomentOverlay")}
           <span className="wcu-moment-quote">&#8221;</span>
+        </div>
+      </div>
+
+      {/* ── Trust Panels (horizontal editorial cards — after the strip) ── */}
+      <div className="wcu-panels-wrap">
+        <div className="wcu-panels" ref={cardsRef}>
+          {CARDS.map(({ key, Icon, num }) => (
+            <div className="wcu-panel" key={key} data-num={num}>
+              {/* ghost watermark number */}
+              <span className="wcu-panel-ghost" aria-hidden="true">{num}</span>
+
+              {/* content */}
+              <div className="wcu-panel-body">
+                <span className="wcu-panel-tag">{t(`whyChooseUs.${key}Title`)}</span>
+                <p className="wcu-panel-desc">{t(`whyChooseUs.${key}Desc`)}</p>
+              </div>
+
+              {/* large icon, no ring */}
+              <Icon
+                className="wcu-panel-icon"
+                size={52}
+                strokeWidth={1.1}
+                aria-hidden="true"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>

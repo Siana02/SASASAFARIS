@@ -4060,7 +4060,7 @@ padding: 1rem 1.5rem;
   max-width: 1100px;
   margin: 0 auto;
   text-align: center;
-  padding: 5.5rem 1.5rem 4rem;
+  padding: 5.5rem 1.5rem 3.5rem;
 }
 
 /* ── Eyebrow ── */
@@ -4110,119 +4110,145 @@ padding: 1rem 1.5rem;
   flex-shrink: 0;
 }
 
-/* ── Cards grid (2×2) ── */
-.wcu-cards {
+/* ─────────────────────────────────────────────────────────
+   HORIZONTAL TRUST PANELS  (entirely unlike HowWeWork cards)
+   ───────────────────────────────────────────────────────── */
+
+/* Outer padded wrapper after the strip */
+.wcu-panels-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5.5rem;
+}
+
+/* 2-column grid of landscape panels */
+.wcu-panels {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
 }
 
-/* ── Single card ── */
-.wcu-card {
+/* ── Single panel ── */
+.wcu-panel {
   position: relative;
-  padding: 2.4rem 1.4rem 2rem;
-  border: 1px solid rgba(200, 150, 62, 0.16);
-  border-radius: 1.1rem;
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(6px);
-  text-align: center;
-  cursor: default;
-  /* entrance: hidden, slightly raised and rotated */
-  opacity: 0;
-  transform: perspective(700px) translateY(36px) rotateX(9deg);
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease,
-    box-shadow 0.38s ease,
-    border-color 0.38s ease,
-    background 0.38s ease;
-  /* micro-interaction: subtle perpetual pulse on the border */
-  --pulse-opacity: 0.16;
-}
-
-.wcu-card--in {
-  opacity: 1;
-  transform: perspective(700px) translateY(0) rotateX(0deg);
-}
-
-/* Hover lift + glow */
-.wcu-card--in:hover {
-  transform: perspective(700px) translateY(-10px) rotateX(-2deg) scale(1.04);
-  box-shadow:
-    0 24px 50px rgba(200, 150, 62, 0.22),
-    0 0 0 1px rgba(200, 150, 62, 0.4);
-  border-color: rgba(200, 150, 62, 0.42);
-  background: rgba(200, 150, 62, 0.07);
-}
-
-/* Gold shimmer sweep on hover */
-.wcu-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    transparent 35%,
-    rgba(200, 150, 62, 0.12) 50%,
-    transparent 65%
-  );
-  background-size: 300% 300%;
-  background-position: 100% 100%;
-  transition: background-position 0.55s ease;
-  pointer-events: none;
-}
-
-.wcu-card--in:hover::before {
-  background-position: 0% 0%;
-}
-
-/* ── Card icon ring ── */
-.wcu-card-icon-ring {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(200, 150, 62, 0.45);
-  background: rgba(200, 150, 62, 0.1);
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.1rem;
-  color: var(--accent);
-  transition: background 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+  gap: 0;
+  padding: 1.8rem 1.6rem 1.8rem 2rem;
+  /* thick gold left accent bar via border-left */
+  border-left: 3px solid var(--accent);
+  border-radius: 0 0.7rem 0.7rem 0;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+  cursor: default;
+  /* entrance: slide in from left */
+  opacity: 0;
+  transform: translateX(-28px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s ease,
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-.wcu-card--in:hover .wcu-card-icon-ring {
-  background: rgba(200, 150, 62, 0.2);
-  border-color: var(--accent);
-  transform: scale(1.12) rotate(6deg);
+.wcu-panel--in {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.wcu-card-icon {
-  color: var(--accent);
-  transition: color 0.3s ease;
+/* Hover: slide right + bar glows + background warms */
+.wcu-panel--in:hover {
+  transform: translateX(6px);
+  border-color: #f0d898;
+  background: rgba(200, 150, 62, 0.07);
+  box-shadow:
+    -3px 0 0 0 #f0d898,
+    0 8px 32px rgba(200, 150, 62, 0.15);
 }
 
-.wcu-card--in:hover .wcu-card-icon {
-  color: #f0d898;
-}
-
-/* ── Card text ── */
-.wcu-card-title {
-  font-family: var(--heading-font);
-  font-size: 1.22rem;
+/* ── Ghost number watermark ── */
+.wcu-panel-ghost {
+  position: absolute;
+  top: -0.3rem;
+  right: 1rem;
+  font-family: var(--display-font);
+  font-size: 6rem;
   font-weight: 700;
-  color: #f0e0c0;
-  margin-bottom: 0.45rem;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.07;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.02em;
+  transition: opacity 0.35s ease;
 }
 
-.wcu-card-desc {
+.wcu-panel--in:hover .wcu-panel-ghost {
+  opacity: 0.13;
+}
+
+/* ── Body: tag + desc ── */
+.wcu-panel-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-right: 1rem;
+}
+
+/* All-caps tag = the "title" in a cinematic way */
+.wcu-panel-tag {
+  font-family: var(--display-font);
+  font-size: clamp(0.88rem, 1.5vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f0e0c0;
+  line-height: 1.2;
+  /* Gold underline appears on hover */
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.wcu-panel-tag::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.4s cubic-bezier(.4,0,.2,1);
+}
+
+.wcu-panel--in:hover .wcu-panel-tag::after {
+  width: 100%;
+}
+
+.wcu-panel-desc {
   font-family: var(--body-font);
-  font-size: 0.82rem;
-  color: rgba(240, 220, 190, 0.58);
+  font-size: 0.8rem;
+  color: rgba(240, 215, 175, 0.52);
   line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Large icon — no ring, raw SVG, floated right ── */
+.wcu-panel-icon {
+  flex-shrink: 0;
+  color: var(--accent);
+  opacity: 0.55;
+  transition: opacity 0.35s ease, transform 0.4s cubic-bezier(.4,0,.2,1), color 0.35s ease;
+}
+
+.wcu-panel--in:hover .wcu-panel-icon {
+  opacity: 1;
+  color: #f0d898;
+  transform: scale(1.15) rotate(-4deg);
 }
 
 /* =========================================================
@@ -4339,22 +4365,26 @@ padding: 1rem 1.5rem;
    RESPONSIVE
    ========================================================= */
 
-/* Tablet: 2×2 grid */
+/* Tablet */
 @media (max-width: 900px) {
-  .wcu-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .wcu-inner {
     padding: 4rem 1.2rem 3.2rem;
   }
+
+  .wcu-panels-wrap {
+    padding: 3rem 1.2rem 4rem;
+  }
 }
 
-/* Mobile: single column */
-@media (max-width: 520px) {
-  .wcu-cards {
+/* Mobile: panels stack to single column */
+@media (max-width: 580px) {
+  .wcu-panels {
     grid-template-columns: 1fr;
-    gap: 1.1rem;
+    gap: 1rem;
+  }
+
+  .wcu-panels-wrap {
+    padding: 2.5rem 1rem 3.5rem;
   }
 
   .wcu-inner {
@@ -4370,6 +4400,10 @@ padding: 1rem 1.5rem;
     white-space: normal;
     text-align: center;
     width: 90%;
+  }
+
+  .wcu-panel-ghost {
+    font-size: 4.5rem;
   }
 }
 
