@@ -121,7 +121,17 @@ const EcoReminderSection = () => {
   const navigate   = useNavigate();
   const sectionRef = useRef(null);
   const [pledged,         setPledged]         = useState(false);
+  const [thanksVisible,   setThanksVisible]   = useState(false);
   const [celebrationFish, setCelebrationFish] = useState([]);
+  const [fading,          setFading]          = useState(false);
+  const [hidden,          setHidden]          = useState(false);
+
+  /* Hide immediately if already pledged this session */
+  useEffect(() => {
+    if (sessionStorage.getItem("ecoPledged") === "1") {
+      setHidden(true);
+    }
+  }, []);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -142,6 +152,16 @@ const EcoReminderSection = () => {
   const handlePledge = useCallback(() => {
     setPledged(true);
     setCelebrationFish(makeCelebrationFish());
+    /* Two-tick pattern: mount the element first, then trigger the transition */
+    setTimeout(() => setThanksVisible(true), 20);
+    /* After 30 s start fade-out, then hide and save session flag */
+    setTimeout(() => {
+      setFading(true);
+      setTimeout(() => {
+        sessionStorage.setItem("ecoPledged", "1");
+        setHidden(true);
+      }, 1200);
+    }, 30000);
   }, []);
 
   const pledges = [
@@ -153,10 +173,12 @@ const EcoReminderSection = () => {
     { icon: "fa-solid fa-leaf",               key: "pledge.wildlife"  },
   ];
 
+  if (hidden) return null;
+
   return (
     <section
       ref={sectionRef}
-      className={`eco-reminder-section${pledged ? " has-pledged" : ""}`}
+      className={`eco-reminder-section${pledged ? " has-pledged" : ""}${fading ? " is-fading" : ""}`}
       aria-label={t("ecoReminder.ariaLabel")}
     >
       {/* Ambient background fish */}
@@ -222,7 +244,9 @@ const EcoReminderSection = () => {
             labelDone={t("ecoReminder.slideDone")}
           />
           {pledged && (
-            <p className="eco-pledge-thanks">{t("ecoReminder.pledgeThanks")}</p>
+            <p className={`eco-pledge-thanks${thanksVisible ? " is-visible" : ""}`}>
+              {t("ecoReminder.pledgeThanks")}
+            </p>
           )}
         </div>
 

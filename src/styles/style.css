@@ -3552,12 +3552,19 @@ a:focus-visible, button:focus-visible {
   margin-top: 1.25rem;
   opacity: 0;
   transform: translateY(8px);
-  animation: eco-thanks-appear 0.7s 0.2s ease forwards;
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-@keyframes eco-thanks-appear {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+.eco-pledge-thanks.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Fade-out before hiding section ── */
+.eco-reminder-section.is-fading {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  pointer-events: none;
 }
 
 /* ── Close line ── */
@@ -3621,11 +3628,11 @@ a:focus-visible, button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .eco-fish,
   .eco-pledge-icon,
-  .eco-pledge-thanks,
   .eco-pledge-slider-done-label { animation: none !important; }
-  .eco-pledge-thanks,
+  .eco-pledge-thanks { transition: none !important; opacity: 1 !important; transform: none !important; }
   .eco-pledge-slider-done-label { opacity: 1 !important; transform: none !important; }
   .eco-reminder-section.has-pledged { animation: none !important; }
+  .eco-reminder-section.is-fading { transition: none !important; }
   .eco-reminder-eyebrow,
   .eco-reminder-title,
   .eco-reminder-lead,
