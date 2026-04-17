@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { useLanguage } from "../hooks/useLanguage";
-import AnimatedHeroBg from "./AnimatedHeroBg";
 
 const HeroSection = () => {
   const mainTitleRef = useRef(null);
@@ -45,7 +44,6 @@ const HeroSection = () => {
 
   return (
     <section className="hero">
-      <AnimatedHeroBg />
       <div className="hero-overlay"></div>
       <div className="hero-content">
         <h1 className="hero-main-title" ref={mainTitleRef}>

@@ -168,6 +168,18 @@
     "contactUs": "Contattaci",
     "backToPackages": "← Torna ai Pacchetti"
   },
+  "howWeWork": {
+    "eyebrow": "Come Funziona",
+    "title": "Safari su Misura per Te",
+    "step1Title": "Condividi la Tua Visione",
+    "step1Desc": "Dicci la destinazione, il gruppo e il budget.",
+    "step2Title": "Noi Lo Progettiamo",
+    "step2Desc": "I nostri esperti creano un itinerario su misura per te.",
+    "step3Title": "Tu Lo Perfezioni",
+    "step3Desc": "Rivedi ogni dettaglio e modifica finché non è perfetto.",
+    "step4Title": "Vivi l'Avventura",
+    "step4Desc": "Prepara i bagagli — l'Africa ti aspetta."
+  },
   "themeMessage": {
   "safariTheme": "Tema Safari",
   "vacationTheme": "Tema Vacanza",

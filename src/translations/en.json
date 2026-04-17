@@ -168,6 +168,18 @@
     "contactUs": "Contact us",
     "backToPackages": "← Back to Packages"
   },
+  "howWeWork": {
+    "eyebrow": "How It Works",
+    "title": "Safari, Crafted Around You",
+    "step1Title": "Share Your Vision",
+    "step1Desc": "Tell us your dream destination, group size & budget.",
+    "step2Title": "We Design It",
+    "step2Desc": "Our experts build a bespoke itinerary just for you.",
+    "step3Title": "You Perfect It",
+    "step3Desc": "Review every detail and refine until it's exactly right.",
+    "step4Title": "Live the Adventure",
+    "step4Desc": "Pack your bags — Africa is waiting."
+  },
   "themeMessage": {
   "safariTheme": "Safari Theme",
   "vacationTheme": "Vacation Theme",
