@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMobileNav } from "../hooks/useMobileNav";
 import { useTheme } from "../hooks/useTheme";
 import { useLanguage } from "../hooks/useLanguage";
-import { FaviconPng } from "../assets/images";
+import { SasaSafarisLogo } from "../assets/images";
 
 const Header = () => {
   const { isOpen, toggleMenu } = useMobileNav();
@@ -14,7 +14,7 @@ const Header = () => {
     <>
       <header className="header">
         <div className="logo-holder">
-          <img src={FaviconPng} alt="Sule Safaris Logo" className="logo-img" />
+          <img src={SasaSafarisLogo} alt="Sasa Safaris Africa Logo" className="logo-img" />
         </div>
         <div className="header-title">SASA SAFARIS</div>
         <nav className="nav desktop-nav">

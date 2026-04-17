@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PreloadScreen from './components/PreloadScreen';
 import Header from './components/Header';
 import MobileNav from './components/MobileNav';
 import HeroSection from './components/HeroSection';
@@ -47,6 +48,8 @@ function HomePage() {
 }
 
 function App() {
+  const [preloadDone, setPreloadDone] = useState(false);
+
   // Add this at the top of your entry file (e.g., App.jsx)
 useEffect(() => {
   window.onerror = function(message, source, lineno, colno, error) {
@@ -67,7 +70,9 @@ useEffect(() => {
 }, []);
   
   return (
-    <BrowserRouter>
+    <>
+      {!preloadDone && <PreloadScreen onComplete={() => setPreloadDone(true)} />}
+      <BrowserRouter>
       <Header />
       <MobileNav />
       <ContactWidget />
@@ -90,6 +95,7 @@ useEffect(() => {
 {/* <LanguageBanner /> */}
 {/* <CookiePopup /> */}
     </BrowserRouter>
+    </>
   );
 }
 
