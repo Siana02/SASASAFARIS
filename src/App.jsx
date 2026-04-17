@@ -26,6 +26,7 @@ import CookiePolicy from "./components/CookiePolicy";
 import TermsOfService from "./components/TermsOfService";
 import Gallery from "./components/Gallery";
 import DestinationsSection from "./components/DestinationsSection";
+import GalleryStripSection from "./components/GalleryStripSection";
 import BlogPreviewSection from "./components/BlogPreviewSection";
 import BlogPage from "./components/BlogPage";
 import { MobileNavProvider } from './contexts/MobileNavContext';
@@ -48,6 +49,7 @@ function HomePage() {
         <HowWeWork />
         <WhyChooseUs />
         <DestinationsSection />
+        <GalleryStripSection />
         <BlogPreviewSection />
         <AboutSection />
         <ReviewSection />
