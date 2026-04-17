@@ -332,8 +332,8 @@ const DestinationsSection = () => {
 
             {/* CTA */}
             <div className="dest-cta-wrap">
-              <Link to="/contact" className="dest-cta">
-                Book This Adventure
+              <Link to={`/destinations/${dest.id}`} className="dest-cta">
+                Explore This Journey
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />

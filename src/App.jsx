@@ -25,6 +25,7 @@ import CookiePolicy from "./components/CookiePolicy";
 import TermsOfService from "./components/TermsOfService";
 import Gallery from "./components/Gallery";
 import DestinationsSection from "./components/DestinationsSection";
+import DestinationsPage from "./components/DestinationsPage";
 import GalleryStripSection from "./components/GalleryStripSection";
 import BlogPreviewSection from "./components/BlogPreviewSection";
 import FAQSection from "./components/FAQSection";
@@ -95,6 +96,7 @@ useEffect(() => {
       <ContactWidget />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/destinations/:id" element={<DestinationsPage />} />
         <Route path="/viewdetails/:id" element={<ViewDetails />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
