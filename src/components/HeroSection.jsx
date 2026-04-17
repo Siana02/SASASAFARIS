@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import { useLanguage } from "../hooks/useLanguage";
 import AnimatedHeroBg from "./AnimatedHeroBg";
 
@@ -57,18 +56,9 @@ const HeroSection = () => {
           <span className="hero-ornament-diamond" />
           <span className="hero-ornament-line" />
         </div>
+        <p className="hero-tagline">{t('hero.tagline')}</p>
         <div className="hero-ctas">
-          <a href="#packages" className="cta-btn">{t('hero.viewPackages')}</a>
-          <Link to="/contact" className="cta-secondary">
-            {t('hero.contactUs')}
-            <span className="cta-secondary-icon">
-              <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
-                <circle cx="24" cy="24" r="20" fill="var(--cta)" />
-                <polyline points="18 30 30 18" fill="none" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                <polyline points="18 18 30 18 30 30" fill="none" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </span>
-          </Link>
+          <a href="#packages" className="cta-btn cta-btn--glow">{t('hero.viewPackages')}</a>
         </div>
       </div>
     </section>

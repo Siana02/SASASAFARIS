@@ -1,14 +1,16 @@
 {
   "nav": {
     "home": "Home",
-    "packages": "Packages/Pricing",
+    "packages": "Packages",
     "offers": "Offers",
     "about": "About",
-    "contacts": "Contacts",
-    "gallery": "Gallery"
+    "contacts": "Contact",
+    "gallery": "Gallery",
+    "privacy": "Privacy Policy"
   },
   "hero": {
     "mainTitle": "SASA SAFARIS AFRICA",
+    "tagline": "Safaris tailored just for you",
     "title": "CRAFTED SAFARIS JUST FOR YOU",
     "description": "SEAMLESS SAFARIS TAILORED TO MATCH YOUR DESTINATIONS.",
     "viewPackages": "View Packages",

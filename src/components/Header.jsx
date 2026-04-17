@@ -1,24 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useMobileNav } from "../hooks/useMobileNav";
-import { useTheme } from "../hooks/useTheme";
 import { useLanguage } from "../hooks/useLanguage";
 import { SasaSafarisLogo } from "../assets/images";
 
 const Header = () => {
   const { isOpen, toggleMenu } = useMobileNav();
-  const { toggleTheme } = useTheme();
   const { toggleLanguage, currentLanguage, t } = useLanguage();
 
   return (
     <header className="header">
       <div className="logo-holder">
         <img src={SasaSafarisLogo} alt="Sasa Safaris Africa Logo" className="logo-img" />
-      </div>
-      <div className="header-tagline">
-        <span className="header-tagline-line" />
-        <span className="header-tagline-text">Where The Wild Awaits</span>
-        <span className="header-tagline-line" />
       </div>
       <nav className="nav desktop-nav">
         <ul className="nav-links">
@@ -27,19 +20,18 @@ const Header = () => {
           <li>
             <Link to="/contact">{t('nav.contacts')}</Link>
           </li>
+          <li>
+            <Link to="/privacy">{t('nav.privacy')}</Link>
+          </li>
         </ul>
       </nav>
-      
-      {/* Language and Theme switchers outside of nav for better placement */}
+
       <div className="header-controls">
         <button onClick={toggleLanguage} id="language-switcher" aria-label="Switch Language">
           {currentLanguage === 'en' ? '🇮🇹' : '🇬🇧'}
         </button>
-        <button onClick={toggleTheme} id="theme-switcher" aria-label="Switch Theme">
-          <i className="fas fa-adjust"></i>
-        </button>
       </div>
-      
+
       <button
         className={`hamburger${isOpen ? " open" : ""}`}
         id="hamburger"
