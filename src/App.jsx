@@ -25,6 +25,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiePolicy from "./components/CookiePolicy";
 import TermsOfService from "./components/TermsOfService";
 import Gallery from "./components/Gallery";
+import DestinationsSection from "./components/DestinationsSection";
 import { MobileNavProvider } from './contexts/MobileNavContext';
 import './styles/style.css';
 
@@ -40,6 +41,7 @@ function HomePage() {
         <OfferSection />
         <SuccessCountdown />
         <PackagesSection />
+        <DestinationsSection />
         <AboutSection />
         <ReviewSection />
         <ContactFormSection />

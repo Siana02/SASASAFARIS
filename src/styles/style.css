@@ -4407,3 +4407,435 @@ padding: 1rem 1.5rem;
   }
 }
 
+/* =========================================================
+   DESTINATIONS SECTION
+   Immersive full-height split-screen excursion carousel
+   ========================================================= */
+
+.destinations-section {
+  position: relative;
+  width: 100%;
+  background: #0e0a06;
+  overflow: hidden;
+}
+
+/* ── Section header (eyebrow + title above carousel) ── */
+.destinations-header {
+  text-align: center;
+  padding: 3.5rem 1rem 1.2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.destinations-eyebrow {
+  display: inline-block;
+  font-family: var(--body-font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.destinations-heading {
+  font-family: var(--display-font);
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #f5ede0;
+  letter-spacing: 0.06em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Carousel wrapper — full viewport height ── */
+.destinations-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 520px;
+  overflow: hidden;
+  user-select: none;
+  outline: none;
+}
+
+/* ── Individual slide ── */
+.dest-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.52s cubic-bezier(0.4, 0, 0.2, 1), transform 0.52s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dest-slide--visible {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.dest-slide--exit-next {
+  opacity: 0;
+  transform: translateX(-4%);
+  pointer-events: none;
+}
+
+.dest-slide--exit-prev {
+  opacity: 0;
+  transform: translateX(4%);
+  pointer-events: none;
+}
+
+/* ── Image half ── */
+.dest-image-half {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.dest-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 8s ease;
+}
+
+/* Subtle Ken Burns on active slide */
+.dest-slide--visible .dest-img {
+  transform: scale(1.04);
+}
+.dest-slide--exit-next .dest-img,
+.dest-slide--exit-prev .dest-img {
+  transform: scale(1);
+}
+
+/* Soft dark gradient overlay on image */
+.dest-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(14, 10, 6, 0.18) 0%,
+    rgba(14, 10, 6, 0.06) 60%,
+    rgba(14, 10, 6, 0.3) 100%
+  );
+  pointer-events: none;
+}
+
+/* Reverse gradient when image is on the right */
+.dest-image-half--right .dest-img-overlay {
+  background: linear-gradient(
+    to left,
+    rgba(14, 10, 6, 0.18) 0%,
+    rgba(14, 10, 6, 0.06) 60%,
+    rgba(14, 10, 6, 0.3) 100%
+  );
+}
+
+/* Floating category tag on the image */
+.dest-tag {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-family: var(--body-font);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(200, 150, 62, 0.82);
+  padding: 0.35rem 0.85rem;
+  border-radius: 2rem;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+/* ── Text half ── */
+.dest-text-half {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0e0a06;
+  flex-shrink: 0;
+  padding: 2rem;
+}
+
+.dest-text-inner {
+  max-width: 480px;
+  width: 100%;
+}
+
+.dest-subheadline {
+  font-family: var(--body-font);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+}
+
+.dest-headline {
+  font-family: var(--heading-font);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 700;
+  color: #f5ede0;
+  line-height: 1.15;
+  margin: 0 0 1.2rem;
+}
+
+.dest-story {
+  font-family: var(--body-font);
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  line-height: 1.72;
+  color: rgba(245, 237, 224, 0.72);
+  margin: 0 0 1.8rem;
+  max-width: 420px;
+}
+
+.dest-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dest-duration {
+  font-family: var(--body-font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245, 237, 224, 0.5);
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(245, 237, 224, 0.18);
+  border-radius: 2rem;
+}
+
+.dest-price {
+  font-family: var(--heading-font);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+/* CTA button */
+.dest-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--body-font);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0e0a06;
+  background: var(--accent);
+  border: none;
+  padding: 0.85rem 1.8rem;
+  border-radius: 3rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.22s ease, transform 0.18s ease;
+}
+
+.dest-cta:hover,
+.dest-cta:focus-visible {
+  background: var(--cta-hover);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.dest-cta svg {
+  flex-shrink: 0;
+  transition: transform 0.18s ease;
+}
+
+.dest-cta:hover svg {
+  transform: translateX(3px);
+}
+
+/* ── Navigation arrows ── */
+.dest-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(245, 237, 224, 0.1);
+  border: 1px solid rgba(245, 237, 224, 0.22);
+  color: #f5ede0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.18s ease;
+}
+
+.dest-nav:hover,
+.dest-nav:focus-visible {
+  background: rgba(200, 150, 62, 0.85);
+  border-color: var(--accent);
+  transform: translateY(-50%) scale(1.08);
+  outline: none;
+}
+
+.dest-nav--prev { left: 1.2rem; }
+.dest-nav--next { right: 1.2rem; }
+
+/* ── Progress: counter + dots ── */
+.dest-progress {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.dest-counter {
+  font-family: var(--display-font);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: rgba(245, 237, 224, 0.5);
+  pointer-events: none;
+}
+
+.dest-dots {
+  display: flex;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.dest-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(245, 237, 224, 0.22);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.28s ease, transform 0.28s ease;
+}
+
+.dest-dot--seen {
+  background: rgba(200, 150, 62, 0.4);
+}
+
+.dest-dot--active {
+  background: var(--accent);
+  transform: scale(1.45);
+}
+
+/* ── "Scroll to continue" hint ── */
+.dest-scroll-hint {
+  position: absolute;
+  bottom: 1.8rem;
+  right: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--body-font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 237, 224, 0.5);
+  animation: destScrollBounce 1.8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes destScrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* =========================================================
+   DESTINATIONS RESPONSIVE
+   ========================================================= */
+
+/* Tablet: slightly smaller text, tighter padding */
+@media (max-width: 900px) {
+  .dest-text-half {
+    padding: 1.5rem 1.2rem;
+  }
+  .dest-headline {
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+  }
+  .dest-story {
+    font-size: 0.92rem;
+  }
+}
+
+/* Mobile: stack image on top, text below (full width) */
+@media (max-width: 640px) {
+  .destinations-wrapper {
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .dest-slide {
+    flex-direction: column;
+    position: relative;
+    inset: unset;
+    height: auto;
+  }
+
+  /* Override JS-driven order on mobile — always image on top */
+  .dest-image-half,
+  .dest-image-half--left,
+  .dest-image-half--right {
+    order: 0 !important;
+    width: 100%;
+    height: 45vw;
+    min-height: 220px;
+    max-height: 300px;
+  }
+
+  .dest-text-half {
+    order: 1 !important;
+    width: 100%;
+    height: auto;
+    padding: 2rem 1.2rem 4.5rem;
+    justify-content: flex-start;
+  }
+
+  .dest-text-inner {
+    max-width: 100%;
+  }
+
+  .dest-nav--prev { left: 0.6rem; }
+  .dest-nav--next { right: 0.6rem; }
+
+  .destinations-wrapper {
+    overflow: hidden;
+    height: 100svh;
+    min-height: 560px;
+  }
+
+  /* Re-apply absolute positioning for mobile carousel */
+  .dest-slide {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    overflow-y: auto;
+  }
+}
+

@@ -32,6 +32,9 @@ const MobileNav = () => {
           <a href="#packages" onClick={handleLinkClick}>{t('nav.packages')}</a>
         </li>
         <li>
+          <a href="#destinations" onClick={handleLinkClick}>{t('nav.destinations')}</a>
+        </li>
+        <li>
           <a href="#about" onClick={handleLinkClick}>{t('nav.about')}</a>
         </li>
         <li>

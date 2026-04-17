@@ -15,6 +15,7 @@ import SasaSafarisLogo from './sasa_safaris_africa_logo.jpeg';
 import GreatRiftValley from './Great_Rift_Valley.jpg';
 import MaasaiMara from './Maasai_mara_1.jpg';
 import WildernessExplorer from './Wilderness_Explorer.jpg';
+import WatamuMain from './watamu-main.jpg';
 
 export {
   SafariHero,
@@ -32,5 +33,6 @@ export {
   SasaSafarisLogo,
   GreatRiftValley,
   MaasaiMara,
-  WildernessExplorer
+  WildernessExplorer,
+  WatamuMain
 };
