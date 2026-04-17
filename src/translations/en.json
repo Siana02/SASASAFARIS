@@ -133,9 +133,10 @@
     "close": "Close contact options"
   },
   "comingSoon": {
-    "title": "COMING SOON // EXPANDING TO EAST AFRICA & BEYOND",
-    "subtitle": "Powered by innovation, inspired by Africa.",
-    "stayTuned": "Stay Tuned"
+    "title": "Coming Soon",
+    "headlinePrimary": "Sasa Safaris Africa",
+    "headlineAccent": "Is Expanding to East Africa",
+    "subheadline": "We are bringing world-class safari experiences to Uganda, Kenya, Tanzania, and beyond. Something extraordinary is on the horizon — stay tuned."
   },
   "highlights": {
     "valueForMoney": "Value for Money",
