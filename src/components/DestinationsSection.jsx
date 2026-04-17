@@ -1,14 +1,14 @@
 /**
  * DestinationsSection — Immersive full-height split-screen destination carousel
  *
- * ✅ Each destination occupies the full viewport (100vh)
+ * ✅ Each destination occupies the full viewport (100vh) on desktop
  * ✅ 50/50 split: image half + text half, alternating sides per card
  * ✅ Transitions: fade + subtle slide between destinations
- * ✅ Navigation: arrow buttons, keyboard arrows, touch swipe, mouse drag
- * ✅ Progress: numbered counter + dot indicators (flow on mobile, absolute on desktop)
+ * ✅ Navigation: arrow buttons, keyboard arrows, horizontal swipe, mouse drag
+ * ✅ Vertical scroll never cycles cards — only horizontal swipe does
+ * ✅ Progress: numbered counter + dot indicators
  * ✅ "Scroll down" hint appears after viewing all cards
- * ✅ Full-height images with a soft dark overlay for depth
- * ✅ Mobile: stacked layout — big image → text → accent img with duration/price overlay
+ * ✅ Mobile: subheadline → image → headline → story → accent img (with overlay) → CTA → arrows → progress
  */
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
@@ -16,8 +16,8 @@ import { Link } from "react-router-dom";
 import {
   DolphinSafariBlue1,
   SafariBlue2,
+  SardegnaTour1,
   Sardegna1,
-  Sardegna2,
   GedeRuins,
   HellsKitchen,
   TsavoEast2,
@@ -30,15 +30,13 @@ import {
 import LazyImage from "./LazyImage";
 
 // ─── Destination data ────────────────────────────────────────────────────────
-// image  = main full-height image (fills the left/right half)
-// image2 = small accent image displayed at the top of the text panel
 const destinations = [
   {
     id: "safari-blue",
-    image: DolphinSafariBlue1,
-    image2: SafariBlue2,
-    imageAlt: "Watamu ocean and dolphins",
-    image2Alt: "Snorkeling in Watamu Marine Park",
+    image: SafariBlue2,
+    image2: DolphinSafariBlue1,
+    imageAlt: "Snorkeling in Watamu Marine Park",
+    image2Alt: "Watamu ocean and dolphins",
     imagePosition: "center",
     price: "€70 – €80 pp",
     duration: "Full Day",
@@ -46,8 +44,8 @@ const destinations = [
   },
   {
     id: "sardegna-sandbank",
-    image: Sardegna1,
-    image2: Sardegna2,
+    image: SardegnaTour1,
+    image2: Sardegna1,
     imageAlt: "Sardegna 2 sandbank turquoise waters",
     image2Alt: "Crystal water at Sardegna 2 sandbank",
     imagePosition: "center",
@@ -148,6 +146,7 @@ const DestinationsSection = () => {
   const [allSeen, setAllSeen] = useState(false);
   const wrapperRef = useRef(null);
   const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
   const dragStartX = useRef(null);
   const isDragging = useRef(false);
 
@@ -187,19 +186,28 @@ const DestinationsSection = () => {
     return () => window.removeEventListener("keydown", onKey);
   }, [next, prev]);
 
-  // Touch swipe
+  // Touch swipe — only triggers on predominantly horizontal gestures so that
+  // normal vertical page scrolling is never accidentally intercepted.
   useEffect(() => {
     const el = wrapperRef.current;
     if (!el) return;
-    const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+    const onTouchStart = (e) => {
+      touchStartX.current = e.touches[0].clientX;
+      touchStartY.current = e.touches[0].clientY;
+    };
     const onTouchEnd = (e) => {
       if (touchStartX.current === null) return;
-      const delta = touchStartX.current - e.changedTouches[0].clientX;
-      if (Math.abs(delta) > 50) delta > 0 ? next() : prev();
+      const deltaX = touchStartX.current - e.changedTouches[0].clientX;
+      const deltaY = touchStartY.current - e.changedTouches[0].clientY;
+      // Only cycle cards when the swipe is clearly horizontal
+      if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        deltaX > 0 ? next() : prev();
+      }
       touchStartX.current = null;
+      touchStartY.current = null;
     };
     el.addEventListener("touchstart", onTouchStart, { passive: true });
-    el.addEventListener("touchend", onTouchEnd, { passive: false });
+    el.addEventListener("touchend", onTouchEnd, { passive: true });
     return () => {
       el.removeEventListener("touchstart", onTouchStart);
       el.removeEventListener("touchend", onTouchEnd);
@@ -259,6 +267,11 @@ const DestinationsSection = () => {
           aria-label={content.subheadline}
           key={dest.id}
         >
+          {/* Mobile-only: subheadline appears above the main image */}
+          <p className="dest-mobile-pre-subheadline" aria-hidden="true">
+            {content.subheadline}
+          </p>
+
           {/* Image half */}
           <div
             className={`dest-image-half${imageOnLeft ? " dest-image-half--left" : " dest-image-half--right"}`}
@@ -280,13 +293,13 @@ const DestinationsSection = () => {
             className="dest-text-half"
             style={{ order: imageOnLeft ? 1 : 0 }}
           >
-            {/* Titles come first */}
+            {/* Title block: subheadline (hidden on mobile) + headline */}
             <div className="dest-text-titles">
-              <p className="dest-subheadline">{content.subheadline}</p>
+              <p className="dest-subheadline dest-desktop-subheadline">{content.subheadline}</p>
               <h3 className="dest-headline">{content.headline}</h3>
             </div>
 
-            {/* Accent image — between title and story */}
+            {/* Accent image — desktop: after titles; mobile: after story */}
             <div className="dest-accent-img-wrap">
               <LazyImage
                 src={dest.image2}
@@ -296,20 +309,24 @@ const DestinationsSection = () => {
                 eager
               />
               <div className="dest-accent-img-overlay" />
-              {/* Duration + price overlay — visible on mobile only */}
+              {/* Duration + price overlay */}
               <div className="dest-accent-meta" aria-hidden="true">
                 <span className="dest-accent-duration">{dest.duration}</span>
                 <span className="dest-accent-price">{dest.price}</span>
               </div>
             </div>
 
-            {/* Story text, meta and CTA last */}
-            <div className="dest-text-inner">
+            {/* Story + meta */}
+            <div className="dest-text-story">
               <p className="dest-story">{content.story}</p>
               <div className="dest-meta">
                 <span className="dest-duration">{dest.duration}</span>
                 <span className="dest-price">{dest.price}</span>
               </div>
+            </div>
+
+            {/* CTA */}
+            <div className="dest-cta-wrap">
               <Link to="/contact" className="dest-cta">
                 Book This Adventure
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -321,9 +338,9 @@ const DestinationsSection = () => {
           </div>
         </article>
 
-        {/* ── Navigation arrows (inside wrapper so they overlay the slide) ── */}
+        {/* ── Desktop navigation arrows (float over the slide, hidden on mobile) ── */}
         <button
-          className="dest-nav dest-nav--prev"
+          className="dest-nav dest-nav--prev dest-nav--desktop"
           onClick={prev}
           aria-label="Previous destination"
         >
@@ -332,7 +349,7 @@ const DestinationsSection = () => {
           </svg>
         </button>
         <button
-          className="dest-nav dest-nav--next"
+          className="dest-nav dest-nav--next dest-nav--desktop"
           onClick={next}
           aria-label="Next destination"
         >
@@ -342,8 +359,23 @@ const DestinationsSection = () => {
         </button>
       </div>
 
-      {/* ── Progress dots, counter, and scroll hint — OUTSIDE and BELOW the card ── */}
+      {/* ── Progress, mobile arrows, scroll hint — below the card ── */}
       <div className="dest-bottom-controls">
+
+        {/* Mobile-only arrow row */}
+        <div className="dest-mobile-arrows" aria-label="Navigate destinations">
+          <button className="dest-mobile-nav" onClick={prev} aria-label="Previous destination">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button className="dest-mobile-nav" onClick={next} aria-label="Next destination">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+
         <div className="dest-progress">
           <span className="dest-counter">
             {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}

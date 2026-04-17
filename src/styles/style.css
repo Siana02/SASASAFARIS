@@ -4671,39 +4671,60 @@ padding: 1rem 1.5rem;
   align-items: stretch;
   background: #0e0a06;
   flex-shrink: 0;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 /* Accent image: direct child of text-half — fills full column width */
 .dest-text-half > .dest-accent-img-wrap {
   position: relative;
   width: 100%;
-  height: 260px;
+  height: clamp(120px, 17vh, 180px);
   flex-shrink: 0;
   overflow: hidden;
   border-radius: 0;
   margin-bottom: 0;
   box-shadow: none;
+  order: 1;
 }
 
-/* Titles block — sits above the accent image */
+/* Titles block (subheadline + headline) */
 .dest-text-titles {
   max-width: 520px;
   width: 100%;
-  padding: 2.4rem 2.5rem 1.6rem;
+  padding: 1.8rem 2.5rem 1rem;
   margin: 0 auto;
   flex-shrink: 0;
+  order: 0;
 }
 
-.dest-text-inner {
-  flex: 1;
+/* Story + meta block */
+.dest-text-story {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   max-width: 520px;
   width: 100%;
-  padding: 1.8rem 2.5rem 2.5rem;
+  padding: 1.2rem 2.5rem 0;
   margin: 0 auto;
+  order: 2;
+}
+
+/* CTA wrapper */
+.dest-cta-wrap {
+  max-width: 520px;
+  width: 100%;
+  padding: 0.6rem 2.5rem 2rem;
+  margin: 0 auto;
+  order: 3;
+}
+
+/* Mobile-only subheadline above image (hidden on desktop) */
+.dest-mobile-pre-subheadline {
+  display: none;
+}
+
+/* Desktop subheadline inside titles (visible on desktop, hidden on mobile) */
+.dest-desktop-subheadline {
+  /* inherits all .dest-subheadline styles */
 }
 
 .dest-subheadline {
@@ -4730,7 +4751,7 @@ padding: 1rem 1.5rem;
   font-size: clamp(0.9rem, 1.2vw, 1.05rem);
   line-height: 1.72;
   color: rgba(245, 237, 224, 0.72);
-  margin: 0 0 1.8rem;
+  margin: 0 0 1rem;
   max-width: 420px;
 }
 
@@ -4738,7 +4759,7 @@ padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .dest-duration {
@@ -4795,6 +4816,42 @@ padding: 1rem 1.5rem;
 
 .dest-cta:hover svg {
   transform: translateX(3px);
+}
+
+/* ── Navigation arrows (float over the slide on desktop) ── */
+.dest-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(245, 237, 224, 0.25);
+  background: rgba(14, 10, 6, 0.45);
+  color: #f5ede0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background 0.22s ease, border-color 0.22s ease, transform 0.18s ease;
+}
+
+.dest-nav:hover,
+.dest-nav:focus-visible {
+  background: rgba(200, 150, 62, 0.22);
+  border-color: rgba(200, 150, 62, 0.7);
+  transform: translateY(-50%) scale(1.08);
+  outline: none;
+}
+
+.dest-nav--prev { left: 1.2rem; }
+.dest-nav--next { right: 1.2rem; }
+
+/* Mobile arrow row — hidden on desktop */
+.dest-mobile-arrows {
+  display: none;
 }
 
 /* ── Bottom controls — OUTSIDE the carousel wrapper, below it in normal flow ── */
@@ -4883,13 +4940,16 @@ padding: 1rem 1.5rem;
 /* Tablet: slightly smaller text, tighter padding */
 @media (max-width: 900px) {
   .dest-text-half > .dest-accent-img-wrap {
-    height: 220px;
+    height: clamp(110px, 16vh, 160px);
   }
   .dest-text-titles {
-    padding: 1.8rem 1.8rem 1.2rem;
+    padding: 1.4rem 1.8rem 0.8rem;
   }
-  .dest-text-inner {
-    padding: 1.4rem 1.8rem 2rem;
+  .dest-text-story {
+    padding: 1rem 1.8rem 0;
+  }
+  .dest-cta-wrap {
+    padding: 0.5rem 1.8rem 1.6rem;
   }
   .dest-headline {
     font-size: clamp(1.6rem, 5vw, 2.4rem);
@@ -4901,12 +4961,17 @@ padding: 1rem 1.5rem;
 
 /* ─────────────────────────────────────────────────────────
    MOBILE  (≤ 640 px)
-   Stacked layout — everything in natural page flow:
-     1. Main image      — 55 vh, full width
-     2. Text content    — headline, story, meta, CTA
-     3. Accent image    — 240 px, with duration + price overlay
-     4. Bottom controls — dots + counter + scroll hint (below section)
-   Vertical page scrolling passes straight through (no overflow trap).
+   Stacked layout — card flows naturally in the page:
+     1. Subheadline label  (above the main image)
+     2. Main image         — 56 vh, full width
+     3. Headline           — first item in text half
+     4. Story text
+     5. Accent image       — 240 px, with duration + price overlay
+     6. CTA button
+     7. Arrow buttons      — in bottom-controls
+     8. Progress counter + dots
+     9. "Scroll to continue" hint
+   Vertical page scrolling passes straight through.
    Only left/right swipe / arrow keys cycle cards.
    ───────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
@@ -4937,11 +5002,26 @@ padding: 1rem 1.5rem;
     to   { opacity: 1; transform: translateY(0);    }
   }
 
-  /* Exiting cards just fade out (opacity transition in base still applies) */
+  /* Exiting cards just fade out */
   .dest-slide--exit-next,
   .dest-slide--exit-prev {
     opacity: 0;
     pointer-events: none;
+  }
+
+  /* ── Mobile-only subheadline — above the main image ── */
+  .dest-mobile-pre-subheadline {
+    display: block;
+    order: -1;
+    font-family: var(--body-font);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 1.6rem 1.5rem 0.5rem;
+    margin: 0;
+    background: #0e0a06;
   }
 
   /* ── Main image: big and bold ── */
@@ -4961,7 +5041,7 @@ padding: 1rem 1.5rem;
     left: 1rem;
   }
 
-  /* ── Text panel ── */
+  /* ── Text panel: full width, natural flow ── */
   .dest-text-half {
     order: 1 !important;
     width: 100%;
@@ -4970,55 +5050,65 @@ padding: 1rem 1.5rem;
     flex-shrink: 0;
   }
 
-  /* Text inner: natural height, comfortable padding */
+  /* Hide the desktop subheadline — it shows above the image instead */
+  .dest-desktop-subheadline {
+    display: none;
+  }
+
+  /* ── Text-half children — reordered for mobile narrative flow ── */
+
+  /* 1. Headline first (inside text half, after image) */
   .dest-text-titles {
     order: 0;
     flex: none;
     max-width: 100%;
-    padding: 2rem 1.5rem 1rem;
+    padding: 1.6rem 1.5rem 0.5rem;
     margin: 0;
   }
 
-  .dest-text-inner {
-    order: 2;
+  /* 2. Story */
+  .dest-text-story {
+    order: 1;
     flex: none;
     max-width: 100%;
-    padding: 1.4rem 1.5rem 1.8rem;
+    padding: 0.6rem 1.5rem 0;
     margin: 0;
-    justify-content: flex-start;
   }
 
-  .dest-headline {
-    font-size: clamp(1.7rem, 6.5vw, 2.2rem);
-    margin-bottom: 1rem;
-  }
-
-  .dest-subheadline {
-    font-size: 0.72rem;
-    margin-bottom: 0.7rem;
-  }
-
-  .dest-story {
-    font-size: 0.92rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  /* Hide standalone meta row — replaced by accent image overlay on mobile */
-  .dest-meta {
-    display: none;
-  }
-
-  /* ── Accent image: placed BETWEEN title and story (order 1), full width, taller ── */
+  /* 3. Accent image — after story, before CTA */
   .dest-text-half > .dest-accent-img-wrap {
-    order: 1;
+    order: 2;
     width: 100%;
     height: 240px;
     border-radius: 0;
     flex-shrink: 0;
   }
 
-  /* Duration + price overlay on the accent image */
+  /* 4. CTA */
+  .dest-cta-wrap {
+    order: 3;
+    max-width: 100%;
+    padding: 1.4rem 1.5rem 2rem;
+    margin: 0;
+  }
+
+  .dest-headline {
+    font-size: clamp(1.7rem, 6.5vw, 2.2rem);
+    margin-bottom: 0.6rem;
+  }
+
+  .dest-story {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Meta row hidden — info lives in accent image overlay instead */
+  .dest-meta {
+    display: none;
+  }
+
+  /* ── Duration + price overlay on the accent image ── */
   .dest-accent-meta {
     display: flex;
     position: absolute;
@@ -5058,10 +5148,45 @@ padding: 1rem 1.5rem;
     letter-spacing: 0.02em;
   }
 
-  /* ── Bottom controls: natural flow, generous spacing ── */
+  /* ── Desktop floating arrows — hidden on mobile ── */
+  .dest-nav--desktop {
+    display: none !important;
+  }
+
+  /* ── Bottom controls: natural flow ── */
   .dest-bottom-controls {
-    padding: 2.5rem 1rem 3rem;
-    gap: 1.2rem;
+    padding: 2rem 1rem 3rem;
+    gap: 1.4rem;
+  }
+
+  /* ── Mobile arrow row ── */
+  .dest-mobile-arrows {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    pointer-events: auto;
+  }
+
+  .dest-mobile-nav {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(200, 150, 62, 0.45);
+    background: rgba(200, 150, 62, 0.07);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .dest-mobile-nav:active,
+  .dest-mobile-nav:focus-visible {
+    background: rgba(200, 150, 62, 0.2);
+    border-color: var(--accent);
+    transform: scale(1.06);
+    outline: none;
   }
 
   .dest-progress {
@@ -5085,19 +5210,9 @@ padding: 1rem 1.5rem;
     font-size: 0.68rem;
     gap: 0.35rem;
   }
-
-  /* Nav arrows centred on the main image */
-  .dest-nav--prev { left: 0.7rem; }
-  .dest-nav--next { right: 0.7rem; }
-
-  .dest-nav {
-    width: 40px;
-    height: 40px;
-    top: calc(56vh / 2);
-  }
 }
 
-/* ========== LAZY IMAGE — shimmer skeleton & fade-in ========== */
+
 
 /**
  * .lazy-img--pending  → shown while no real src is set yet (or while loading).
