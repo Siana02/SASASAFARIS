@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PreloadScreen from './components/PreloadScreen';
+import SiteBg from './components/SiteBg';
 import Header from './components/Header';
 import MobileNav from './components/MobileNav';
 import HeroSection from './components/HeroSection';
@@ -71,6 +72,7 @@ useEffect(() => {
   
   return (
     <>
+      <SiteBg />
       {!preloadDone && <PreloadScreen onComplete={() => setPreloadDone(true)} />}
       <BrowserRouter>
       <Header />
