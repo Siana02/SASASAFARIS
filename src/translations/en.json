@@ -144,6 +144,28 @@
     "tailoredTrips": "Tailored Trips",
     "support247": "24/7 Support"
   },
+  "ecoReminder": {
+    "ariaLabel": "Environmental Commitment",
+    "pledgeListLabel": "Our environmental pledges",
+    "ctaAriaLabel": "Contact us to learn about our conservation efforts",
+    "eyebrow": "One More Thing…",
+    "title": "We Are Guardians of This Earth",
+    "lead": "The ocean breathes. The savanna stretches. The forest hums with life. Every landscape we share with you holds a quiet promise — to tread gently, to see deeply, and to leave each place better than we found it.",
+    "close": "Travel with us, and travel with intention. The earth gives us wonder — let us give it back the respect it deserves.",
+    "cta": "Join Our Conservation Mission",
+    "pledgePrompt": "Before you set off - make us a promise to take care of the environment on your safari?",
+    "slideIdle": "Slide to pledge →",
+    "slideDone": "Pledged! Thank you",
+    "pledgeThanks": "Thank you for your pledge! We look forward to making your safari unforgettable. See you soon!!!"
+  },
+  "pledge": {
+    "earth": "We are committed to protecting this planet and all its ecosystems — on land, in the air, and beneath the water. Every decision we make honours that responsibility.",
+    "marine": "Please never remove aquatic animals from their natural habitat — no starfish from the shallows, no fish from the reef. They belong to the water.",
+    "cleanup": "We organise regular beach and trail clean-ups and welcome all who wish to join us in keeping our environments pristine.",
+    "donate": "We host donation forums and partner with conservation initiatives worldwide — because protecting our natural world is everyone's cause.",
+    "footprint": "We actively discourage any behaviour that may harm the natural environment, on land or in the water.",
+    "wildlife": "Wild things thrive when left wild. Observe, appreciate, and leave only your wonder behind."
+  },
   "successCountdown": {
     "uniqueDestinations": "Unique Destinations",
     "yearsExperience": "Years of Experience",

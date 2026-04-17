@@ -3207,86 +3207,450 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ============================
-   Service Highlights Belt
+   Eco Reminder Section
 =============================== */
-.service-highlights-belt {
-  background: #f8f9fa; /* light neutral bg */
-  padding: 2rem 1rem;
-  border-top: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
+.eco-reminder-section {
+  background: var(--bg, #fdf8f0);
+  padding: 5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(200, 150, 62, 0.18);
+  border-bottom: 1px solid rgba(200, 150, 62, 0.18);
+  transition: background 0.4s ease;
 }
 
-.highlight-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 cols on mobile */
-  gap: 1.5rem;
-  max-width: 1200px;
+/* ── Brief golden flash when user pledges ── */
+.eco-reminder-section.has-pledged {
+  animation: eco-pledge-flash 1.4s ease forwards;
+}
+
+@keyframes eco-pledge-flash {
+  0%   { background: var(--bg, #fdf8f0); }
+  35%  { background: rgba(200, 150, 62, 0.09); }
+  100% { background: var(--bg, #fdf8f0); }
+}
+
+/* ── Fish background ── */
+.eco-fish-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.eco-fish {
+  position: absolute;
+  top: var(--fish-top, 30%);
+  left: 0;
+  font-size: var(--fish-size, 1.8rem);
+  color: var(--accent, #c8963e);
+  opacity: var(--fish-opacity, 0.13);
+  animation: eco-swim var(--fish-dur, 22s) linear infinite;
+  animation-delay: var(--fish-delay, 0s);
+  will-change: transform;
+}
+
+/* Celebration fish: bright, fast, burst across screen on pledge */
+.eco-fish--celebration {
+  filter: brightness(1.25) saturate(1.3);
+  z-index: 1;
+}
+
+@keyframes eco-swim {
+  from { transform: translateX(-80px); }
+  to   { transform: translateX(calc(100vw + 80px)); }
+}
+
+/* ── Inner content layer ── */
+.eco-reminder-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
   margin: 0 auto;
+}
+
+/* ── Entrance animations ── */
+.eco-reminder-eyebrow,
+.eco-reminder-title,
+.eco-reminder-lead,
+.eco-pledge-item,
+.eco-pledge-cta-block,
+.eco-reminder-close,
+.eco-cta-btn {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.eco-reminder-section.is-visible .eco-reminder-eyebrow {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.05s;
+}
+.eco-reminder-section.is-visible .eco-reminder-title {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.18s;
+}
+.eco-reminder-section.is-visible .eco-reminder-lead {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.32s;
+}
+.eco-reminder-section.is-visible .eco-pledge-item {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(0.46s + var(--stagger, 0) * 0.1s);
+}
+.eco-reminder-section.is-visible .eco-pledge-cta-block {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.02s;
+}
+.eco-reminder-section.is-visible .eco-reminder-close {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.16s;
+}
+.eco-reminder-section.is-visible .eco-cta-btn {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.28s;
+}
+
+/* ── Text styles ── */
+.eco-reminder-eyebrow {
+  font-family: var(--body-font, 'Jost', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent, #c8963e);
+  margin: 0 0 1rem;
+}
+
+.eco-reminder-title {
+  font-family: var(--display-font, 'Cinzel', serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #1a1a1a;
+  margin: 0 0 1.5rem;
+  line-height: 1.25;
+}
+
+.eco-reminder-lead {
+  font-family: var(--heading-font, 'Cormorant Garamond', serif);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  color: #4a4035;
+  line-height: 1.75;
+  margin: 0 0 2.5rem;
+  font-style: italic;
+}
+
+/* ── Pledge list ── */
+.eco-pledge-list {
   list-style: none;
   padding: 0;
+  margin: 0 0 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  text-align: left;
 }
 
-.highlight-card {
+.eco-pledge-item {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  gap: 1.1rem;
+  background: #fff;
+  border: 1px solid rgba(200, 150, 62, 0.3);
+  border-radius: 0.6rem;
+  padding: 0.9rem 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  cursor: default;
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.highlight-card:hover {
+.eco-pledge-item:hover {
+  background: #fffaf3;
+  border-color: rgba(200, 150, 62, 0.65);
+  box-shadow: 0 6px 18px rgba(200, 150, 62, 0.15);
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-.highlight-icon {
-  font-size: 1.8rem;
-  color: var(--cta, #2e7d32); /* safari green fallback */
-  margin-bottom: 0.75rem;
+/* ── Pledge icon — prominent circle badge ── */
+.eco-pledge-icon {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  min-width: 3rem;
+  border-radius: 50%;
+  background: rgba(200, 150, 62, 0.1);
+  border: 1.5px solid rgba(200, 150, 62, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  color: var(--accent, #c8963e);
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+  animation: eco-icon-idle 3.5s ease-in-out infinite;
 }
 
-.highlight-text {
-  font-size: 1.05rem;
-  font-weight: 600;
+@keyframes eco-icon-idle {
+  0%, 100% { transform: scale(1);    }
+  50%       { transform: scale(1.1); }
+}
+
+.eco-pledge-item:hover .eco-pledge-icon {
+  animation: none;
+  transform: scale(1.28) rotate(-10deg);
+  color: var(--cta, #d4852a);
+  background: rgba(212, 133, 42, 0.12);
+  border-color: rgba(212, 133, 42, 0.4);
+}
+
+/* ── Pledge text ── */
+.eco-pledge-text {
+  font-family: var(--body-font, 'Jost', sans-serif);
+  font-size: 0.97rem;
   color: #333;
+  line-height: 1.6;
+  transition: color 0.2s ease;
+}
+
+.eco-pledge-item:hover .eco-pledge-text {
+  color: #1a1a1a;
+}
+
+/* ── Pledge CTA block (prompt + slider + thanks) ── */
+.eco-pledge-cta-block {
+  margin: 0 0 2.5rem;
+}
+
+.eco-pledge-prompt {
+  font-family: var(--heading-font, 'Cormorant Garamond', serif);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: #4a4035;
+  font-style: italic;
+  margin: 0 0 1.4rem;
+  line-height: 1.65;
+}
+
+/* ── Drag-to-pledge slider ── */
+.eco-pledge-slider {
+  position: relative;
+  height: 60px;
+  background: rgba(200, 150, 62, 0.08);
+  border: 2px solid rgba(200, 150, 62, 0.28);
+  border-radius: 30px;
+  margin: 0 auto 1.25rem;
+  max-width: 420px;
+  user-select: none;
+  touch-action: none;
+  overflow: hidden;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.eco-pledge-slider.is-done {
+  background: rgba(200, 150, 62, 0.16);
+  border-color: var(--accent, #c8963e);
+}
+
+.eco-pledge-slider-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 68px;
+  font-family: var(--body-font, 'Jost', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(200, 150, 62, 0.55);
+  pointer-events: none;
+}
+
+.eco-pledge-slider-done-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--body-font, 'Jost', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent, #c8963e);
+  pointer-events: none;
+  animation: eco-done-label-appear 0.45s ease forwards;
+  opacity: 0;
+}
+
+@keyframes eco-done-label-appear {
+  to   { opacity: 1; }
+  from { opacity: 0; }
+}
+
+.eco-pledge-slider-thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--cta, #d4852a);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  cursor: grab;
+  touch-action: none;
+  box-shadow: 0 3px 10px rgba(212, 133, 42, 0.4);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.25s ease;
+  will-change: transform;
+  z-index: 2;
+}
+
+/* Disable transform transition while dragging so thumb tracks pointer without lag */
+.eco-pledge-slider-thumb.is-dragging {
+  transition: box-shadow 0.2s ease, background 0.25s ease;
+  cursor: grabbing;
+  box-shadow: 0 6px 18px rgba(212, 133, 42, 0.55);
+}
+
+.eco-pledge-slider-thumb.is-done {
+  background: var(--accent, #c8963e);
+  cursor: default;
+  box-shadow: 0 3px 12px rgba(200, 150, 62, 0.45);
+}
+
+.eco-pledge-slider-thumb:focus-visible {
+  outline: 3px solid var(--accent, #c8963e);
+  outline-offset: 3px;
+}
+
+/* ── Post-pledge thank-you message ── */
+.eco-pledge-thanks {
+  font-family: var(--heading-font, 'Cormorant Garamond', serif);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-style: italic;
+  color: var(--accent, #c8963e);
+  line-height: 1.7;
+  margin-top: 1.25rem;
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Fade-out before hiding section ── */
+.eco-reminder-section.is-fading {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  pointer-events: none;
+}
+
+/* ── Close line ── */
+.eco-reminder-close {
+  font-family: var(--heading-font, 'Cormorant Garamond', serif);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #6b5b45;
+  font-style: italic;
+  margin: 0 0 2.5rem;
+  line-height: 1.7;
+}
+
+/* ── CTA button ── */
+.eco-cta-btn {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--body-font, 'Jost', sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--cta, #d4852a);
+  border: none;
+  border-radius: 3px;
+  padding: 0.85rem 2.4rem;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.eco-cta-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -110%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transition: left 0.5s ease;
+}
+
+.eco-cta-btn:hover,
+.eco-cta-btn:focus-visible {
+  background: var(--cta-hover, #b8720e);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(212, 133, 42, 0.35);
+  outline: none;
+}
+
+.eco-cta-btn:hover::after {
+  left: 130%;
+}
+
+/* Extra glow once pledged */
+.eco-cta-btn.is-pledged {
+  box-shadow: 0 0 0 3px rgba(200, 150, 62, 0.3), 0 4px 14px rgba(212, 133, 42, 0.25);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .eco-fish,
+  .eco-pledge-icon,
+  .eco-pledge-slider-done-label { animation: none !important; }
+  .eco-pledge-slider-done-label { opacity: 1 !important; transform: none !important; }
+  .eco-reminder-section.has-pledged { animation: none !important; }
+  .eco-reminder-section.is-fading { transition: none !important; }
+  .eco-reminder-eyebrow,
+  .eco-reminder-title,
+  .eco-reminder-lead,
+  .eco-pledge-item,
+  .eco-pledge-cta-block,
+  .eco-reminder-close,
+  .eco-cta-btn { opacity: 1; transform: none; transition: none; }
 }
 
 /* ============================
-   RESPONSIVENESS
+   Eco Reminder – Responsive
 =============================== */
-@media (min-width: 768px) {
-  .highlight-list {
-    grid-template-columns: repeat(4, 1fr); /* 4 cols on tablets+ */
-  }
-
-  .highlight-card {
-    flex-direction: row;
-    text-align: left;
-    justify-content: flex-start;
-    gap: 0.75rem;
-  }
-
-  .highlight-icon {
-    margin-bottom: 0;
-    font-size: 1.6rem;
-  }
-
-  .highlight-text {
-    font-size: 1rem;
+@media (min-width: 560px) {
+  .eco-pledge-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
-  .service-highlights-belt {
-    padding: 3rem 2rem;
+@media (min-width: 900px) {
+  .eco-reminder-section {
+    padding: 6rem 2rem;
   }
 
-  .highlight-card {
-    padding: 2rem 1.25rem;
+  .eco-pledge-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
