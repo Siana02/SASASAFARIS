@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "country-flag-icons": "^1.6.16",
     "framer-motion": "^11.11.17",
     "gsap": "^3.12.5",
     "lucide-react": "^0.441.0",
