@@ -14,10 +14,7 @@ import ContactSocials from "./components/ContactSocials";
 import ComingSoon from "./components/ComingSoon";
 import HighlightSection from './components/HighlightSection';
 import Footer from './components/Footer';
-import ThemeMessage from './components/ThemeMessage';
 import ContactWidget from './components/ContactWidget';
-import CookiePopup from './components/CookiePopup';
-import LanguageBanner from './components/LanguageBanner';
 import ViewDetails from './components/ViewDetails'; // adjust path if needed
 import Contact from "./components/Contact";
 import PrivacyPolicy from "./components/PrivacyPolicy";
