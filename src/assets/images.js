@@ -16,11 +16,12 @@ import GreatRiftValley from './Great_Rift_Valley.jpg';
 import MaasaiMara from './Maasai_mara_1.jpg';
 import WildernessExplorer from './Wilderness_Explorer.jpg';
 import WatamuMain from './watamu-main.jpg';
-import SafariBlue2 from './safari-blue2.png';
+import SafariBlue2 from './safari-blue2.jpg';
 import Sardegna1 from './sardegna1.jpeg';
 import Sardegna2 from './sardegna2.jpeg';
 import GedeRuins from './gede-ruins.jpeg';
 import TsavoEast1 from './tsavo-east-1.jpg';
+import TsavoEast2 from './tsavo-east-2.jpg';
 import WatamuCulturalTour1 from './watamu-cultural tour 1.jpg';
 import WatamuCulturalTour2 from './watamu-cultural tour2.jpg';
 import HellsKitchen from './hells-kitchen.jpeg';
@@ -49,6 +50,7 @@ export {
   Sardegna2,
   GedeRuins,
   TsavoEast1,
+  TsavoEast2,
   WatamuCulturalTour1,
   WatamuCulturalTour2,
   HellsKitchen,

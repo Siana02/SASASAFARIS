@@ -5,33 +5,33 @@
  * ✅ 50/50 split: image half + text half, alternating sides per card
  * ✅ Transitions: fade + subtle slide between destinations
  * ✅ Navigation: arrow buttons, keyboard arrows, touch swipe, mouse drag
- * ✅ Progress: numbered counter (01 / 05) + dot indicators
+ * ✅ Progress: numbered counter + dot indicators (flow on mobile, absolute on desktop)
  * ✅ "Scroll down" hint appears after viewing all cards
  * ✅ Full-height images with a soft dark overlay for depth
+ * ✅ Mobile: stacked layout — big image → text → accent img with duration/price overlay
  */
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import {
-  WatamuMain,
   DolphinSafariBlue1,
   SafariBlue2,
   Sardegna1,
   Sardegna2,
   GedeRuins,
   HellsKitchen,
-  TsavoEast1,
+  TsavoEast2,
   ElephantSunset,
   WatamuCulturalTour1,
   WatamuCulturalTour2,
+  ClassicMaasaiMara,
+  WildebeestMigration,
 } from "../assets/images";
+import LazyImage from "./LazyImage";
 
 // ─── Destination data ────────────────────────────────────────────────────────
 // image  = main full-height image (fills the left/right half)
 // image2 = small accent image displayed at the top of the text panel
-//
-// NOTE: "hells kitchen" (Marafa canyon) and tsavo-east-2 images are pending upload.
-//       WildernessExplorer / Amboseli are placeholders until those land.
 const destinations = [
   {
     id: "safari-blue",
@@ -69,7 +69,7 @@ const destinations = [
   {
     id: "tsavo-east",
     image: ElephantSunset,
-    image2: TsavoEast1, // tsavo-east-2 not yet uploaded — using tsavo-east-1 as accent
+    image2: TsavoEast2,
     imageAlt: "Tsavo East red elephants at sunset",
     image2Alt: "Tsavo East National Park landscape",
     imagePosition: "center",
@@ -87,6 +87,17 @@ const destinations = [
     price: "Contact Us",
     duration: "Half Day",
     tag: "Cultural Immersion",
+  },
+  {
+    id: "maasai-mara",
+    image: ClassicMaasaiMara,
+    image2: WildebeestMigration,
+    imageAlt: "Maasai Mara golden savannah at golden hour",
+    image2Alt: "The Great Wildebeest Migration crossing the Mara River",
+    imagePosition: "center",
+    price: "From €250 pp",
+    duration: "3 Days / 2 Nights",
+    tag: "Wildlife Safari",
   },
 ];
 
@@ -120,6 +131,12 @@ const CONTENT = {
     subheadline: "Watamu Village Cultural Tour",
     story:
       "Slow down and truly arrive. Meet the families, walk the markets, discover the crafts, and hear the stories that make Watamu what it is. This is not tourism — this is belonging, if only for a morning.",
+  },
+  "maasai-mara": {
+    headline: "The Greatest Show on Earth",
+    subheadline: "Maasai Mara — Great Migration Safari",
+    story:
+      "Over a million wildebeest thunder across the Mara River in nature's most dramatic spectacle. Lions stalk the tall grass, leopards drape themselves over acacia trees, and the vast sky above makes you feel both small and infinite. The Mara isn't somewhere you visit — it's somewhere you become.",
   },
 };
 
@@ -159,11 +176,12 @@ const DestinationsSection = () => {
     goTo((active - 1 + total) % total, "prev");
   }, [active, total, goTo]);
 
-  // Keyboard navigation
+  // Keyboard navigation — only left/right arrows cycle cards;
+  // up/down are left to the browser for normal page scrolling.
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "ArrowRight" || e.key === "ArrowDown") next();
-      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") prev();
+      if (e.key === "ArrowRight") { e.preventDefault(); next(); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -222,8 +240,8 @@ const DestinationsSection = () => {
     <section className="destinations-section" id="destinations" aria-label="Destinations">
       {/* Section heading */}
       <div className="destinations-header">
-        <span className="destinations-eyebrow">Explore Watamu</span>
-        <h2 className="destinations-heading">Our Excursions</h2>
+        <span className="destinations-eyebrow">Kenya & Beyond</span>
+        <h2 className="destinations-heading">Journeys That Change You</h2>
       </div>
 
       {/* Carousel wrapper */}
@@ -246,16 +264,14 @@ const DestinationsSection = () => {
             className={`dest-image-half${imageOnLeft ? " dest-image-half--left" : " dest-image-half--right"}`}
             style={{ order: imageOnLeft ? 0 : 1 }}
           >
-            <img
+            <LazyImage
               src={dest.image}
               alt={dest.imageAlt}
               className="dest-img"
               style={{ objectPosition: dest.imagePosition }}
               draggable={false}
-              loading="lazy"
             />
             <div className="dest-img-overlay" />
-            {/* Floating tag */}
             <span className="dest-tag">{dest.tag}</span>
           </div>
 
@@ -264,19 +280,25 @@ const DestinationsSection = () => {
             className="dest-text-half"
             style={{ order: imageOnLeft ? 1 : 0 }}
           >
-            <div className="dest-text-inner">
-              {/* Small accent image at the top of the text panel */}
-              <div className="dest-accent-img-wrap">
-                <img
-                  src={dest.image2}
-                  alt={dest.image2Alt}
-                  className="dest-accent-img"
-                  draggable={false}
-                  loading="lazy"
-                />
-                <div className="dest-accent-img-overlay" />
+            {/* Accent image — full width of the text column; on mobile shown below text */}
+            <div className="dest-accent-img-wrap">
+              <LazyImage
+                src={dest.image2}
+                alt={dest.image2Alt}
+                className="dest-accent-img"
+                draggable={false}
+                eager
+              />
+              <div className="dest-accent-img-overlay" />
+              {/* Duration + price overlay — visible on mobile only */}
+              <div className="dest-accent-meta" aria-hidden="true">
+                <span className="dest-accent-duration">{dest.duration}</span>
+                <span className="dest-accent-price">{dest.price}</span>
               </div>
+            </div>
 
+            {/* Text content */}
+            <div className="dest-text-inner">
               <p className="dest-subheadline">{content.subheadline}</p>
               <h3 className="dest-headline">{content.headline}</h3>
               <p className="dest-story">{content.story}</p>
@@ -295,7 +317,7 @@ const DestinationsSection = () => {
           </div>
         </article>
 
-        {/* ── Navigation arrows ── */}
+        {/* ── Navigation arrows (inside wrapper so they overlay the slide) ── */}
         <button
           className="dest-nav dest-nav--prev"
           onClick={prev}
@@ -314,8 +336,10 @@ const DestinationsSection = () => {
             <polyline points="9 18 15 12 9 6" />
           </svg>
         </button>
+      </div>
 
-        {/* ── Progress bar ── */}
+      {/* ── Progress dots, counter, and scroll hint — OUTSIDE and BELOW the card ── */}
+      <div className="dest-bottom-controls">
         <div className="dest-progress">
           <span className="dest-counter">
             {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
@@ -337,7 +361,6 @@ const DestinationsSection = () => {
           </div>
         </div>
 
-        {/* Scroll-down hint after all seen */}
         {allSeen && (
           <div className="dest-scroll-hint" aria-live="polite">
             <span>Scroll to continue</span>

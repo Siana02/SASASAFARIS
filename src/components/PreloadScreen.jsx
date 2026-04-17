@@ -1,5 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useImagePreloader } from '../hooks/useImagePreloader';
+
+/** Minimum time (ms) the screen is always shown — keeps the animation visible. */
+const MIN_DISPLAY_MS = 1800;
+/** Hard cap (ms) — we never block the user longer than this regardless of slow network. */
+const MAX_WAIT_MS = 5000;
+
+const LOADING_MESSAGES = [
+  'Loading adventures…',
+  'Tracking the elephants…',
+  'Preparing your journey…',
+  'Charting the ocean…',
+  'Packing the sunscreen…',
+  'Calling the dolphins…',
+  'Reading the savannah…',
+  'Almost there…',
+];
 
 /* ── Acacia tree SVG component ── */
 const AcaciaTree = ({ x, y, scale = 1 }) => (
@@ -64,20 +81,61 @@ const CURTAIN_EASE = [0.76, 0, 0.24, 1];
 /* ════════════════════════════════════
    PreloadScreen
    ════════════════════════════════════ */
-const PreloadScreen = ({ onComplete }) => {
+const PreloadScreen = ({ onComplete, images = [] }) => {
   const [revealing, setRevealing] = useState(false);
+  const [msgIndex, setMsgIndex] = useState(0);
 
-  // Keep onComplete stable inside the effect via ref
+  const { percent, isComplete } = useImagePreloader(images);
+
+  // Keep onComplete stable inside effects via ref
   const onCompleteRef = useRef(onComplete);
   useEffect(() => { onCompleteRef.current = onComplete; }, [onComplete]);
 
+  // Flags — tracked in refs to avoid stale closures
+  const minPassedRef = useRef(false);
+  const imagesReadyRef = useRef(false);
+  const revealCalledRef = useRef(false);
+
+  const doReveal = useCallback(() => {
+    if (revealCalledRef.current) return;
+    revealCalledRef.current = true;
+    setRevealing(true);
+    setTimeout(() => onCompleteRef.current?.(), 1400);
+  }, []);
+
+  // Min display time + hard-cap timeout
   useEffect(() => {
-    const revealTimer = setTimeout(() => setRevealing(true), 3000);
-    const doneTimer = setTimeout(() => onCompleteRef.current?.(), 4400);
+    const minTimer = setTimeout(() => {
+      minPassedRef.current = true;
+      if (imagesReadyRef.current) doReveal();
+    }, MIN_DISPLAY_MS);
+
+    const maxTimer = setTimeout(() => {
+      imagesReadyRef.current = true;
+      minPassedRef.current = true;
+      doReveal();
+    }, MAX_WAIT_MS);
+
     return () => {
-      clearTimeout(revealTimer);
-      clearTimeout(doneTimer);
+      clearTimeout(minTimer);
+      clearTimeout(maxTimer);
     };
+  }, [doReveal]);
+
+  // Trigger reveal as soon as images are done AND min time has passed
+  useEffect(() => {
+    if (isComplete && !imagesReadyRef.current) {
+      imagesReadyRef.current = true;
+      if (minPassedRef.current) doReveal();
+    }
+  }, [isComplete, doReveal]);
+
+  // Cycle loading messages
+  useEffect(() => {
+    const id = setInterval(() => {
+      setMsgIndex((i) => (i + 1) % LOADING_MESSAGES.length);
+    }, 1600);
+    return () => clearInterval(id);
   }, []);
 
   return (
@@ -336,29 +394,70 @@ const PreloadScreen = ({ onComplete }) => {
         <motion.div
           style={{
             position: 'absolute',
-            bottom: '6%',
+            bottom: '8%',
             left: '50%',
             transform: 'translateX(-50%)',
-            width: 130,
-            height: 1,
-            background: 'rgba(200,150,62,0.18)',
-            borderRadius: 2,
-            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.55rem',
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          <motion.div
+          {/* Cycling message */}
+          <motion.p
+            key={msgIndex}
             style={{
-              height: '100%',
-              background: 'linear-gradient(to right, #c8963e, #e8c97a)',
-              borderRadius: 2,
+              fontFamily: "'Assistant', sans-serif",
+              fontSize: 'clamp(0.55rem, 1.4vw, 0.72rem)',
+              letterSpacing: '0.28em',
+              color: '#7a5a35',
+              textTransform: 'uppercase',
+              margin: 0,
             }}
-            initial={{ width: '0%' }}
-            animate={{ width: '100%' }}
-            transition={{ duration: 2.85, delay: 0.55, ease: 'linear' }}
-          />
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.35 }}
+          >
+            {LOADING_MESSAGES[msgIndex]}
+          </motion.p>
+
+          {/* Track + fill */}
+          <div
+            style={{
+              width: 160,
+              height: 2,
+              background: 'rgba(200,150,62,0.18)',
+              borderRadius: 2,
+              overflow: 'hidden',
+            }}
+          >
+            <motion.div
+              style={{
+                height: '100%',
+                background: 'linear-gradient(to right, #c8963e, #e8c97a)',
+                borderRadius: 2,
+              }}
+              animate={{ width: percent + '%' }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+            />
+          </div>
+
+          {/* Percentage label */}
+          <motion.span
+            style={{
+              fontFamily: "'Assistant', sans-serif",
+              fontSize: 'clamp(0.5rem, 1.2vw, 0.65rem)',
+              letterSpacing: '0.18em',
+              color: '#c8963e',
+              opacity: 0.8,
+            }}
+          >
+            {percent}%
+          </motion.span>
         </motion.div>
       </motion.div>
     </div>
