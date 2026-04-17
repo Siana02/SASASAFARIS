@@ -6050,7 +6050,7 @@ padding: 1rem 1.5rem;
   z-index: 1;
   width: 100%;
   padding: 5rem 0 5rem;
-  background: var(--background);
+  background: rgba(12, 6, 2, 0.92);
   overflow: hidden;
 }
 
@@ -6076,7 +6076,7 @@ padding: 1rem 1.5rem;
   font-family: var(--display-font);
   font-size: clamp(1.7rem, 4vw, 2.8rem);
   font-weight: 700;
-  color: var(--text);
+  color: #fff;
   letter-spacing: 0.05em;
   margin: 0 0 0.7rem;
 }
@@ -6084,15 +6084,55 @@ padding: 1rem 1.5rem;
 .gallery-strip__subtitle {
   font-family: var(--body-font);
   font-size: clamp(0.88rem, 1.6vw, 1rem);
-  color: rgba(58, 26, 8, 0.55);
+  color: rgba(255, 255, 255, 0.5);
   max-width: 420px;
   margin: 0 auto;
   line-height: 1.65;
 }
 
+/* Outer wrapper: positions arrows relative to the strip */
+.gallery-strip__nav-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Arrow buttons */
+.gallery-strip__nav-btn {
+  flex: 0 0 auto;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  user-select: none;
+  flex-shrink: 0;
+  margin: 0 10px;
+}
+
+.gallery-strip__nav-btn:hover {
+  background: rgba(200, 150, 62, 0.35);
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
+.gallery-strip__nav-btn:active {
+  transform: scale(0.96);
+}
+
 /* Viewport: clips the scrolling strip */
 .gallery-strip__viewport {
-  width: 100%;
+  flex: 1 1 0;
+  min-width: 0;
   overflow: hidden;
   cursor: default;
 }
@@ -6104,7 +6144,6 @@ padding: 1rem 1.5rem;
   flex-wrap: nowrap;
   gap: 14px;
   will-change: transform;
-  /* initial transform set to 0 by JS after mount */
 }
 
 /* Each image cell — perfect square */
@@ -6133,6 +6172,13 @@ padding: 1rem 1.5rem;
     flex: 0 0 220px;
     width: 220px;
     height: 220px;
+  }
+
+  .gallery-strip__nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    margin: 0 6px;
   }
 }
 

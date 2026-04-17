@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useCallback } from "react";
 import {
-  SafariHero,
   VacationHero,
   ClassicMaasaiMara,
   Amboseli,
@@ -25,7 +24,6 @@ import {
 
 // Only use scenic/wildlife images — no logos, no UI screenshots
 const IMAGES = [
-  SafariHero,
   ElephantSunset,
   ClassicMaasaiMara,
   Amboseli,
@@ -66,25 +64,54 @@ const GalleryStripSection = () => {
 
   const getX = (idx) => -(idx * (IMG_SIZE + IMG_GAP));
 
-  const advance = useCallback(() => {
-    if (pausedRef.current) return;
+  // Core slide: animate to a new index, wrapping seamlessly
+  const slideTo = useCallback((newIdx) => {
     const el = innerRef.current;
     if (!el) return;
 
-    indexRef.current += STEP;
-
-    el.style.transition = `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.55, 1)`;
-    el.style.transform = `translateX(${getX(indexRef.current)}px)`;
-
-    // Once the slide animation ends, silently reset if we've consumed the first copy
-    if (indexRef.current >= total) {
+    // Wrap forward past end of first copy
+    if (newIdx >= total) {
+      indexRef.current = newIdx;
+      el.style.transition = `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.55, 1)`;
+      el.style.transform = `translateX(${getX(newIdx)}px)`;
       setTimeout(() => {
         indexRef.current -= total;
         el.style.transition = "none";
         el.style.transform = `translateX(${getX(indexRef.current)}px)`;
       }, SLIDE_MS + 80);
+      return;
     }
+
+    // Wrap backward past start — jump silently to end of first copy, then slide back
+    if (newIdx < 0) {
+      const jumpIdx = total + newIdx; // e.g. newIdx=-4 → total-4
+      el.style.transition = "none";
+      el.style.transform = `translateX(${getX(jumpIdx + STEP)}px)`;
+      // Force reflow so the no-transition jump registers before we animate
+      void el.offsetWidth;
+      indexRef.current = jumpIdx;
+      el.style.transition = `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.55, 1)`;
+      el.style.transform = `translateX(${getX(jumpIdx)}px)`;
+      return;
+    }
+
+    indexRef.current = newIdx;
+    el.style.transition = `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.55, 1)`;
+    el.style.transform = `translateX(${getX(newIdx)}px)`;
   }, [total]);
+
+  // Auto-advance (respects pause)
+  const advance = useCallback(() => {
+    if (pausedRef.current) return;
+    slideTo(indexRef.current + STEP);
+  }, [slideTo]);
+
+  // Manual arrow scroll (always fires, resets the auto-interval timer)
+  const manualScroll = useCallback((dir) => {
+    clearInterval(timerRef.current);
+    slideTo(indexRef.current + dir * STEP);
+    timerRef.current = setInterval(advance, PAUSE_MS);
+  }, [slideTo, advance]);
 
   useEffect(() => {
     timerRef.current = setInterval(advance, PAUSE_MS);
@@ -100,7 +127,7 @@ const GalleryStripSection = () => {
   const handleTouchEnd = (e) => {
     if (touchStartX.current === null) return;
     const dx = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(dx) > 40) advance();
+    if (Math.abs(dx) > 40) manualScroll(dx > 0 ? 1 : -1);
     touchStartX.current = null;
   };
 
@@ -114,25 +141,45 @@ const GalleryStripSection = () => {
         </p>
       </div>
 
-      <div
-        className="gallery-strip__viewport"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <div className="gallery-strip__inner" ref={innerRef}>
-          {doubled.map((src, idx) => (
-            <div className="gallery-strip__item" key={idx}>
-              <img
-                src={src}
-                alt={`Safari moment ${(idx % total) + 1}`}
-                loading="lazy"
-                draggable="false"
-              />
-            </div>
-          ))}
+      <div className="gallery-strip__nav-wrap">
+        {/* Left arrow */}
+        <button
+          className="gallery-strip__nav-btn gallery-strip__nav-btn--left"
+          onClick={() => manualScroll(-1)}
+          aria-label="Scroll gallery left"
+        >
+          &#8249;
+        </button>
+
+        <div
+          className="gallery-strip__viewport"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="gallery-strip__inner" ref={innerRef}>
+            {doubled.map((src, idx) => (
+              <div className="gallery-strip__item" key={idx}>
+                <img
+                  src={src}
+                  alt={`Safari moment ${(idx % total) + 1}`}
+                  loading="lazy"
+                  draggable="false"
+                />
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* Right arrow */}
+        <button
+          className="gallery-strip__nav-btn gallery-strip__nav-btn--right"
+          onClick={() => manualScroll(1)}
+          aria-label="Scroll gallery right"
+        >
+          &#8250;
+        </button>
       </div>
     </section>
   );
