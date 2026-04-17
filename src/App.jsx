@@ -28,6 +28,7 @@ import Gallery from "./components/Gallery";
 import DestinationsSection from "./components/DestinationsSection";
 import GalleryStripSection from "./components/GalleryStripSection";
 import BlogPreviewSection from "./components/BlogPreviewSection";
+import FAQSection from "./components/FAQSection";
 import BlogPage from "./components/BlogPage";
 import { MobileNavProvider } from './contexts/MobileNavContext';
 import './styles/style.css';
@@ -51,6 +52,7 @@ function HomePage() {
         <DestinationsSection />
         <GalleryStripSection />
         <BlogPreviewSection />
+        <FAQSection />
         <AboutSection />
         <ReviewSection />
         <ContactFormSection />
