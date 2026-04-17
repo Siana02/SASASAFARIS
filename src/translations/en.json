@@ -144,6 +144,24 @@
     "tailoredTrips": "Tailored Trips",
     "support247": "24/7 Support"
   },
+  "ecoReminder": {
+    "ariaLabel": "Environmental Commitment",
+    "pledgeListLabel": "Our environmental pledges",
+    "ctaAriaLabel": "Contact us to learn about our conservation efforts",
+    "eyebrow": "One More Thing…",
+    "title": "We Are Guardians of This Paradise",
+    "lead": "The ocean breathes. The reef hums with life. The tide erases our footprints — but only if we let it. Every journey we offer is shaped by a quiet promise: to love this coast as fiercely as we invite you to explore it.",
+    "close": "Travel with us, and travel with intention. The sea gives us wonder — let us give it back the respect it deserves.",
+    "cta": "Join Our Conservation Mission"
+  },
+  "pledge": {
+    "ocean": "We are committed to protecting the ocean and its ecosystems — every decision we make is guided by that responsibility.",
+    "marine": "Please never remove marine life from its home — no starfish from the shallows, no coral from the reef. They belong to the sea.",
+    "cleanup": "We organise regular beach clean-ups and welcome all who wish to join us in keeping our shores pristine.",
+    "donate": "We host donation forums and partner with ocean conservation initiatives — because protecting the sea is everyone's cause.",
+    "footprint": "We actively discourage any behaviour that may harm the natural environment, on land or in the water.",
+    "wildlife": "Wild things thrive when left wild. Observe, appreciate, and leave only your wonder behind."
+  },
   "successCountdown": {
     "uniqueDestinations": "Unique Destinations",
     "yearsExperience": "Years of Experience",

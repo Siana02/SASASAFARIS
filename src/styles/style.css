@@ -3207,86 +3207,145 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ============================
-   Service Highlights Belt
+   Eco Reminder Section
 =============================== */
-.service-highlights-belt {
-  background: #f8f9fa; /* light neutral bg */
-  padding: 2rem 1rem;
-  border-top: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
+.eco-reminder-section {
+  background: linear-gradient(160deg, #0d3b2e 0%, #1a5c45 60%, #0d3b2e 100%);
+  padding: 5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.highlight-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 cols on mobile */
-  gap: 1.5rem;
-  max-width: 1200px;
+.eco-reminder-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,0.06)'/%3E%3C/svg%3E") repeat;
+  pointer-events: none;
+}
+
+.eco-reminder-inner {
+  position: relative;
+  max-width: 780px;
   margin: 0 auto;
+}
+
+.eco-reminder-eyebrow {
+  font-family: var(--body-font, 'Jost', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent, #c8963e);
+  margin: 0 0 1rem;
+}
+
+.eco-reminder-title {
+  font-family: var(--display-font, 'Cinzel', serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #fff;
+  margin: 0 0 1.5rem;
+  line-height: 1.25;
+}
+
+.eco-reminder-lead {
+  font-family: var(--heading-font, 'Cormorant Garamond', serif);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.75;
+  margin: 0 0 2.5rem;
+  font-style: italic;
+}
+
+.eco-pledge-list {
   list-style: none;
   padding: 0;
+  margin: 0 0 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  text-align: left;
 }
 
-.highlight-card {
+.eco-pledge-item {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(200, 150, 62, 0.25);
+  border-radius: 0.6rem;
+  padding: 1rem 1.25rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.highlight-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+.eco-pledge-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(200, 150, 62, 0.55);
 }
 
-.highlight-icon {
-  font-size: 1.8rem;
-  color: var(--cta, #2e7d32); /* safari green fallback */
-  margin-bottom: 0.75rem;
+.eco-pledge-icon {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  color: var(--accent, #c8963e);
+  margin-top: 0.1rem;
 }
 
-.highlight-text {
-  font-size: 1.05rem;
+.eco-pledge-text {
+  font-family: var(--body-font, 'Jost', sans-serif);
+  font-size: 0.97rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+.eco-reminder-close {
+  font-family: var(--heading-font, 'Cormorant Garamond', serif);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  margin: 0 0 2.5rem;
+  line-height: 1.7;
+}
+
+.eco-cta-btn {
+  display: inline-block;
+  font-family: var(--body-font, 'Jost', sans-serif);
+  font-size: 0.9rem;
   font-weight: 600;
-  color: #333;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--cta, #d4852a);
+  border: none;
+  border-radius: 3px;
+  padding: 0.85rem 2.4rem;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.eco-cta-btn:hover,
+.eco-cta-btn:focus-visible {
+  background: var(--cta-hover, #b8720e);
+  transform: translateY(-2px);
+  outline: none;
 }
 
 /* ============================
-   RESPONSIVENESS
+   Eco Reminder – Responsive
 =============================== */
-@media (min-width: 768px) {
-  .highlight-list {
-    grid-template-columns: repeat(4, 1fr); /* 4 cols on tablets+ */
-  }
-
-  .highlight-card {
-    flex-direction: row;
-    text-align: left;
-    justify-content: flex-start;
-    gap: 0.75rem;
-  }
-
-  .highlight-icon {
-    margin-bottom: 0;
-    font-size: 1.6rem;
-  }
-
-  .highlight-text {
-    font-size: 1rem;
+@media (min-width: 560px) {
+  .eco-pledge-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
-  .service-highlights-belt {
-    padding: 3rem 2rem;
+@media (min-width: 900px) {
+  .eco-reminder-section {
+    padding: 6rem 2rem;
   }
 
-  .highlight-card {
-    padding: 2rem 1.25rem;
+  .eco-pledge-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
