@@ -9,6 +9,8 @@ const STEPS = [
   { num: "04", Icon: Globe,         titleKey: "howWeWork.step4Title", descKey: "howWeWork.step4Desc" },
 ];
 
+const CARD_STAGGER_DELAY_S = 0.14;
+
 const HowWeWork = () => {
   const { t } = useLanguage();
   const sectionRef = useRef(null);
@@ -19,7 +21,7 @@ const HowWeWork = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.querySelectorAll(".hww-card").forEach((card, i) => {
-              card.style.transitionDelay = `${i * 0.14}s`;
+              card.style.transitionDelay = `${i * CARD_STAGGER_DELAY_S}s`;
               card.classList.add("hww-card--in");
             });
           }
