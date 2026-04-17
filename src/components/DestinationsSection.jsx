@@ -287,6 +287,7 @@ const DestinationsSection = () => {
                 alt={dest.image2Alt}
                 className="dest-accent-img"
                 draggable={false}
+                eager
               />
               <div className="dest-accent-img-overlay" />
               {/* Duration + price overlay — visible on mobile only */}

@@ -4498,21 +4498,69 @@ padding: 1rem 1.5rem;
   flex-shrink: 0;
 }
 
+/* Gold vertical border line on the edge that faces the text panel */
+.dest-image-half--left::before,
+.dest-image-half--right::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(200, 150, 62, 0.55) 12%,
+    rgba(200, 150, 62, 0.82) 50%,
+    rgba(200, 150, 62, 0.55) 88%,
+    transparent 100%
+  );
+  z-index: 3;
+  pointer-events: none;
+}
+.dest-image-half--left::before  { right: 0; }
+.dest-image-half--right::before { left: 0; }
+
+/* Gold spinner overlay while main image is still loading */
+.dest-image-half:has(.lazy-img--pending)::after {
+  content: '';
+  position: absolute;
+  z-index: 4;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(200, 150, 62, 0.22);
+  border-top-color: rgba(200, 150, 62, 0.82);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: destImgSpinner 0.85s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes destImgSpinner {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
 .dest-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 8s ease;
+  will-change: transform;
 }
 
-/* Subtle Ken Burns on active slide */
+/* Cinematic Ken Burns — starts at scale(1), slowly zooms+pans over 12 s */
+@keyframes destKenBurns {
+  0%   { transform: scale(1)    translate(0%,     0%);    }
+  100% { transform: scale(1.1)  translate(-1.5%, -0.8%); }
+}
+
 .dest-slide--visible .dest-img {
-  transform: scale(1.04);
+  animation: destKenBurns 12s ease forwards;
 }
 .dest-slide--exit-next .dest-img,
 .dest-slide--exit-prev .dest-img {
-  transform: scale(1);
+  /* no transform reset needed — opacity handles the exit */
 }
 
 /* Soft dark gradient overlay on image */
@@ -4572,11 +4620,34 @@ padding: 1rem 1.5rem;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 6s ease;
+  will-change: transform;
+}
+
+/* Cinematic slow zoom on accent image */
+@keyframes destAccentKenBurns {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.08); }
 }
 
 .dest-slide--visible .dest-accent-img {
-  transform: scale(1.05);
+  animation: destAccentKenBurns 10s ease forwards;
+}
+
+/* Gold spinner while accent image is loading */
+.dest-text-half > .dest-accent-img-wrap:has(.lazy-img--pending)::after {
+  content: '';
+  position: absolute;
+  z-index: 4;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(200, 150, 62, 0.22);
+  border-top-color: rgba(200, 150, 62, 0.82);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: destImgSpinner 0.85s linear infinite;
+  pointer-events: none;
 }
 
 .dest-accent-img-overlay {
@@ -5020,13 +5091,14 @@ padding: 1rem 1.5rem;
 .lazy-img--pending {
   background: linear-gradient(
     90deg,
-    #f0e6d0 0%,
-    #e0cfa8 40%,
-    #f0e6d0 60%,
-    #f0e6d0 100%
+    #e8dcc8 0%,
+    #d4c090 30%,
+    #ede0c4 50%,
+    #d4c090 70%,
+    #e8dcc8 100%
   );
-  background-size: 300% 100%;
-  animation: lazyShimmer 1.6s ease-in-out infinite;
+  background-size: 400% 100%;
+  animation: lazyShimmer 1.4s ease-in-out infinite;
   /* Keep the same object-fit / object-position rules applied by other classes */
   object-fit: cover;
 }

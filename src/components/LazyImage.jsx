@@ -12,20 +12,27 @@ const PLACEHOLDER =
  *    (IntersectionObserver with rootMargin: '500px 0px').
  *  • Shows a shimmer-skeleton while the image is pending / loading.
  *  • Fades in smoothly once the image has fully loaded.
+ *  • Accepts an optional `eager` prop — when true the image is loaded
+ *    immediately (no IntersectionObserver delay), useful for images that
+ *    are already in the visible viewport when their card first mounts.
  *
  * All standard <img> props (className, style, draggable, etc.) are forwarded
  * directly to the underlying <img> element so existing CSS continues to work.
  */
 const LazyImage = React.forwardRef(function LazyImage(
-  { src, alt, className, style, draggable, onLoad, ...rest },
+  { src, alt, className, style, draggable, onLoad, eager, ...rest },
   forwardedRef
 ) {
-  const [realSrc, setRealSrc] = useState(null);
+  // Eager images skip the observer and load immediately.
+  const [realSrc, setRealSrc] = useState(eager ? src : null);
   const [loaded, setLoaded] = useState(false);
   const internalRef = useRef(null);
   const ref = forwardedRef || internalRef;
 
   useEffect(() => {
+    // When eager, the src is already set in state; nothing to do here.
+    if (eager) return;
+
     const el = ref.current;
     if (!el || !src) return;
 
@@ -41,9 +48,8 @@ const LazyImage = React.forwardRef(function LazyImage(
 
     observer.observe(el);
     return () => observer.disconnect();
-    // `ref` (internalRef or forwardedRef) is stable across renders — it is
-    // either a createRef from the parent or our own useRef, both of which are
-    // referentially stable. Adding it to deps would cause spurious restarts.
+    // `ref` is stable. `eager` is intentionally excluded — if it changes
+    // after mount the component should remount instead.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src]);
 
