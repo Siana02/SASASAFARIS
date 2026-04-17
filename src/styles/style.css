@@ -4686,14 +4686,23 @@ padding: 1rem 1.5rem;
   box-shadow: none;
 }
 
+/* Titles block — sits above the accent image */
+.dest-text-titles {
+  max-width: 520px;
+  width: 100%;
+  padding: 2.4rem 2.5rem 1.6rem;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
 .dest-text-inner {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: 520px;
   width: 100%;
-  padding: 2.2rem 2.5rem 2.5rem;
+  padding: 1.8rem 2.5rem 2.5rem;
   margin: 0 auto;
 }
 
@@ -4876,8 +4885,11 @@ padding: 1rem 1.5rem;
   .dest-text-half > .dest-accent-img-wrap {
     height: 220px;
   }
+  .dest-text-titles {
+    padding: 1.8rem 1.8rem 1.2rem;
+  }
   .dest-text-inner {
-    padding: 1.6rem 1.8rem 2rem;
+    padding: 1.4rem 1.8rem 2rem;
   }
   .dest-headline {
     font-size: clamp(1.6rem, 5vw, 2.4rem);
@@ -4959,11 +4971,19 @@ padding: 1rem 1.5rem;
   }
 
   /* Text inner: natural height, comfortable padding */
-  .dest-text-inner {
-    order: 1;
+  .dest-text-titles {
+    order: 0;
     flex: none;
     max-width: 100%;
-    padding: 2.4rem 1.5rem 1.8rem;
+    padding: 2rem 1.5rem 1rem;
+    margin: 0;
+  }
+
+  .dest-text-inner {
+    order: 2;
+    flex: none;
+    max-width: 100%;
+    padding: 1.4rem 1.5rem 1.8rem;
     margin: 0;
     justify-content: flex-start;
   }
@@ -4989,9 +5009,9 @@ padding: 1rem 1.5rem;
     display: none;
   }
 
-  /* ── Accent image: placed AFTER text (order 2), full width, taller ── */
+  /* ── Accent image: placed BETWEEN title and story (order 1), full width, taller ── */
   .dest-text-half > .dest-accent-img-wrap {
-    order: 2;
+    order: 1;
     width: 100%;
     height: 240px;
     border-radius: 0;

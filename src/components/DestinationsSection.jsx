@@ -280,7 +280,13 @@ const DestinationsSection = () => {
             className="dest-text-half"
             style={{ order: imageOnLeft ? 1 : 0 }}
           >
-            {/* Accent image — full width of the text column; on mobile shown below text */}
+            {/* Titles come first */}
+            <div className="dest-text-titles">
+              <p className="dest-subheadline">{content.subheadline}</p>
+              <h3 className="dest-headline">{content.headline}</h3>
+            </div>
+
+            {/* Accent image — between title and story */}
             <div className="dest-accent-img-wrap">
               <LazyImage
                 src={dest.image2}
@@ -297,10 +303,8 @@ const DestinationsSection = () => {
               </div>
             </div>
 
-            {/* Text content */}
+            {/* Story text, meta and CTA last */}
             <div className="dest-text-inner">
-              <p className="dest-subheadline">{content.subheadline}</p>
-              <h3 className="dest-headline">{content.headline}</h3>
               <p className="dest-story">{content.story}</p>
               <div className="dest-meta">
                 <span className="dest-duration">{dest.duration}</span>
