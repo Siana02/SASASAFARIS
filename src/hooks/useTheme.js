@@ -1,15 +1,9 @@
 import { useState, useEffect } from 'react';
-import { SafariHero, VacationHero } from '../assets/images';
 
 const themes = ['safari-theme', 'vacation-theme'];
 const themeNames = {
   'safari-theme': 'Safari theme',
   'vacation-theme': 'Vacation theme'
-};
-
-const themeImages = {
-  'safari-theme': SafariHero,
-  'vacation-theme': VacationHero
 };
 
 export const useTheme = () => {
@@ -39,25 +33,6 @@ export const useTheme = () => {
     if (currentTheme) {
       document.body.classList.remove(...themes);
       document.body.classList.add(currentTheme);
-      
-      // Set the hero image URL for the theme
-      const heroImageUrl = themeImages[currentTheme];
-      document.documentElement.style.setProperty('--hero-img', `url(${heroImageUrl})`);
-      
-      // Preload hero image and fade in
-      const heroBg = document.getElementById('hero-bg');
-      if (heroBg) {
-        heroBg.style.opacity = 0;
-        
-        const img = new Image();
-        img.onload = () => {
-          heroBg.style.opacity = 1;
-        };
-        img.onerror = () => {
-          heroBg.style.opacity = 1;
-        };
-        img.src = heroImageUrl;
-      }
     }
   }, [currentTheme]);
 
