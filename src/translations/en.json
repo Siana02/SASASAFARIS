@@ -268,5 +268,16 @@
     "card4Title": "Zero Stress",
     "card4Desc": "We handle everything. You just show up.",
     "humanMomentOverlay": "This could be your view tomorrow."
+  },
+  "homepageContactCTA": {
+    "eyebrow": "Your Safari Awaits",
+    "headline": "The Wild Is Calling. Will You Answer?",
+    "subheadline": "From the Maasai Mara at dawn to Watamu's turquoise shores — your perfect African adventure is one message away.",
+    "cta": "Plan Your Safari"
+  },
+  "contactPageHero": {
+    "eyebrow": "We're Here For You",
+    "headline": "Let's Plan Your Safari Together",
+    "subheadline": "Reach out through any channel — our team responds in 10–30 minutes."
   }
 }

@@ -11,8 +11,7 @@ import SuccessCountdown from './components/SuccessCountdown';
 import PackagesSection from './components/PackagesSection';
 import AboutSection from './components/AboutSection';
 import ReviewSection from './components/ReviewSection';
-import ContactFormSection from "./components/ContactFormSection";
-import ContactSocials from "./components/ContactSocials";
+import HomepageContactCTA from "./components/HomepageContactCTA";
 import ComingSoon from "./components/ComingSoon";
 import HighlightSection from './components/HighlightSection';
 import HowWeWork from './components/HowWeWork';
@@ -54,8 +53,7 @@ function HomePage() {
         <BlogPreviewSection />
         <FAQSection />
         <ReviewSection />
-        <ContactFormSection />
-        <ContactSocials />
+        <HomepageContactCTA />
         <ComingSoon />
         <HighlightSection />
       </main>
