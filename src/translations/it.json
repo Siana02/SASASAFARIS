@@ -55,8 +55,16 @@
     "ourStoryDesc2": "Che tu stia viaggiando da solo, in famiglia o con amici, i nostri itinerari su misura e la competenza locale garantiscono un'esperienza che non dimenticherai mai."
   },
   "reviews": {
+    "eyebrow": "Storie Vere, Persone Vere",
     "title": "Storie d'Amore dai Nostri Viaggiatori",
-    "verified": "Verificato",
+    "subtitle": "Ogni viaggio è personale. Ecco cosa portano a casa i nostri ospiti.",
+    "verified": "Viaggiatore Verificato",
+    "stat1Value": "500+",
+    "stat1Label": "Viaggiatori Felici",
+    "stat2Value": "98%",
+    "stat2Label": "Tornerebbero",
+    "stat3Value": "10+",
+    "stat3Label": "Destinazioni",
     "reviews": [
       {
         "name": "Alessandro Bianchi",
