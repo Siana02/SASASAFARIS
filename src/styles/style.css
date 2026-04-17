@@ -3545,17 +3545,19 @@ a:focus-visible, button:focus-visible {
 /* ── Post-pledge thank-you message ── */
 .eco-pledge-thanks {
   font-family: var(--heading-font, 'Cormorant Garamond', serif);
-  font-size: clamp(1rem, 1.9vw, 1.15rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
   font-style: italic;
-  color: #6b5b45;
+  color: var(--accent, #c8963e);
   line-height: 1.7;
+  margin-top: 1.25rem;
   opacity: 0;
   transform: translateY(8px);
   animation: eco-thanks-appear 0.7s 0.2s ease forwards;
 }
 
 @keyframes eco-thanks-appear {
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Close line ── */
