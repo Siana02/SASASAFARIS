@@ -48,12 +48,12 @@ function HomePage() {
       <main>
         <HeroSection />
         <HowWeWork />
+        <WhyChooseUs />
         <DestinationsSection />
         <GalleryStripSection />
         <BlogPreviewSection />
         <FAQSection />
         <ReviewSection />
-        <AboutSection />
         <ContactFormSection />
         <ContactSocials />
         <ComingSoon />
