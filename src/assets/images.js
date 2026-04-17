@@ -15,6 +15,16 @@ import SasaSafarisLogo from './sasa_safaris_africa_logo.jpeg';
 import GreatRiftValley from './Great_Rift_Valley.jpg';
 import MaasaiMara from './Maasai_mara_1.jpg';
 import WildernessExplorer from './Wilderness_Explorer.jpg';
+import WatamuMain from './watamu-main.jpg';
+import SafariBlue2 from './safari-blue2.png';
+import Sardegna1 from './sardegna1.jpeg';
+import Sardegna2 from './sardegna2.jpeg';
+import GedeRuins from './gede-ruins.jpeg';
+import TsavoEast1 from './tsavo-east-1.jpg';
+import WatamuCulturalTour1 from './watamu-cultural tour 1.jpg';
+import WatamuCulturalTour2 from './watamu-cultural tour2.jpg';
+import HellsKitchen from './hells-kitchen.jpeg';
+import DolphinSafariBlue1 from './dolphin-watching-safari-blue1.jpg';
 
 export {
   SafariHero,
@@ -32,5 +42,15 @@ export {
   SasaSafarisLogo,
   GreatRiftValley,
   MaasaiMara,
-  WildernessExplorer
+  WildernessExplorer,
+  WatamuMain,
+  SafariBlue2,
+  Sardegna1,
+  Sardegna2,
+  GedeRuins,
+  TsavoEast1,
+  WatamuCulturalTour1,
+  WatamuCulturalTour2,
+  HellsKitchen,
+  DolphinSafariBlue1,
 };
