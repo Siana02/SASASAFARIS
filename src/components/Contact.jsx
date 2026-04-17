@@ -27,8 +27,8 @@ export default function Contact() {
       </section>
 
       <div className="contact-page-grid">
-        <ContactHours />
         <ContactFormSection />
+        <ContactHours />
         <ContactSocials />
         <ContactLocation />
       </div>
