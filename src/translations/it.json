@@ -55,33 +55,52 @@
     "ourStoryDesc2": "Che tu stia viaggiando da solo, in famiglia o con amici, i nostri itinerari su misura e la competenza locale garantiscono un'esperienza che non dimenticherai mai."
   },
   "reviews": {
+    "eyebrow": "Storie Vere, Persone Vere",
     "title": "Storie d'Amore dai Nostri Viaggiatori",
-    "verified": "Verificato",
+    "subtitle": "Ogni viaggio è personale. Ecco cosa portano a casa i nostri ospiti.",
+    "verified": "Viaggiatore Verificato",
+    "stat1Value": "500+",
+    "stat1Label": "Viaggiatori Felici",
+    "stat2Value": "98%",
+    "stat2Label": "Tornerebbero",
+    "stat3Value": "10+",
+    "stat3Label": "Destinazioni",
     "reviews": [
       {
         "name": "Alessandro Bianchi",
-        "text": "Ho trascorso il momento migliore a Watamu, Kenya con la mia famiglia. Le spiagge erano mozzafiato e i tramonti indimenticabili.",
-        "type": "Viaggio in Famiglia"
+        "text": "La nostra guida Sule ci ha portato nei posti più incredibili lungo la costa di Watamu. Le spiagge erano mozzafiato e i tramonti sono qualcosa di cui parleremo per sempre.",
+        "type": "Viaggio in Famiglia",
+        "source": "instagram"
       },
       {
         "name": "Giulia Rossi",
-        "text": "Viaggiare da sola attraverso Amboseli è stato un sogno. Mi sono sentita al sicuro, ispirata e completamente in sintonia con la natura.",
-        "type": "Viaggiatrice Solitaria"
+        "text": "Viaggiando da sola attraverso Amboseli, la nostra guida turistica Sule si è assicurata che non mi perdessi nemmeno un momento. Mi sono sentita completamente al sicuro e così vicina alla fauna selvatica — davvero indimenticabile.",
+        "type": "Viaggiatrice Solitaria",
+        "source": "facebook"
       },
       {
         "name": "Lorenzo Romano",
-        "text": "La nostra luna di miele nel Masai Mara è stata oltre ogni romanticismo. I safari della fauna selvatica erano magici!",
-        "type": "Esperienza di Coppia"
+        "text": "La nostra luna di miele nel Masai Mara è stata oltre ogni aspettativa. Sule sapeva esattamente dove essere per ogni avvistamento mozzafiato. Pura magia.",
+        "type": "Esperienza di Coppia",
+        "source": "email"
       },
       {
         "name": "Chiara Conti",
-        "text": "Io e le mie amiche abbiamo esplorato Tsavo e riso senza fine. Era avventura mescolata a pura gioia.",
-        "type": "Viaggio tra Amiche"
+        "text": "La nostra guida Sule conosceva tutti i posti nascosti più belli di Watamu — abbiamo esplorato la costa keniota e poi ci siamo spostati a Tsavo dove abbiamo visto tutti i Big 5. Assolutamente incredibile.",
+        "type": "Viaggio tra Amiche",
+        "source": "instagram"
       },
       {
-        "name": "Matteo Moretti",
-        "text": "Portare i miei genitori a Diani è stata la decisione migliore di sempre. Ricordi che custodiremo per sempre.",
-        "type": "Legame Familiare"
+        "name": "Sofia Moretti",
+        "text": "La nostra guida Sule è stata la migliore. Abbiamo visto così tanti animali da così vicino nel Masai Mara — non mi sono mai sentita così al sicuro in vita mia. Consiglio al 100%.",
+        "type": "Legame Familiare",
+        "source": "sule"
+      },
+      {
+        "name": "Federica De Luca",
+        "text": "Sasa Safaris ha trasformato il nostro sogno di vedere la Grande Migrazione nella settimana più straordinaria della nostra vita. Ogni singolo dettaglio era perfetto.",
+        "type": "Esperienza di Coppia",
+        "source": "facebook"
       }
     ]
   },

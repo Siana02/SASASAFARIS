@@ -53,7 +53,6 @@ function HomePage() {
         <GalleryStripSection />
         <BlogPreviewSection />
         <FAQSection />
-        <AboutSection />
         <ReviewSection />
         <ContactFormSection />
         <ContactSocials />

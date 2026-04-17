@@ -55,33 +55,52 @@
     "ourStoryDesc2": "Whether you're traveling solo, as a family, or with friends, our tailored itineraries and local expertise guarantee an experience you'll never forget."
   },
   "reviews": {
-    "title": "Love Stories From Our Travelers",
-    "verified": "Verified",
+    "eyebrow": "Real Stories, Real People",
+    "title": "Love Stories From Our Travellers",
+    "subtitle": "Every journey is personal. Here's what our guests carry home.",
+    "verified": "Verified Traveller",
+    "stat1Value": "500+",
+    "stat1Label": "Happy Travellers",
+    "stat2Value": "98%",
+    "stat2Label": "Would Return",
+    "stat3Value": "10+",
+    "stat3Label": "Destinations",
     "reviews": [
       {
         "name": "Alessandro Bianchi",
-        "text": "I had the best time in Watamu, Kenya with my family. The beaches were breathtaking, and the sunsets unforgettable.",
-        "type": "Family Trip"
+        "text": "Our guide Sule took us to the most incredible spots along the Watamu coast. The beaches were breathtaking and the sunsets are something we'll talk about forever.",
+        "type": "Family Trip",
+        "source": "instagram"
       },
       {
         "name": "Giulia Rossi",
-        "text": "Traveling solo through Amboseli was a dream. I felt safe, inspired, and completely in tune with nature.",
-        "type": "Solo Traveler"
+        "text": "Traveling solo through Amboseli, our tour guide Sule made sure I never missed a single moment. I felt completely safe and so close to the wildlife — truly life-changing.",
+        "type": "Solo Traveler",
+        "source": "facebook"
       },
       {
         "name": "Lorenzo Romano",
-        "text": "Our honeymoon in the Masai Mara was beyond romantic. The wildlife safaris were magical!",
-        "type": "Couple Experience"
+        "text": "Our honeymoon in the Masai Mara was beyond anything we imagined. Sule knew exactly when and where to be for every breathtaking sighting. Pure magic.",
+        "type": "Couple Experience",
+        "source": "email"
       },
       {
         "name": "Chiara Conti",
-        "text": "My friends and I explored Tsavo and laughed endlessly. It was adventure mixed with pure joy.",
-        "type": "Friends Trip"
+        "text": "Our tour guide Sule knew all the best hidden gem spots in Watamu — we got to truly explore the Kenyan coast and then headed to Tsavo where we saw all the Big 5. Absolutely unreal.",
+        "type": "Friends Trip",
+        "source": "instagram"
       },
       {
-        "name": "Matteo Moretti",
-        "text": "Taking my parents to Diani was the best decision ever. Memories we'll cherish forever.",
-        "type": "Family Bonding"
+        "name": "Sofia Moretti",
+        "text": "Our tour guide Sule was the best. We got to see so many animals up so close in the Maasai Mara — I've never felt so safe in my life. Would 100% recommend.",
+        "type": "Family Bonding",
+        "source": "sule"
+      },
+      {
+        "name": "Federica De Luca",
+        "text": "Sasa Safaris turned our dream of seeing the Great Migration into the most extraordinary week of our lives. Every single detail was perfect.",
+        "type": "Couple Experience",
+        "source": "facebook"
       }
     ]
   },
