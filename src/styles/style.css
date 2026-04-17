@@ -59,7 +59,7 @@ button, a, ul, li, .header {
 body {
   margin: 0;
   padding: 0;
-  background: var(--background);
+  background: transparent; /* SiteBg fixed layer provides the backdrop */
   color: var(--text);
   font-family: var(--body-font); /* FIXED: last in cascade */
   font-size: 1rem;
@@ -463,6 +463,32 @@ body {
 }
 .hero-bird-group:nth-child(2) { animation-delay: -7s; }
 .hero-bird-group:nth-child(3) { animation-delay: -13s; }
+
+/* ── Savannah grass sway ── */
+@keyframes heroGrassSway {
+  0%, 100% { transform: rotate(-3deg); }
+  50%       { transform: rotate(3deg);  }
+}
+.hero-grass-1 { animation: heroGrassSway 2.8s ease-in-out infinite; }
+.hero-grass-2 { animation: heroGrassSway 3.4s ease-in-out infinite 0.55s; }
+.hero-grass-3 { animation: heroGrassSway 2.1s ease-in-out infinite 1.1s; }
+
+/* ── Cloud drift ── */
+@keyframes heroCloudDrift1 {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(70px); }
+}
+@keyframes heroCloudDrift2 {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(-90px); }
+}
+@keyframes heroCloudDrift3 {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(50px); }
+}
+.hero-cloud-1 { animation: heroCloudDrift1 38s ease-in-out infinite; }
+.hero-cloud-2 { animation: heroCloudDrift2 52s ease-in-out infinite; }
+.hero-cloud-3 { animation: heroCloudDrift3 30s ease-in-out infinite 10s; }
 
 .hero-overlay {
   position: absolute;
@@ -936,6 +962,8 @@ a:focus-visible, button:focus-visible {
   margin: 4rem auto 0 auto;
   max-width: 1100px;
   padding: 0 1rem;
+  background: var(--background);
+  border-radius: 1rem;
 }
 .best-offers-title {
   font-size: 2.3rem;
@@ -1579,6 +1607,8 @@ a:focus-visible, button:focus-visible {
   padding: 3rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  background: var(--background);
+  border-radius: 1rem;
 }
 
 /* Header */
@@ -1702,6 +1732,7 @@ a:focus-visible, button:focus-visible {
   text-align: center;
   overflow: hidden;
   position: relative;
+  background: var(--background);
 }
 
 /* === TITLE === */
