@@ -134,7 +134,8 @@
   },
   "comingSoon": {
     "title": "Prossimamente",
-    "headline": "Sasa Safaris Africa si espande in Africa Orientale",
+    "headlinePrimary": "Sasa Safaris Africa",
+    "headlineAccent": "si espande in Africa Orientale",
     "subheadline": "Porteremo esperienze safari di livello mondiale in Uganda, Kenya, Tanzania e oltre. Qualcosa di straordinario si sta avvicinando — restate sintonizzati."
   },
   "highlights": {

@@ -1,4 +1,5 @@
 import React from "react";
+import { useLanguage } from "../hooks/useLanguage";
 import UG from "country-flag-icons/react/3x2/UG";
 import KE from "country-flag-icons/react/3x2/KE";
 import TZ from "country-flag-icons/react/3x2/TZ";
@@ -83,22 +84,24 @@ const RouteAnimation = () => (
   </svg>
 );
 
-const ComingSoon = () => (
-  <section className="coming-soon" aria-label="Sasa Safaris expanding to East Africa">
+const ComingSoon = () => {
+  const { t } = useLanguage();
+
+  return (
+  <section className="coming-soon" aria-label={t('comingSoon.headlinePrimary')}>
     <div className="coming-soon-inner">
       {/* Badge */}
-      <span className="cs-badge" aria-label="Coming Soon">COMING SOON</span>
+      <span className="cs-badge">{t('comingSoon.title')}</span>
 
       {/* Headline */}
       <h2 className="cs-headline">
-        Sasa Safaris Africa
-        <span className="cs-headline-accent"> Is Expanding to East Africa</span>
+        {t('comingSoon.headlinePrimary')}
+        <span className="cs-headline-accent"> {t('comingSoon.headlineAccent')}</span>
       </h2>
 
       {/* Subheadline */}
       <p className="cs-subheadline">
-        We are bringing world-class safari experiences to Uganda, Kenya, Tanzania, and beyond.
-        Something extraordinary is on the horizon — stay tuned.
+        {t('comingSoon.subheadline')}
       </p>
 
       {/* Flags + animated route */}
@@ -121,6 +124,7 @@ const ComingSoon = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default ComingSoon;
