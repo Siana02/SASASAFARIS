@@ -2333,87 +2333,53 @@ a:focus-visible, button:focus-visible {
   }
 }
 .contact-hours {
-  background: rgba(253, 248, 240, 0.93);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 1.4em;
-  border: 1px solid rgba(200, 150, 62, 0.25);
-  border-top: 3px solid var(--accent, #c8963e);
-  box-shadow: 0 8px 40px rgba(58, 26, 8, 0.16);
-  padding: 2.2em 2em 1.8em 2em;
-  max-width: 540px;
-  margin: 2.8em auto 1.7em auto;
+  padding: 2.4em 2.2em 2em 2.2em;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.22em;
+  gap: 1em;
   position: relative;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.contact-hours:hover {
-  box-shadow: 0 14px 52px rgba(58, 26, 8, 0.22), 0 0 0 1px rgba(200, 150, 62, 0.28);
-  transform: translateY(-3px);
+  border-bottom: 1px solid rgba(200, 150, 62, 0.15);
 }
 
 .contact-hours-icon {
-  background: var(--accent, #c8963e);
-  color: #fff;
+  background: rgba(200, 150, 62, 0.15);
+  border: 1.5px solid rgba(200, 150, 62, 0.4);
+  color: var(--accent, #c8963e);
   border-radius: 50%;
-  width: 62px;
-  height: 62px;
+  width: 58px;
+  height: 58px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.1em;
-  box-shadow: 0 4px 20px rgba(200, 150, 62, 0.35);
+  margin-bottom: 0.2em;
 }
 
 .contact-hours h2 {
   font-family: var(--display-font);
-  font-size: 1.3em;
+  font-size: 1.15em;
   font-weight: 700;
-  color: var(--accent-dark, #3a1a08);
-  margin: 0.35em 0 0.13em 0;
-  letter-spacing: 0.01em;
+  color: var(--accent, #c8963e);
+  margin: 0.2em 0 0.1em 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .contact-hours p {
   font-family: var(--body-font);
-  font-size: 1em;
-  color: var(--text, #3a1a08);
-  margin: 0.2em 0 0 0;
-  line-height: 1.7;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  opacity: 0.88;
+  font-size: 0.97em;
+  color: rgba(245, 232, 204, 0.78);
+  margin: 0;
+  line-height: 1.75;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 /* Highlight numbers and important info */
 .contact-hours p b {
-  color: var(--cta, #d4852a);
-  font-weight: 700;
-  opacity: 1;
-}
-
-/* Responsive adjustments */
-@media (max-width: 700px) {
-  .contact-hours {
-    padding: 1.5em 1em 1.3em 1em;
-    max-width: 98vw;
-    margin-top: 2em;
-    margin-bottom: 1.1em;
-  }
-  .contact-hours-icon {
-    width: 46px;
-    height: 46px;
-  }
-  .contact-hours h2 {
-    font-size: 1.14em;
-  }
-  .contact-hours p {
-    font-size: 1em;
-  }
+  color: var(--accent, #c8963e);
+  font-weight: 600;
 }
 
 /* --- Contact Form Section --- */
@@ -2422,23 +2388,19 @@ a:focus-visible, button:focus-visible {
   background: linear-gradient(145deg, rgba(30, 12, 4, 0.92) 0%, rgba(58, 26, 8, 0.88) 100%);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-radius: 1.4em;
-  border: 1px solid rgba(200, 150, 62, 0.32);
-  border-top: 3px solid var(--accent, #c8963e);
-  box-shadow: 0 8px 48px rgba(58, 26, 8, 0.3), 0 0 0 1px rgba(200, 150, 62, 0.08) inset;
-  padding: 2.4em 2em 2em 2em;
-  max-width: 540px;
-  margin: 2.2em auto 1.7em auto;
+  border-radius: 1.2em;
+  border: 1px solid rgba(200, 150, 62, 0.28);
+  border-top: 2px solid var(--accent, #c8963e);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.45);
+  padding: 3em 2.5em 2.5em 2.5em;
+  max-width: 760px;
+  margin: 0 auto 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.44em;
   position: relative;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.contact-form-section:hover {
-  box-shadow: 0 16px 60px rgba(58, 26, 8, 0.35), 0 0 0 1px rgba(200, 150, 62, 0.18) inset;
-  transform: translateY(-3px);
 }
 
 .contact-info-header {
@@ -2487,7 +2449,7 @@ a:focus-visible, button:focus-visible {
   flex-direction: column;
   gap: 1.05em;
   width: 100%;
-  max-width: 430px;
+  max-width: 640px;
   margin: 0 auto;
 }
 
@@ -2571,224 +2533,111 @@ a:focus-visible, button:focus-visible {
   animation: fadeIn 0.5s;
 }
   
-/* Responsive tweaks */
-@media (max-width: 700px) {
-  .contact-form-section {
-    padding: 1.2em 0.5em 1em 0.5em;
-    max-width: 98vw;
-    margin-top: 1.2em;
-    margin-bottom: 1.1em;
-    gap: 1em;
-  }
-  .contact-info-header svg {
-    width: 30px;
-    height: 30px;
-    padding: 4px;
-  }
-  .contact-info-header h3 {
-    font-size: 1em;
-  }
-  .safari-inquiry-form {
-    max-width: 100vw;
-    gap: 0.8em;
-  }
-  .safari-inquiry-form input,
-  .safari-inquiry-form textarea {
-    font-size: 0.97em;
-    padding: 0.65em 0.8em;
-  }
-  .form-success-popup {
-    font-size: 0.97em;
-    padding: 0.7em 1em;
-  }
-}
 
 /* --- Contact Socials Section --- */
 .contact-socials {
-  background: rgba(253, 248, 240, 0.93);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 1.4em;
-  border: 1px solid rgba(200, 150, 62, 0.25);
-  border-top: 3px solid var(--accent, #c8963e);
-  box-shadow: 0 8px 40px rgba(58, 26, 8, 0.16);
-  padding: 2em 2em 1.7em 2em;
-  max-width: 540px;
-  margin: 2em auto 1.7em auto;
+  padding: 2.4em 2.2em 2em 2.2em;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.22em;
+  gap: 1.4em;
   position: relative;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.contact-socials:hover {
-  box-shadow: 0 14px 52px rgba(58, 26, 8, 0.22), 0 0 0 1px rgba(200, 150, 62, 0.28);
-  transform: translateY(-3px);
 }
 
 .contact-socials h3 {
   font-family: var(--display-font);
   font-size: 1.15em;
   font-weight: 700;
-  color: var(--accent-dark, #3a1a08);
-  margin: 0.35em 0 0.13em 0;
-  letter-spacing: 0.01em;
+  color: var(--accent, #c8963e);
+  margin: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .social-icons-row {
   display: flex;
   flex-direction: row;
-  gap: 2.2em; /* Increased spacing between icons */
+  gap: 1.4em;
   justify-content: center;
   align-items: center;
-  margin-top: 0.5em;
 }
 
 .social-icons-row a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(253, 248, 240, 0.7);
-  border: 1px solid rgba(200, 150, 62, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(200, 150, 62, 0.25);
   border-radius: 50%;
-  width: 58px;
-  height: 58px;
-  box-shadow: 0 2px 12px rgba(58, 26, 8, 0.1);
-  transition: background 0.17s, transform 0.16s, box-shadow 0.16s, color 0.2s;
-  font-size: 2.1em;
-  color: var(--accent-dark, #3a1a08);
+  width: 54px;
+  height: 54px;
+  transition: background 0.18s, transform 0.16s, box-shadow 0.16s, border-color 0.18s;
+  font-size: 1.5em;
   position: relative;
   cursor: pointer;
 }
 
 .social-icons-row a:hover,
 .social-icons-row a:focus {
-  background: var(--accent, #c8963e);
-  color: #fff;
-  transform: scale(1.18) translateY(-4px);
-  box-shadow: 0 6px 24px rgba(200, 150, 62, 0.32);
-  border-color: transparent;
+  background: rgba(200, 150, 62, 0.18);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(200, 150, 62, 0.22);
+  border-color: rgba(200, 150, 62, 0.6);
 }
 
 /* Unique brand colors for icons */
 .social-icons-row a[title="WhatsApp"] { color: #25D366; }
 .social-icons-row a[title="Instagram"] { color: #E4405F; }
-.social-icons-row a[title="TikTok"] { color: #000; }
-.social-icons-row a[title="LinkedIn"] { color: #0077b5; }
-.social-icons-row a[title="Call Direct"] { color: var(--accent, #6d4650); }
-.social-icons-row a:hover[title="WhatsApp"],
-.social-icons-row a:focus[title="WhatsApp"] { color: #fff; background: #25D366; }
-.social-icons-row a:hover[title="Instagram"],
-.social-icons-row a:focus[title="Instagram"] { color: #fff; background: #E4405F; }
-.social-icons-row a:hover[title="TikTok"],
-.social-icons-row a:focus[title="TikTok"] { color: #fff; background: #000; }
-.social-icons-row a:hover[title="LinkedIn"],
-.social-icons-row a:focus[title="LinkedIn"] { color: #fff; background: #0077b5; }
-.social-icons-row a:hover[title="Call Direct"],
-.social-icons-row a:focus[title="Call Direct"] { color: #fff; background: var(--cta, #ff914d); }
-
-@media (max-width: 700px) {
-  .contact-socials {
-    padding: 1.2em 0.5em 1em 0.5em;
-    max-width: 98vw;
-    margin-top: 1.2em;
-    margin-bottom: 1.1em;
-    gap: 1em;
-  }
-  .contact-socials h3 {
-    font-size: 1em;
-  }
-  .social-icons-row {
-    gap: 1.2em;
-  }
-  .social-icons-row a {
-    width: 44px;
-    height: 44px;
-    font-size: 1.5em;
-  }
-}
+.social-icons-row a[title="TikTok"] { color: rgba(245, 232, 204, 0.85); }
+.social-icons-row a[title="LinkedIn"] { color: #4db3ff; }
+.social-icons-row a[title="Call Direct"] { color: var(--accent, #c8963e); }
 
 
 /* --- Contact Location Section --- */
 .contact-location {
-  background: rgba(253, 248, 240, 0.93);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 1.4em;
-  border: 1px solid rgba(200, 150, 62, 0.25);
-  border-top: 3px solid var(--accent, #c8963e);
-  box-shadow: 0 8px 40px rgba(58, 26, 8, 0.16);
-  padding: 1.8em 1.6em 1.5em 1.6em;
-  max-width: 540px;
-  margin: 1.8em auto 1.2em auto;
+  padding: 2em 2em 2em 2em;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1em;
   position: relative;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.contact-location:hover {
-  box-shadow: 0 14px 52px rgba(58, 26, 8, 0.22), 0 0 0 1px rgba(200, 150, 62, 0.28);
-  transform: translateY(-3px);
+  border-left: 1px solid rgba(200, 150, 62, 0.15);
 }
 
 .contact-location h3 {
   font-family: var(--display-font);
-  font-size: 1.12em;
+  font-size: 1.15em;
   font-weight: 700;
-  color: var(--accent-dark, #3a1a08);
-  margin: 0.2em 0 0.16em 0;
-  letter-spacing: 0.01em;
+  color: var(--accent, #c8963e);
+  margin: 0 0 0.1em 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .contact-location p {
   font-family: var(--body-font);
-  font-size: 0.97em;
-  color: var(--text, #3a1a08);
-  margin: 0.15em 0 0.8em 0;
-  font-weight: 500;
-  opacity: 0.82;
+  font-size: 0.95em;
+  color: rgba(245, 232, 204, 0.72);
+  margin: 0 0 0.6em 0;
+  font-weight: 400;
+  line-height: 1.65;
 }
 
 .contact-location iframe {
   width: 100%;
-  max-width: 440px;
-  height: 200px;
+  height: 100%;
+  min-height: 240px;
   border: none;
-  border-radius: 0.9em;
-  box-shadow: 0 2px 12px rgba(58, 26, 8, 0.12);
-  margin-top: 0.4em;
+  border-radius: 0.8em;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.18s;
 }
 
 .contact-location iframe:hover,
 .contact-location iframe:focus {
-  box-shadow: 0 6px 24px rgba(200, 150, 62, 0.22);
-}
-
-@media (max-width: 700px) {
-  .contact-location {
-    padding: 0.8em 0.3em 0.7em 0.3em;
-    max-width: 98vw;
-    margin-top: 1em;
-    margin-bottom: 0.7em;
-    gap: 0.8em;
-  }
-  .contact-location h3 {
-    font-size: 1em;
-  }
-  .contact-location p {
-    font-size: 0.96em;
-  }
-  .contact-location iframe {
-    max-width: 98vw;
-    height: 120px;
-    margin-top: 0.2em;
-  }
+  box-shadow: 0 8px 32px rgba(200, 150, 62, 0.25);
 }
 
 /* ============================================================
@@ -2953,7 +2802,7 @@ a:focus-visible, button:focus-visible {
    ============================================================ */
 
 .contact-page {
-  padding-bottom: 4rem;
+  padding-bottom: 0;
 }
 
 .contact-page-hero {
@@ -3034,28 +2883,51 @@ a:focus-visible, button:focus-visible {
   margin: 0 auto;
 }
 
-/* Grid layout for contact page cards */
+/* Grid layout for contact page */
 .contact-page-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.8rem;
-  max-width: 1100px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem 3rem;
+  padding: 3rem 2rem 5rem;
+  gap: 0;
+  background: rgba(8, 3, 1, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 /* Form spans full width at the top */
 .contact-page-grid > .contact-form-section {
   grid-column: 1 / -1;
-  max-width: 100%;
-  margin: 0;
+  grid-row: 1;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto 3rem auto;
 }
 
-.contact-page-grid > .contact-hours,
-.contact-page-grid > .contact-socials,
+/* Left column: hours (row 2) + socials (row 3) */
+.contact-page-grid > .contact-hours {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.contact-page-grid > .contact-socials {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+/* Right column: location spans rows 2–3 */
 .contact-page-grid > .contact-location {
-  max-width: 100%;
-  margin: 0;
+  grid-column: 2;
+  grid-row: 2 / 4;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-page-grid > .contact-location iframe {
+  flex: 1;
+  min-height: 280px;
 }
 
 @media (max-width: 900px) {
@@ -3063,23 +2935,62 @@ a:focus-visible, button:focus-visible {
     padding: 4rem 1rem 3rem;
   }
   .contact-page-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.2rem;
-    padding: 0 1rem 2rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+  .contact-page-grid > .contact-form-section {
+    grid-column: 1;
+    grid-row: auto;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+  .contact-page-grid > .contact-hours {
+    grid-column: 1;
+    grid-row: auto;
+    border-bottom: 1px solid rgba(200, 150, 62, 0.15);
+  }
+  .contact-page-grid > .contact-socials {
+    grid-column: 1;
+    grid-row: auto;
   }
   .contact-page-grid > .contact-location {
-    grid-column: 1 / -1;
+    grid-column: 1;
+    grid-row: auto;
+    border-left: none;
+    border-top: 1px solid rgba(200, 150, 62, 0.15);
+    padding-top: 2em;
+  }
+  .contact-page-grid > .contact-location iframe {
+    min-height: 220px;
   }
 }
 
 @media (max-width: 600px) {
   .contact-page-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 0 0.75rem 2rem;
+    padding: 2rem 1rem 3rem;
   }
-  .contact-page-grid > .contact-location {
-    grid-column: auto;
+  .contact-form-section {
+    padding: 2em 1.2em 1.8em 1.2em !important;
+  }
+  .safari-inquiry-form {
+    max-width: 100%;
+  }
+  .safari-inquiry-form input,
+  .safari-inquiry-form textarea {
+    font-size: 0.97em;
+    padding: 0.65em 0.8em;
+  }
+  .contact-hours,
+  .contact-socials {
+    padding: 1.8em 1.2em;
+  }
+  .social-icons-row {
+    gap: 1em;
+  }
+  .social-icons-row a {
+    width: 46px;
+    height: 46px;
   }
 }
 
