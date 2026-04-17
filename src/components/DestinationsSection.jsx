@@ -33,10 +33,10 @@ import LazyImage from "./LazyImage";
 const destinations = [
   {
     id: "safari-blue",
-    image: SafariBlue2,
-    image2: DolphinSafariBlue1,
-    imageAlt: "Snorkeling in Watamu Marine Park",
-    image2Alt: "Watamu ocean and dolphins",
+    image: DolphinSafariBlue1,
+    image2: SafariBlue2,
+    imageAlt: "Watamu ocean and dolphins",
+    image2Alt: "Snorkeling in Watamu Marine Park",
     imagePosition: "center",
     price: "€70 – €80 pp",
     duration: "Full Day",

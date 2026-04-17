@@ -4660,22 +4660,25 @@ padding: 1rem 1.5rem;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    transparent 20%,
-    rgba(14, 10, 6, 0.52) 65%,
-    rgba(14, 10, 6, 0.84) 100%
+    rgba(14, 10, 6, 0)    0%,
+    rgba(14, 10, 6, 0.1)  20%,
+    rgba(14, 10, 6, 0.5)  50%,
+    rgba(14, 10, 6, 0.85) 75%,
+    rgba(14, 10, 6, 0.95) 100%
   );
   pointer-events: none;
   border-radius: inherit;
 }
 
 /* ── Text half ── */
-/* Desktop: CSS Grid so the accent image and headline can share the same row (overlap) */
+/* Desktop: CSS Grid — accent image becomes the full-panel background behind all text */
 .dest-text-half {
   width: 50%;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 45vh 1fr auto;
+  position: relative;
   background: #0e0a06;
   flex-shrink: 0;
   overflow-y: auto;
@@ -4683,19 +4686,20 @@ padding: 1rem 1.5rem;
 }
 .dest-text-half::-webkit-scrollbar { display: none; }
 
-/* Accent image: occupies row 1, fills the full image row height */
+/* Accent image: absolute background layer covering the entire text half on desktop */
 .dest-text-half > .dest-accent-img-wrap {
-  position: relative;
-  grid-column: 1;
-  grid-row: 1;
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
   overflow: hidden;
   border-radius: 0;
   margin-bottom: 0;
   box-shadow: none;
+  z-index: 0;
 }
 
-/* Titles block: also in row 1, aligned to the bottom — overlays the accent image */
+/* Titles block: row 1, aligned to the bottom — sits on top of the background image */
 .dest-text-titles {
   grid-column: 1;
   grid-row: 1;
@@ -4705,7 +4709,7 @@ padding: 1rem 1.5rem;
   width: 100%;
   padding: 4rem 2.5rem 1.8rem;
   margin: 0;
-  background: linear-gradient(to bottom, transparent, rgba(14, 10, 6, 0.84));
+  background: linear-gradient(to bottom, transparent 0%, rgba(14, 10, 6, 0.38) 100%);
 }
 
 /* Story + meta block: row 2 */
@@ -4718,6 +4722,8 @@ padding: 1rem 1.5rem;
   width: 100%;
   padding: 1.2rem 2.5rem 0;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 /* CTA wrapper: row 3 */
@@ -4728,6 +4734,8 @@ padding: 1rem 1.5rem;
   margin: 0 auto;
   grid-column: 1;
   grid-row: 3;
+  position: relative;
+  z-index: 2;
 }
 
 /* Mobile-only subheadline above image (hidden on desktop) */
@@ -5119,6 +5127,9 @@ padding: 1rem 1.5rem;
 
   /* 3. Accent image — after story, before CTA */
   .dest-text-half > .dest-accent-img-wrap {
+    position: relative;
+    inset: unset;
+    z-index: auto;
     grid-column: unset;
     grid-row: unset;
     order: 2;
