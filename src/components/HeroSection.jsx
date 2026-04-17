@@ -57,8 +57,6 @@ const HeroSection = () => {
           <span className="hero-ornament-diamond" />
           <span className="hero-ornament-line" />
         </div>
-        <p className="hero-title">{t('hero.title')}</p>
-        <p className="hero-desc">{t('hero.description')}</p>
         <div className="hero-ctas">
           <a href="#packages" className="cta-btn">{t('hero.viewPackages')}</a>
           <Link to="/contact" className="cta-secondary">
