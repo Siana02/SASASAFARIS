@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useMobileNav } from "../hooks/useMobileNav";
 import { useLanguage } from "../hooks/useLanguage";
-import { SasaSafarisLogo } from "../assets/images";
+import { HeaderLogo } from "../assets/images";
 
 const Header = () => {
   const { isOpen, toggleMenu } = useMobileNav();
@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo-holder">
-        <img src={SasaSafarisLogo} alt="Sasa Safaris Africa Logo" className="logo-img" />
+        <img src={HeaderLogo} alt="Sasa Safaris Africa Logo" className="logo-img" />
       </div>
       <nav className="nav desktop-nav">
         <ul className="nav-links">

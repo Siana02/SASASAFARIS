@@ -12,6 +12,7 @@ import WildebeestMigration from './Wildebeest_migration.jpg';
 import KenyanCoast from './Kenyan_coast_1.jpg';
 import FaviconPng from './favicon.png';
 import SasaSafarisLogo from './sasa_safaris_africa_logo.jpeg';
+import HeaderLogo from './header-logo.jpeg';
 import GreatRiftValley from './Great_Rift_Valley.jpg';
 import MaasaiMara from './Maasai_mara_1.jpg';
 import WildernessExplorer from './Wilderness_Explorer.jpg';
@@ -41,6 +42,7 @@ export {
   KenyanCoast,
   FaviconPng,
   SasaSafarisLogo,
+  HeaderLogo,
   GreatRiftValley,
   MaasaiMara,
   WildernessExplorer,
