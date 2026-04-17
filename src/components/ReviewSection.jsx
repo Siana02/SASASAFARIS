@@ -113,9 +113,8 @@ function ReviewCard({ review, index }) {
         </div>
 
         <div className="rv-badges">
-          <span className={`rv-source ${source.className}`}>
+          <span className={`rv-source ${source.className}`} title={source.label}>
             {source.icon}
-            {source.label}
           </span>
           <span className="rv-verified">
             <svg viewBox="0 0 20 20" width="11" height="11" fill="currentColor" aria-hidden="true">
