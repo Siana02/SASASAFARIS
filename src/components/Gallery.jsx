@@ -1,5 +1,6 @@
 import React from "react";
 import { useLanguage } from "../hooks/useLanguage";
+import LazyImage from "./LazyImage";
 
 import {
   Amboseli,
@@ -42,7 +43,7 @@ const Gallery = () => {
     <div className="gallery-grid">
       {safariImages.map((src, idx) => (
         <div className="gallery-img-container" key={idx}>
-          <img src={src} alt={`Safari memory ${idx + 1}`} loading="lazy" />
+          <LazyImage src={src} alt={`Safari memory ${idx + 1}`} />
         </div>
       ))}
     </div>

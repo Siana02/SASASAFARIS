@@ -28,6 +28,7 @@ import {
   CoastalExperience
 } from "../assets/images";
 import { useLanguage } from "../hooks/useLanguage";
+import LazyImage from "./LazyImage";
 
 const packages = [
   { id: "mara-tsavo", image: ClassicMaasaiMara, badgeClass: "badge-popular", ctaDetails: "#details-mara-tsavo" },
@@ -279,11 +280,10 @@ useEffect(() => {
               }}
             >
               <div className="package-card-image">
-                <img
+                <LazyImage
                   src={card.image}
                   alt={t(`packagesData.${card.id}.title`)}
                   draggable={false}
-                  loading="lazy"
                 />
               </div>
               <div className="package-card-content">

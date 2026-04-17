@@ -29,6 +29,13 @@ import DestinationsSection from "./components/DestinationsSection";
 import { MobileNavProvider } from './contexts/MobileNavContext';
 import './styles/style.css';
 
+// Collect every image URL exported from assets/images so the preload screen
+// can fetch them all while it is displayed.
+import * as assetImages from './assets/images';
+const ALL_IMAGE_SRCS = Object.values(assetImages).filter(
+  (v) => typeof v === 'string'
+);
+
 // Main landing page content
 function HomePage() {
   return (
@@ -76,7 +83,7 @@ useEffect(() => {
   return (
     <>
       <SiteBg />
-      {!preloadDone && <PreloadScreen onComplete={() => setPreloadDone(true)} />}
+      {!preloadDone && <PreloadScreen onComplete={() => setPreloadDone(true)} images={ALL_IMAGE_SRCS} />}
       <BrowserRouter>
       <MobileNavProvider>
       <Header />

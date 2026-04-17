@@ -25,6 +25,7 @@ import {
   WatamuCulturalTour1,
   WatamuCulturalTour2,
 } from "../assets/images";
+import LazyImage from "./LazyImage";
 
 // ─── Destination data ────────────────────────────────────────────────────────
 // image  = main full-height image (fills the left/right half)
@@ -246,13 +247,12 @@ const DestinationsSection = () => {
             className={`dest-image-half${imageOnLeft ? " dest-image-half--left" : " dest-image-half--right"}`}
             style={{ order: imageOnLeft ? 0 : 1 }}
           >
-            <img
+            <LazyImage
               src={dest.image}
               alt={dest.imageAlt}
               className="dest-img"
               style={{ objectPosition: dest.imagePosition }}
               draggable={false}
-              loading="lazy"
             />
             <div className="dest-img-overlay" />
             {/* Floating tag */}
@@ -267,12 +267,11 @@ const DestinationsSection = () => {
             <div className="dest-text-inner">
               {/* Small accent image at the top of the text panel */}
               <div className="dest-accent-img-wrap">
-                <img
+                <LazyImage
                   src={dest.image2}
                   alt={dest.image2Alt}
                   className="dest-accent-img"
                   draggable={false}
-                  loading="lazy"
                 />
                 <div className="dest-accent-img-overlay" />
               </div>

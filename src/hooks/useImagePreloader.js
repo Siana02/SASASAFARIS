@@ -1,0 +1,46 @@
+import { useState, useEffect, useRef } from 'react';
+
+/**
+ * Preloads a list of image URLs and tracks loading progress.
+ * Each image is loaded via a hidden Image object so the browser caches it
+ * before it is needed in the DOM.
+ *
+ * @param {string[]} imageSources - Array of image URL strings to preload.
+ * @returns {{ loadedCount: number, total: number, percent: number, isComplete: boolean }}
+ */
+export function useImagePreloader(imageSources) {
+  const [loadedCount, setLoadedCount] = useState(0);
+  const total = imageSources.length;
+  const mountedRef = useRef(true);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!total) return;
+    let count = 0;
+    imageSources.forEach((src) => {
+      const img = new window.Image();
+      const onDone = () => {
+        if (!mountedRef.current) return;
+        count += 1;
+        setLoadedCount(count);
+      };
+      img.onload = onDone;
+      img.onerror = onDone;
+      img.src = src;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return {
+    loadedCount,
+    total,
+    percent: total > 0 ? Math.min(100, Math.round((loadedCount / total) * 100)) : 0,
+    isComplete: total > 0 ? loadedCount >= total : true,
+  };
+}

@@ -4881,3 +4881,42 @@ padding: 1rem 1.5rem;
   }
 }
 
+/* ========== LAZY IMAGE — shimmer skeleton & fade-in ========== */
+
+/**
+ * .lazy-img--pending  → shown while no real src is set yet (or while loading).
+ *   Displays a warm-sand shimmer that matches the site's earthy palette.
+ * .lazy-img--loaded   → real image is ready; fade-in plays once.
+ *
+ * These classes are applied by LazyImage.jsx and complement the normal
+ * className already on the <img> (e.g. dest-img, dest-accent-img, etc.)
+ * so layout / sizing CSS is unaffected.
+ */
+.lazy-img--pending {
+  background: linear-gradient(
+    90deg,
+    #f0e6d0 0%,
+    #e0cfa8 40%,
+    #f0e6d0 60%,
+    #f0e6d0 100%
+  );
+  background-size: 300% 100%;
+  animation: lazyShimmer 1.6s ease-in-out infinite;
+  /* Keep the same object-fit / object-position rules applied by other classes */
+  object-fit: cover;
+}
+
+.lazy-img--loaded {
+  animation: lazyFadeIn 0.55s ease-in both;
+}
+
+@keyframes lazyShimmer {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes lazyFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
