@@ -5,15 +5,15 @@
  * ✅ 50/50 split: image half + text half, alternating sides per card
  * ✅ Transitions: fade + subtle slide between destinations
  * ✅ Navigation: arrow buttons, keyboard arrows, touch swipe, mouse drag
- * ✅ Progress: numbered counter (01 / 05) + dot indicators
+ * ✅ Progress: numbered counter + dot indicators (flow on mobile, absolute on desktop)
  * ✅ "Scroll down" hint appears after viewing all cards
  * ✅ Full-height images with a soft dark overlay for depth
+ * ✅ Mobile: stacked layout — big image → text → accent img with duration/price overlay
  */
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import {
-  WatamuMain,
   DolphinSafariBlue1,
   SafariBlue2,
   Sardegna1,
@@ -24,15 +24,14 @@ import {
   ElephantSunset,
   WatamuCulturalTour1,
   WatamuCulturalTour2,
+  MaasaiMara,
+  WildebeestMigration,
 } from "../assets/images";
 import LazyImage from "./LazyImage";
 
 // ─── Destination data ────────────────────────────────────────────────────────
 // image  = main full-height image (fills the left/right half)
 // image2 = small accent image displayed at the top of the text panel
-//
-// NOTE: "hells kitchen" (Marafa canyon) and tsavo-east-2 images are pending upload.
-//       WildernessExplorer / Amboseli are placeholders until those land.
 const destinations = [
   {
     id: "safari-blue",
@@ -89,6 +88,17 @@ const destinations = [
     duration: "Half Day",
     tag: "Cultural Immersion",
   },
+  {
+    id: "maasai-mara",
+    image: MaasaiMara,
+    image2: WildebeestMigration,
+    imageAlt: "Maasai Mara golden savannah at golden hour",
+    image2Alt: "The Great Wildebeest Migration crossing the Mara River",
+    imagePosition: "center",
+    price: "From €250 pp",
+    duration: "3 Days / 2 Nights",
+    tag: "Wildlife Safari",
+  },
 ];
 
 const CONTENT = {
@@ -121,6 +131,12 @@ const CONTENT = {
     subheadline: "Watamu Village Cultural Tour",
     story:
       "Slow down and truly arrive. Meet the families, walk the markets, discover the crafts, and hear the stories that make Watamu what it is. This is not tourism — this is belonging, if only for a morning.",
+  },
+  "maasai-mara": {
+    headline: "The Greatest Show on Earth",
+    subheadline: "Maasai Mara — Great Migration Safari",
+    story:
+      "Over a million wildebeest thunder across the Mara River in nature's most dramatic spectacle. Lions stalk the tall grass, leopards drape themselves over acacia trees, and the vast sky above makes you feel both small and infinite. The Mara isn't somewhere you visit — it's somewhere you become.",
   },
 };
 
@@ -223,8 +239,8 @@ const DestinationsSection = () => {
     <section className="destinations-section" id="destinations" aria-label="Destinations">
       {/* Section heading */}
       <div className="destinations-header">
-        <span className="destinations-eyebrow">Explore Watamu</span>
-        <h2 className="destinations-heading">Our Excursions</h2>
+        <span className="destinations-eyebrow">Kenya & Beyond</span>
+        <h2 className="destinations-heading">Journeys That Change You</h2>
       </div>
 
       {/* Carousel wrapper */}
@@ -265,7 +281,7 @@ const DestinationsSection = () => {
             style={{ order: imageOnLeft ? 1 : 0 }}
           >
             <div className="dest-text-inner">
-              {/* Small accent image at the top of the text panel */}
+              {/* Accent image — on mobile shows duration + price overlay */}
               <div className="dest-accent-img-wrap">
                 <LazyImage
                   src={dest.image2}
@@ -274,11 +290,17 @@ const DestinationsSection = () => {
                   draggable={false}
                 />
                 <div className="dest-accent-img-overlay" />
+                {/* Duration + price overlay — visible on mobile only */}
+                <div className="dest-accent-meta" aria-hidden="true">
+                  <span className="dest-accent-duration">{dest.duration}</span>
+                  <span className="dest-accent-price">{dest.price}</span>
+                </div>
               </div>
 
               <p className="dest-subheadline">{content.subheadline}</p>
               <h3 className="dest-headline">{content.headline}</h3>
               <p className="dest-story">{content.story}</p>
+              {/* Desktop meta row — hidden on mobile (replaced by accent overlay) */}
               <div className="dest-meta">
                 <span className="dest-duration">{dest.duration}</span>
                 <span className="dest-price">{dest.price}</span>
@@ -291,6 +313,39 @@ const DestinationsSection = () => {
                 </svg>
               </Link>
             </div>
+          </div>
+
+          {/* ── Progress + scroll hint (inside article so they flow on mobile) ── */}
+          <div className="dest-bottom-controls">
+            <div className="dest-progress">
+              <span className="dest-counter">
+                {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+              </span>
+              <div className="dest-dots" role="tablist" aria-label="Destination indicator">
+                {destinations.map((d, i) => (
+                  <button
+                    key={d.id}
+                    role="tab"
+                    aria-selected={i === active}
+                    aria-label={`Destination ${i + 1}`}
+                    className={`dest-dot${i === active ? " dest-dot--active" : ""}${i < active ? " dest-dot--seen" : ""}`}
+                    onClick={() => {
+                      if (i > active) goTo(i, "next");
+                      else if (i < active) goTo(i, "prev");
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {allSeen && (
+              <div className="dest-scroll-hint" aria-live="polite">
+                <span>Scroll to continue</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+            )}
           </div>
         </article>
 
@@ -313,38 +368,6 @@ const DestinationsSection = () => {
             <polyline points="9 18 15 12 9 6" />
           </svg>
         </button>
-
-        {/* ── Progress bar ── */}
-        <div className="dest-progress">
-          <span className="dest-counter">
-            {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-          </span>
-          <div className="dest-dots" role="tablist" aria-label="Destination indicator">
-            {destinations.map((d, i) => (
-              <button
-                key={d.id}
-                role="tab"
-                aria-selected={i === active}
-                aria-label={`Destination ${i + 1}`}
-                className={`dest-dot${i === active ? " dest-dot--active" : ""}${i < active ? " dest-dot--seen" : ""}`}
-                onClick={() => {
-                  if (i > active) goTo(i, "next");
-                  else if (i < active) goTo(i, "prev");
-                }}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Scroll-down hint after all seen */}
-        {allSeen && (
-          <div className="dest-scroll-hint" aria-live="polite">
-            <span>Scroll to continue</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </div>
-        )}
       </div>
     </section>
   );

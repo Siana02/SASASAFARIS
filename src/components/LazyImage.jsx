@@ -41,7 +41,9 @@ const LazyImage = React.forwardRef(function LazyImage(
 
     observer.observe(el);
     return () => observer.disconnect();
-    // We only want to set up the observer once per src change.
+    // `ref` (internalRef or forwardedRef) is stable across renders — it is
+    // either a createRef from the parent or our own useRef, both of which are
+    // referentially stable. Adding it to deps would cause spurious restarts.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src]);
 

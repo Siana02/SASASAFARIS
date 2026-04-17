@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useImagePreloader } from '../hooks/useImagePreloader';
 
 /** Minimum time (ms) the screen is always shown — keeps the animation visible. */
@@ -87,11 +87,6 @@ const PreloadScreen = ({ onComplete, images = [] }) => {
 
   const { percent, isComplete } = useImagePreloader(images);
 
-  // Smooth spring on the progress value so bar glides between jumps
-  const rawProgress = useMotionValue(0);
-  const springProgress = useSpring(rawProgress, { stiffness: 60, damping: 20 });
-  useEffect(() => { rawProgress.set(percent); }, [percent, rawProgress]);
-
   // Keep onComplete stable inside effects via ref
   const onCompleteRef = useRef(onComplete);
   useEffect(() => { onCompleteRef.current = onComplete; }, [onComplete]);
@@ -118,7 +113,6 @@ const PreloadScreen = ({ onComplete, images = [] }) => {
     const maxTimer = setTimeout(() => {
       imagesReadyRef.current = true;
       minPassedRef.current = true;
-      rawProgress.set(100);
       doReveal();
     }, MAX_WAIT_MS);
 
@@ -126,7 +120,7 @@ const PreloadScreen = ({ onComplete, images = [] }) => {
       clearTimeout(minTimer);
       clearTimeout(maxTimer);
     };
-  }, [doReveal, rawProgress]);
+  }, [doReveal]);
 
   // Trigger reveal as soon as images are done AND min time has passed
   useEffect(() => {
@@ -446,7 +440,6 @@ const PreloadScreen = ({ onComplete, images = [] }) => {
                 height: '100%',
                 background: 'linear-gradient(to right, #c8963e, #e8c97a)',
                 borderRadius: 2,
-                width: springProgress.get() + '%',
               }}
               animate={{ width: percent + '%' }}
               transition={{ duration: 0.6, ease: 'easeOut' }}

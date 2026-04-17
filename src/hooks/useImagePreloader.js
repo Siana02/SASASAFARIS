@@ -34,6 +34,9 @@ export function useImagePreloader(imageSources) {
       img.onerror = onDone;
       img.src = src;
     });
+    // Intentionally runs once on mount only. The preloader is a one-shot
+    // effect — the set of images to prefetch does not change after the
+    // component mounts, so re-running on array identity changes is unnecessary.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
