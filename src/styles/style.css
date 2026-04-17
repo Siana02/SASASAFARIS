@@ -3219,20 +3219,83 @@ a:focus-visible, button:focus-visible {
   border-bottom: 1px solid rgba(200, 150, 62, 0.18);
 }
 
-.eco-reminder-section::before {
-  content: "";
+/* ── Fish background ── */
+.eco-fish-bg {
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(200,150,62,0.07)'/%3E%3C/svg%3E") repeat;
   pointer-events: none;
+  z-index: 0;
 }
 
+.eco-fish {
+  position: absolute;
+  top: var(--fish-top, 30%);
+  left: 0;
+  font-size: var(--fish-size, 1rem);
+  color: var(--accent, #c8963e);
+  opacity: 0.12;
+  animation: eco-swim var(--fish-dur, 22s) linear infinite;
+  animation-delay: var(--fish-delay, 0s);
+  will-change: transform;
+}
+
+@keyframes eco-swim {
+  from { transform: translateX(-60px); }
+  to   { transform: translateX(calc(100vw + 60px)); }
+}
+
+/* ── Inner content layer ── */
 .eco-reminder-inner {
   position: relative;
+  z-index: 1;
   max-width: 780px;
   margin: 0 auto;
 }
 
+/* ── Entrance animations (triggered by .is-visible on the section) ── */
+.eco-reminder-eyebrow,
+.eco-reminder-title,
+.eco-reminder-lead,
+.eco-pledge-item,
+.eco-reminder-close,
+.eco-cta-btn {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.eco-reminder-section.is-visible .eco-reminder-eyebrow {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.05s;
+}
+.eco-reminder-section.is-visible .eco-reminder-title {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.18s;
+}
+.eco-reminder-section.is-visible .eco-reminder-lead {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.32s;
+}
+.eco-reminder-section.is-visible .eco-pledge-item {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(0.46s + var(--stagger, 0) * 0.1s);
+}
+.eco-reminder-section.is-visible .eco-reminder-close {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.1s;
+}
+.eco-reminder-section.is-visible .eco-cta-btn {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.22s;
+}
+
+/* ── Text styles ── */
 .eco-reminder-eyebrow {
   font-family: var(--body-font, 'Jost', sans-serif);
   font-size: 0.8rem;
@@ -3260,6 +3323,7 @@ a:focus-visible, button:focus-visible {
   font-style: italic;
 }
 
+/* ── Pledge list ── */
 .eco-pledge-list {
   list-style: none;
   padding: 0;
@@ -3279,29 +3343,56 @@ a:focus-visible, button:focus-visible {
   border-radius: 0.6rem;
   padding: 1rem 1.25rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .eco-pledge-item:hover {
   background: #fffaf3;
   border-color: rgba(200, 150, 62, 0.65);
-  box-shadow: 0 4px 14px rgba(200, 150, 62, 0.12);
+  box-shadow: 0 6px 18px rgba(200, 150, 62, 0.15);
+  transform: translateY(-4px);
 }
 
+/* ── Pledge icon ── */
 .eco-pledge-icon {
   flex-shrink: 0;
   font-size: 1.25rem;
   color: var(--accent, #c8963e);
   margin-top: 0.1rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+  animation: eco-icon-idle 3.5s ease-in-out infinite;
 }
 
+@keyframes eco-icon-idle {
+  0%, 100% { transform: scale(1);    }
+  50%       { transform: scale(1.12); }
+}
+
+.eco-pledge-item:hover .eco-pledge-icon {
+  animation: none;
+  transform: scale(1.35) rotate(-10deg);
+  color: var(--cta, #d4852a);
+}
+
+/* ── Pledge text ── */
 .eco-pledge-text {
   font-family: var(--body-font, 'Jost', sans-serif);
   font-size: 0.97rem;
   color: #333;
   line-height: 1.6;
+  transition: color 0.2s ease;
 }
 
+.eco-pledge-item:hover .eco-pledge-text {
+  color: #1a1a1a;
+}
+
+/* ── Close line ── */
 .eco-reminder-close {
   font-family: var(--heading-font, 'Cormorant Garamond', serif);
   font-size: clamp(1rem, 2vw, 1.2rem);
@@ -3311,8 +3402,11 @@ a:focus-visible, button:focus-visible {
   line-height: 1.7;
 }
 
+/* ── CTA button ── */
 .eco-cta-btn {
   display: inline-block;
+  position: relative;
+  overflow: hidden;
   font-family: var(--body-font, 'Jost', sans-serif);
   font-size: 0.9rem;
   font-weight: 600;
@@ -3324,14 +3418,42 @@ a:focus-visible, button:focus-visible {
   border-radius: 3px;
   padding: 0.85rem 2.4rem;
   cursor: pointer;
-  transition: background 0.25s ease, transform 0.2s ease;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.eco-cta-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -110%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transition: left 0.5s ease;
 }
 
 .eco-cta-btn:hover,
 .eco-cta-btn:focus-visible {
   background: var(--cta-hover, #b8720e);
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(212, 133, 42, 0.35);
   outline: none;
+}
+
+.eco-cta-btn:hover::after {
+  left: 130%;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .eco-fish        { animation: none !important; }
+  .eco-pledge-icon { animation: none !important; }
+  .eco-reminder-eyebrow,
+  .eco-reminder-title,
+  .eco-reminder-lead,
+  .eco-pledge-item,
+  .eco-reminder-close,
+  .eco-cta-btn     { opacity: 1; transform: none; transition: none; }
 }
 
 /* ============================
