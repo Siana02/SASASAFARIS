@@ -14,16 +14,6 @@ const FISH_BG = [
   { dur: "28s", delay: "-22s",  top: "47%",  size: "1.7rem" },
 ];
 
-/* ── Generate 20 celebration fish with randomised positions ── */
-const makeCelebrationFish = () =>
-  Array.from({ length: 20 }, () => ({
-    dur:     `${2.5 + Math.random() * 4}s`,
-    delay:   `${-(Math.random() * 4)}s`,
-    top:     `${5 + Math.random() * 88}%`,
-    size:    `${1.5 + Math.random() * 1.6}rem`,
-    opacity: 0.4 + Math.random() * 0.3,
-  }));
-
 /* ── Drag-to-pledge slider ── */
 const PledgeSlider = ({ onPledge, labelIdle, labelDone }) => {
   const trackRef   = useRef(null);
@@ -120,11 +110,9 @@ const EcoReminderSection = () => {
   const { t }      = useLanguage();
   const navigate   = useNavigate();
   const sectionRef = useRef(null);
-  const [pledged,         setPledged]         = useState(false);
-  const [thanksVisible,   setThanksVisible]   = useState(false);
-  const [celebrationFish, setCelebrationFish] = useState([]);
-  const [fading,          setFading]          = useState(false);
-  const [hidden,          setHidden]          = useState(false);
+  const [pledged,  setPledged]  = useState(false);
+  const [fading,   setFading]   = useState(false);
+  const [hidden,   setHidden]   = useState(false);
 
   /* Hide immediately if already pledged this session */
   useEffect(() => {
@@ -151,9 +139,6 @@ const EcoReminderSection = () => {
 
   const handlePledge = useCallback(() => {
     setPledged(true);
-    setCelebrationFish(makeCelebrationFish());
-    /* Two-tick pattern: mount the element first, then trigger the transition */
-    setTimeout(() => setThanksVisible(true), 20);
     /* After 30 s start fade-out, then hide and save session flag */
     setTimeout(() => {
       setFading(true);
@@ -197,22 +182,6 @@ const EcoReminderSection = () => {
             <i className="fa-solid fa-fish" />
           </span>
         ))}
-        {/* Celebration school — rendered only after pledge */}
-        {celebrationFish.map((f, i) => (
-          <span
-            key={`c${i}`}
-            className="eco-fish eco-fish--celebration"
-            style={{
-              "--fish-dur":     f.dur,
-              "--fish-delay":   f.delay,
-              "--fish-top":     f.top,
-              "--fish-size":    f.size,
-              "--fish-opacity": f.opacity,
-            }}
-          >
-            <i className="fa-solid fa-fish" />
-          </span>
-        ))}
       </div>
 
       <div className="eco-reminder-inner">
@@ -244,9 +213,7 @@ const EcoReminderSection = () => {
             labelDone={t("ecoReminder.slideDone")}
           />
           {pledged && (
-            <p className={`eco-pledge-thanks${thanksVisible ? " is-visible" : ""}`}>
-              {t("ecoReminder.pledgeThanks")}
-            </p>
+            <p className="eco-pledge-thanks">{t("ecoReminder.pledgeThanks")}</p>
           )}
         </div>
 
