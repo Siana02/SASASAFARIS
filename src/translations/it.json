@@ -268,5 +268,16 @@
     "card4Title": "Zero Stress",
     "card4Desc": "Pensiamo a tutto noi. Tu devi solo arrivare.",
     "humanMomentOverlay": "Questo potrebbe essere il tuo panorama domani."
+  },
+  "homepageContactCTA": {
+    "eyebrow": "Il Tuo Safari Ti Aspetta",
+    "headline": "La Natura Selvaggia Ti Chiama. Risponderai?",
+    "subheadline": "Dal Maasai Mara all'alba alle rive turchesi di Watamu — la tua avventura africana perfetta è a un messaggio di distanza.",
+    "cta": "Pianifica il Tuo Safari"
+  },
+  "contactPageHero": {
+    "eyebrow": "Siamo Qui Per Te",
+    "headline": "Pianifichiamo il Tuo Safari Insieme",
+    "subheadline": "Contattaci attraverso qualsiasi canale — il nostro team risponde in 10–30 minuti."
   }
 }
