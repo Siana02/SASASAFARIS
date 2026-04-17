@@ -2333,13 +2333,6 @@ a:focus-visible, button:focus-visible {
   }
 }
 .contact-hours {
-  background: rgba(253, 248, 240, 0.93);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 1.4em;
-  border: 1px solid rgba(200, 150, 62, 0.25);
-  border-top: 3px solid var(--accent, #c8963e);
-  box-shadow: 0 8px 40px rgba(58, 26, 8, 0.16);
   padding: 2.2em 2em 1.8em 2em;
   max-width: 540px;
   margin: 2.8em auto 1.7em auto;
@@ -2349,11 +2342,6 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   gap: 1.22em;
   position: relative;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.contact-hours:hover {
-  box-shadow: 0 14px 52px rgba(58, 26, 8, 0.22), 0 0 0 1px rgba(200, 150, 62, 0.28);
-  transform: translateY(-3px);
 }
 
 .contact-hours-icon {
@@ -2605,13 +2593,6 @@ a:focus-visible, button:focus-visible {
 
 /* --- Contact Socials Section --- */
 .contact-socials {
-  background: rgba(253, 248, 240, 0.93);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 1.4em;
-  border: 1px solid rgba(200, 150, 62, 0.25);
-  border-top: 3px solid var(--accent, #c8963e);
-  box-shadow: 0 8px 40px rgba(58, 26, 8, 0.16);
   padding: 2em 2em 1.7em 2em;
   max-width: 540px;
   margin: 2em auto 1.7em auto;
@@ -2621,11 +2602,6 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   gap: 1.22em;
   position: relative;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.contact-socials:hover {
-  box-shadow: 0 14px 52px rgba(58, 26, 8, 0.22), 0 0 0 1px rgba(200, 150, 62, 0.28);
-  transform: translateY(-3px);
 }
 
 .contact-socials h3 {
@@ -2713,13 +2689,6 @@ a:focus-visible, button:focus-visible {
 
 /* --- Contact Location Section --- */
 .contact-location {
-  background: rgba(253, 248, 240, 0.93);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 1.4em;
-  border: 1px solid rgba(200, 150, 62, 0.25);
-  border-top: 3px solid var(--accent, #c8963e);
-  box-shadow: 0 8px 40px rgba(58, 26, 8, 0.16);
   padding: 1.8em 1.6em 1.5em 1.6em;
   max-width: 540px;
   margin: 1.8em auto 1.2em auto;
@@ -2729,11 +2698,6 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   gap: 1em;
   position: relative;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.contact-location:hover {
-  box-shadow: 0 14px 52px rgba(58, 26, 8, 0.22), 0 0 0 1px rgba(200, 150, 62, 0.28);
-  transform: translateY(-3px);
 }
 
 .contact-location h3 {
