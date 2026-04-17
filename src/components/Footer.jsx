@@ -74,24 +74,33 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">{t('footer.quickLinks')}</h4>
             <ul className="footer-links">
-              <li>
-                <Link to="/">{t('footer.home')}</Link>
-              </li>
-              <li>
-                  <Link to="/gallery" className="footer-link">{t('footer.gallery')}</Link>
-                </li>
-              <li>
-                <Link to="/packages">{t('footer.packages')}</Link>
-              </li>
-              <li>
-                <Link to="/offers">{t('footer.offers')}</Link>
-              </li>
-              <li>
-                <Link to="/about">{t('footer.about')}</Link>
-              </li>
-              <li>
-                <Link to="/contact">{t('footer.contacts')}</Link>
-              </li>
+              <li><Link to="/">{t('footer.home')}</Link></li>
+              <li><Link to="/about">{t('footer.about')}</Link></li>
+              <li><Link to="/packages">{t('footer.packages')}</Link></li>
+              <li><Link to="/offers">{t('footer.offers')}</Link></li>
+              <li><Link to="/gallery">{t('footer.gallery')}</Link></li>
+              <li><Link to="/blog">{t('footer.blog')}</Link></li>
+              <li><Link to="/#faq">{t('footer.faq')}</Link></li>
+              <li><Link to="/contact">{t('footer.contacts')}</Link></li>
+            </ul>
+          </div>
+
+          {/* Our Services */}
+          <div className="footer-section">
+            <h4 className="footer-heading">{t('footer.ourServices')}</h4>
+            <ul className="footer-links">
+              <li><Link to="/contact">{t('footer.serviceAirportTransfers')}</Link></li>
+              <li><Link to="/contact">{t('footer.serviceHotelBooking')}</Link></li>
+              <li><Link to="/packages">{t('footer.serviceSafariGameDrives')}</Link></li>
+              <li><Link to="/contact">{t('footer.serviceExcursions')}</Link></li>
+              <li><Link to="/contact">{t('footer.serviceBoatDhowRides')}</Link></li>
+              <li><Link to="/contact">{t('footer.serviceSnorkelingDiving')}</Link></li>
+              <li><Link to="/contact">{t('footer.serviceCulturalTours')}</Link></li>
+              <li><Link to="/packages">{t('footer.serviceBeachHolidays')}</Link></li>
+              <li><Link to="/contact">{t('footer.serviceCarHire')}</Link></li>
+              <li><Link to="/packages">{t('footer.serviceHoneymoonPackages')}</Link></li>
+              <li><Link to="/contact">{t('footer.servicePrivateGuidedTours')}</Link></li>
+              <li><Link to="/packages">{t('footer.serviceGroupSafaris')}</Link></li>
             </ul>
           </div>
 
@@ -135,6 +144,7 @@ const Footer = () => {
 
           <div className="footer-legal">
             <Link to="/privacy">{t('footer.privacyPolicy')}</Link>
+            <Link to="/cookies">{t('footer.cookiePolicy')}</Link>
             <Link to="/terms">{t('footer.termsOfService')}</Link>
           </div>
         </div>

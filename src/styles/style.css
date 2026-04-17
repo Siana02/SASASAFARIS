@@ -3310,8 +3310,8 @@ a:focus-visible, button:focus-visible {
 /* Footer grid layout */
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
   margin-bottom: 2rem;
 }
 
@@ -3460,11 +3460,19 @@ a:focus-visible, button:focus-visible {
 
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
-/* Tablet: 2-column layout */
+/* Tablet: 3-column layout */
 @media (max-width: 992px) {
   .footer-content {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+  }
+}
+
+/* Tablet small: 2-column layout */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 }
 
