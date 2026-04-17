@@ -22,13 +22,13 @@ export function useImagePreloader(imageSources) {
 
   useEffect(() => {
     if (!total) return;
-    let count = 0;
     imageSources.forEach((src) => {
       const img = new window.Image();
       const onDone = () => {
         if (!mountedRef.current) return;
-        count += 1;
-        setLoadedCount(count);
+        // Use functional updater to avoid lost increments when multiple images
+        // resolve concurrently (avoids stale-closure race on the local counter).
+        setLoadedCount((prev) => prev + 1);
       };
       img.onload = onDone;
       img.onerror = onDone;

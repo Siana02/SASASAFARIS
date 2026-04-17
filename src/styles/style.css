@@ -4596,17 +4596,34 @@ padding: 1rem 1.5rem;
   width: 50%;
   height: 100%;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
   background: #0e0a06;
   flex-shrink: 0;
-  padding: 2.5rem 2rem;
   overflow-y: auto;
 }
 
-.dest-text-inner {
-  max-width: 480px;
+/* Accent image: direct child of text-half — fills full column width */
+.dest-text-half > .dest-accent-img-wrap {
+  position: relative;
   width: 100%;
+  height: 260px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+.dest-text-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 520px;
+  width: 100%;
+  padding: 2.2rem 2.5rem 2.5rem;
+  margin: 0 auto;
 }
 
 .dest-subheadline {
@@ -4700,23 +4717,14 @@ padding: 1rem 1.5rem;
   transform: translateX(3px);
 }
 
-/* ── Bottom controls (progress + scroll hint) — inside the article ── */
-
-/*
- * Desktop: absolute-positioned at the bottom of the article (which fills the
- * wrapper), so visually identical to the previous layout.
- */
+/* ── Bottom controls — OUTSIDE the carousel wrapper, below it in normal flow ── */
 .dest-bottom-controls {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  background: #0e0a06;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
-  padding-bottom: 1.8rem;
-  z-index: 10;
+  gap: 1.4rem;
+  padding: 3rem 1.5rem 3.5rem;
   pointer-events: none;
 }
 
@@ -4794,8 +4802,11 @@ padding: 1rem 1.5rem;
 
 /* Tablet: slightly smaller text, tighter padding */
 @media (max-width: 900px) {
-  .dest-text-half {
-    padding: 1.5rem 1.2rem;
+  .dest-text-half > .dest-accent-img-wrap {
+    height: 220px;
+  }
+  .dest-text-inner {
+    padding: 1.6rem 1.8rem 2rem;
   }
   .dest-headline {
     font-size: clamp(1.6rem, 5vw, 2.4rem);
@@ -4807,47 +4818,61 @@ padding: 1rem 1.5rem;
 
 /* ─────────────────────────────────────────────────────────
    MOBILE  (≤ 640 px)
-   Stacked layout:
-     1. Main image  — ≥ 55 vh, full width, no height cap
-     2. Text panel  — headline, story, CTA
-     3. Accent image — 200 px, with duration + price overlay
-     4. Progress dots + scroll-to-continue
-   Each block has generous breathing room.
+   Stacked layout — everything in natural page flow:
+     1. Main image      — 55 vh, full width
+     2. Text content    — headline, story, meta, CTA
+     3. Accent image    — 240 px, with duration + price overlay
+     4. Bottom controls — dots + counter + scroll hint (below section)
+   Vertical page scrolling passes straight through (no overflow trap).
+   Only left/right swipe / arrow keys cycle cards.
    ───────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
 
-  /* Wrapper is tall enough to hold the stacked content */
+  /* Wrapper: natural height, no overflow clipping */
   .destinations-wrapper {
-    height: calc(55vh + 700px);
-    min-height: 860px;
-    overflow: hidden;
+    height: auto;
+    min-height: auto;
+    overflow: visible;
   }
 
-  /* Slide: column stack, scrollable internally */
+  /* Slide: in normal page flow, column direction */
   .dest-slide {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    inset: unset;
     flex-direction: column;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    /* Smooth momentum scroll on iOS */
-    -webkit-overflow-scrolling: touch;
+    height: auto;
+    overflow: visible;
   }
 
-  /* ── Main image: big and bold, at least 55 vh ── */
+  /* New cards fade + lift in smoothly on mobile */
+  .dest-slide--visible {
+    animation: destMobileFadeIn 0.42s ease both;
+  }
+
+  @keyframes destMobileFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+
+  /* Exiting cards just fade out (opacity transition in base still applies) */
+  .dest-slide--exit-next,
+  .dest-slide--exit-prev {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* ── Main image: big and bold ── */
   .dest-image-half,
   .dest-image-half--left,
   .dest-image-half--right {
     order: 0 !important;
     width: 100%;
-    height: 55vh;
+    height: 56vh;
     min-height: 260px;
-    max-height: none;      /* lift the old 300 px cap */
+    max-height: none;
     flex-shrink: 0;
   }
 
-  /* Tag sits on top-left of the main image */
   .dest-tag {
     top: 1rem;
     left: 1rem;
@@ -4858,14 +4883,18 @@ padding: 1rem 1.5rem;
     order: 1 !important;
     width: 100%;
     height: auto;
-    padding: 2.2rem 1.4rem 1.6rem;
     overflow: visible;
     flex-shrink: 0;
-    justify-content: flex-start;
   }
 
+  /* Text inner: natural height, comfortable padding */
   .dest-text-inner {
+    order: 1;
+    flex: none;
     max-width: 100%;
+    padding: 2.4rem 1.5rem 1.8rem;
+    margin: 0;
+    justify-content: flex-start;
   }
 
   .dest-headline {
@@ -4875,13 +4904,13 @@ padding: 1rem 1.5rem;
 
   .dest-subheadline {
     font-size: 0.72rem;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.7rem;
   }
 
   .dest-story {
     font-size: 0.92rem;
-    line-height: 1.68;
-    margin-bottom: 1.4rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
   }
 
   /* Hide standalone meta row — replaced by accent image overlay on mobile */
@@ -4889,11 +4918,13 @@ padding: 1rem 1.5rem;
     display: none;
   }
 
-  /* ── Accent image: taller, with duration + price overlaid ── */
-  .dest-accent-img-wrap {
-    height: 200px;
-    margin-bottom: 0;
-    border-radius: 0.6rem;
+  /* ── Accent image: placed AFTER text (order 2), full width, taller ── */
+  .dest-text-half > .dest-accent-img-wrap {
+    order: 2;
+    width: 100%;
+    height: 240px;
+    border-radius: 0;
+    flex-shrink: 0;
   }
 
   /* Duration + price overlay on the accent image */
@@ -4905,16 +4936,15 @@ padding: 1rem 1.5rem;
     right: 0;
     align-items: center;
     justify-content: space-between;
-    padding: 0.8rem 1rem;
+    padding: 0.9rem 1.2rem;
     background: linear-gradient(
       to top,
-      rgba(14, 10, 6, 0.88) 0%,
-      rgba(14, 10, 6, 0.42) 70%,
+      rgba(14, 10, 6, 0.9) 0%,
+      rgba(14, 10, 6, 0.45) 70%,
       transparent 100%
     );
     z-index: 2;
     gap: 0.5rem;
-    border-radius: 0 0 0.6rem 0.6rem;
   }
 
   .dest-accent-duration {
@@ -4923,29 +4953,28 @@ padding: 1rem 1.5rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(245, 237, 224, 0.8);
-    padding: 0.25rem 0.7rem;
+    color: rgba(245, 237, 224, 0.85);
+    padding: 0.28rem 0.75rem;
     border: 1px solid rgba(245, 237, 224, 0.25);
     border-radius: 2rem;
   }
 
   .dest-accent-price {
     font-family: var(--heading-font);
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--accent);
     letter-spacing: 0.02em;
   }
 
-  /* ── Bottom controls: in flow, centred, with breathing room ── */
+  /* ── Bottom controls: natural flow, generous spacing ── */
   .dest-bottom-controls {
-    position: static;
-    padding: 2rem 1rem 2.5rem;
+    padding: 2.5rem 1rem 3rem;
     gap: 1.2rem;
   }
 
   .dest-progress {
-    gap: 0.8rem;
+    gap: 0.9rem;
   }
 
   .dest-counter {
@@ -4953,7 +4982,7 @@ padding: 1rem 1.5rem;
   }
 
   .dest-dots {
-    gap: 10px;
+    gap: 11px;
   }
 
   .dest-dot {
@@ -4966,14 +4995,14 @@ padding: 1rem 1.5rem;
     gap: 0.35rem;
   }
 
-  /* Nav arrows: slightly smaller on mobile */
-  .dest-nav--prev { left: 0.6rem; }
-  .dest-nav--next { right: 0.6rem; }
+  /* Nav arrows centred on the main image */
+  .dest-nav--prev { left: 0.7rem; }
+  .dest-nav--next { right: 0.7rem; }
 
   .dest-nav {
     width: 40px;
     height: 40px;
-    top: calc(55vh / 2);   /* centre on the main image */
+    top: calc(56vh / 2);
   }
 }
 

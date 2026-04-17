@@ -20,11 +20,11 @@ import {
   Sardegna2,
   GedeRuins,
   HellsKitchen,
-  TsavoEast1,
+  TsavoEast2,
   ElephantSunset,
   WatamuCulturalTour1,
   WatamuCulturalTour2,
-  MaasaiMara,
+  ClassicMaasaiMara,
   WildebeestMigration,
 } from "../assets/images";
 import LazyImage from "./LazyImage";
@@ -69,7 +69,7 @@ const destinations = [
   {
     id: "tsavo-east",
     image: ElephantSunset,
-    image2: TsavoEast1, // tsavo-east-2 not yet uploaded — using tsavo-east-1 as accent
+    image2: TsavoEast2,
     imageAlt: "Tsavo East red elephants at sunset",
     image2Alt: "Tsavo East National Park landscape",
     imagePosition: "center",
@@ -90,7 +90,7 @@ const destinations = [
   },
   {
     id: "maasai-mara",
-    image: MaasaiMara,
+    image: ClassicMaasaiMara,
     image2: WildebeestMigration,
     imageAlt: "Maasai Mara golden savannah at golden hour",
     image2Alt: "The Great Wildebeest Migration crossing the Mara River",
@@ -176,11 +176,12 @@ const DestinationsSection = () => {
     goTo((active - 1 + total) % total, "prev");
   }, [active, total, goTo]);
 
-  // Keyboard navigation
+  // Keyboard navigation — only left/right arrows cycle cards;
+  // up/down are left to the browser for normal page scrolling.
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "ArrowRight" || e.key === "ArrowDown") next();
-      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") prev();
+      if (e.key === "ArrowRight") { e.preventDefault(); next(); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -271,7 +272,6 @@ const DestinationsSection = () => {
               draggable={false}
             />
             <div className="dest-img-overlay" />
-            {/* Floating tag */}
             <span className="dest-tag">{dest.tag}</span>
           </div>
 
@@ -280,27 +280,27 @@ const DestinationsSection = () => {
             className="dest-text-half"
             style={{ order: imageOnLeft ? 1 : 0 }}
           >
-            <div className="dest-text-inner">
-              {/* Accent image — on mobile shows duration + price overlay */}
-              <div className="dest-accent-img-wrap">
-                <LazyImage
-                  src={dest.image2}
-                  alt={dest.image2Alt}
-                  className="dest-accent-img"
-                  draggable={false}
-                />
-                <div className="dest-accent-img-overlay" />
-                {/* Duration + price overlay — visible on mobile only */}
-                <div className="dest-accent-meta" aria-hidden="true">
-                  <span className="dest-accent-duration">{dest.duration}</span>
-                  <span className="dest-accent-price">{dest.price}</span>
-                </div>
+            {/* Accent image — full width of the text column; on mobile shown below text */}
+            <div className="dest-accent-img-wrap">
+              <LazyImage
+                src={dest.image2}
+                alt={dest.image2Alt}
+                className="dest-accent-img"
+                draggable={false}
+              />
+              <div className="dest-accent-img-overlay" />
+              {/* Duration + price overlay — visible on mobile only */}
+              <div className="dest-accent-meta" aria-hidden="true">
+                <span className="dest-accent-duration">{dest.duration}</span>
+                <span className="dest-accent-price">{dest.price}</span>
               </div>
+            </div>
 
+            {/* Text content */}
+            <div className="dest-text-inner">
               <p className="dest-subheadline">{content.subheadline}</p>
               <h3 className="dest-headline">{content.headline}</h3>
               <p className="dest-story">{content.story}</p>
-              {/* Desktop meta row — hidden on mobile (replaced by accent overlay) */}
               <div className="dest-meta">
                 <span className="dest-duration">{dest.duration}</span>
                 <span className="dest-price">{dest.price}</span>
@@ -314,42 +314,9 @@ const DestinationsSection = () => {
               </Link>
             </div>
           </div>
-
-          {/* ── Progress + scroll hint (inside article so they flow on mobile) ── */}
-          <div className="dest-bottom-controls">
-            <div className="dest-progress">
-              <span className="dest-counter">
-                {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-              </span>
-              <div className="dest-dots" role="tablist" aria-label="Destination indicator">
-                {destinations.map((d, i) => (
-                  <button
-                    key={d.id}
-                    role="tab"
-                    aria-selected={i === active}
-                    aria-label={`Destination ${i + 1}`}
-                    className={`dest-dot${i === active ? " dest-dot--active" : ""}${i < active ? " dest-dot--seen" : ""}`}
-                    onClick={() => {
-                      if (i > active) goTo(i, "next");
-                      else if (i < active) goTo(i, "prev");
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {allSeen && (
-              <div className="dest-scroll-hint" aria-live="polite">
-                <span>Scroll to continue</span>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </div>
-            )}
-          </div>
         </article>
 
-        {/* ── Navigation arrows ── */}
+        {/* ── Navigation arrows (inside wrapper so they overlay the slide) ── */}
         <button
           className="dest-nav dest-nav--prev"
           onClick={prev}
@@ -368,6 +335,39 @@ const DestinationsSection = () => {
             <polyline points="9 18 15 12 9 6" />
           </svg>
         </button>
+      </div>
+
+      {/* ── Progress dots, counter, and scroll hint — OUTSIDE and BELOW the card ── */}
+      <div className="dest-bottom-controls">
+        <div className="dest-progress">
+          <span className="dest-counter">
+            {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+          </span>
+          <div className="dest-dots" role="tablist" aria-label="Destination indicator">
+            {destinations.map((d, i) => (
+              <button
+                key={d.id}
+                role="tab"
+                aria-selected={i === active}
+                aria-label={`Destination ${i + 1}`}
+                className={`dest-dot${i === active ? " dest-dot--active" : ""}${i < active ? " dest-dot--seen" : ""}`}
+                onClick={() => {
+                  if (i > active) goTo(i, "next");
+                  else if (i < active) goTo(i, "prev");
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {allSeen && (
+          <div className="dest-scroll-hint" aria-live="polite">
+            <span>Scroll to continue</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
+        )}
       </div>
     </section>
   );
