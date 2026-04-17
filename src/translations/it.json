@@ -152,7 +152,11 @@
     "title": "Siamo i Custodi di Questa Terra",
     "lead": "L'oceano respira. La savana si estende. La foresta vibra di vita. Ogni paesaggio che condividiamo con te porta una promessa silenziosa — camminare delicatamente, osservare profondamente, e lasciare ogni luogo migliore di come lo abbiamo trovato.",
     "close": "Viaggia con noi, e viaggia con intenzione. La terra ci regala meraviglia — restituiamole il rispetto che merita.",
-    "cta": "Unisciti alla Nostra Missione di Conservazione"
+    "cta": "Unisciti alla Nostra Missione di Conservazione",
+    "pledgePrompt": "Prima di partire — ci farai una promessa?",
+    "slideIdle": "Scorri per prometterlo →",
+    "slideDone": "Promesso! Grazie",
+    "pledgeThanks": "Il mondo selvaggio è diventato un po' più sicuro. Non vediamo l'ora di esplorarlo insieme a te."
   },
   "pledge": {
     "earth": "Siamo impegnati a proteggere questo pianeta e tutti i suoi ecosistemi — sulla terraferma, nell'aria e sotto l'acqua. Ogni decisione che prendiamo onora questa responsabilità.",
