@@ -15,7 +15,11 @@ const Header = () => {
       <div className="logo-holder">
         <img src={SasaSafarisLogo} alt="Sasa Safaris Africa Logo" className="logo-img" />
       </div>
-      <div className="header-title">SASA SAFARIS</div>
+      <div className="header-tagline">
+        <span className="header-tagline-line" />
+        <span className="header-tagline-text">Where The Wild Awaits</span>
+        <span className="header-tagline-line" />
+      </div>
       <nav className="nav desktop-nav">
         <ul className="nav-links">
           <li><a href="#packages">{t('nav.packages')}</a></li>
