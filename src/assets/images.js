@@ -19,7 +19,6 @@ import WatamuMain from './watamu-main.jpg';
 import SafariBlue2 from './safari-blue2.jpg';
 import SardegnaTour1 from './sardegna-tour1.jpg';
 import Sardegna1 from './sardegna1.jpeg';
-import Sardegna2 from './sardegna2.jpeg';
 import GedeRuins from './gede-ruins.jpeg';
 import TsavoEast1 from './tsavo-east-1.jpg';
 import TsavoEast2 from './tsavo-east-2.jpg';
@@ -49,7 +48,6 @@ export {
   SafariBlue2,
   SardegnaTour1,
   Sardegna1,
-  Sardegna2,
   GedeRuins,
   TsavoEast1,
   TsavoEast2,
