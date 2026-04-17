@@ -14,15 +14,14 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import {
   WatamuMain,
+  DolphinSafariBlue1,
   SafariBlue2,
   Sardegna1,
   Sardegna2,
   GedeRuins,
-  GreatRiftValley,
-  WildernessExplorer,
+  HellsKitchen,
   TsavoEast1,
   ElephantSunset,
-  Amboseli,
   WatamuCulturalTour1,
   WatamuCulturalTour2,
 } from "../assets/images";
@@ -36,7 +35,7 @@ import {
 const destinations = [
   {
     id: "safari-blue",
-    image: WatamuMain,
+    image: DolphinSafariBlue1,
     image2: SafariBlue2,
     imageAlt: "Watamu ocean and dolphins",
     image2Alt: "Snorkeling in Watamu Marine Park",
@@ -59,7 +58,7 @@ const destinations = [
   {
     id: "gede-marafa",
     image: GedeRuins,
-    image2: GreatRiftValley, // placeholder – replace with hells-kitchen image when uploaded
+    image2: HellsKitchen,
     imageAlt: "Gede Ruins ancient Swahili city",
     image2Alt: "Marafa Depression — Hell's Kitchen canyon",
     imagePosition: "center top",

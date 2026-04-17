@@ -23,6 +23,8 @@ import GedeRuins from './gede-ruins.jpeg';
 import TsavoEast1 from './tsavo-east-1.jpg';
 import WatamuCulturalTour1 from './watamu-cultural tour 1.jpg';
 import WatamuCulturalTour2 from './watamu-cultural tour2.jpg';
+import HellsKitchen from './hells-kitchen.jpeg';
+import DolphinSafariBlue1 from './dolphin-watching-safari-blue1.jpg';
 
 export {
   SafariHero,
@@ -49,4 +51,6 @@ export {
   TsavoEast1,
   WatamuCulturalTour1,
   WatamuCulturalTour2,
+  HellsKitchen,
+  DolphinSafariBlue1,
 };
