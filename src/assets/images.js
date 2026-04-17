@@ -1,5 +1,7 @@
 // Import all images to make them available for use in React components
 import SafariHero from './Safari-hero.jpg';
+import ElephantSunset from './closeup-shot-elephants-standing-near-lake-sunset (1).jpg';
+import CuteGiraffe from './cute-giraffe-south-africa (1).jpg';
 import VacationHero from './Vacation-hero.jpg';
 import ClassicMaasaiMara from './Classic_Maasai_Mara.jpg';
 import Amboseli from './Amboseli.jpg';
@@ -16,6 +18,8 @@ import WildernessExplorer from './Wilderness_Explorer.jpg';
 
 export {
   SafariHero,
+  ElephantSunset,
+  CuteGiraffe,
   VacationHero,
   ClassicMaasaiMara,
   Amboseli,

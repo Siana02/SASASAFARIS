@@ -62,7 +62,7 @@
         "type": "Family Trip"
       },
       {
-        "name": "Giulia Rossi", 
+        "name": "Giulia Rossi",
         "text": "Traveling solo through Amboseli was a dream. I felt safe, inspired, and completely in tune with nature.",
         "type": "Solo Traveler"
       },
@@ -181,13 +181,12 @@
     "step4Desc": "Pack your bags — Africa is waiting."
   },
   "themeMessage": {
-  "safariTheme": "Safari Theme",
-  "vacationTheme": "Vacation Theme",
-  "currentlyViewing": "You're currently viewing the {{current}}. Would you like to switch to the {{other}}?",
-  "yes": "Yes",
-  "no": "No"
+    "safariTheme": "Safari Theme",
+    "vacationTheme": "Vacation Theme",
+    "currentlyViewing": "You're currently viewing the {{current}}. Would you like to switch to the {{other}}?",
+    "yes": "Yes",
+    "no": "No"
   },
-  
   "mobileNav": {
     "switchTheme": "Switch Theme"
   },
@@ -213,14 +212,14 @@
     },
     "amboseli-chyulu": {
       "title": "Amboseli & Chyulu Explorer",
-      "duration": "4 Days / 3 Nights", 
+      "duration": "4 Days / 3 Nights",
       "badge": "⭐ 4.8/5 · Adventure Pick",
       "description": "Marvel at Amboseli's majestic elephants against Mount Kilimanjaro's backdrop and explore the hidden trails of Chyulu Hills for a serene wildlife adventure."
     },
     "family-safari-beach": {
       "title": "Family Safari & Beach Holiday",
       "duration": "7 Days / 6 Nights",
-      "badge": "⭐ 4.9/5 · Family Favorite", 
+      "badge": "⭐ 4.9/5 · Family Favorite",
       "description": "A perfect family mix of safari excitement and beach relaxation. Enjoy safe guided game drives, sandcastle building on Diani Beach, and fun-filled coastal activities for all ages."
     },
     "romantic-safari": {
@@ -230,10 +229,23 @@
       "description": "Indulge in a couple's dream getaway with private safari lodges, candlelit dinners under the stars, and tranquil beachside sunsets for an unforgettable romantic experience."
     },
     "coastal-adventure": {
-      "title": "Kenyan Coastal Adventure", 
+      "title": "Kenyan Coastal Adventure",
       "duration": "5 Days / 4 Nights",
       "badge": "⭐ 4.7/5 · Coastal Escape",
       "description": "Discover Kenya's stunning coastline with sun-soaked beaches, snorkeling adventures, and cultural explorations from Watamu to Diani. A perfect blend of adventure and relaxation."
     }
+  },
+  "whyChooseUs": {
+    "eyebrow": "Why Choose Us",
+    "headline": "Born In Africa. Built For You.",
+    "card1Title": "Local Roots",
+    "card1Desc": "Born here — trained by Africa itself.",
+    "card2Title": "Your Journey, Your Rules",
+    "card2Desc": "No templates. No compromises. Ever.",
+    "card3Title": "Guides You Can Trust",
+    "card3Desc": "Hand-picked experts, not bus drivers.",
+    "card4Title": "Zero Stress",
+    "card4Desc": "We handle everything. You just show up.",
+    "humanMomentOverlay": "This could be your view tomorrow."
   }
 }

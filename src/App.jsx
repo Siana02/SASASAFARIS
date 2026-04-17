@@ -16,6 +16,7 @@ import ContactSocials from "./components/ContactSocials";
 import ComingSoon from "./components/ComingSoon";
 import HighlightSection from './components/HighlightSection';
 import HowWeWork from './components/HowWeWork';
+import WhyChooseUs from './components/WhyChooseUs';
 import Footer from './components/Footer';
 import ContactWidget from './components/ContactWidget';
 import ViewDetails from './components/ViewDetails'; // adjust path if needed
@@ -35,6 +36,7 @@ function HomePage() {
       <main>
         <HeroSection />
         <HowWeWork />
+        <WhyChooseUs />
         <OfferSection />
         <SuccessCountdown />
         <PackagesSection />

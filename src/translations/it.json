@@ -77,7 +77,7 @@
         "type": "Viaggio tra Amiche"
       },
       {
-        "name": "Matteo Moretti", 
+        "name": "Matteo Moretti",
         "text": "Portare i miei genitori a Diani è stata la decisione migliore di sempre. Ricordi che custodiremo per sempre.",
         "type": "Legame Familiare"
       }
@@ -181,11 +181,11 @@
     "step4Desc": "Prepara i bagagli — l'Africa ti aspetta."
   },
   "themeMessage": {
-  "safariTheme": "Tema Safari",
-  "vacationTheme": "Tema Vacanza",
-  "currentlyViewing": "Stai visualizzando il {{current}}. Vuoi passare al {{other}}?",
-  "yes": "Sì",
-  "no": "No"
+    "safariTheme": "Tema Safari",
+    "vacationTheme": "Tema Vacanza",
+    "currentlyViewing": "Stai visualizzando il {{current}}. Vuoi passare al {{other}}?",
+    "yes": "Sì",
+    "no": "No"
   },
   "mobileNav": {
     "switchTheme": "Cambia Tema"
@@ -212,14 +212,14 @@
     },
     "amboseli-chyulu": {
       "title": "Esploratore Amboseli & Chyulu",
-      "duration": "4 Giorni / 3 Notti", 
+      "duration": "4 Giorni / 3 Notti",
       "badge": "⭐ 4.8/5 · Scelta Avventura",
       "description": "Ammira i maestosi elefanti di Amboseli contro lo sfondo del Monte Kilimanjaro ed esplora i sentieri nascosti delle Colline Chyulu per un'avventura naturale serena."
     },
     "family-safari-beach": {
       "title": "Safari Famiglia & Vacanza Mare",
       "duration": "7 Giorni / 6 Notti",
-      "badge": "⭐ 4.9/5 · Preferito Famiglie", 
+      "badge": "⭐ 4.9/5 · Preferito Famiglie",
       "description": "Un perfetto mix familiare di eccitazione safari e relax sulla spiaggia. Goditi game drive guidate sicure, costruzioni di castelli di sabbia a Diani Beach e attività costiere divertenti per tutte le età."
     },
     "romantic-safari": {
@@ -229,10 +229,23 @@
       "description": "Concediti una fuga da sogno per coppie con lodge safari privati, cene a lume di candela sotto le stelle e tramonti tranquilli sulla spiaggia per un'esperienza romantica indimenticabile."
     },
     "coastal-adventure": {
-      "title": "Avventura Costiera Keniota", 
+      "title": "Avventura Costiera Keniota",
       "duration": "5 Giorni / 4 Notti",
       "badge": "⭐ 4.7/5 · Fuga Costiera",
       "description": "Scopri la splendida costa del Kenya con spiagge baciate dal sole, avventure di snorkeling ed esplorazioni culturali da Watamu a Diani. Un perfetto mix di avventura e relax."
     }
+  },
+  "whyChooseUs": {
+    "eyebrow": "Perché Sceglierci",
+    "headline": "Nati in Africa. Costruiti Per Te.",
+    "card1Title": "Radici Locali",
+    "card1Desc": "Cresciuti qui — formati dall'Africa stessa.",
+    "card2Title": "Il Tuo Viaggio, Le Tue Regole",
+    "card2Desc": "Nessun modello. Nessun compromesso.",
+    "card3Title": "Guide di Fiducia",
+    "card3Desc": "Esperti selezionati, non autisti di pullman.",
+    "card4Title": "Zero Stress",
+    "card4Desc": "Pensiamo a tutto noi. Tu devi solo arrivare.",
+    "humanMomentOverlay": "Questo potrebbe essere il tuo panorama domani."
   }
 }
