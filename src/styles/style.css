@@ -3321,6 +3321,25 @@ a:focus-visible, button:focus-visible {
   gap: 1rem;
 }
 
+/* Footer logo square container */
+.footer-logo-container {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2.5px solid var(--accent, #c8963e);
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+
+.footer-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* Titles & Headings */
 .footer-title {
   font-size: 1.5rem;

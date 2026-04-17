@@ -10,6 +10,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { useLanguage } from "../hooks/useLanguage";
+import { SasaSafarisLogo } from "../assets/images";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -26,6 +27,9 @@ const Footer = () => {
         <div className="footer-content">
           {/* Brand/About section */}
           <div className="footer-section">
+            <div className="footer-logo-container">
+              <img src={SasaSafarisLogo} alt="Sasa Safaris Africa Logo" className="footer-logo-img" />
+            </div>
             <h3 className="footer-title">{t('footer.brand')}</h3>
             <p className="footer-description">
               {t('footer.description')}
