@@ -2013,9 +2013,20 @@ a:focus-visible, button:focus-visible {
   }
 }
 
-@media (max-width: 580px) {
-  .rv-grid {
-    grid-template-columns: 1fr;
+/* Desktop-only grid / Mobile-only carousel toggle */
+.rv-desktop-only {
+  display: grid;
+}
+.rv-mobile-only {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .rv-desktop-only {
+    display: none !important;
+  }
+  .rv-mobile-only {
+    display: block;
   }
 }
 
@@ -2132,22 +2143,126 @@ a:focus-visible, button:focus-visible {
   text-transform: uppercase;
 }
 
+/* Badges row (source + verified) */
+.rv-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+/* Source badge */
+.rv-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  font-family: var(--body-font);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.rv-source--instagram {
+  background: rgba(193, 53, 132, 0.15);
+  border-color: rgba(193, 53, 132, 0.4);
+  color: #e879b0;
+}
+
+.rv-source--facebook {
+  background: rgba(24, 119, 242, 0.14);
+  border-color: rgba(24, 119, 242, 0.38);
+  color: #74aaf5;
+}
+
+.rv-source--email {
+  background: rgba(200, 150, 62, 0.14);
+  border-color: rgba(200, 150, 62, 0.38);
+  color: var(--accent);
+}
+
+.rv-source--sule {
+  background: rgba(212, 133, 42, 0.14);
+  border-color: rgba(212, 133, 42, 0.4);
+  color: #e8a060;
+}
+
 /* Verified badge */
 .rv-verified {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.28rem;
   background: rgba(72, 187, 120, 0.16);
   border: 1px solid rgba(72, 187, 120, 0.35);
   color: #6ee7a0;
   font-family: var(--body-font);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  padding: 0.22rem 0.55rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 2rem;
   white-space: nowrap;
-  flex-shrink: 0;
+}
+
+/* ── Mobile carousel ── */
+.rv-carousel-wrap {
+  max-width: 100%;
+  margin: 0 0 3.5rem;
+}
+
+.rv-carousel-track {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.rv-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.rv-carousel-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* Inside carousel the card fills the slide */
+.rv-carousel-slide .rv-card {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* Dot indicators */
+.rv-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 1.2rem;
+}
+
+.rv-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(200, 150, 62, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.rv-dot--active {
+  background: var(--accent);
+  transform: scale(1.35);
 }
 
 /* Trust stats strip */
@@ -2214,7 +2329,7 @@ a:focus-visible, button:focus-visible {
     margin: 0;
   }
   .rv-section {
-    padding: 4rem 1rem 3.5rem;
+    padding: 4rem 0.5rem 3.5rem;
   }
 }
 .contact-hours {

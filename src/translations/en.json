@@ -69,27 +69,38 @@
       {
         "name": "Alessandro Bianchi",
         "text": "I had the best time in Watamu, Kenya with my family. The beaches were breathtaking, and the sunsets unforgettable.",
-        "type": "Family Trip"
+        "type": "Family Trip",
+        "source": "instagram"
       },
       {
         "name": "Giulia Rossi",
         "text": "Traveling solo through Amboseli was a dream. I felt safe, inspired, and completely in tune with nature.",
-        "type": "Solo Traveler"
+        "type": "Solo Traveler",
+        "source": "facebook"
       },
       {
         "name": "Lorenzo Romano",
         "text": "Our honeymoon in the Masai Mara was beyond romantic. The wildlife safaris were magical!",
-        "type": "Couple Experience"
+        "type": "Couple Experience",
+        "source": "email"
       },
       {
         "name": "Chiara Conti",
         "text": "My friends and I explored Tsavo and laughed endlessly. It was adventure mixed with pure joy.",
-        "type": "Friends Trip"
+        "type": "Friends Trip",
+        "source": "instagram"
       },
       {
         "name": "Matteo Moretti",
         "text": "Taking my parents to Diani was the best decision ever. Memories we'll cherish forever.",
-        "type": "Family Bonding"
+        "type": "Family Bonding",
+        "source": "sule"
+      },
+      {
+        "name": "Federica De Luca",
+        "text": "Sasa Safaris turned our dream of seeing the Great Migration into the most extraordinary week of our lives. Every detail was perfect.",
+        "type": "Couple Experience",
+        "source": "facebook"
       }
     ]
   },
