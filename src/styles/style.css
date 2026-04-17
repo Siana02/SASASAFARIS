@@ -4709,7 +4709,7 @@ padding: 1rem 1.5rem;
   width: 100%;
   padding: 4rem 2.5rem 1.8rem;
   margin: 0;
-  background: none;
+  background: linear-gradient(to bottom, transparent 0%, rgba(14, 10, 6, 0.38) 100%);
 }
 
 /* Story + meta block: row 2 */
