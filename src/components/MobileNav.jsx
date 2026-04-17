@@ -41,6 +41,9 @@ const MobileNav = () => {
           <Link to="/contact" onClick={handleLinkClick}>{t('nav.contacts')}</Link>
         </li>
         <li>
+          <Link to="/blog" onClick={handleLinkClick}>{t('nav.blog')}</Link>
+        </li>
+        <li>
           <Link to="/privacy" onClick={handleLinkClick}>{t('nav.privacy')}</Link>
         </li>
         <li>
