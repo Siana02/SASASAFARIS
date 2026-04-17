@@ -4448,6 +4448,11 @@ padding: 1rem 1.5rem;
   text-transform: uppercase;
 }
 
+/* Swipe hint — hidden on desktop, shown on mobile */
+.destinations-swipe-hint {
+  display: none;
+}
+
 /* ── Carousel wrapper — full viewport height ── */
 .destinations-wrapper {
   position: relative;
@@ -4655,66 +4660,74 @@ padding: 1rem 1.5rem;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    transparent 40%,
-    rgba(14, 10, 6, 0.45) 100%
+    transparent 20%,
+    rgba(14, 10, 6, 0.52) 65%,
+    rgba(14, 10, 6, 0.84) 100%
   );
   pointer-events: none;
   border-radius: inherit;
 }
 
 /* ── Text half ── */
+/* Desktop: CSS Grid so the accent image and headline can share the same row (overlap) */
 .dest-text-half {
   width: 50%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 45vh 1fr auto;
   background: #0e0a06;
   flex-shrink: 0;
-  overflow-y: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
+.dest-text-half::-webkit-scrollbar { display: none; }
 
-/* Accent image: direct child of text-half — fills full column width */
+/* Accent image: occupies row 1, fills the full image row height */
 .dest-text-half > .dest-accent-img-wrap {
   position: relative;
+  grid-column: 1;
+  grid-row: 1;
   width: 100%;
-  height: clamp(120px, 17vh, 180px);
-  flex-shrink: 0;
   overflow: hidden;
   border-radius: 0;
   margin-bottom: 0;
   box-shadow: none;
-  order: 1;
 }
 
-/* Titles block (subheadline + headline) */
+/* Titles block: also in row 1, aligned to the bottom — overlays the accent image */
 .dest-text-titles {
-  max-width: 520px;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
+  position: relative;
+  z-index: 3;
   width: 100%;
-  padding: 1.8rem 2.5rem 1rem;
-  margin: 0 auto;
-  flex-shrink: 0;
-  order: 0;
+  padding: 4rem 2.5rem 1.8rem;
+  margin: 0;
+  background: linear-gradient(to bottom, transparent, rgba(14, 10, 6, 0.84));
 }
 
-/* Story + meta block */
+/* Story + meta block: row 2 */
 .dest-text-story {
   display: flex;
   flex-direction: column;
+  grid-column: 1;
+  grid-row: 2;
   max-width: 520px;
   width: 100%;
   padding: 1.2rem 2.5rem 0;
   margin: 0 auto;
-  order: 2;
 }
 
-/* CTA wrapper */
+/* CTA wrapper: row 3 */
 .dest-cta-wrap {
   max-width: 520px;
   width: 100%;
   padding: 0.6rem 2.5rem 2rem;
   margin: 0 auto;
-  order: 3;
+  grid-column: 1;
+  grid-row: 3;
 }
 
 /* Mobile-only subheadline above image (hidden on desktop) */
@@ -4934,13 +4947,13 @@ padding: 1rem 1.5rem;
    DESTINATIONS RESPONSIVE
    ========================================================= */
 
-/* Tablet: slightly smaller text, tighter padding */
+/* Tablet: slightly smaller image row, tighter padding */
 @media (max-width: 900px) {
-  .dest-text-half > .dest-accent-img-wrap {
-    height: clamp(110px, 16vh, 160px);
+  .dest-text-half {
+    grid-template-rows: 38vh 1fr auto;
   }
   .dest-text-titles {
-    padding: 1.4rem 1.8rem 0.8rem;
+    padding: 3rem 1.8rem 1.4rem;
   }
   .dest-text-story {
     padding: 1rem 1.8rem 0;
@@ -4972,6 +4985,28 @@ padding: 1rem 1.5rem;
    Only left/right swipe / arrow keys cycle cards.
    ───────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
+
+  /* ── Swipe hint: shown on mobile below the heading ── */
+  .destinations-swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--body-font);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245, 237, 224, 0.45);
+    margin: 0.6rem 0 0;
+    animation: destSwipeNudge 2.2s ease-in-out infinite;
+  }
+
+  @keyframes destSwipeNudge {
+    0%, 100% { opacity: 0.45; transform: translateX(0); }
+    30%       { opacity: 0.7;  transform: translateX(-4px); }
+    70%       { opacity: 0.7;  transform: translateX(4px); }
+  }
 
   /* Wrapper: natural height, no overflow clipping */
   .destinations-wrapper {
@@ -5040,6 +5075,8 @@ padding: 1rem 1.5rem;
 
   /* ── Text panel: full width, natural flow ── */
   .dest-text-half {
+    display: flex;
+    flex-direction: column;
     order: 1 !important;
     width: 100%;
     height: auto;
@@ -5056,6 +5093,12 @@ padding: 1rem 1.5rem;
 
   /* 1. Headline first (inside text half, after image) */
   .dest-text-titles {
+    grid-column: unset;
+    grid-row: unset;
+    align-self: unset;
+    position: static;
+    z-index: auto;
+    background: none;
     order: 0;
     flex: none;
     max-width: 100%;
@@ -5065,6 +5108,8 @@ padding: 1rem 1.5rem;
 
   /* 2. Story */
   .dest-text-story {
+    grid-column: unset;
+    grid-row: unset;
     order: 1;
     flex: none;
     max-width: 100%;
@@ -5074,6 +5119,8 @@ padding: 1rem 1.5rem;
 
   /* 3. Accent image — after story, before CTA */
   .dest-text-half > .dest-accent-img-wrap {
+    grid-column: unset;
+    grid-row: unset;
     order: 2;
     width: 100%;
     height: 240px;
@@ -5083,6 +5130,8 @@ padding: 1rem 1.5rem;
 
   /* 4. CTA */
   .dest-cta-wrap {
+    grid-column: unset;
+    grid-row: unset;
     order: 3;
     max-width: 100%;
     padding: 1.4rem 1.5rem 2rem;
