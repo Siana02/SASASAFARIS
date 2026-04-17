@@ -4723,9 +4723,6 @@ padding: 1rem 1.5rem;
 }
 
 /* Desktop subheadline inside titles (visible on desktop, hidden on mobile) */
-.dest-desktop-subheadline {
-  /* inherits all .dest-subheadline styles */
-}
 
 .dest-subheadline {
   font-family: var(--body-font);

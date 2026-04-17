@@ -268,7 +268,7 @@ const DestinationsSection = () => {
           key={dest.id}
         >
           {/* Mobile-only: subheadline appears above the main image */}
-          <p className="dest-mobile-pre-subheadline" aria-hidden="true">
+          <p className="dest-mobile-pre-subheadline">
             {content.subheadline}
           </p>
 
