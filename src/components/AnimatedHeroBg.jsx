@@ -50,85 +50,6 @@ const AcaciaTree = ({ x, y, scale = 1, color = '#0c0300' }) => (
 );
 
 /* ═══════════════════════════════════════════════════════════
-   Giraffe silhouette
-   Key: very long neck, small round head, twin ossicones, long thin legs.
-   ═══════════════════════════════════════════════════════════ */
-const Giraffe = ({ x, y, scale = 1, color = '#0c0300' }) => (
-  <g transform={`translate(${x}, ${y}) scale(${scale})`}>
-    {/* Long thin legs */}
-    <rect x="-30" y="-98" width="10" height="98" rx="4" fill={color} />
-    <rect x="-14" y="-98" width="10" height="98" rx="4" fill={color} />
-    <rect x="6"   y="-98" width="10" height="98" rx="4" fill={color} />
-    <rect x="22"  y="-98" width="10" height="98" rx="4" fill={color} />
-    {/* Hooves */}
-    <ellipse cx="-25" cy="2" rx="9"  ry="5" fill={color} />
-    <ellipse cx="-9"  cy="2" rx="8"  ry="5" fill={color} />
-    <ellipse cx="11"  cy="2" rx="8"  ry="5" fill={color} />
-    <ellipse cx="27"  cy="2" rx="9"  ry="5" fill={color} />
-    {/* Compact body — higher at shoulders, sloping to rump */}
-    <path d="M-32,-98 C-35,-148 -28,-162 -8,-164 C12,-162 38,-148 42,-98 Z" fill={color} />
-    {/* Shoulder withers */}
-    <ellipse cx="-14" cy="-162" rx="20" ry="12" fill={color} />
-    {/* Long tapering neck */}
-    <path d="M-10,-164 C-11,-208 -8,-262 -5,-290 L5,-290 C8,-262 11,-208 10,-164 Z" fill={color} />
-    {/* Small round head */}
-    <ellipse cx="0" cy="-304" rx="16" ry="20" fill={color} />
-    {/* Ossicones — twin horn-knobs */}
-    <rect x="-13" y="-329" width="6" height="22" rx="3" fill={color} />
-    <rect x="6"   y="-327" width="6" height="20" rx="3" fill={color} />
-    {/* Muzzle */}
-    <ellipse cx="0" cy="-292" rx="10" ry="13" fill={color} />
-    {/* Tail */}
-    <path d="M42,-108 C52,-98 54,-82 48,-66"
-          stroke={color} strokeWidth="5" fill="none" strokeLinecap="round" />
-    <ellipse cx="48" cy="-63" rx="5" ry="9" fill={color} />
-  </g>
-);
-
-/* ═══════════════════════════════════════════════════════════
-   Elephant silhouette
-   Key: massive domed body, huge fan ear, long curved trunk, tusks.
-   ═══════════════════════════════════════════════════════════ */
-const Elephant = ({ x, y, scale = 1, color = '#0c0300' }) => (
-  <g transform={`translate(${x}, ${y}) scale(${scale})`}>
-    {/* Thick pillar legs */}
-    <rect x="-60" y="-78" width="26" height="78" rx="9"  fill={color} />
-    <rect x="-26" y="-78" width="26" height="78" rx="9"  fill={color} />
-    <rect x="8"   y="-78" width="26" height="78" rx="9"  fill={color} />
-    <rect x="42"  y="-78" width="26" height="78" rx="9"  fill={color} />
-    {/* Foot pads */}
-    <ellipse cx="-47" cy="3"  rx="18" ry="7" fill={color} />
-    <ellipse cx="-13" cy="3"  rx="17" ry="7" fill={color} />
-    <ellipse cx="21"  cy="3"  rx="17" ry="7" fill={color} />
-    <ellipse cx="55"  cy="3"  rx="18" ry="7" fill={color} />
-    {/* Massive rounded body */}
-    <ellipse cx="8"   cy="-125" rx="98"  ry="72"  fill={color} />
-    {/* Hindquarters bulge */}
-    <ellipse cx="75"  cy="-90"  rx="32"  ry="38"  fill={color} />
-    {/* Large rounded head */}
-    <ellipse cx="-82" cy="-135" rx="54"  ry="48"  fill={color} />
-    {/* Characteristic forehead dome */}
-    <ellipse cx="-82" cy="-168" rx="36"  ry="24"  fill={color} />
-    {/* Large fan ear */}
-    <path d="M-94,-100 C-148,-94 -162,-116 -158,-148
-             C-154,-178 -136,-192 -110,-180
-             C-92,-170 -86,-150 -92,-126 Z"
-          fill={color} />
-    {/* Trunk — long, distinctively curved */}
-    <path d="M-118,-115 C-142,-110 -153,-88 -150,-66
-             C-147,-44 -138,-28 -142,-12 C-145,2 -138,12 -134,9"
-          stroke={color} strokeWidth="16" fill="none" strokeLinecap="round" />
-    {/* Tusk */}
-    <path d="M-112,-126 C-134,-120 -144,-108 -140,-94"
-          stroke={color} strokeWidth="9" fill="none" strokeLinecap="round" opacity="0.85" />
-    {/* Tail */}
-    <path d="M100,-100 C110,-89 113,-72 106,-56"
-          stroke={color} strokeWidth="6" fill="none" strokeLinecap="round" />
-    <ellipse cx="106" cy="-53" rx="7" ry="10" fill={color} />
-  </g>
-);
-
-/* ═══════════════════════════════════════════════════════════
    Savannah grass tuft — animated sway
    ═══════════════════════════════════════════════════════════ */
 const GrassTuft = ({ x, yBase, color, className }) => (
@@ -183,8 +104,7 @@ const STARS = [
    AnimatedHeroBg
    Dawn savannah panorama — dramatically different from the preload.
    Deep indigo-purple sky fades to blazing gold at the horizon.
-   Elephant backlit by the rising sun, towering giraffe, proper
-   flat-top acacia trees, swaying grass, drifting clouds.
+   Flat-top acacia trees, swaying grass, drifting clouds.
    ════════════════════════════════════════════════════════════ */
 const AnimatedHeroBg = () => (
   <div className="hero-animated-bg" aria-hidden="true">
@@ -286,7 +206,7 @@ const AnimatedHeroBg = () => (
         <ellipse cx="426" cy="45"  rx="55"  ry="10" fill="url(#hbg-cloud)" />
       </g>
 
-      {/* ── Rising sun disc — left-of-centre, backlit silhouettes ── */}
+      {/* ── Rising sun disc — left-of-centre ── */}
       <ellipse
         cx="320" cy="470" rx="54" ry="54"
         fill="#ffe566" opacity="0.85"
@@ -328,12 +248,6 @@ const AnimatedHeroBg = () => (
       <AcaciaTree x={78}  y={470} scale={0.62} color="#0c0300" />
       <AcaciaTree x={760} y={470} scale={1.28} color="#0b0200" />
       <AcaciaTree x={924} y={470} scale={0.52} color="#0c0300" />
-
-      {/* ── Elephant — backlit by rising sun, left-centre ── */}
-      <Elephant x={240} y={470} scale={0.68} color="#0c0300" />
-
-      {/* ── Giraffe — right-of-centre, silhouetted against the dawn sky ── */}
-      <Giraffe x={540} y={470} scale={0.80} color="#0c0300" />
     </svg>
   </div>
 );
