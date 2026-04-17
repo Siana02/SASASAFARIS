@@ -6049,95 +6049,154 @@ padding: 1rem 1.5rem;
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: 5rem 0 5rem;
-  background: rgba(12, 6, 2, 0.92);
+  padding: 5.5rem 0 4rem;
+  background: rgba(12, 6, 2, 0.93);
   overflow: hidden;
 }
 
-/* Centred header */
+/* ── Header ── */
 .gallery-strip__header {
   text-align: center;
   padding: 0 1.5rem;
-  margin-bottom: 2.8rem;
+  margin-bottom: 3rem;
 }
 
 .gallery-strip__eyebrow {
   display: inline-block;
   font-family: var(--body-font);
-  font-size: clamp(0.65rem, 1.3vw, 0.75rem);
+  font-size: clamp(0.63rem, 1.3vw, 0.72rem);
   font-weight: 600;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.38em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.8rem;
 }
 
 .gallery-strip__title {
   font-family: var(--display-font);
-  font-size: clamp(1.7rem, 4vw, 2.8rem);
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
   font-weight: 700;
   color: #fff;
-  letter-spacing: 0.05em;
-  margin: 0 0 0.7rem;
+  letter-spacing: 0.06em;
+  margin: 0 0 1rem;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Brand ornament — fading gold lines + diamond ── */
+.gallery-strip__ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto 1.1rem;
+}
+
+.gallery-strip__orn-line {
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #c8963e 40%, #e8c97a 60%, #c8963e 80%, transparent);
+}
+
+.gallery-strip__orn-line--right {
+  background: linear-gradient(to left, transparent, #c8963e 40%, #e8c97a 60%, #c8963e 80%, transparent);
+}
+
+.gallery-strip__orn-diamond {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: #c8963e;
+  transform: rotate(45deg);
+  box-shadow: 0 0 8px rgba(200, 150, 62, 0.7);
+  flex-shrink: 0;
 }
 
 .gallery-strip__subtitle {
   font-family: var(--body-font);
   font-size: clamp(0.88rem, 1.6vw, 1rem);
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.45);
   max-width: 420px;
   margin: 0 auto;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
-/* Outer wrapper: positions arrows relative to the strip */
+/* ── Nav wrap — flex row with arrows flanking the viewport ── */
 .gallery-strip__nav-wrap {
-  position: relative;
   display: flex;
   align-items: center;
+  gap: 0;
 }
 
-/* Arrow buttons */
+/* ── Arrow buttons ── */
 .gallery-strip__nav-btn {
   flex: 0 0 auto;
   z-index: 2;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #fff;
-  font-size: 2rem;
-  line-height: 1;
+  background: rgba(200, 150, 62, 0.1);
+  border: 1.5px solid rgba(200, 150, 62, 0.3);
+  color: rgba(255, 255, 255, 0.75);
   border-radius: 50%;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.25s, border-color 0.25s, color 0.2s, transform 0.15s, box-shadow 0.25s;
   user-select: none;
   flex-shrink: 0;
-  margin: 0 10px;
+  margin: 0 14px;
 }
 
 .gallery-strip__nav-btn:hover {
-  background: rgba(200, 150, 62, 0.35);
+  background: rgba(200, 150, 62, 0.28);
   border-color: var(--accent);
-  transform: scale(1.1);
+  color: #fff;
+  transform: scale(1.12);
+  box-shadow: 0 0 18px rgba(200, 150, 62, 0.35);
 }
 
 .gallery-strip__nav-btn:active {
-  transform: scale(0.96);
+  transform: scale(0.94);
+  box-shadow: none;
 }
 
-/* Viewport: clips the scrolling strip */
-.gallery-strip__viewport {
+/* ── Viewport wrapper — holds edge fades + the clipping viewport ── */
+.gallery-strip__viewport-wrap {
+  position: relative;
   flex: 1 1 0;
   min-width: 0;
+  overflow: hidden;
+}
+
+/* Dark-to-transparent edge fade — cinematic film-strip effect */
+.gallery-strip__edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gallery-strip__edge--left {
+  left: 0;
+  background: linear-gradient(to right, rgba(12, 6, 2, 1) 0%, transparent 100%);
+}
+
+.gallery-strip__edge--right {
+  right: 0;
+  background: linear-gradient(to left, rgba(12, 6, 2, 1) 0%, transparent 100%);
+}
+
+/* ── Scroll track ── */
+.gallery-strip__viewport {
+  width: 100%;
   overflow: hidden;
   cursor: default;
 }
 
-/* Inner track: flex row, no wrap */
+/* Inner flex track */
 .gallery-strip__inner {
   display: flex;
   flex-direction: row;
@@ -6153,7 +6212,8 @@ padding: 1rem 1.5rem;
   height: 280px;
   overflow: hidden;
   border-radius: 6px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s;
 }
 
 .gallery-strip__item img {
@@ -6166,7 +6226,30 @@ padding: 1rem 1.5rem;
   user-select: none;
 }
 
-/* Responsive: slightly smaller squares on mobile */
+/* ── Progress bar ── */
+.gallery-strip__progress-wrap {
+  max-width: 320px;
+  margin: 2rem auto 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.gallery-strip__progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 2px;
+  background: linear-gradient(to right, #c8963e, #e8c97a, #c8963e);
+  animation: gallery-strip-progress 12s linear forwards;
+}
+
+@keyframes gallery-strip-progress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ── Responsive ── */
 @media (max-width: 600px) {
   .gallery-strip__item {
     flex: 0 0 220px;
@@ -6175,10 +6258,17 @@ padding: 1rem 1.5rem;
   }
 
   .gallery-strip__nav-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 1.5rem;
-    margin: 0 6px;
+    width: 38px;
+    height: 38px;
+    margin: 0 8px;
+  }
+
+  .gallery-strip__edge {
+    width: 60px;
+  }
+
+  .gallery-strip__orn-line {
+    width: 50px;
   }
 }
 
