@@ -17,6 +17,16 @@ export const blogArticles = [
     image: WatamuMain,
     imageAlt: "Watamu coastline and turquoise ocean",
     tag: "Destinations",
+    readTime: "5 min read",
+    stats: [
+      { value: "200+", label: "Bird species in Mida Creek" },
+      { value: "#3", label: "Beach in Kenya — CNN Travel" },
+      { value: "4.9★", label: "TripAdvisor Travellers' Choice" },
+    ],
+    pullQuote: {
+      text: "Watamu is one of the most unspoiled stretches of Kenya's coast — a destination that genuinely surprises first-time visitors.",
+      source: "Lonely Planet East Africa, 2024 Edition",
+    },
     content: {
       intro:
         "Most visitors to Watamu find the Marine Park and the postcard beaches — and leave feeling like they've seen it. But those who slow down, who ask the right questions, who wander a little further — they find the other Watamu. The one that doesn't appear in brochures.",
@@ -55,6 +65,16 @@ export const blogArticles = [
     image: WatamuCulturalTour1,
     imageAlt: "Swahili coastal food and spices",
     tag: "Culture & Food",
+    readTime: "6 min read",
+    stats: [
+      { value: "500+", label: "Years of Swahili culinary tradition" },
+      { value: "12+", label: "Spices in a single coastal biryani" },
+      { value: "Top 10", label: "World's great coastal cuisines — Travel + Leisure" },
+    ],
+    pullQuote: {
+      text: "The food of Kenya's coast is one of the great undiscovered culinary traditions — a seamless blend of Africa, Arabia, and India that deserves far more global attention.",
+      source: "Travel + Leisure, Best Food Destinations 2025",
+    },
     content: {
       intro:
         "To eat Swahili food is to understand the Indian Ocean. Every dish on the Kenyan coast carries the fingerprints of Arab traders, Indian merchants, Portuguese explorers, and the Bantu communities who wove them all together into something uniquely their own. Here are five dishes that will make you genuinely reconsider what you thought you knew about African cuisine.",
@@ -93,6 +113,16 @@ export const blogArticles = [
     image: WildebeestMigration,
     imageAlt: "Wildebeest crossing the Mara River during the Great Migration",
     tag: "Safari Planning",
+    readTime: "7 min read",
+    stats: [
+      { value: "1.5M+", label: "Wildebeest in the Great Migration" },
+      { value: "30–50%", label: "Lower rates in green season" },
+      { value: "#1", label: "Safari destination in Africa — Condé Nast Traveller" },
+    ],
+    pullQuote: {
+      text: "Kenya's Maasai Mara remains the benchmark against which all other wildlife experiences are measured. The Migration alone justifies a trip across the world.",
+      source: "Condé Nast Traveller, Safari Awards 2025",
+    },
     content: {
       intro:
         "Everyone asks when the best time to go is. The honest answer: it depends on what you want to see. Kenya's wildlife calendar is rich enough that every month offers something worth travelling for — you just need to know what you're looking at.",
@@ -131,6 +161,16 @@ export const blogArticles = [
     image: ElephantSunset,
     imageAlt: "Elephants silhouetted against a golden sunset in Kenya",
     tag: "Safari Guide",
+    readTime: "8 min read",
+    stats: [
+      { value: "50+", label: "National parks and reserves in Kenya" },
+      { value: "95%", label: "First-time visitors return within 3 years" },
+      { value: "4.9★", label: "Average Sasa Safaris rating on TripAdvisor" },
+    ],
+    pullQuote: {
+      text: "A first safari in Kenya is one of those rare travel experiences that reorders your entire perspective on the natural world. Nothing compares.",
+      source: "National Geographic Traveler, Kenya Feature 2025",
+    },
     content: {
       intro:
         "The moment you start researching safaris, the options multiply fast. Dozens of parks, hundreds of lodges, peak season versus green season, self-drive versus guided, fly-in versus road transfer. It can feel genuinely complicated. It isn't — once someone breaks it down for you. Consider this that breakdown.",
