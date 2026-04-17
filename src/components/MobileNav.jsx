@@ -29,9 +29,6 @@ const MobileNav = () => {
       <div className="menu-divider"></div>
       <ul className="mobile-nav-list">
         <li>
-          <a href="#packages" onClick={handleLinkClick}>{t('nav.packages')}</a>
-        </li>
-        <li>
           <a href="#destinations" onClick={handleLinkClick}>{t('nav.destinations')}</a>
         </li>
         <li>

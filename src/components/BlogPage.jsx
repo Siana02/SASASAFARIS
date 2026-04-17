@@ -3,6 +3,76 @@ import { Link } from "react-router-dom";
 import { blogArticles, featuredArticle } from "../data/BlogData";
 import LazyImage from "./LazyImage";
 
+const PRESS_QUOTES = [
+  {
+    text: "Kenya's Maasai Mara remains the benchmark against which all other wildlife experiences are measured.",
+    source: "Condé Nast Traveller",
+    year: "2025",
+  },
+  {
+    text: "A first safari in Kenya is one of those rare travel experiences that reorders your entire perspective on the natural world.",
+    source: "National Geographic Traveler",
+    year: "2025",
+  },
+  {
+    text: "Watamu is one of the most unspoiled stretches of Kenya's coast — a destination that genuinely surprises first-time visitors.",
+    source: "Lonely Planet East Africa",
+    year: "2024",
+  },
+];
+
+const TRIPADVISOR_REVIEWS = [
+  {
+    text: "I booked through Sasa Safaris for the first time and it exceeded every expectation. The guides were extraordinary — knowledgeable, passionate, and brilliant at finding wildlife. Saw lions, cheetah, elephant, and a leopard in two days.",
+    author: "Catherine W.",
+    origin: "Australia",
+    rating: 5,
+    trip: "Maasai Mara Safari",
+  },
+  {
+    text: "From the moment we landed, everything was taken care of. The itinerary was perfectly balanced — not rushed, not boring. The Watamu mangrove canoe was a highlight I still talk about months later.",
+    author: "Marco B.",
+    origin: "Italy",
+    rating: 5,
+    trip: "Coastal & Safari Combo",
+  },
+];
+
+// ── Star Rating ───────────────────────────────────────────────────────────────
+const StarRating = ({ count }) => (
+  <span className="bps-star-row" aria-label={`${count} stars`}>
+    {Array.from({ length: count }).map((_, i) => (
+      <span key={i} className="bps-star">★</span>
+    ))}
+  </span>
+);
+
+// ── Article Key Facts Strip ──────────────────────────────────────────────────
+const ArticleStats = ({ stats }) => {
+  if (!stats || stats.length === 0) return null;
+  return (
+    <div className="blog-article-stats">
+      {stats.map((s) => (
+        <div key={s.label} className="blog-article-stat">
+          <strong className="blog-article-stat__value">{s.value}</strong>
+          <span className="blog-article-stat__label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// ── Pull Quote ────────────────────────────────────────────────────────────────
+const ArticlePullQuote = ({ pullQuote }) => {
+  if (!pullQuote) return null;
+  return (
+    <blockquote className="blog-article-pullquote">
+      <p className="blog-article-pullquote__text">{pullQuote.text}</p>
+      <cite className="blog-article-pullquote__source">— {pullQuote.source}</cite>
+    </blockquote>
+  );
+};
+
 // ── Individual full-article view ────────────────────────────────────────────
 const ArticleView = ({ article, onBack }) => (
   <article className="blog-article-full">
@@ -16,7 +86,12 @@ const ArticleView = ({ article, onBack }) => (
       <div className="blog-article-full__hero-text">
         <span className="blog-tag">{article.tag}</span>
         <h1 className="blog-article-full__title">{article.title}</h1>
-        <time className="blog-card-date">{article.date}</time>
+        <div className="blog-article-full__meta">
+          <time className="blog-card-date">{article.date}</time>
+          {article.readTime && (
+            <span className="blog-article-full__read-time">{article.readTime}</span>
+          )}
+        </div>
       </div>
     </div>
 
@@ -28,7 +103,13 @@ const ArticleView = ({ article, onBack }) => (
         Back to Blog
       </button>
 
+      {/* Key stats callout */}
+      <ArticleStats stats={article.stats} />
+
       <p className="blog-article-full__intro">{article.content.intro}</p>
+
+      {/* Pull quote after intro */}
+      <ArticlePullQuote pullQuote={article.pullQuote} />
 
       {article.content.sections.map((section, i) => (
         <div className="blog-article-full__section" key={i}>
@@ -72,14 +153,67 @@ const ArticleCard = ({ article, featured, onClick }) => (
         <span className="blog-card__read-cta">Read Article →</span>
       </div>
       <span className="blog-tag blog-card__tag">{article.tag}</span>
+      {article.readTime && (
+        <span className="blog-card__read-time">{article.readTime}</span>
+      )}
     </div>
     <div className="blog-card__body">
       <time className="blog-card-date">{article.date}</time>
       <h3 className="blog-card__title">{article.title}</h3>
       <p className="blog-card__excerpt">{article.excerpt}</p>
+      {article.stats && (
+        <ul className="blog-card__stats" aria-label="Key facts">
+          {article.stats.slice(0, 2).map((s) => (
+            <li key={s.label} className="blog-card__stat">
+              <strong>{s.value}</strong>
+              <span>{s.label}</span>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   </article>
 );
+
+// ── TripAdvisor Reviews Strip ─────────────────────────────────────────────────
+const TripAdvisorStrip = () => (
+  <section className="blog-ta-strip" aria-label="TripAdvisor reviews">
+    <div className="blog-ta-strip__inner">
+      <div className="blog-ta-strip__header">
+        <svg className="blog-ta-strip__icon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="4.5" fill="#fff" />
+        </svg>
+        <span className="blog-ta-strip__label">What travellers say on TripAdvisor</span>
+        <span className="blog-ta-strip__rating">★ 4.9 / 5</span>
+      </div>
+      <div className="blog-ta-strip__reviews">
+        {TRIPADVISOR_REVIEWS.map((r) => (
+          <blockquote key={r.author} className="blog-ta-review">
+            <StarRating count={r.rating} />
+            <p className="blog-ta-review__text">"{r.text}"</p>
+            <footer className="blog-ta-review__footer">
+              <strong className="blog-ta-review__author">{r.author}</strong>
+              <span className="blog-ta-review__meta">{r.origin} · {r.trip}</span>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+// ── Press Quote Banner ────────────────────────────────────────────────────────
+const PressQuoteBanner = ({ quoteIndex = 0 }) => {
+  const q = PRESS_QUOTES[quoteIndex];
+  return (
+    <div className="blog-press-quote">
+      <span className="blog-press-quote__mark" aria-hidden="true">"</span>
+      <p className="blog-press-quote__text">{q.text}</p>
+      <cite className="blog-press-quote__source">— {q.source}, {q.year}</cite>
+    </div>
+  );
+};
 
 // ── Newsletter CTA ────────────────────────────────────────────────────────────
 const BlogNewsletter = () => {
@@ -147,7 +281,7 @@ const BlogPage = () => {
       <section className="blog-hero">
         <div className="blog-hero__overlay" />
         <div className="blog-hero__content">
-          <span className="blog-hero__eyebrow">Stories & Inspiration</span>
+          <span className="blog-hero__eyebrow">Stories &amp; Inspiration</span>
           <h1 className="blog-hero__title">The Sasa Safaris Journal</h1>
           <p className="blog-hero__desc">
             Travel stories, destination guides, cultural deep-dives, and everything you need to plan the journey of a lifetime.
@@ -160,6 +294,32 @@ const BlogPage = () => {
         </div>
       </section>
 
+      {/* ── Hero Stats Strip ── */}
+      <div className="blog-hero-stats">
+        <div className="blog-hero-stats__inner">
+          <div className="blog-hero-stats__item">
+            <strong>4.9 ★</strong><span>TripAdvisor Travellers' Choice</span>
+          </div>
+          <div className="blog-hero-stats__divider" aria-hidden="true" />
+          <div className="blog-hero-stats__item">
+            <strong>500+</strong><span>Safaris Planned &amp; Delivered</span>
+          </div>
+          <div className="blog-hero-stats__divider" aria-hidden="true" />
+          <div className="blog-hero-stats__item">
+            <strong>1.5M+</strong><span>Wildebeest in the Great Migration</span>
+          </div>
+          <div className="blog-hero-stats__divider" aria-hidden="true" />
+          <div className="blog-hero-stats__item">
+            <strong>98%</strong><span>Would Recommend</span>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Press Quote ── */}
+      <div className="blog-press-wrap">
+        <PressQuoteBanner quoteIndex={0} />
+      </div>
+
       {/* ── Featured Article ── */}
       <section className="blog-featured-wrap">
         <div className="blog-featured-label">
@@ -171,6 +331,9 @@ const BlogPage = () => {
           onClick={setActiveArticle}
         />
       </section>
+
+      {/* ── TripAdvisor Reviews ── */}
+      <TripAdvisorStrip />
 
       {/* ── Articles Grid ── */}
       <section className="blog-grid-section">
