@@ -17,6 +17,7 @@ import MaasaiMara from './Maasai_mara_1.jpg';
 import WildernessExplorer from './Wilderness_Explorer.jpg';
 import WatamuMain from './watamu-main.jpg';
 import SafariBlue2 from './safari-blue2.jpg';
+import SardegnaTour1 from './sardegna-tour1.jpg';
 import Sardegna1 from './sardegna1.jpeg';
 import Sardegna2 from './sardegna2.jpeg';
 import GedeRuins from './gede-ruins.jpeg';
@@ -46,6 +47,7 @@ export {
   WildernessExplorer,
   WatamuMain,
   SafariBlue2,
+  SardegnaTour1,
   Sardegna1,
   Sardegna2,
   GedeRuins,
