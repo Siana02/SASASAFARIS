@@ -22,6 +22,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiePolicy from "./components/CookiePolicy";
 import TermsOfService from "./components/TermsOfService";
 import Gallery from "./components/Gallery";
+import { MobileNavProvider } from './contexts/MobileNavContext';
 import './styles/style.css';
 
 // Main landing page content
@@ -73,6 +74,7 @@ useEffect(() => {
     <>
       {!preloadDone && <PreloadScreen onComplete={() => setPreloadDone(true)} />}
       <BrowserRouter>
+      <MobileNavProvider>
       <Header />
       <MobileNav />
       <ContactWidget />
@@ -94,6 +96,7 @@ useEffect(() => {
       {/* <ThemeMessage /> */}
 {/* <LanguageBanner /> */}
 {/* <CookiePopup /> */}
+      </MobileNavProvider>
     </BrowserRouter>
     </>
   );

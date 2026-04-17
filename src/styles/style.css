@@ -95,10 +95,10 @@ body {
 .logo-img {
   width: 140px;          /* increase from 100px to desired size */
   height: 140px;         /* keep square aspect ratio */
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 50%;
   border: 2.5px solid var(--accent);
-  background: #eee;
+  background: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   flex-shrink: 0;        /* prevent shrinking in flex layout */
 }
@@ -274,7 +274,7 @@ body {
   height: 0;
   background: #fff;
   overflow: hidden;
-  z-index: 10;
+  z-index: 1500;
   box-shadow: 0 8px 32px rgba(0,0,0,0.11);
   transition: height 0.6s cubic-bezier(.77,0,.175,1), opacity 0.6s;
   opacity: 0;
@@ -788,13 +788,13 @@ body {
   .hero-content { padding: 1.2rem 2vw; }
   .hero-main-title { font-size: clamp(1.5rem, 6vw, 2.6rem); }
   .header { padding: 0.45rem 2vw; }
-  .logo-img { width: 40px; height: 40px; }
+  .logo-img { width: 56px; height: 56px; }
 }
 @media (max-width: 650px) {
   .hero-content { padding: 0.85rem 1vw; }
   .hero-main-title { font-size: clamp(1.2rem, 5.5vw, 2rem); }
   .hero-title { font-size: clamp(0.6rem, 2vw, 0.82rem); letter-spacing: 0.22em; }
-  .logo-img { width: 34px; height: 34px; }
+  .logo-img { width: 48px; height: 48px; }
   .theme-message {
     right: 4vw;
     left: 4vw;
