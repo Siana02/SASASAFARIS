@@ -14,18 +14,32 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import {
   WatamuMain,
-  KenyanCoast,
+  SafariBlue2,
+  Sardegna1,
+  Sardegna2,
+  GedeRuins,
   GreatRiftValley,
+  WildernessExplorer,
+  TsavoEast1,
   ElephantSunset,
-  VacationHero,
+  Amboseli,
+  WatamuCulturalTour1,
+  WatamuCulturalTour2,
 } from "../assets/images";
 
 // ─── Destination data ────────────────────────────────────────────────────────
+// image  = main full-height image (fills the left/right half)
+// image2 = small accent image displayed at the top of the text panel
+//
+// NOTE: "hells kitchen" (Marafa canyon) and tsavo-east-2 images are pending upload.
+//       WildernessExplorer / Amboseli are placeholders until those land.
 const destinations = [
   {
     id: "safari-blue",
     image: WatamuMain,
+    image2: SafariBlue2,
     imageAlt: "Watamu ocean and dolphins",
+    image2Alt: "Snorkeling in Watamu Marine Park",
     imagePosition: "center",
     price: "€70 – €80 pp",
     duration: "Full Day",
@@ -33,8 +47,10 @@ const destinations = [
   },
   {
     id: "sardegna-sandbank",
-    image: KenyanCoast,
+    image: Sardegna1,
+    image2: Sardegna2,
     imageAlt: "Sardegna 2 sandbank turquoise waters",
+    image2Alt: "Crystal water at Sardegna 2 sandbank",
     imagePosition: "center",
     price: "€60 – €70 pp",
     duration: "Half Day",
@@ -42,8 +58,10 @@ const destinations = [
   },
   {
     id: "gede-marafa",
-    image: GreatRiftValley,
-    imageAlt: "Gede Ruins and Marafa canyon at sunset",
+    image: GedeRuins,
+    image2: GreatRiftValley, // placeholder – replace with hells-kitchen image when uploaded
+    imageAlt: "Gede Ruins ancient Swahili city",
+    image2Alt: "Marafa Depression — Hell's Kitchen canyon",
     imagePosition: "center top",
     price: "€80 – €90 pp",
     duration: "Half Day",
@@ -52,7 +70,9 @@ const destinations = [
   {
     id: "tsavo-east",
     image: ElephantSunset,
+    image2: TsavoEast1, // tsavo-east-2 not yet uploaded — using tsavo-east-1 as accent
     imageAlt: "Tsavo East red elephants at sunset",
+    image2Alt: "Tsavo East National Park landscape",
     imagePosition: "center",
     price: "From €250 pp",
     duration: "2 Days / 1 Night",
@@ -60,8 +80,10 @@ const destinations = [
   },
   {
     id: "village-tour",
-    image: VacationHero,
-    imageAlt: "Watamu village cultural tour",
+    image: WatamuCulturalTour1,
+    image2: WatamuCulturalTour2,
+    imageAlt: "Watamu village cultural life",
+    image2Alt: "Local crafts and culture in Watamu",
     imagePosition: "center",
     price: "Contact Us",
     duration: "Half Day",
@@ -244,6 +266,18 @@ const DestinationsSection = () => {
             style={{ order: imageOnLeft ? 1 : 0 }}
           >
             <div className="dest-text-inner">
+              {/* Small accent image at the top of the text panel */}
+              <div className="dest-accent-img-wrap">
+                <img
+                  src={dest.image2}
+                  alt={dest.image2Alt}
+                  className="dest-accent-img"
+                  draggable={false}
+                  loading="lazy"
+                />
+                <div className="dest-accent-img-overlay" />
+              </div>
+
               <p className="dest-subheadline">{content.subheadline}</p>
               <h3 className="dest-headline">{content.headline}</h3>
               <p className="dest-story">{content.story}</p>

@@ -38,9 +38,6 @@ function HomePage() {
         <HeroSection />
         <HowWeWork />
         <WhyChooseUs />
-        <OfferSection />
-        <SuccessCountdown />
-        <PackagesSection />
         <DestinationsSection />
         <AboutSection />
         <ReviewSection />
