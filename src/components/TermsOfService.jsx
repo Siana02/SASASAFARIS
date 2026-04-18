@@ -4,8 +4,9 @@ import {
   CreditCard, XCircle, Edit3, UmbrellaIcon, Syringe, FileText,
   Bird, MessageSquare, AlertTriangle, HelpCircle, Shield, RefreshCw,
 } from "lucide-react";
+import { useLanguage } from "../hooks/useLanguage";
 
-const sections = [
+const sectionsEn = [
   {
     id: "booking",
     icon: <CreditCard size={20} />,
@@ -168,31 +169,203 @@ const sections = [
   },
 ];
 
+const sectionsIt = [
+  {
+    id: "booking",
+    icon: <CreditCard size={20} />,
+    title: "Prenotazione e Pagamento",
+    content: (
+      <ul>
+        <li>Tutte le prenotazioni devono essere confermate per iscritto (email o modulo di prenotazione).</li>
+        <li>È richiesto un <strong>deposito di almeno il 30%</strong> per garantire la prenotazione; il saldo è dovuto prima dell'inizio del safari o come concordato per iscritto.</li>
+        <li>I pagamenti sono accettati tramite bonifico online sicuro, carta di credito/debito o come specificato nella fattura.</li>
+        <li>Tutti i prezzi sono quotati in USD salvo diversa indicazione e possono variare a causa di fluttuazioni valutarie o tasse governative.</li>
+      </ul>
+    ),
+  },
+  {
+    id: "cancellations",
+    icon: <XCircle size={20} />,
+    title: "Cancellazioni e Rimborsi",
+    content: (
+      <>
+        <p>Tutte le cancellazioni devono essere comunicate per iscritto. Si applicano le seguenti penali:</p>
+        <div className="legal-cancellation-table">
+          <div className="legal-canc-row header">
+            <span>Periodo di Preavviso</span>
+            <span>Penale</span>
+          </div>
+          <div className="legal-canc-row">
+            <span>Più di 60 giorni prima del safari</span>
+            <span className="legal-canc-good">Rimborso completo meno le spese bancarie</span>
+          </div>
+          <div className="legal-canc-row">
+            <span>30 – 59 giorni prima</span>
+            <span className="legal-canc-warn">20% del costo totale trattenuto</span>
+          </div>
+          <div className="legal-canc-row">
+            <span>15 – 29 giorni prima</span>
+            <span className="legal-canc-warn">50% del costo totale trattenuto</span>
+          </div>
+          <div className="legal-canc-row">
+            <span>Meno di 15 giorni / Mancata presentazione</span>
+            <span className="legal-canc-bad">100% del costo totale trattenuto</span>
+          </div>
+        </div>
+        <p>I rimborsi saranno elaborati entro 21 giorni lavorativi dalla data di cancellazione.</p>
+      </>
+    ),
+  },
+  {
+    id: "changes",
+    icon: <Edit3 size={20} />,
+    title: "Modifiche e Alterazioni",
+    content: (
+      <ul>
+        <li>SASA Safaris si riserva il diritto di modificare gli itinerari o sostituire gli alloggi a causa di circostanze al di fuori del nostro controllo (es. meteo, sicurezza, disponibilità).</li>
+        <li>Qualsiasi modifica significativa sarà comunicata tempestivamente e verranno fornite alternative ove possibile.</li>
+        <li>Le modifiche richieste dal cliente potrebbero comportare costi aggiuntivi.</li>
+      </ul>
+    ),
+  },
+  {
+    id: "insurance",
+    icon: <UmbrellaIcon size={20} />,
+    title: "Assicurazione di Viaggio",
+    content: (
+      <ul>
+        <li>Un'assicurazione di viaggio completa è <strong>obbligatoria</strong> per tutti i clienti, coprendo emergenze mediche, cancellazione, furto e responsabilità civile.</li>
+        <li>SASA Safaris non è responsabile per eventuali perdite non coperte dalla tua polizza assicurativa.</li>
+      </ul>
+    ),
+  },
+  {
+    id: "health",
+    icon: <Syringe size={20} />,
+    title: "Salute, Sicurezza e Vaccinazioni",
+    content: (
+      <ul>
+        <li>I clienti sono responsabili di assicurarsi che tutte le vaccinazioni necessarie e le precauzioni sanitarie siano adottate prima del viaggio.</li>
+        <li>SASA Safaris aderisce a rigidi standard di sicurezza e collabora solo con fornitori affidabili e autorizzati.</li>
+        <li>Qualsiasi condizione medica deve essere comunicata al momento della prenotazione — faremo del nostro meglio per soddisfare esigenze speciali.</li>
+      </ul>
+    ),
+  },
+  {
+    id: "documents",
+    icon: <FileText size={20} />,
+    title: "Passaporti, Visti e Documentazione",
+    content: (
+      <ul>
+        <li>I clienti sono esclusivamente responsabili dell'ottenimento di passaporti, visti e permessi di viaggio validi.</li>
+        <li>SASA Safaris fornirà orientamento ma non si assume alcuna responsabilità se un cliente viene respinto a causa di documentazione insufficiente.</li>
+      </ul>
+    ),
+  },
+  {
+    id: "wildlife",
+    icon: <Bird size={20} />,
+    title: "Fauna Selvatica e Ambiente",
+    content: (
+      <ul>
+        <li>Gli avvistamenti di fauna selvatica non sono mai garantiti — dipendono interamente dalla natura e non possono essere previsti.</li>
+        <li>I clienti devono seguire le istruzioni delle guide in ogni momento per la loro sicurezza e la protezione della fauna.</li>
+        <li>SASA Safaris promuove il turismo responsabile. I clienti sono tenuti a rispettare tutti gli ambienti locali, la fauna e le culture.</li>
+      </ul>
+    ),
+  },
+  {
+    id: "requests",
+    icon: <MessageSquare size={20} />,
+    title: "Richieste Speciali",
+    content: (
+      <ul>
+        <li>Tutte le richieste speciali (alimentari, di mobilità, ecc.) devono essere presentate per iscritto al momento della prenotazione.</li>
+        <li>Pur cercando di soddisfare ogni richiesta, queste non possono essere garantite e potrebbero comportare costi aggiuntivi.</li>
+      </ul>
+    ),
+  },
+  {
+    id: "liability",
+    icon: <AlertTriangle size={20} />,
+    title: "Responsabilità e Forza Maggiore",
+    content: (
+      <ul>
+        <li>SASA Safaris non è responsabile per alcuna perdita, infortunio, incidente, ritardo o spesa derivante da circostanze al di fuori del nostro controllo — inclusi ma non limitati a guerra, terrorismo, catastrofe naturale o azioni governative.</li>
+        <li>La nostra responsabilità è limitata al valore del safari prenotato.</li>
+      </ul>
+    ),
+  },
+  {
+    id: "complaints",
+    icon: <HelpCircle size={20} />,
+    title: "Reclami e Controversie",
+    content: (
+      <ul>
+        <li>I reclami devono essere segnalati immediatamente a SASA Safaris affinché possiamo risolverli sul posto.</li>
+        <li>Se irrisolti durante il viaggio, i reclami devono essere presentati per iscritto entro <strong>14 giorni</strong> dal safari.</li>
+        <li>Tutte le controversie sono soggette alle leggi e alla giurisdizione del Kenya.</li>
+      </ul>
+    ),
+  },
+  {
+    id: "privacy",
+    icon: <Shield size={20} />,
+    title: "Privacy e Cookie",
+    content: (
+      <p>
+        Le tue informazioni personali sono gestite in conformità con la nostra{" "}
+        <Link to="/privacy">Informativa sulla Privacy</Link>. Le informazioni sui cookie e le tecnologie di tracciamento sono disponibili nella nostra{" "}
+        <Link to="/cookies">Politica sui Cookie</Link>.
+      </p>
+    ),
+  },
+  {
+    id: "updates",
+    icon: <RefreshCw size={20} />,
+    title: "Aggiornamenti a Questi Termini",
+    content: (
+      <p>
+        SASA Safaris si riserva il diritto di aggiornare questi termini e condizioni in qualsiasi momento. Ti consigliamo di rivedere periodicamente questa pagina. L'uso continuato dei nostri servizi costituisce accettazione dei termini rivisti.
+      </p>
+    ),
+  },
+];
+
+const CONTACT_EMAIL = "info@sasasafaris.com";
+const CONTACT_PHONE = "+254 711 589 004";
+
 export default function TermsOfService() {
+  const { currentLanguage } = useLanguage();
+  const isIt = currentLanguage === 'it';
+  const sections = isIt ? sectionsIt : sectionsEn;
   const [activeSection, setActiveSection] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Terms & Conditions — SASA Safaris Africa";
-  }, []);
+    document.title = isIt ? "Termini e Condizioni — SASA Safaris Africa" : "Terms & Conditions — SASA Safaris Africa";
+  }, [isIt]);
 
   return (
     <main className="legal-page">
       {/* Hero */}
       <div className="legal-hero">
         <div className="legal-hero-icon"><FileText size={40} /></div>
-        <h1 className="legal-hero-title">Terms &amp; Conditions</h1>
+        <h1 className="legal-hero-title">{isIt ? 'Termini e Condizioni' : 'Terms & Conditions'}</h1>
         <p className="legal-hero-subtitle">
-          Please read carefully before booking. By using our services, you agree to be bound by these terms.
+          {isIt
+            ? 'Si prega di leggere attentamente prima di prenotare. Utilizzando i nostri servizi, accetti di essere vincolato da questi termini.'
+            : 'Please read carefully before booking. By using our services, you agree to be bound by these terms.'
+          }
         </p>
-        <p className="legal-hero-date">Last updated: {new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" })}</p>
+        <p className="legal-hero-date">{isIt ? 'Ultimo aggiornamento' : 'Last updated'}: {new Date().toLocaleDateString(isIt ? "it-IT" : "en-GB", { year: "numeric", month: "long", day: "numeric" })}</p>
       </div>
 
       {/* Layout: sidebar TOC + content on desktop */}
       <div className="legal-layout">
         {/* Table of Contents */}
         <aside className="legal-toc">
-          <p className="legal-toc-title">Contents</p>
+          <p className="legal-toc-title">{isIt ? 'Contenuti' : 'Contents'}</p>
           <ol className="legal-toc-list">
             {sections.map((s, i) => (
               <li key={s.id}>
@@ -212,7 +385,10 @@ export default function TermsOfService() {
         <div className="legal-content legal-content--terms">
           <div className="legal-intro-card">
             <p>
-              These Terms &amp; Conditions govern your use of SASA Safaris Africa's website and services. By making a booking or using our website, you confirm that you have read, understood, and agree to these terms in full.
+              {isIt
+                ? 'Questi Termini e Condizioni disciplinano il tuo utilizzo del sito web e dei servizi di SASA Safaris Africa. Effettuando una prenotazione o utilizzando il nostro sito web, confermi di aver letto, compreso e di accettare integralmente questi termini.'
+                : 'These Terms & Conditions govern your use of SASA Safaris Africa\'s website and services. By making a booking or using our website, you confirm that you have read, understood, and agree to these terms in full.'
+              }
             </p>
           </div>
 
@@ -230,18 +406,19 @@ export default function TermsOfService() {
 
           {/* Contact */}
           <div className="legal-contact-card">
-            <h3>Need Help?</h3>
+            <h3>{isIt ? 'Hai bisogno di aiuto?' : 'Need Help?'}</h3>
             <p>
-              For any questions about these terms, contact us at{" "}
-              <a href="mailto:info@sasasafaris.com">info@sasasafaris.com</a> or call{" "}
-              <a href="tel:+254711589004">+254 711 589 004</a>.
+              {isIt
+                ? <>Per qualsiasi domanda su questi termini, contattaci a{" "}<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> o chiama{" "}<a href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`}>{CONTACT_PHONE}</a>.</>
+                : <>For any questions about these terms, contact us at{" "}<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or call{" "}<a href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`}>{CONTACT_PHONE}</a>.</>
+              }
             </p>
           </div>
 
           <div className="legal-footer-ctas">
-            <Link to="/" className="legal-btn-primary">Back to Home</Link>
-            <Link to="/privacy" className="legal-btn-secondary">Privacy Policy</Link>
-            <Link to="/cookies" className="legal-btn-secondary">Cookie Policy</Link>
+            <Link to="/" className="legal-btn-primary">{isIt ? 'Torna alla Home' : 'Back to Home'}</Link>
+            <Link to="/privacy" className="legal-btn-secondary">{isIt ? 'Informativa sulla Privacy' : 'Privacy Policy'}</Link>
+            <Link to="/cookies" className="legal-btn-secondary">{isIt ? 'Politica sui Cookie' : 'Cookie Policy'}</Link>
           </div>
         </div>
       </div>

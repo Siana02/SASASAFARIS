@@ -17,6 +17,7 @@
 import React, { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { getDestinationById } from "../data/destinationsData";
+import { useLanguage } from "../hooks/useLanguage";
 import {
   DolphinSafariBlue1,
   SafariBlue2,
@@ -97,7 +98,8 @@ const ArrowIcon = () => (
 const DestinationsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const destination = getDestinationById(id);
+  const { t, currentLanguage } = useLanguage();
+  const destination = getDestinationById(id, currentLanguage);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -106,10 +108,10 @@ const DestinationsPage = () => {
   if (!destination) {
     return (
       <div className="dest-page-not-found">
-        <h2>Destination not found</h2>
-        <p>We couldn't find that destination. Explore our journeys below.</p>
+        <h2>{t('destinationsPage.notFoundTitle')}</h2>
+        <p>{t('destinationsPage.notFoundDesc')}</p>
         <Link to="/#destinations" className="dest-page-cta-btn">
-          Back to Destinations
+          {t('destinationsPage.backToDestinations')}
         </Link>
       </div>
     );
@@ -145,7 +147,7 @@ const DestinationsPage = () => {
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <polyline points="15 18 9 12 15 6" />
           </svg>
-          Back
+          {t('destinationsPage.back')}
         </button>
       </section>
 
@@ -153,22 +155,22 @@ const DestinationsPage = () => {
       <div className="dest-page-stats" aria-label="Trip details">
         <div className="dest-page-stat">
           <ClockIcon />
-          <span className="dest-page-stat__label">Duration</span>
+          <span className="dest-page-stat__label">{t('destinationsPage.duration')}</span>
           <span className="dest-page-stat__value">{destination.duration}</span>
         </div>
         <div className="dest-page-stat">
           <PriceIcon />
-          <span className="dest-page-stat__label">From</span>
+          <span className="dest-page-stat__label">{t('destinationsPage.from')}</span>
           <span className="dest-page-stat__value dest-page-stat__value--price">{destination.price}</span>
         </div>
         <div className="dest-page-stat">
           <PinIcon />
-          <span className="dest-page-stat__label">Location</span>
+          <span className="dest-page-stat__label">{t('destinationsPage.location')}</span>
           <span className="dest-page-stat__value">{destination.location}</span>
         </div>
         <div className="dest-page-stat dest-page-stat--cta">
           <Link to={contactUrl} className="dest-page-cta-btn dest-page-cta-btn--compact">
-            Book Now
+            {t('destinationsPage.bookNow')}
             <ArrowIcon />
           </Link>
         </div>
@@ -178,7 +180,7 @@ const DestinationsPage = () => {
       <section className="dest-page-section dest-page-overview">
         <div className="dest-page-section__inner dest-page-overview__grid">
           <div className="dest-page-overview__text">
-            <span className="dest-page-eyebrow">About This Journey</span>
+            <span className="dest-page-eyebrow">{t('destinationsPage.aboutJourney')}</span>
             <p className="dest-page-overview__body">{destination.overview}</p>
           </div>
           {imgs.accent && (
@@ -197,8 +199,8 @@ const DestinationsPage = () => {
       {/* ── 4. Highlights ── */}
       <section className="dest-page-section dest-page-highlights">
         <div className="dest-page-section__inner">
-          <span className="dest-page-eyebrow">Highlights</span>
-          <h2 className="dest-page-section__title">What Makes This Special</h2>
+          <span className="dest-page-eyebrow">{t('destinationsPage.highlightsEyebrow')}</span>
+          <h2 className="dest-page-section__title">{t('destinationsPage.highlightsTitle')}</h2>
           <ul className="dest-page-highlights__list" aria-label="Journey highlights">
             {destination.highlights.map((h, i) => (
               <li key={i} className="dest-page-highlight-card">
@@ -216,8 +218,8 @@ const DestinationsPage = () => {
       <section className="dest-page-section dest-page-activities">
         <div className="dest-page-section__inner dest-page-activities__grid">
           <div>
-            <span className="dest-page-eyebrow">Itinerary</span>
-            <h2 className="dest-page-section__title">Activities &amp; Experiences</h2>
+            <span className="dest-page-eyebrow">{t('destinationsPage.itineraryEyebrow')}</span>
+            <h2 className="dest-page-section__title">{t('destinationsPage.activitiesTitle')}</h2>
             <ul className="dest-page-list" aria-label="Activities">
               {destination.activities.map((a, i) => (
                 <li key={i} className="dest-page-list__item">
@@ -230,8 +232,8 @@ const DestinationsPage = () => {
 
           {/* Customisable options sidebar */}
           <div className="dest-page-custom-box">
-            <span className="dest-page-eyebrow">Flexible Itinerary</span>
-            <h3 className="dest-page-custom-box__title">Customise Your Trip</h3>
+            <span className="dest-page-eyebrow">{t('destinationsPage.flexibleEyebrow')}</span>
+            <h3 className="dest-page-custom-box__title">{t('destinationsPage.customiseTitle')}</h3>
             <ul className="dest-page-list dest-page-list--custom" aria-label="Customisable options">
               {destination.customizable.map((c, i) => (
                 <li key={i} className="dest-page-list__item dest-page-list__item--custom">
@@ -248,8 +250,8 @@ const DestinationsPage = () => {
       <section className="dest-page-section dest-page-inclusions">
         <div className="dest-page-section__inner dest-page-inclusions__grid">
           <div className="dest-page-inclusions__col dest-page-inclusions__col--in">
-            <span className="dest-page-eyebrow">Included</span>
-            <h2 className="dest-page-section__title">What's Included</h2>
+            <span className="dest-page-eyebrow">{t('destinationsPage.includedEyebrow')}</span>
+            <h2 className="dest-page-section__title">{t('destinationsPage.includedTitle')}</h2>
             <ul className="dest-page-list" aria-label="Included in the price">
               {destination.included.map((item, i) => (
                 <li key={i} className="dest-page-list__item">
@@ -261,8 +263,8 @@ const DestinationsPage = () => {
           </div>
 
           <div className="dest-page-inclusions__col dest-page-inclusions__col--out">
-            <span className="dest-page-eyebrow">Not Included</span>
-            <h2 className="dest-page-section__title">Not Included</h2>
+            <span className="dest-page-eyebrow">{t('destinationsPage.notIncludedEyebrow')}</span>
+            <h2 className="dest-page-section__title">{t('destinationsPage.notIncludedTitle')}</h2>
             <ul className="dest-page-list" aria-label="Not included in the price">
               {destination.notIncluded.map((item, i) => (
                 <li key={i} className="dest-page-list__item dest-page-list__item--excluded">
@@ -279,7 +281,7 @@ const DestinationsPage = () => {
       {destination.notes && destination.notes.length > 0 && (
         <section className="dest-page-section dest-page-notes">
           <div className="dest-page-section__inner">
-            <span className="dest-page-eyebrow">Good to Know</span>
+            <span className="dest-page-eyebrow">{t('destinationsPage.goodToKnow')}</span>
             <ul className="dest-page-notes__list" aria-label="Useful notes">
               {destination.notes.map((note, i) => (
                 <li key={i} className="dest-page-notes__item">
@@ -295,18 +297,18 @@ const DestinationsPage = () => {
       {/* ── 8. Full-width CTA ── */}
       <section className="dest-page-cta-section" aria-label="Book this journey">
         <div className="dest-page-cta-section__inner">
-          <span className="dest-page-eyebrow">Ready to Go?</span>
-          <h2 className="dest-page-cta-section__title">Start Your {destination.headline} Journey</h2>
+          <span className="dest-page-eyebrow">{t('destinationsPage.readyToGo')}</span>
+          <h2 className="dest-page-cta-section__title">{t('destinationsPage.startJourney')}</h2>
           <p className="dest-page-cta-section__sub">
-            Our team will craft the perfect itinerary for you. Reach out — we respond within 10–30 minutes.
+            {t('destinationsPage.ctaSubtitle')}
           </p>
           <div className="dest-page-cta-section__actions">
             <Link to={contactUrl} className="dest-page-cta-btn dest-page-cta-btn--primary">
-              Book This Adventure
+              {t('destinationsPage.bookAdventure')}
               <ArrowIcon />
             </Link>
             <Link to="/#destinations" className="dest-page-cta-btn dest-page-cta-btn--secondary">
-              Explore More Journeys
+              {t('destinationsPage.exploreMore')}
             </Link>
           </div>
         </div>

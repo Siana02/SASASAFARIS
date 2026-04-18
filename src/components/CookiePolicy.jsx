@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Cookie, Info, BarChart2, Sliders, Users2, Trash2, RefreshCw, Mail } from "lucide-react";
+import { useLanguage } from "../hooks/useLanguage";
 
-const sections = [
+const sectionsEn = [
   {
     icon: <Info size={22} />,
     title: "What Are Cookies?",
@@ -113,29 +114,150 @@ const sections = [
   },
 ];
 
+const sectionsIt = [
+  {
+    icon: <Info size={22} />,
+    title: "Cosa Sono i Cookie?",
+    content: (
+      <p>
+        I cookie sono piccoli file di testo che vengono salvati sul tuo dispositivo quando visiti un sito web. Ci aiutano a riconoscere il tuo browser, ricordare le tue preferenze e capire come interagisci con il nostro sito — così da migliorare continuamente la tua esperienza.
+      </p>
+    ),
+  },
+  {
+    icon: <Cookie size={22} />,
+    title: "Tipi di Cookie Che Utilizziamo",
+    content: (
+      <div className="legal-cookie-types">
+        <div className="legal-cookie-type">
+          <h3>Cookie Essenziali</h3>
+          <p>Necessari per il funzionamento del sito web. Abilitano le funzionalità di base come la lingua e le preferenze sui cookie. Non possono essere disabilitati.</p>
+        </div>
+        <div className="legal-cookie-type">
+          <h3>Cookie di Prestazione</h3>
+          <p>Ci aiutano a capire come i visitatori usano il nostro sito raccogliendo dati di utilizzo anonimi. Ci aiutano a migliorare il layout e i contenuti.</p>
+        </div>
+        <div className="legal-cookie-type">
+          <h3>Cookie di Funzionalità</h3>
+          <p>Ricordano le tue preferenze — come la lingua scelta e il tema — così non devi impostarle di nuovo ad ogni visita.</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    icon: <BarChart2 size={22} />,
+    title: "Come Utilizziamo i Cookie",
+    content: (
+      <ul>
+        <li>Ricordare la tua preferenza di lingua e tema tra una visita e l'altra.</li>
+        <li>Memorizzare le tue preferenze sul consenso ai cookie così da non doverlo chiedere ogni volta.</li>
+        <li>Analizzare come i visitatori navigano il sito per migliorarne l'usabilità.</li>
+        <li>Fornire contenuti pertinenti e raccomandazioni personalizzate.</li>
+        <li>Mantenere la sicurezza del sito e contribuire a prevenire attività fraudolente.</li>
+      </ul>
+    ),
+  },
+  {
+    icon: <Users2 size={22} />,
+    title: "Cookie di Terze Parti",
+    content: (
+      <p>
+        Alcune funzionalità del nostro sito si basano su servizi di terze parti (come strumenti di analisi) che possono impostare i propri cookie. Non controlliamo direttamente questi cookie. Utilizzando il nostro sito, riconosci che questi cookie di terze parti possono essere impostati sul tuo dispositivo in conformità con le loro politiche sulla privacy.
+      </p>
+    ),
+  },
+  {
+    icon: <Sliders size={22} />,
+    title: "Gestione delle Preferenze sui Cookie",
+    content: (
+      <>
+        <p>Hai diversi modi per gestire i cookie:</p>
+        <ul>
+          <li>Usa il <strong>banner di consenso</strong> quando visiti per la prima volta il nostro sito per scegliere le tue preferenze.</li>
+          <li>Regola le <strong>impostazioni del browser</strong> per bloccare o eliminare i cookie in qualsiasi momento.</li>
+          <li>Usa la modalità privacy/incognito del browser per evitare i cookie persistenti.</li>
+        </ul>
+        <p className="legal-note">
+          <strong>Nota:</strong> Disabilitare certi cookie può influire sul funzionamento di alcune parti del nostro sito.
+        </p>
+      </>
+    ),
+  },
+  {
+    icon: <Trash2 size={22} />,
+    title: "Conservazione dei Dati",
+    content: (
+      <div className="legal-retention-grid">
+        <div className="legal-retention-item">
+          <span className="legal-retention-type">Cookie di Sessione</span>
+          <span className="legal-retention-period">Eliminati alla chiusura del browser</span>
+        </div>
+        <div className="legal-retention-item">
+          <span className="legal-retention-type">Cookie Persistenti</span>
+          <span className="legal-retention-period">Conservati fino a 12 mesi</span>
+        </div>
+        <div className="legal-retention-item">
+          <span className="legal-retention-type">Cookie di Preferenza</span>
+          <span className="legal-retention-period">Fino a quando non cambi le impostazioni</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    icon: <RefreshCw size={22} />,
+    title: "Aggiornamenti a Questa Politica",
+    content: (
+      <p>
+        Potremmo aggiornare questa Politica sui Cookie di volta in volta per riflettere cambiamenti nelle nostre pratiche o per motivi legali e normativi. Qualsiasi modifica sarà pubblicata su questa pagina con una data di entrata in vigore rivista. Ti consigliamo di controllare periodicamente.
+      </p>
+    ),
+  },
+  {
+    icon: <Mail size={22} />,
+    title: "Domande?",
+    content: (
+      <p>
+        Se hai domande su come utilizziamo i cookie, contattaci:<br />
+        <strong>Email:</strong> info@sasasafaris.com<br />
+        <strong>Telefono:</strong> +254 711 589 004
+      </p>
+    ),
+  },
+];
+
 export default function CookiePolicy() {
+  const { currentLanguage } = useLanguage();
+  const isIt = currentLanguage === 'it';
+  const sections = isIt ? sectionsIt : sectionsEn;
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Cookie Policy — SASA Safaris Africa";
-  }, []);
+    document.title = isIt ? "Politica sui Cookie — SASA Safaris Africa" : "Cookie Policy — SASA Safaris Africa";
+  }, [isIt]);
 
   return (
     <main className="legal-page">
       {/* Hero */}
       <div className="legal-hero">
         <div className="legal-hero-icon"><Cookie size={40} /></div>
-        <h1 className="legal-hero-title">Cookie Policy</h1>
+        <h1 className="legal-hero-title">{isIt ? 'Politica sui Cookie' : 'Cookie Policy'}</h1>
         <p className="legal-hero-subtitle">
-          We use cookies to give you the best possible experience. Here's a plain-English explanation of exactly how.
+          {isIt
+            ? 'Utilizziamo i cookie per offrirti la migliore esperienza possibile. Ecco una spiegazione chiara e diretta di come lo facciamo.'
+            : "We use cookies to give you the best possible experience. Here's a plain-English explanation of exactly how."
+          }
         </p>
-        <p className="legal-hero-date">Last updated: {new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" })}</p>
+        <p className="legal-hero-date">{isIt ? 'Ultimo aggiornamento' : 'Last updated'}: {new Date().toLocaleDateString(isIt ? "it-IT" : "en-GB", { year: "numeric", month: "long", day: "numeric" })}</p>
       </div>
 
       {/* Content */}
       <div className="legal-content">
         <div className="legal-intro-card">
           <p>
-            This Cookie Policy explains how SASA Safaris Africa uses cookies and similar tracking technologies on our website. It also outlines your rights and choices regarding cookies.
+            {isIt
+              ? 'Questa Politica sui Cookie spiega come SASA Safaris Africa utilizza i cookie e tecnologie di tracciamento simili sul nostro sito web. Illustra inoltre i tuoi diritti e le tue scelte riguardo ai cookie.'
+              : 'This Cookie Policy explains how SASA Safaris Africa uses cookies and similar tracking technologies on our website. It also outlines your rights and choices regarding cookies.'
+            }
           </p>
         </div>
 
@@ -152,9 +274,9 @@ export default function CookiePolicy() {
         </div>
 
         <div className="legal-footer-ctas">
-          <Link to="/" className="legal-btn-primary">Back to Home</Link>
-          <Link to="/privacy" className="legal-btn-secondary">Privacy Policy</Link>
-          <Link to="/terms" className="legal-btn-secondary">Terms of Service</Link>
+          <Link to="/" className="legal-btn-primary">{isIt ? 'Torna alla Home' : 'Back to Home'}</Link>
+          <Link to="/privacy" className="legal-btn-secondary">{isIt ? 'Informativa sulla Privacy' : 'Privacy Policy'}</Link>
+          <Link to="/terms" className="legal-btn-secondary">{isIt ? 'Termini di Servizio' : 'Terms of Service'}</Link>
         </div>
       </div>
     </main>
