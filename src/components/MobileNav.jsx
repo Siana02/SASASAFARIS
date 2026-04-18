@@ -44,8 +44,10 @@ const MobileNav = () => {
           <Link to="/privacy" onClick={handleLinkClick}>{t('nav.privacy')}</Link>
         </li>
         <li>
-          <button onClick={handleLanguageSwitch} aria-label="Switch Language">
-            {currentLanguage === 'en' ? '🇮🇹 IT' : '🇬🇧 EN'}
+          <button onClick={handleLanguageSwitch} aria-label="Switch Language" className="lang-toggle">
+            <span className={`lang-option${currentLanguage === 'en' ? ' active' : ''}`}>EN</span>
+            <span className="lang-divider">|</span>
+            <span className={`lang-option${currentLanguage === 'it' ? ' active' : ''}`}>IT</span>
           </button>
         </li>
       </ul>
