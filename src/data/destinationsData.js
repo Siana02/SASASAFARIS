@@ -734,7 +734,8 @@ export const getDestinationById = (id, lang = 'en') => {
   const dest = destinationsData.find((d) => d.id === id);
   if (!dest) return null;
   const { en, it, ...structural } = dest;
-  const langContent = lang === 'it' && it ? it : en;
+  const normalizedLang = ['en', 'it'].includes(lang) ? lang : 'en';
+  const langContent = normalizedLang === 'it' && it ? it : en;
   return { ...structural, ...langContent };
 };
 

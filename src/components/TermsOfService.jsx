@@ -331,6 +331,10 @@ const sectionsIt = [
     ),
   },
 ];
+
+const CONTACT_EMAIL = "info@sasasafaris.com";
+const CONTACT_PHONE = "+254 711 589 004";
+
 export default function TermsOfService() {
   const { currentLanguage } = useLanguage();
   const isIt = currentLanguage === 'it';
@@ -405,8 +409,8 @@ export default function TermsOfService() {
             <h3>{isIt ? 'Hai bisogno di aiuto?' : 'Need Help?'}</h3>
             <p>
               {isIt
-                ? <>Per qualsiasi domanda su questi termini, contattaci a{" "}<a href="mailto:info@sasasafaris.com">info@sasasafaris.com</a> o chiama{" "}<a href="tel:+254711589004">+254 711 589 004</a>.</>
-                : <>For any questions about these terms, contact us at{" "}<a href="mailto:info@sasasafaris.com">info@sasasafaris.com</a> or call{" "}<a href="tel:+254711589004">+254 711 589 004</a>.</>
+                ? <>Per qualsiasi domanda su questi termini, contattaci a{" "}<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> o chiama{" "}<a href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`}>{CONTACT_PHONE}</a>.</>
+                : <>For any questions about these terms, contact us at{" "}<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or call{" "}<a href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`}>{CONTACT_PHONE}</a>.</>
               }
             </p>
           </div>
