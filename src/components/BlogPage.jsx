@@ -285,8 +285,8 @@ const BlogPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      'The Sasa Safaris Journal — African Safari Stories & Travel Guides | Sasa Safaris Africa',
-      'Safari stories, destination guides, and Kenya travel tips from Sasa Safaris Africa. Plan your tailor-made African safari with expert insight from our guides.',
+      'African Safari Blog — Travel Guides & Kenya Safari Tips | Sasa Safaris Africa',
+      'Safari stories, destination guides, and Kenya travel tips from Sasa Safaris Africa. Discover hidden gems in Watamu, the best time for safari in Kenya, what to pack, and more.',
       'https://www.sasasafaris.com/blog'
     );
   }, []);

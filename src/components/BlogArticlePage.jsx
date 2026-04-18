@@ -86,7 +86,7 @@ const BlogArticlePage = () => {
         "@type": "WebPage",
         "@id": `https://www.sasasafaris.com/blog/${article.id}`
       },
-      "keywords": "African safaris, Kenya safari, tailor-made safaris, Kenya travel"
+      "keywords": "African safari experiences, tailor-made safaris Kenya, custom-made safaris Africa, safari travel experts, Kenya safari planning"
     });
 
     return () => {

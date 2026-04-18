@@ -27,8 +27,8 @@ const AboutSection = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      'About Us — Born in Africa, Built for You | Sasa Safaris Africa',
-      'Learn about Sasa Safaris Africa — a boutique safari company rooted in Watamu, Kenya. Meet our expert guides and discover our story of crafting tailor-made African safari experiences.',
+      'About Us — Safari Travel Experts Africa | Sasa Safaris Africa',
+      'Meet Sasa Safaris Africa — boutique safari travel experts based in Watamu, Kenya. We craft tailor-made African safari experiences and luxury safaris across Kenya\'s best destinations.',
       'https://www.sasasafaris.com/about'
     );
   }, []);
@@ -88,7 +88,7 @@ const AboutSection = () => {
       <section className="about-story-section" id="our-story">
         <div className="about-story-inner">
           <div className="about-story-image-wrap">
-            <img src={WatamuMain} alt="Watamu coastline, Kenya" className="about-story-img" />
+            <img src={WatamuMain} alt="Watamu coastline — hidden gem on Kenya's coral coast" className="about-story-img" />
             <div className="about-story-img-badge">
               <MapPin size={18} />
               <span>Watamu, Kenya</span>
@@ -108,9 +108,9 @@ const AboutSection = () => {
       <div className="about-destinations-outer">
         <section className="about-destinations-teaser">
         <div className="about-dest-image-grid">
-          <img src={MaasaiMara} alt="Maasai Mara wildlife" className="about-dest-img about-dest-img--tall" />
-          <img src={TsavoEast1} alt="Tsavo East landscape" className="about-dest-img" />
-          <img src={SafariHero} alt="Safari experience" className="about-dest-img" />
+          <img src={MaasaiMara} alt="Maasai Mara safari wildlife — tailor-made safaris in Kenya" className="about-dest-img about-dest-img--tall" />
+          <img src={TsavoEast1} alt="Tsavo East National Park safari landscape, Kenya" className="about-dest-img" />
+          <img src={SafariHero} alt="Custom safari jeep experience Kenya — Sasa Safaris Africa" className="about-dest-img" />
         </div>
         <div className="about-dest-text">
           <p className="about-story-eyebrow">{t('aboutPage.destEyebrow')}</p>

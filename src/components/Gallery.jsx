@@ -71,8 +71,8 @@ const Gallery = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      'Safari Photo Gallery — Wildlife & Landscapes of Kenya | Sasa Safaris Africa',
-      'Browse stunning safari photography from Kenya — wildebeest migration, Maasai Mara wildlife, Watamu beach, Tsavo East elephants and more from Sasa Safaris Africa.',
+      'Safari Photo Gallery — African Safari Experiences in Kenya | Sasa Safaris Africa',
+      'Browse stunning safari photography from Kenya — wildebeest migration, Maasai Mara wildlife, Watamu hidden gems, Tsavo East elephants and more. Tailor-made African safari experiences.',
       'https://www.sasasafaris.com/gallery'
     );
   }, []);

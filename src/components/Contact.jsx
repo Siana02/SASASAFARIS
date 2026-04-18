@@ -12,8 +12,8 @@ export default function Contact() {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageMeta(
-      'Contact Us — Plan Your African Safari | Sasa Safaris Africa',
-      'Get in touch with Sasa Safaris Africa to plan your tailor-made Kenya safari. Our team responds within 10–30 minutes. Watamu, Kenya — available 24/7.',
+      'Plan Your Safari — Contact Sasa Safaris Africa | Tailor-Made Safaris Kenya',
+      'Contact Sasa Safaris Africa to plan your custom-made safari in Kenya. Private safari planning, tailor-made African safari experiences — our team responds in 10–30 minutes.',
       'https://www.sasasafaris.com/contact'
     );
   }, []);
