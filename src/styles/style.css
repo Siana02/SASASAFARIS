@@ -9817,10 +9817,6 @@ padding: 1rem 1.5rem;
 }
 
 @media (max-width: 600px) {
-  .legal-hero {
-    padding-top: 5.5rem;
-  }
-
   .legal-section {
     padding: 1.2rem 1rem;
   }
