@@ -6,7 +6,6 @@ import Header from './components/Header';
 import MobileNav from './components/MobileNav';
 import HeroSection from './components/HeroSection';
 
-import OfferSection from './components/OfferSection';
 import SuccessCountdown from './components/SuccessCountdown';
 import PackagesSection from './components/PackagesSection';
 import AboutSection from './components/AboutSection';
@@ -106,7 +105,6 @@ useEffect(() => {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/about" element={<AboutSection />} />
         <Route path="/packages" element={<PackagesSection />} />
-        <Route path="/offers" element={<OfferSection />} />
         {/* add other routes as needed */}
         {/* add other routes as needed */}
       </Routes>
