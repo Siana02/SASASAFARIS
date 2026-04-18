@@ -39,6 +39,7 @@ export const destinationsData = [
       "Non-alcoholic drinks during the excursion",
       "Marine park entry fees",
       "Hotel pickup and drop-off in Watamu area",
+      "Expert guides fluent in English and Italian",
     ],
     customizable: [
       "Private boat charter for couples or small groups",
@@ -92,6 +93,7 @@ export const destinationsData = [
       "Basic snorkeling equipment",
       "Marine park entry fees",
       "Hotel transfers within Watamu area",
+      "Expert guides fluent in English and Italian",
     ],
     customizable: [
       "Private boat charter for exclusive access",
@@ -145,6 +147,7 @@ export const destinationsData = [
       "Entry fees to Marafa Depression",
       "Private transport between sites",
       "Hotel transfers in Watamu / Malindi area",
+      "Expert guides fluent in English and Italian",
     ],
     customizable: [
       "Add-on: Watamu village cultural walk",
@@ -200,6 +203,7 @@ export const destinationsData = [
       "1 night accommodation — mid-range lodge or tented camp",
       "Full board (dinner, breakfast, lunch)",
       "All game drives as per itinerary",
+      "Expert guides fluent in English and Italian",
     ],
     customizable: [
       "Upgrade to luxury lodge or exclusive tented camp",
@@ -256,6 +260,7 @@ export const destinationsData = [
       "Small gift contribution to local community project",
       "Cooking class ingredients and tasting",
       "Hotel transfers within Watamu",
+      "Expert guides fluent in English and Italian",
     ],
     customizable: [
       "Sunrise fishermen's beach walk (early morning)",
@@ -312,6 +317,7 @@ export const destinationsData = [
       "2 nights accommodation — mid-range safari lodge or tented camp",
       "Full board (all meals)",
       "Game drives as per itinerary",
+      "Expert guides fluent in English and Italian",
     ],
     customizable: [
       "Upgrade to luxury or premium tented camp",

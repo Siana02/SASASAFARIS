@@ -2830,7 +2830,7 @@ a:focus-visible, button:focus-visible {
 .contact-page-hero {
   position: relative;
   text-align: center;
-  padding: 6rem 1.5rem 4rem;
+  padding: 11rem 1.5rem 4rem;
   overflow: hidden;
 }
 
@@ -2954,7 +2954,7 @@ a:focus-visible, button:focus-visible {
 
 @media (max-width: 900px) {
   .contact-page-hero {
-    padding: 4rem 1rem 3rem;
+    padding: 11rem 1rem 3rem;
   }
   .contact-page-grid {
     grid-template-columns: 1fr;
@@ -2985,6 +2985,12 @@ a:focus-visible, button:focus-visible {
   }
   .contact-page-grid > .contact-location iframe {
     min-height: 220px;
+  }
+}
+
+@media (max-width: 800px) {
+  .contact-page-hero {
+    padding-top: 5.5rem;
   }
 }
 
@@ -8306,7 +8312,7 @@ padding: 1rem 1.5rem;
 /* Back button */
 .dest-page-hero__back {
   position: absolute;
-  top: clamp(70px, 9vh, 100px);
+  top: 180px;
   left: clamp(1.2rem, 4vw, 3rem);
   z-index: 10;
   display: inline-flex;
@@ -8748,6 +8754,12 @@ padding: 1rem 1.5rem;
   }
 }
 
+@media (max-width: 800px) {
+  .dest-page-hero__back {
+    top: 80px;
+  }
+}
+
 @media (max-width: 600px) {
   .dest-page-hero {
     height: clamp(340px, 65vh, 560px);
@@ -8755,6 +8767,10 @@ padding: 1rem 1.5rem;
 
   .dest-page-hero__headline {
     font-size: clamp(1.8rem, 7vw, 2.6rem);
+  }
+
+  .dest-page-hero__back {
+    top: 75px;
   }
 
   .dest-page-section {
@@ -9367,7 +9383,7 @@ padding: 1rem 1.5rem;
 .legal-hero {
   background: linear-gradient(135deg, var(--accent-dark, #3a1a08) 0%, #1a0d04 100%);
   text-align: center;
-  padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 3rem) clamp(2.5rem, 5vw, 4rem);
+  padding: 11rem clamp(1.5rem, 5vw, 3rem) clamp(2.5rem, 5vw, 4rem);
   position: relative;
   overflow: hidden;
 }
@@ -9791,6 +9807,12 @@ padding: 1rem 1.5rem;
 
   .legal-cookie-types {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .legal-hero {
+    padding-top: 5.5rem;
   }
 }
 
