@@ -1,5 +1,8 @@
 {
   "outputDirectory": "dist",
+  "redirects": [
+    { "source": "/packages", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ]
