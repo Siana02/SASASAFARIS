@@ -79,7 +79,7 @@ const Footer = () => {
               <li><a href="/#destinations">{t('nav.destinations')}</a></li>
               <li><Link to="/gallery">{t('footer.gallery')}</Link></li>
               <li><Link to="/blog">{t('footer.blog')}</Link></li>
-              <li><Link to="/#faq">{t('footer.faq')}</Link></li>
+              <li><a href="/#faq">{t('footer.faq')}</a></li>
               <li><Link to="/contact">{t('footer.contacts')}</Link></li>
             </ul>
           </div>
@@ -139,7 +139,6 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-copyright">
             <p>&copy; {new Date().getFullYear()} {t('footer.copyright')}</p>
-            <p className="footer-designed-by">{t('footer.designedWith')}</p>
           </div>
 
           <div className="footer-legal">
@@ -147,6 +146,21 @@ const Footer = () => {
             <Link to="/cookies">{t('footer.cookiePolicy')}</Link>
             <Link to="/terms">{t('footer.termsOfService')}</Link>
           </div>
+        </div>
+
+        {/* Designer credit */}
+        <div className="marswebz-credit">
+          This website was designed by{" "}
+          <a
+            href="https://marswebz.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="marswebz-link"
+            aria-label="MARSWEBZ – visit designer's website"
+          >
+            <span className="marswebz-mars">MARS</span>
+            <span className="marswebz-webz">WEBZ</span>
+          </a>
         </div>
       </div>
     </footer>

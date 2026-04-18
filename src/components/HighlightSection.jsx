@@ -15,13 +15,28 @@ const FISH_BG = [
 ];
 
 /* ── Drag-to-pledge slider ── */
+const PLEDGE_DONE_DELAY_MS  = 700;  /* slider "done" visible before thank-you swap */
+const SLIDER_LEAVE_DELAY_MS = 350;  /* matches CSS fade-out transition */
+
 const PledgeSlider = ({ onPledge, labelIdle, labelDone }) => {
-  const trackRef   = useRef(null);
-  const thumbRef   = useRef(null);
-  const dragging   = useRef(false);
+  const trackRef    = useRef(null);
+  const thumbRef    = useRef(null);
+  const dragging    = useRef(false);
   const [thumbLeft,  setThumbLeft]  = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
   const [done,       setDone]       = useState(false);
+
+  /* Apply/remove the no-transition class directly on the DOM element
+     so the thumb tracks the pointer with zero lag, without waiting for
+     a React re-render to remove the CSS transition. */
+  const setDraggingStyle = (active) => {
+    const thumb = thumbRef.current;
+    if (!thumb) return;
+    if (active) {
+      thumb.classList.add("is-dragging");
+    } else {
+      thumb.classList.remove("is-dragging");
+    }
+  };
 
   const complete = useCallback(() => {
     const track = trackRef.current;
@@ -30,13 +45,14 @@ const PledgeSlider = ({ onPledge, labelIdle, labelDone }) => {
     const max = track.offsetWidth - thumb.offsetWidth - 8;
     setThumbLeft(max);
     setDone(true);
-    onPledge();
+    /* Brief pause so the "done" state is visible, then reveal thank-you */
+    setTimeout(() => onPledge(), PLEDGE_DONE_DELAY_MS);
   }, [onPledge]);
 
   const handlePointerDown = (e) => {
     if (done) return;
     dragging.current = true;
-    setIsDragging(true);
+    setDraggingStyle(true);
     e.currentTarget.setPointerCapture(e.pointerId);
   };
 
@@ -45,15 +61,15 @@ const PledgeSlider = ({ onPledge, labelIdle, labelDone }) => {
     const track = trackRef.current;
     const thumb = thumbRef.current;
     if (!track || !thumb) return;
-    const rect  = track.getBoundingClientRect();
+    const rect   = track.getBoundingClientRect();
     const thumbW = thumb.offsetWidth;
-    const max   = rect.width - thumbW - 8;
-    const x     = e.clientX - rect.left - thumbW / 2;
+    const max    = rect.width - thumbW - 8;
+    const x      = e.clientX - rect.left - thumbW / 2;
     const clamped = Math.min(max, Math.max(0, x));
     setThumbLeft(clamped);
-    if (clamped / max >= 0.85) {
+    if (clamped / max >= 0.9) {
       dragging.current = false;
-      setIsDragging(false);
+      setDraggingStyle(false);
       complete();
     }
   };
@@ -61,7 +77,7 @@ const PledgeSlider = ({ onPledge, labelIdle, labelDone }) => {
   const handlePointerUp = () => {
     if (!done) setThumbLeft(0);
     dragging.current = false;
-    setIsDragging(false);
+    setDraggingStyle(false);
   };
 
   const handleKeyDown = (e) => {
@@ -85,7 +101,7 @@ const PledgeSlider = ({ onPledge, labelIdle, labelDone }) => {
       </span>
       <div
         ref={thumbRef}
-        className={`eco-pledge-slider-thumb${isDragging ? " is-dragging" : ""}${done ? " is-done" : ""}`}
+        className={`eco-pledge-slider-thumb${done ? " is-done" : ""}`}
         style={{ transform: `translateX(${thumbLeft}px)` }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
@@ -110,7 +126,9 @@ const EcoReminderSection = () => {
   const { t }      = useLanguage();
   const navigate   = useNavigate();
   const sectionRef = useRef(null);
-  const [pledged,  setPledged]  = useState(false);
+  const [pledged,      setPledged]      = useState(false);
+  const [sliderLeaving, setSliderLeaving] = useState(false);
+  const [isVisible,    setIsVisible]    = useState(false);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -118,7 +136,7 @@ const EcoReminderSection = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("is-visible");
+          setIsVisible(true);
           observer.disconnect();
         }
       },
@@ -129,7 +147,8 @@ const EcoReminderSection = () => {
   }, []);
 
   const handlePledge = useCallback(() => {
-    setPledged(true);
+    setSliderLeaving(true);
+    setTimeout(() => setPledged(true), SLIDER_LEAVE_DELAY_MS);
   }, []);
 
   const pledges = [
@@ -144,7 +163,7 @@ const EcoReminderSection = () => {
   return (
     <section
       ref={sectionRef}
-      className={`eco-reminder-section${pledged ? " has-pledged" : ""}`}
+      className={`eco-reminder-section${isVisible ? " is-visible" : ""}${pledged ? " has-pledged" : ""}`}
       aria-label={t("ecoReminder.ariaLabel")}
     >
       {/* Ambient background fish */}
@@ -188,16 +207,21 @@ const EcoReminderSection = () => {
         {/* Drag-to-pledge block */}
         <div className="eco-pledge-cta-block">
           {pledged ? (
-            <p className="eco-pledge-thanks">{t("ecoReminder.pledgeThanks")}</p>
+            <div className="eco-pledge-thanks-wrap">
+              <span className="eco-pledge-thanks-icon" aria-hidden="true">
+                <i className="fa-solid fa-earth-africa" />
+              </span>
+              <p className="eco-pledge-thanks">{t("ecoReminder.pledgeThanks")}</p>
+            </div>
           ) : (
-            <>
+            <div className={`eco-pledge-slider-wrap${sliderLeaving ? " is-leaving" : ""}`}>
               <p className="eco-pledge-prompt">{t("ecoReminder.pledgePrompt")}</p>
               <PledgeSlider
                 onPledge={handlePledge}
                 labelIdle={t("ecoReminder.slideIdle")}
                 labelDone={t("ecoReminder.slideDone")}
               />
-            </>
+            </div>
           )}
         </div>
 

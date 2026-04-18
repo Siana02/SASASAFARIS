@@ -128,7 +128,7 @@ const Gallery = () => {
         <p className="gallery-cta__text">
           {t('galleryPage.ctaText')}
         </p>
-        <Link to="/packages" className="gallery-cta__btn">
+        <Link to="/#destinations" className="gallery-cta__btn">
           {t('galleryPage.ctaBtn')}
         </Link>
       </div>

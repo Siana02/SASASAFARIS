@@ -15,8 +15,8 @@ const Header = () => {
       </div>
       <nav className="nav desktop-nav">
         <ul className="nav-links">
-          <li><a href="#destinations">{t('nav.destinations')}</a></li>
-          <li><a href="#about">{t('nav.about')}</a></li>
+          <li><a href="/#destinations">{t('nav.destinations')}</a></li>
+          <li><Link to="/about">{t('nav.about')}</Link></li>
           <li>
             <Link to="/contact">{t('nav.contacts')}</Link>
           </li>

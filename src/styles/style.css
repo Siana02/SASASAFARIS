@@ -3571,22 +3571,32 @@ a:focus-visible, button:focus-visible {
   cursor: grab;
   touch-action: none;
   box-shadow: 0 3px 10px rgba(212, 133, 42, 0.4);
+  /* Bounce-back on release; suppressed during drag via .is-dragging */
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.25s ease;
   will-change: transform;
   z-index: 2;
+  animation: eco-thumb-pulse 2.2s ease-in-out 1.5s infinite;
 }
 
-/* Disable transform transition while dragging so thumb tracks pointer without lag */
+/* Idle pulsing hint – stops as soon as dragging starts */
+@keyframes eco-thumb-pulse {
+  0%, 100% { box-shadow: 0 3px 10px rgba(212, 133, 42, 0.4); }
+  50%       { box-shadow: 0 4px 18px rgba(212, 133, 42, 0.7), 0 0 0 6px rgba(212, 133, 42, 0.15); }
+}
+
+/* Disable transform transition AND pulse while dragging */
 .eco-pledge-slider-thumb.is-dragging {
   transition: box-shadow 0.2s ease, background 0.25s ease;
   cursor: grabbing;
   box-shadow: 0 6px 18px rgba(212, 133, 42, 0.55);
+  animation: none;
 }
 
 .eco-pledge-slider-thumb.is-done {
   background: var(--accent, #c8963e);
   cursor: default;
   box-shadow: 0 3px 12px rgba(200, 150, 62, 0.45);
+  animation: none;
 }
 
 .eco-pledge-slider-thumb:focus-visible {
@@ -3594,21 +3604,54 @@ a:focus-visible, button:focus-visible {
   outline-offset: 3px;
 }
 
+/* ── Slider wrapper fade-out on pledge ── */
+.eco-pledge-slider-wrap {
+  /* No transition when idle – avoids unnecessary GPU layer */
+}
+.eco-pledge-slider-wrap.is-leaving {
+  opacity: 0;
+  transform: scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
 /* ── Post-pledge thank-you message ── */
+.eco-pledge-thanks-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0 0.25rem;
+  animation: eco-thanks-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.eco-pledge-thanks-icon {
+  font-size: 2.4rem;
+  color: var(--accent, #c8963e);
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px rgba(200, 150, 62, 0.45));
+  animation: eco-thanks-icon-spin 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes eco-thanks-icon-spin {
+  from { transform: scale(0) rotate(-30deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);  opacity: 1; }
+}
+
 .eco-pledge-thanks {
   font-family: var(--heading-font, 'Cormorant Garamond', serif);
-  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
   font-style: italic;
+  font-weight: 600;
   color: var(--accent, #c8963e);
   line-height: 1.7;
   margin: 0;
-  padding: 1rem 0;
   text-align: center;
-  animation: eco-thanks-in 0.55s ease forwards;
+  text-shadow: 0 1px 4px rgba(200, 150, 62, 0.18);
 }
 
 @keyframes eco-thanks-in {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: none; }
 }
 
@@ -3683,7 +3726,11 @@ a:focus-visible, button:focus-visible {
   .eco-pledge-slider-done-label { animation: none !important; }
   .eco-pledge-slider-done-label { opacity: 1 !important; transform: none !important; }
   .eco-reminder-section.has-pledged { animation: none !important; }
+  .eco-pledge-thanks-wrap { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .eco-pledge-thanks-icon { animation: none !important; opacity: 1 !important; transform: none !important; }
   .eco-pledge-thanks { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .eco-pledge-slider-wrap.is-leaving { transition: none !important; opacity: 0 !important; }
+  .eco-pledge-slider-thumb { animation: none !important; }
   .eco-reminder-section.is-fading { transition: none !important; }
   .eco-reminder-eyebrow,
   .eco-reminder-title,
@@ -3923,6 +3970,68 @@ a:focus-visible, button:focus-visible {
 }
 
 
+
+/* ========== MARSWEBZ DESIGNER CREDIT ========== */
+
+@font-face {
+  font-family: 'WebFontProject';
+  src: url('../assets/Web_font_project.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@keyframes marswebz-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 4px rgba(0, 220, 255, 0.4),
+      0 0 8px rgba(0, 220, 255, 0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 8px rgba(0, 220, 255, 0.7),
+      0 0 18px rgba(0, 220, 255, 0.45),
+      0 0 30px rgba(0, 220, 255, 0.2);
+  }
+}
+
+.marswebz-credit {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+  margin-top: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.marswebz-link {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'WebFontProject', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  vertical-align: middle;
+  animation: marswebz-glow 3s ease-in-out infinite;
+  transition: transform 0.25s ease, letter-spacing 0.25s ease;
+}
+
+.marswebz-link:hover {
+  transform: scale(1.06);
+  letter-spacing: 0.12em;
+  animation: none;
+  text-shadow:
+    0 0 10px rgba(0, 220, 255, 0.9),
+    0 0 22px rgba(0, 220, 255, 0.6),
+    0 0 40px rgba(0, 220, 255, 0.35);
+}
+
+.marswebz-mars {
+  color: #ffffff;
+}
+
+.marswebz-webz {
+  color: #00dcff;
+}
 
 /* --- Privacy Policy Page --- */
 .privacy-policy-page {
@@ -4584,6 +4693,7 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 80px;
 }
 .gallery-hero__overlay {
   position: absolute;
@@ -8888,6 +8998,7 @@ padding: 1rem 1.5rem;
   background-position: center 40%;
   display: flex;
   align-items: flex-end;
+  padding-top: 80px;
   padding-bottom: 5rem;
 }
 
@@ -9836,7 +9947,7 @@ padding: 1rem 1.5rem;
   border-bottom: none;
 }
 
-.legal-canc-row.header {
+.legal-canc-row.legal-canc-header {
   background: var(--accent-dark, #3a1a08);
   color: var(--accent);
   font-weight: 700;

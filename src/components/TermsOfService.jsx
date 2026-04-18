@@ -28,7 +28,7 @@ const sectionsEn = [
       <>
         <p>All cancellations must be submitted in writing. The following charges apply:</p>
         <div className="legal-cancellation-table">
-          <div className="legal-canc-row header">
+          <div className="legal-canc-row legal-canc-header">
             <span>Notice Period</span>
             <span>Charge</span>
           </div>

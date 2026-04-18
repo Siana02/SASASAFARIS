@@ -29,10 +29,10 @@ const MobileNav = () => {
       <div className="menu-divider"></div>
       <ul className="mobile-nav-list">
         <li>
-          <a href="#destinations" onClick={handleLinkClick}>{t('nav.destinations')}</a>
+          <a href="/#destinations" onClick={handleLinkClick}>{t('nav.destinations')}</a>
         </li>
         <li>
-          <a href="#about" onClick={handleLinkClick}>{t('nav.about')}</a>
+          <Link to="/about" onClick={handleLinkClick}>{t('nav.about')}</Link>
         </li>
         <li>
           <Link to="/contact" onClick={handleLinkClick}>{t('nav.contacts')}</Link>
