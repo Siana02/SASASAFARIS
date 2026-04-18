@@ -48,8 +48,8 @@ const ALL_IMAGE_SRCS = Object.values(assetImages).filter(
 function HomePage() {
   useEffect(() => {
     setPageMeta(
-      'Sasa Safaris Africa — Tailor-Made African Safaris | Kenya',
-      'Sasa Safaris Africa is a boutique safari travel company offering tailor-made African safari experiences in Kenya — Maasai Mara, Amboseli, Tsavo East, Watamu coast and beyond.',
+      'Tailor-Made African Safaris | Sasa Safaris Africa',
+      'Discover custom-made safaris and luxury African safari experiences in Kenya — Maasai Mara, Amboseli, Tsavo East, Watamu coast and beyond. Expert private safari planning from Watamu.',
       'https://www.sasasafaris.com/'
     );
   }, []);

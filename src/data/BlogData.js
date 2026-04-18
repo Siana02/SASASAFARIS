@@ -19,10 +19,10 @@ const blogArticlesData = [
     image: WatamuMain,
     date: "2 Marzo 2026 / March 2, 2026",
     en: {
-      title: "Top 5 Hidden Gems in Watamu",
+      title: "Top 5 Hidden Gems in Watamu, Kenya",
       excerpt:
         "Discover the secret side of Watamu — from silent mangroves to secluded shores the crowds never find.",
-      imageAlt: "Watamu coastline and turquoise ocean",
+      imageAlt: "Hidden gems in Watamu — turquoise coastline on Kenya's unspoiled coral coast",
       tag: "Destinations",
       readTime: "5 min read",
       stats: [
@@ -36,7 +36,7 @@ const blogArticlesData = [
       },
       content: {
         intro:
-          "Most visitors to Watamu find the Marine Park and the postcard beaches — and leave feeling like they've seen it. But those who slow down, who ask the right questions, who wander a little further — they find the other Watamu. The one that doesn't appear in brochures.",
+          "Watamu's most spectacular experiences don't advertise themselves. Most visitors find the Marine Park and the postcard beaches — and leave feeling like they've seen it all. But the true hidden gems in Watamu reveal themselves only to those who slow down, ask the right questions, and wander a little further. The one that doesn't appear in brochures.",
         sections: [
           {
             heading: "1. Mida Creek",
@@ -57,6 +57,10 @@ const blogArticlesData = [
           {
             heading: "5. Secret Beach Spots",
             body: "Ask anyone who has lived in Watamu for a decade and they'll point you somewhere different. North of Blue Lagoon, past the last resort, the beach narrows into something wild. No sun-beds, no hawkers — just white sand, driftwood, and the sound of waves uninterrupted. The kind of beach you describe to friends and then half-regret sharing.",
+          },
+          {
+            heading: "How to Explore the Hidden Gems in Watamu",
+            body: "The most rewarding way to discover these hidden gems in Watamu is with a local guide who knows where to look. Our safari team can build a full day itinerary covering Mida Creek, Sudi Island, and the secret coastline — or weave them into a broader Kenya safari and coast experience tailored entirely to you.",
           },
         ],
         conclusion:
@@ -114,10 +118,10 @@ const blogArticlesData = [
     image: WatamuCulturalTour1,
     date: "18 Marzo 2026 / March 18, 2026",
     en: {
-      title: "Top 5 Swahili Dishes You Have to Try",
+      title: "Swahili Food Guide: 5 Dishes You Must Try on Kenya's Coast",
       excerpt:
         "Swahili cuisine is centuries of spice routes, Indian Ocean trade, and coastal tradition served on a single plate.",
-      imageAlt: "Swahili coastal food and spices",
+      imageAlt: "Swahili food guide — traditional coastal dishes and spices from the Kenya coast",
       tag: "Culture & Food",
       readTime: "6 min read",
       stats: [
@@ -131,7 +135,7 @@ const blogArticlesData = [
       },
       content: {
         intro:
-          "To eat Swahili food is to understand the Indian Ocean. Every dish on the Kenyan coast carries the fingerprints of Arab traders, Indian merchants, Portuguese explorers, and the Bantu communities who wove them all together into something uniquely their own. Here are five dishes that will make you genuinely reconsider what you thought you knew about African cuisine.",
+          "Consider this your essential Swahili food guide — because to eat Swahili food is to understand the Indian Ocean. Every dish on the Kenyan coast carries the fingerprints of Arab traders, Indian merchants, Portuguese explorers, and the Bantu communities who wove them all together into something uniquely their own. Here are five dishes that will make you genuinely reconsider what you thought you knew about African cuisine.",
         sections: [
           {
             heading: "1. Biryani ya Pwani",
@@ -152,6 +156,10 @@ const blogArticlesData = [
           {
             heading: "5. Coconut Fish Curry",
             body: "Whatever was caught that morning goes into the pot. Snapper, barracuda, kingfish — simmered low and slow in freshly pressed coconut milk with tomato, turmeric, and a dozen spices ground by hand. It is simultaneously light and rich, the coconut cutting through the heat of the chilli, the fish falling apart at the touch of a fork. Eat it with white rice and eat it slowly. Find it: at homes along the coast and the handful of restaurants that haven't discovered shortcuts.",
+          },
+          {
+            heading: "Your Swahili Food Guide: Where to Eat on the Kenya Coast",
+            body: "The best places to find authentic Swahili food are rarely the tourist-facing restaurants. Ask your guide, your host, or the person at the market stall. On a Sasa Safaris coastal tour, we build food into the experience — local lunches, market visits, and the occasional meal cooked by families who've been preparing these dishes for generations.",
           },
         ],
         conclusion:
@@ -212,7 +220,7 @@ const blogArticlesData = [
       title: "Best Time to Go on a Safari in Kenya",
       excerpt:
         "Dry season gives you dust clouds and predators at every waterhole. The green season gives you something else entirely.",
-      imageAlt: "Wildebeest crossing the Mara River during the Great Migration",
+      imageAlt: "Best time for safari in Kenya — wildebeest crossing the Mara River during the Great Migration",
       tag: "Safari Planning",
       readTime: "7 min read",
       stats: [
@@ -226,7 +234,7 @@ const blogArticlesData = [
       },
       content: {
         intro:
-          "Everyone asks when the best time to go is. The honest answer: it depends on what you want to see. Kenya's wildlife calendar is rich enough that every month offers something worth travelling for — you just need to know what you're looking at.",
+          "Everyone asks about the best time for a safari in Kenya. The honest answer: it depends on what you want to see. Kenya's wildlife calendar is rich enough that every month offers something worth travelling for — you just need to know what you're looking at.",
         sections: [
           {
             heading: "1. Dry Season (June – October)",
@@ -247,6 +255,10 @@ const blogArticlesData = [
           {
             heading: "5. Budget vs. Peak Seasons",
             body: "High season (July–October) commands premium rates across lodges and camps, particularly in the Maasai Mara. Travelling in November, January, or February gives you excellent wildlife viewing at 30–50% lower rates. Shoulder months like June and November hit a sweet spot: good conditions, lower prices, fewer vehicles at every sighting.",
+          },
+          {
+            heading: "Our Recommendation: Best Time for Safari in Kenya",
+            body: "For first-timers, we recommend July to October for reliable wildlife viewing and the chance to witness the Great Migration. For affordable luxury safaris with fewer crowds, January to March is ideal. Whatever window you choose, our safari travel experts will build an itinerary that makes the most of it.",
           },
         ],
         conclusion:
@@ -304,10 +316,10 @@ const blogArticlesData = [
     image: ElephantSunset,
     date: "12 Aprile 2026 / April 12, 2026",
     en: {
-      title: "How to Plan Your First African Safari",
+      title: "How to Plan Your First African Safari: Essential First-Time Safari Tips",
       excerpt:
         "The first safari can feel overwhelming from the outside. From the inside, once you're there, everything makes perfect sense.",
-      imageAlt: "Elephants silhouetted against a golden sunset in Kenya",
+      imageAlt: "How to plan a safari in Africa — elephants silhouetted at golden sunset in Kenya",
       tag: "Safari Guide",
       readTime: "8 min read",
       stats: [
@@ -321,7 +333,7 @@ const blogArticlesData = [
       },
       content: {
         intro:
-          "The moment you start researching safaris, the options multiply fast. Dozens of parks, hundreds of lodges, peak season versus green season, self-drive versus guided, fly-in versus road transfer. It can feel genuinely complicated. It isn't — once someone breaks it down for you. Consider this that breakdown.",
+          "The moment you start researching safaris, the options multiply fast. Dozens of parks, hundreds of lodges, peak season versus green season, self-drive versus guided, fly-in versus road transfer. These first-time safari tips will help you cut through the noise. It can feel genuinely complicated — but it isn't, once someone breaks it down for you. Consider this that breakdown.",
         sections: [
           {
             heading: "1. Choosing Your Destination",
@@ -332,7 +344,7 @@ const blogArticlesData = [
             body: "A well-designed safari doesn't have to be expensive — it needs to be well-matched to what you actually want. Budget options exist (banda accommodation, camping, shared game drives) and they deliver genuine wildlife experiences. Mid-range lodge safaris offer comfort and excellent guiding. Luxury camps add private vehicles, gourmet food, and access to private conservancies. The biggest cost drivers are park fees, accommodation tier, and season. Be honest about your budget early and let a specialist build around it.",
           },
           {
-            heading: "3. What to Pack",
+            heading: "3. What to Pack for a Safari in Kenya",
             body: "Safari packing is simpler than you think. Neutral colours (khaki, olive, brown — not white, not bright patterns). Lightweight layers for cold mornings and warm afternoons. Good walking shoes. A hat and sunscreen. A quality torch. Most importantly: a camera or the acceptance that you'll be present instead of documenting. Luggage for fly-in safaris is typically limited to 15kg soft-sided bags — plan accordingly.",
           },
           {

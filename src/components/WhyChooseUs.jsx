@@ -109,7 +109,7 @@ const WhyChooseUs = () => {
 
       {/* ── Human Moment Strip (FIRST — breaks pattern, sets emotion) ── */}
       <div className="wcu-moment-strip" ref={stripRef}>
-        <LazyHeroImg src={ElephantSunset} alt="Elephants at a lake during golden sunset in Africa" />
+        <LazyHeroImg src={ElephantSunset} alt="Luxury safari in Kenya — elephants at golden sunset in the African bush" />
         <div className="wcu-moment-overlay" aria-hidden="true" />
         <div className="wcu-moment-text">
           <span className="wcu-moment-quote">&#8220;</span>
