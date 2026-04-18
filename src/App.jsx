@@ -6,9 +6,7 @@ import Header from './components/Header';
 import MobileNav from './components/MobileNav';
 import HeroSection from './components/HeroSection';
 
-import OfferSection from './components/OfferSection';
 import SuccessCountdown from './components/SuccessCountdown';
-import PackagesSection from './components/PackagesSection';
 import AboutSection from './components/AboutSection';
 import ReviewSection from './components/ReviewSection';
 import HomepageContactCTA from "./components/HomepageContactCTA";
@@ -18,6 +16,7 @@ import HowWeWork from './components/HowWeWork';
 import WhyChooseUs from './components/WhyChooseUs';
 import Footer from './components/Footer';
 import ContactWidget from './components/ContactWidget';
+import CookiePopup from './components/CookiePopup';
 import ViewDetails from './components/ViewDetails'; // adjust path if needed
 import Contact from "./components/Contact";
 import PrivacyPolicy from "./components/PrivacyPolicy";
@@ -105,15 +104,13 @@ useEffect(() => {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/about" element={<AboutSection />} />
-        <Route path="/packages" element={<PackagesSection />} />
-        <Route path="/offers" element={<OfferSection />} />
         {/* add other routes as needed */}
         {/* add other routes as needed */}
       </Routes>
       <Footer />
       {/* <ThemeMessage /> */}
 {/* <LanguageBanner /> */}
-{/* <CookiePopup /> */}
+<CookiePopup />
       </MobileNavProvider>
     </BrowserRouter>
     </>
