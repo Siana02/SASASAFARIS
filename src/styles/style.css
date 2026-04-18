@@ -3971,6 +3971,68 @@ a:focus-visible, button:focus-visible {
 
 
 
+/* ========== MARSWEBZ DESIGNER CREDIT ========== */
+
+@font-face {
+  font-family: 'WebFontProject';
+  src: url('../assets/Web_font_project.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@keyframes marswebz-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 4px rgba(0, 220, 255, 0.4),
+      0 0 8px rgba(0, 220, 255, 0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 8px rgba(0, 220, 255, 0.7),
+      0 0 18px rgba(0, 220, 255, 0.45),
+      0 0 30px rgba(0, 220, 255, 0.2);
+  }
+}
+
+.marswebz-credit {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+  margin-top: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.marswebz-link {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'WebFontProject', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  vertical-align: middle;
+  animation: marswebz-glow 3s ease-in-out infinite;
+  transition: transform 0.25s ease, letter-spacing 0.25s ease;
+}
+
+.marswebz-link:hover {
+  transform: scale(1.06);
+  letter-spacing: 0.12em;
+  animation: none;
+  text-shadow:
+    0 0 10px rgba(0, 220, 255, 0.9),
+    0 0 22px rgba(0, 220, 255, 0.6),
+    0 0 40px rgba(0, 220, 255, 0.35);
+}
+
+.marswebz-mars {
+  color: #ffffff;
+}
+
+.marswebz-webz {
+  color: #00dcff;
+}
+
 /* --- Privacy Policy Page --- */
 .privacy-policy-page {
   max-width: 820px;
