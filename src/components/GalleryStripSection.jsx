@@ -46,6 +46,29 @@ const IMAGES = [
   VacationHero,
 ];
 
+const IMAGE_ALTS = [
+  "Elephants silhouetted against a golden sunset in Kenya",
+  "Classic Maasai Mara safari landscape with acacia trees",
+  "Amboseli National Park elephants with Mount Kilimanjaro backdrop",
+  "Giraffe standing tall against the savanna in South Africa",
+  "Wildebeest migration crossing the Mara River in Kenya",
+  "Lion resting in the Maasai Mara at dusk",
+  "Tsavo East National Park red-dust landscape and wildlife",
+  "Family enjoying a guided safari game drive in Kenya",
+  "Romantic sundowner safari in the African bush",
+  "Coastal experience at Watamu beach on the Kenyan coast",
+  "Kenyan coastline with turquoise Indian Ocean waters",
+  "Great Rift Valley sweeping landscape at sunset",
+  "Wilderness explorer on a walking safari in Kenya",
+  "Safari Blue dhow excursion in the clear waters off Watamu",
+  "Tsavo East safari at sunset with golden light on the plains",
+  "Dolphins swimming during a Safari Blue boat trip in Kenya",
+  "Hell's Kitchen rock formation in Marafa Depression, Kenya",
+  "Watamu cultural tour showing local Giriama traditions",
+  "Swahili cultural experience along the Kenyan coast",
+  "Beach vacation on the pristine shores of Watamu, Kenya",
+];
+
 const IMG_SIZE = 280;   // square size in px
 const IMG_GAP = 14;     // gap between images in px
 const STEP = 4;         // images to advance per slide
@@ -184,7 +207,7 @@ const GalleryStripSection = () => {
                 <div className="gallery-strip__item" key={idx}>
                   <img
                     src={src}
-                    alt={`Safari moment ${(idx % total) + 1}`}
+                    alt={IMAGE_ALTS[idx % total]}
                     loading="lazy"
                     draggable="false"
                   />

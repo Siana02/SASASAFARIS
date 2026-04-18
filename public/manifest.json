@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Sasa Safaris",
+  "name": "Sasa Safaris Africa — Tailor-Made African Safaris",
+  "description": "Boutique safari travel company based in Watamu, Kenya. Custom African safari experiences in Maasai Mara, Amboseli, Tsavo East and beyond.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +19,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#c8963e",
+  "background_color": "#fdf8f0"
 }
