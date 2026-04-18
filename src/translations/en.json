@@ -208,7 +208,8 @@
     "newsletterDesc": "Subscribe to get updates on new packages and offers",
     "emailPlaceholder": "Enter your email",
     "subscribe": "Subscribe",
-    "copyright": "2024 SASA Safaris. All rights reserved.",
+    "copyright": "SASA Safaris. All rights reserved.",
+    "designedWith": "Website designed & developed with ♡ for Africa",
     "privacyPolicy": "Privacy Policy",
     "cookiePolicy": "Cookie Policy",
     "termsOfService": "Terms of Service"
@@ -498,5 +499,19 @@
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy",
     "lastUpdated": "Last updated"
+  },
+  "blogPreview": {
+    "eyebrow": "Stories & Inspiration",
+    "title": "From the Sasa Safaris Journal",
+    "subtitle": "Expert safari guides, cultural deep-dives, and real traveller stories — curated to make every trip better.",
+    "stat1Label": "TripAdvisor Rating",
+    "stat2Label": "Safaris Planned",
+    "stat3Label": "Would Recommend",
+    "stat4Label": "Years of Experience",
+    "reviewText": "Sasa Safaris took care of absolutely everything. We saw the Big 5 on day one. I've travelled a lot and this is the best wildlife experience I've ever had.",
+    "reviewOrigin": "United Kingdom",
+    "ctaNudge": "Join 500+ travellers who've used our guides to plan their perfect safari.",
+    "ctaBtn": "Read All Articles",
+    "keyFacts": "Key facts"
   }
 }

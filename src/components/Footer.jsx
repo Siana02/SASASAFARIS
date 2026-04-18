@@ -137,9 +137,10 @@ const Footer = () => {
 
         {/* Footer bottom */}
         <div className="footer-bottom">
-  <div className="footer-copyright">
-    <p>&copy; {new Date().getFullYear()}</p>
-  </div>
+          <div className="footer-copyright">
+            <p>&copy; {new Date().getFullYear()} {t('footer.copyright')}</p>
+            <p className="footer-designed-by">{t('footer.designedWith')}</p>
+          </div>
 
           <div className="footer-legal">
             <Link to="/privacy">{t('footer.privacyPolicy')}</Link>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { getBlogArticles, getFeaturedArticle } from "../data/BlogData";
-import LazyImage from "./LazyImage";
+import { getBlogArticles, getFeaturedArticle } from "../data/BlogData";import LazyImage from "./LazyImage";
 import { useLanguage } from "../hooks/useLanguage";
 
 const PRESS_QUOTES = [
@@ -273,8 +272,11 @@ const BlogNewsletter = () => {
 
 // ── Main BlogPage ─────────────────────────────────────────────────────────────
 const BlogPage = () => {
-  const { t } = useLanguage();
+  const { t, currentLanguage } = useLanguage();
   const [activeArticle, setActiveArticle] = useState(null);
+
+  const articles = getBlogArticles(currentLanguage);
+  const featured = getFeaturedArticle(currentLanguage);
 
   if (activeArticle) {
     return (
@@ -338,7 +340,7 @@ const BlogPage = () => {
           <span className="blog-section-eyebrow">{t('blog.featuredRead')}</span>
         </div>
         <ArticleCard
-          article={featuredArticle}
+          article={featured}
           featured
           onClick={setActiveArticle}
         />
@@ -354,7 +356,7 @@ const BlogPage = () => {
           <h2 className="blog-section-title">{t('blog.allArticlesTitle')}</h2>
         </div>
         <div className="blog-grid">
-          {blogArticles.map((article) => (
+          {articles.map((article) => (
             <ArticleCard
               key={article.id}
               article={article}
