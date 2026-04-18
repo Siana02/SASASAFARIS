@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import {
   Facebook,
@@ -14,11 +14,6 @@ import { SasaSafarisLogo } from "../assets/images";
 
 const Footer = () => {
   const { t } = useLanguage();
-  
-  // useEffect is inside the component; only ONE Footer function
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <footer className="footer">

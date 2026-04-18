@@ -30,6 +30,7 @@ import BlogPreviewSection from "./components/BlogPreviewSection";
 import FAQSection from "./components/FAQSection";
 import BlogPage from "./components/BlogPage";
 import { MobileNavProvider } from './contexts/MobileNavContext';
+import ScrollToTop from './components/ScrollToTop';
 import './styles/style.css';
 
 // Collect every image URL exported from assets/images so the preload screen
@@ -90,6 +91,7 @@ useEffect(() => {
       {!preloadDone && <PreloadScreen onComplete={() => setPreloadDone(true)} images={ALL_IMAGE_SRCS} />}
       <BrowserRouter>
       <MobileNavProvider>
+      <ScrollToTop />
       <Header />
       <MobileNav />
       <ContactWidget />
