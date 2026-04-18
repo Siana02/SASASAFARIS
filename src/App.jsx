@@ -30,6 +30,7 @@ import BlogPreviewSection from "./components/BlogPreviewSection";
 import FAQSection from "./components/FAQSection";
 import BlogPage from "./components/BlogPage";
 import { MobileNavProvider } from './contexts/MobileNavContext';
+import ScrollToTop from './components/ScrollToTop';
 import { LanguageProvider } from './contexts/LanguageContext';
 import LanguageBanner from './components/LanguageBanner';
 import './styles/style.css';
@@ -93,6 +94,7 @@ useEffect(() => {
     <BrowserRouter>
       <LanguageProvider>
       <MobileNavProvider>
+      <ScrollToTop />
       <Header />
       <MobileNav />
       <ContactWidget />

@@ -11,11 +11,11 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo-holder">
-        <img src={HeaderLogo} alt="Sasa Safaris Africa Logo" className="logo-img" />
+        <Link to="/"><img src={HeaderLogo} alt="Sasa Safaris Africa Logo" className="logo-img" /></Link>
       </div>
       <nav className="nav desktop-nav">
         <ul className="nav-links">
-          <li><a href="/#destinations">{t('nav.destinations')}</a></li>
+          <li><Link to="/#destinations">{t('nav.destinations')}</Link></li>
           <li><Link to="/about">{t('nav.about')}</Link></li>
           <li>
             <Link to="/contact">{t('nav.contacts')}</Link>
@@ -25,6 +25,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/privacy">{t('nav.privacy')}</Link>
+          </li>
+          <li>
+            <Link to="/terms">{t('nav.terms')}</Link>
           </li>
         </ul>
       </nav>
