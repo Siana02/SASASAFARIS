@@ -9838,7 +9838,7 @@ padding: 1rem 1.5rem;
   border-bottom: none;
 }
 
-.legal-canc-row.header {
+.legal-canc-row.legal-canc-header {
   background: var(--accent-dark, #3a1a08);
   color: var(--accent);
   font-weight: 700;
