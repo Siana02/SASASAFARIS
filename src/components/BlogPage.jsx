@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { blogArticles, featuredArticle } from "../data/BlogData";
+import { getBlogArticles, getFeaturedArticle } from "../data/BlogData";
 import LazyImage from "./LazyImage";
 import { useLanguage } from "../hooks/useLanguage";
 
