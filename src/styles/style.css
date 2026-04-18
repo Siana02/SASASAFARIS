@@ -4584,6 +4584,7 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 80px;
 }
 .gallery-hero__overlay {
   position: absolute;
@@ -8888,6 +8889,7 @@ padding: 1rem 1.5rem;
   background-position: center 40%;
   display: flex;
   align-items: flex-end;
+  padding-top: 80px;
   padding-bottom: 5rem;
 }
 

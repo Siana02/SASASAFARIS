@@ -126,7 +126,7 @@ const Gallery = () => {
         <p className="gallery-cta__text">
           Let us craft your perfect African adventure
         </p>
-        <Link to="/packages" className="gallery-cta__btn">
+        <Link to="/#destinations" className="gallery-cta__btn">
           Explore Packages
         </Link>
       </div>

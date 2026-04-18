@@ -40,7 +40,7 @@ const HeroSection = () => {
         </div>
         <p className="hero-tagline">{t('hero.tagline')}</p>
         <div className="hero-ctas">
-          <a href="#packages" className="cta-btn cta-btn--glow">{t('hero.viewPackages')}</a>
+          <a href="/#destinations" className="cta-btn cta-btn--glow">{t('hero.viewPackages')}</a>
         </div>
       </div>
     </section>
