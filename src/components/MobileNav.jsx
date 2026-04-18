@@ -32,19 +32,16 @@ const MobileNav = () => {
           <Link to="/#destinations" onClick={handleLinkClick}>{t('nav.destinations')}</Link>
         </li>
         <li>
+          <Link to="/blog" onClick={handleLinkClick}>{t('nav.blog')}</Link>
+        </li>
+        <li>
           <Link to="/about" onClick={handleLinkClick}>{t('nav.about')}</Link>
         </li>
         <li>
           <Link to="/contact" onClick={handleLinkClick}>{t('nav.contacts')}</Link>
         </li>
         <li>
-          <Link to="/blog" onClick={handleLinkClick}>{t('nav.blog')}</Link>
-        </li>
-        <li>
           <Link to="/privacy" onClick={handleLinkClick}>{t('nav.privacy')}</Link>
-        </li>
-        <li>
-          <Link to="/terms" onClick={handleLinkClick}>{t('nav.terms')}</Link>
         </li>
         <li>
           <button onClick={handleLanguageSwitch} aria-label="Switch Language" className="lang-toggle">

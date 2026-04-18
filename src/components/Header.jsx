@@ -16,19 +16,10 @@ const Header = () => {
       <nav className="nav desktop-nav">
         <ul className="nav-links">
           <li><Link to="/#destinations">{t('nav.destinations')}</Link></li>
+          <li><Link to="/blog">{t('nav.blog')}</Link></li>
           <li><Link to="/about">{t('nav.about')}</Link></li>
-          <li>
-            <Link to="/contact">{t('nav.contacts')}</Link>
-          </li>
-          <li>
-            <Link to="/blog">{t('nav.blog')}</Link>
-          </li>
-          <li>
-            <Link to="/privacy">{t('nav.privacy')}</Link>
-          </li>
-          <li>
-            <Link to="/terms">{t('nav.terms')}</Link>
-          </li>
+          <li><Link to="/contact">{t('nav.contacts')}</Link></li>
+          <li><Link to="/privacy">{t('nav.privacy')}</Link></li>
         </ul>
       </nav>
 
