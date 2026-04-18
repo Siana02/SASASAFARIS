@@ -65,6 +65,56 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Safari package / itinerary pages -->
+  <url>
+    <loc>https://www.sasasafaris.com/viewdetails/mara-tsavo</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sasasafaris.com/viewdetails/amboseli-chyulu</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sasasafaris.com/viewdetails/family-safari-beach</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sasasafaris.com/viewdetails/romantic-safari</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sasasafaris.com/viewdetails/coastal-adventure</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sasasafaris.com/viewdetails/wildebeest-migration</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sasasafaris.com/viewdetails/coast-offer</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sasasafaris.com/viewdetails/explore-watamu</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Blog index -->
   <url>
     <loc>https://www.sasasafaris.com/blog</loc>
