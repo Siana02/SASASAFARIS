@@ -28,118 +28,22 @@ import {
   WildebeestMigration,
 } from "../assets/images";
 import LazyImage from "./LazyImage";
+import { useLanguage } from "../hooks/useLanguage";
+import { getDestinationById } from "../data/destinationsData";
 
-// ─── Destination data ────────────────────────────────────────────────────────
+// ─── Destination image data (text comes from destinationsData via language) ──
 const destinations = [
-  {
-    id: "safari-blue",
-    image: DolphinSafariBlue1,
-    image2: SafariBlue2,
-    imageAlt: "Watamu ocean and dolphins",
-    image2Alt: "Snorkeling in Watamu Marine Park",
-    imagePosition: "center",
-    price: "€70 – €80 pp",
-    duration: "Full Day",
-    tag: "Ocean Adventure",
-  },
-  {
-    id: "sardegna-sandbank",
-    image: SardegnaTour1,
-    image2: Sardegna1,
-    imageAlt: "Sardegna 2 sandbank turquoise waters",
-    image2Alt: "Crystal water at Sardegna 2 sandbank",
-    imagePosition: "center",
-    price: "€60 – €70 pp",
-    duration: "Half Day",
-    tag: "Beach Paradise",
-  },
-  {
-    id: "gede-marafa",
-    image: GedeRuins,
-    image2: HellsKitchen,
-    imageAlt: "Gede Ruins ancient Swahili city",
-    image2Alt: "Marafa Depression — Hell's Kitchen canyon",
-    imagePosition: "center top",
-    price: "€80 – €90 pp",
-    duration: "Half Day",
-    tag: "History & Nature",
-  },
-  {
-    id: "tsavo-east",
-    image: ElephantSunset,
-    image2: TsavoEast2,
-    imageAlt: "Tsavo East red elephants at sunset",
-    image2Alt: "Tsavo East National Park landscape",
-    imagePosition: "center",
-    price: "From €250 pp",
-    duration: "2 Days / 1 Night",
-    tag: "Wildlife Safari",
-  },
-  {
-    id: "village-tour",
-    image: WatamuCulturalTour1,
-    image2: WatamuCulturalTour2,
-    imageAlt: "Watamu village cultural life",
-    image2Alt: "Local crafts and culture in Watamu",
-    imagePosition: "center",
-    price: "Contact Us",
-    duration: "Half Day",
-    tag: "Cultural Immersion",
-  },
-  {
-    id: "maasai-mara",
-    image: ClassicMaasaiMara,
-    image2: WildebeestMigration,
-    imageAlt: "Maasai Mara golden savannah at golden hour",
-    image2Alt: "The Great Wildebeest Migration crossing the Mara River",
-    imagePosition: "center",
-    price: "From €250 pp",
-    duration: "3 Days / 2 Nights",
-    tag: "Wildlife Safari",
-  },
+  { id: "safari-blue",       image: DolphinSafariBlue1,    image2: SafariBlue2,           imagePosition: "center" },
+  { id: "sardegna-sandbank", image: SardegnaTour1,          image2: Sardegna1,             imagePosition: "center" },
+  { id: "gede-marafa",       image: GedeRuins,              image2: HellsKitchen,          imagePosition: "center top" },
+  { id: "tsavo-east",        image: ElephantSunset,         image2: TsavoEast2,            imagePosition: "center" },
+  { id: "village-tour",      image: WatamuCulturalTour1,    image2: WatamuCulturalTour2,   imagePosition: "center" },
+  { id: "maasai-mara",       image: ClassicMaasaiMara,      image2: WildebeestMigration,   imagePosition: "center" },
 ];
-
-const CONTENT = {
-  "safari-blue": {
-    headline: "Dive Into the Wild Blue",
-    subheadline: "Safari Blue — Dolphins, Snorkeling & Mida Creek",
-    story:
-      "Chase wild dolphins across open ocean, glide through coral gardens in the Marine Park, and drift through the mystical mangroves of Mida Creek. This is freedom — salt air, cerulean water, and a world below the surface that will hold you forever.",
-  },
-  "sardegna-sandbank": {
-    headline: "Lost in Turquoise",
-    subheadline: "Sardegna 2 Sandbank Experience",
-    story:
-      "A strip of white sand rising from the Indian Ocean — no roads, no crowds, just crystal water in every direction. Swim, float, and let the world melt away. Fresh seafood awaits at Safina Beach Club before the afternoon sun paints everything gold.",
-  },
-  "gede-marafa": {
-    headline: "Where Empires Slept & Canyons Burn",
-    subheadline: "Gede Ruins & Marafa (Hell's Kitchen)",
-    story:
-      "Walk through a Swahili city swallowed by the forest — then stand at the edge of a canyon that blazes crimson as the sun sinks behind the earth. Two worlds, one day. The kind of afternoon that rewrites how you see Africa.",
-  },
-  "tsavo-east": {
-    headline: "Face to Face with the Red Giants",
-    subheadline: "Tsavo East Safari — 2 Days / 1 Night",
-    story:
-      "Nothing prepares you for the moment the first red elephant emerges from the bush. Tsavo is raw, vast, and unapologetically wild. Lions, giraffes, zebras, and the legendary red elephants of Kenya — all witnessed from an open jeep under a sky that goes on forever.",
-  },
-  "village-tour": {
-    headline: "Taste the Soul of Swahili Life",
-    subheadline: "Watamu Village Cultural Tour",
-    story:
-      "Slow down and truly arrive. Meet the families, walk the markets, discover the crafts, and hear the stories that make Watamu what it is. This is not tourism — this is belonging, if only for a morning.",
-  },
-  "maasai-mara": {
-    headline: "The Greatest Show on Earth",
-    subheadline: "Maasai Mara — Great Migration Safari",
-    story:
-      "Over a million wildebeest thunder across the Mara River in nature's most dramatic spectacle. Lions stalk the tall grass, leopards drape themselves over acacia trees, and the vast sky above makes you feel both small and infinite. The Mara isn't somewhere you visit — it's somewhere you become.",
-  },
-};
 
 // ─── Component ────────────────────────────────────────────────────────────────
 const DestinationsSection = () => {
+  const { t, currentLanguage } = useLanguage();
   const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState(null); // "next" | "prev"
@@ -235,7 +139,7 @@ const DestinationsSection = () => {
   }, [next, prev]);
 
   const dest = destinations[active];
-  const content = CONTENT[dest.id];
+  const destData = getDestinationById(dest.id, currentLanguage);
   // Even index → image on left; odd → image on right
   const imageOnLeft = active % 2 === 0;
 
@@ -248,11 +152,11 @@ const DestinationsSection = () => {
     <section className="destinations-section" id="destinations" aria-label="Destinations">
       {/* Section heading */}
       <div className="destinations-header">
-        <span className="destinations-eyebrow">Kenya & Beyond</span>
-        <h2 className="destinations-heading">Journeys That Change You</h2>
+        <span className="destinations-eyebrow">{t('destinations.eyebrow')}</span>
+        <h2 className="destinations-heading">{t('destinations.heading')}</h2>
         <p className="destinations-swipe-hint" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
-          Swipe to explore
+          {t('destinations.swipeHint')}
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
         </p>
       </div>
@@ -269,12 +173,12 @@ const DestinationsSection = () => {
         {/* ── Slide ── */}
         <article
           className={getSlideClass()}
-          aria-label={content.subheadline}
+          aria-label={destData.subheadline}
           key={dest.id}
         >
           {/* Mobile-only: subheadline appears above the main image */}
           <p className="dest-mobile-pre-subheadline">
-            {content.subheadline}
+            {destData.subheadline}
           </p>
 
           {/* Image half */}
@@ -284,13 +188,13 @@ const DestinationsSection = () => {
           >
             <LazyImage
               src={dest.image}
-              alt={dest.imageAlt}
+              alt={destData.imageAlt}
               className="dest-img"
               style={{ objectPosition: dest.imagePosition }}
               draggable={false}
             />
             <div className="dest-img-overlay" />
-            <span className="dest-tag">{dest.tag}</span>
+            <span className="dest-tag">{destData.tag}</span>
           </div>
 
           {/* Text half */}
@@ -300,15 +204,15 @@ const DestinationsSection = () => {
           >
             {/* Title block: subheadline (hidden on mobile) + headline */}
             <div className="dest-text-titles">
-              <p className="dest-subheadline dest-desktop-subheadline">{content.subheadline}</p>
-              <h3 className="dest-headline">{content.headline}</h3>
+              <p className="dest-subheadline dest-desktop-subheadline">{destData.subheadline}</p>
+              <h3 className="dest-headline">{destData.headline}</h3>
             </div>
 
             {/* Accent image — desktop: after titles; mobile: after story */}
             <div className="dest-accent-img-wrap">
               <LazyImage
                 src={dest.image2}
-                alt={dest.image2Alt}
+                alt={destData.image2Alt}
                 className="dest-accent-img"
                 draggable={false}
                 eager
@@ -316,24 +220,24 @@ const DestinationsSection = () => {
               <div className="dest-accent-img-overlay" />
               {/* Duration + price overlay */}
               <div className="dest-accent-meta" aria-hidden="true">
-                <span className="dest-accent-duration">{dest.duration}</span>
-                <span className="dest-accent-price">{dest.price}</span>
+                <span className="dest-accent-duration">{destData.duration}</span>
+                <span className="dest-accent-price">{destData.price}</span>
               </div>
             </div>
 
             {/* Story + meta */}
             <div className="dest-text-story">
-              <p className="dest-story">{content.story}</p>
+              <p className="dest-story">{destData.story}</p>
               <div className="dest-meta">
-                <span className="dest-duration">{dest.duration}</span>
-                <span className="dest-price">{dest.price}</span>
+                <span className="dest-duration">{destData.duration}</span>
+                <span className="dest-price">{destData.price}</span>
               </div>
             </div>
 
             {/* CTA */}
             <div className="dest-cta-wrap">
               <Link to={`/destinations/${dest.id}`} className="dest-cta">
-                Explore This Journey
+                {t('destinations.exploreCta')}
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
@@ -404,7 +308,7 @@ const DestinationsSection = () => {
 
         {allSeen && (
           <div className="dest-scroll-hint" aria-live="polite">
-            <span>Scroll to continue</span>
+            <span>{t('destinations.scrollToContinue')}</span>
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9" />
             </svg>

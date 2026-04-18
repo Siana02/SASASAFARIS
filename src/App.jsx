@@ -30,6 +30,8 @@ import BlogPreviewSection from "./components/BlogPreviewSection";
 import FAQSection from "./components/FAQSection";
 import BlogPage from "./components/BlogPage";
 import { MobileNavProvider } from './contexts/MobileNavContext';
+import { LanguageProvider } from './contexts/LanguageContext';
+import LanguageBanner from './components/LanguageBanner';
 import './styles/style.css';
 
 // Collect every image URL exported from assets/images so the preload screen
@@ -88,7 +90,8 @@ useEffect(() => {
     <>
       <SiteBg />
       {!preloadDone && <PreloadScreen onComplete={() => setPreloadDone(true)} images={ALL_IMAGE_SRCS} />}
-      <BrowserRouter>
+    <BrowserRouter>
+      <LanguageProvider>
       <MobileNavProvider>
       <Header />
       <MobileNav />
@@ -108,10 +111,10 @@ useEffect(() => {
         {/* add other routes as needed */}
       </Routes>
       <Footer />
-      {/* <ThemeMessage /> */}
-{/* <LanguageBanner /> */}
-<CookiePopup />
+      <LanguageBanner />
+      <CookiePopup />
       </MobileNavProvider>
+      </LanguageProvider>
     </BrowserRouter>
     </>
   );

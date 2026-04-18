@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LazyImage from "./LazyImage";
+import { useLanguage } from "../hooks/useLanguage";
 
 import {
   SafariHero,
@@ -29,40 +30,41 @@ import {
 } from "../assets/images";
 
 const CATEGORIES = [
-  { key: "all", label: "All" },
-  { key: "wildlife", label: "Wildlife" },
-  { key: "safari", label: "Safari" },
-  { key: "coast", label: "Coast & Beach" },
-  { key: "landscape", label: "Landscapes" },
+  { key: "all",       tKey: "filterAll" },
+  { key: "wildlife",  tKey: "filterWildlife" },
+  { key: "safari",    tKey: "filterSafari" },
+  { key: "coast",     tKey: "filterCoast" },
+  { key: "landscape", tKey: "filterLandscape" },
 ];
 
 const galleryImages = [
-  { src: WildebeestMigration, label: "Wildebeest Migration", category: "wildlife", featured: true },
-  { src: ElephantSunset, label: "Elephants at Sunset", category: "wildlife" },
-  { src: ClassicMaasaiMara, label: "Classic Maasai Mara", category: "safari" },
-  { src: CuteGiraffe, label: "Giraffe in the Wild", category: "wildlife" },
-  { src: CoastalExperience, label: "Coastal Experience", category: "coast", featured: true },
-  { src: Amboseli, label: "Amboseli National Park", category: "safari" },
-  { src: FamilySafari, label: "Family Safari", category: "safari" },
-  { src: WatamuMain, label: "Watamu Beach", category: "coast" },
-  { src: GreatRiftValley, label: "Great Rift Valley", category: "landscape", featured: true },
-  { src: RomanticSafari, label: "Romantic Safari", category: "safari" },
-  { src: KenyanCoast, label: "Kenyan Coast", category: "coast" },
-  { src: MaasaiMara, label: "Maasai Mara", category: "wildlife" },
-  { src: TsavoEast1, label: "Tsavo East", category: "safari", featured: true },
-  { src: WildernessExplorer, label: "Wilderness Explorer", category: "safari" },
-  { src: SafariBlue2, label: "Safari Blue", category: "coast" },
-  { src: GedeRuins, label: "Gede Ruins", category: "landscape" },
-  { src: HellsKitchen, label: "Hell's Kitchen", category: "landscape" },
-  { src: TsavoEast2, label: "Tsavo East Sunset", category: "landscape" },
-  { src: DolphinSafariBlue1, label: "Dolphin Safari", category: "coast" },
-  { src: WatamuCulturalTour1, label: "Watamu Culture", category: "landscape" },
-  { src: WatamuCulturalTour2, label: "Cultural Tour", category: "landscape" },
-  { src: SafariHero, label: "Safari Adventure", category: "safari" },
-  { src: VacationHero, label: "Vacation Paradise", category: "coast" },
+  { src: WildebeestMigration,   key: "img_wildebeest",    category: "wildlife",  featured: true },
+  { src: ElephantSunset,        key: "img_elephants",     category: "wildlife" },
+  { src: ClassicMaasaiMara,     key: "img_maasai",        category: "safari" },
+  { src: CuteGiraffe,           key: "img_giraffe",       category: "wildlife" },
+  { src: CoastalExperience,     key: "img_coastal",       category: "coast",     featured: true },
+  { src: Amboseli,              key: "img_amboseli",      category: "safari" },
+  { src: FamilySafari,          key: "img_family",        category: "safari" },
+  { src: WatamuMain,            key: "img_watamu",        category: "coast" },
+  { src: GreatRiftValley,       key: "img_rift",          category: "landscape", featured: true },
+  { src: RomanticSafari,        key: "img_romantic",      category: "safari" },
+  { src: KenyanCoast,           key: "img_kenyanCoast",   category: "coast" },
+  { src: MaasaiMara,            key: "img_mara",          category: "wildlife" },
+  { src: TsavoEast1,            key: "img_tsavo1",        category: "safari",    featured: true },
+  { src: WildernessExplorer,    key: "img_wilderness",    category: "safari" },
+  { src: SafariBlue2,           key: "img_safariBlue",    category: "coast" },
+  { src: GedeRuins,             key: "img_gede",          category: "landscape" },
+  { src: HellsKitchen,          key: "img_hellsKitchen",  category: "landscape" },
+  { src: TsavoEast2,            key: "img_tsavo2",        category: "landscape" },
+  { src: DolphinSafariBlue1,    key: "img_dolphin",       category: "coast" },
+  { src: WatamuCulturalTour1,   key: "img_culture1",      category: "landscape" },
+  { src: WatamuCulturalTour2,   key: "img_culture2",      category: "landscape" },
+  { src: SafariHero,            key: "img_safariAdventure", category: "safari" },
+  { src: VacationHero,          key: "img_vacation",      category: "coast" },
 ];
 
 const Gallery = () => {
+  const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("all");
 
   const filtered =
@@ -79,15 +81,15 @@ const Gallery = () => {
       >
         <div className="gallery-hero__overlay" aria-hidden="true" />
         <div className="gallery-hero__content">
-          <p className="gallery-hero__eyebrow">Our World</p>
-          <h1 className="gallery-hero__title">Safari Memories</h1>
+          <p className="gallery-hero__eyebrow">{t('galleryPage.eyebrow')}</p>
+          <h1 className="gallery-hero__title">{t('galleryPage.title')}</h1>
           <div className="gallery-hero__ornament" aria-hidden="true">
             <span className="gallery-hero__orn-line" />
             <span className="gallery-hero__orn-diamond">◆</span>
             <span className="gallery-hero__orn-line" />
           </div>
           <p className="gallery-hero__subtitle">
-            Moments captured across Kenya's most breathtaking landscapes
+            {t('galleryPage.subtitle')}
           </p>
         </div>
       </div>
@@ -100,7 +102,7 @@ const Gallery = () => {
             className={`gallery-filter-btn${activeCategory === cat.key ? " active" : ""}`}
             onClick={() => setActiveCategory(cat.key)}
           >
-            {cat.label}
+            {t(`galleryPage.${cat.tKey}`)}
           </button>
         ))}
       </div>
@@ -112,9 +114,9 @@ const Gallery = () => {
             className={`gallery-item${img.featured ? " gallery-item--featured" : ""}`}
             key={img.src}
           >
-            <LazyImage src={img.src} alt={img.label} />
+            <LazyImage src={img.src} alt={t(`galleryPage.${img.key}`)} />
             <div className="gallery-item__overlay" aria-hidden="true">
-              <span className="gallery-item__label">{img.label}</span>
+              <span className="gallery-item__label">{t(`galleryPage.${img.key}`)}</span>
             </div>
           </div>
         ))}
@@ -122,12 +124,12 @@ const Gallery = () => {
 
       {/* ── CTA ── */}
       <div className="gallery-cta">
-        <h2 className="gallery-cta__title">Ready to Create Your Own Memories?</h2>
+        <h2 className="gallery-cta__title">{t('galleryPage.ctaTitle')}</h2>
         <p className="gallery-cta__text">
-          Let us craft your perfect African adventure
+          {t('galleryPage.ctaText')}
         </p>
         <Link to="/#destinations" className="gallery-cta__btn">
-          Explore Packages
+          {t('galleryPage.ctaBtn')}
         </Link>
       </div>
     </div>

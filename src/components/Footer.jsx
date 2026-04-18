@@ -138,7 +138,7 @@ const Footer = () => {
         {/* Footer bottom */}
         <div className="footer-bottom">
           <div className="footer-copyright">
-            <p>&copy; {new Date().getFullYear()}</p>
+            <p>&copy; {new Date().getFullYear()} {t('footer.copyright')}</p>
           </div>
 
           <div className="footer-legal">
@@ -150,7 +150,7 @@ const Footer = () => {
 
         {/* Designer credit */}
         <div className="marswebz-credit">
-          This website was designed by{" "}
+          {t('footer.marswebzCredit')}{" "}
           <a
             href="https://marswebz.vercel.app/"
             target="_blank"
