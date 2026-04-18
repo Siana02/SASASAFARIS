@@ -3571,22 +3571,32 @@ a:focus-visible, button:focus-visible {
   cursor: grab;
   touch-action: none;
   box-shadow: 0 3px 10px rgba(212, 133, 42, 0.4);
+  /* Bounce-back on release; suppressed during drag via .is-dragging */
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.25s ease;
   will-change: transform;
   z-index: 2;
+  animation: eco-thumb-pulse 2.2s ease-in-out 1.5s infinite;
 }
 
-/* Disable transform transition while dragging so thumb tracks pointer without lag */
+/* Idle pulsing hint – stops as soon as dragging starts */
+@keyframes eco-thumb-pulse {
+  0%, 100% { box-shadow: 0 3px 10px rgba(212, 133, 42, 0.4); }
+  50%       { box-shadow: 0 4px 18px rgba(212, 133, 42, 0.7), 0 0 0 6px rgba(212, 133, 42, 0.15); }
+}
+
+/* Disable transform transition AND pulse while dragging */
 .eco-pledge-slider-thumb.is-dragging {
   transition: box-shadow 0.2s ease, background 0.25s ease;
   cursor: grabbing;
   box-shadow: 0 6px 18px rgba(212, 133, 42, 0.55);
+  animation: none;
 }
 
 .eco-pledge-slider-thumb.is-done {
   background: var(--accent, #c8963e);
   cursor: default;
   box-shadow: 0 3px 12px rgba(200, 150, 62, 0.45);
+  animation: none;
 }
 
 .eco-pledge-slider-thumb:focus-visible {
@@ -3594,21 +3604,54 @@ a:focus-visible, button:focus-visible {
   outline-offset: 3px;
 }
 
+/* ── Slider wrapper fade-out on pledge ── */
+.eco-pledge-slider-wrap {
+  /* No transition when idle – avoids unnecessary GPU layer */
+}
+.eco-pledge-slider-wrap.is-leaving {
+  opacity: 0;
+  transform: scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
 /* ── Post-pledge thank-you message ── */
+.eco-pledge-thanks-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0 0.25rem;
+  animation: eco-thanks-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.eco-pledge-thanks-icon {
+  font-size: 2.4rem;
+  color: var(--accent, #c8963e);
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px rgba(200, 150, 62, 0.45));
+  animation: eco-thanks-icon-spin 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes eco-thanks-icon-spin {
+  from { transform: scale(0) rotate(-30deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);  opacity: 1; }
+}
+
 .eco-pledge-thanks {
   font-family: var(--heading-font, 'Cormorant Garamond', serif);
-  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
   font-style: italic;
+  font-weight: 600;
   color: var(--accent, #c8963e);
   line-height: 1.7;
   margin: 0;
-  padding: 1rem 0;
   text-align: center;
-  animation: eco-thanks-in 0.55s ease forwards;
+  text-shadow: 0 1px 4px rgba(200, 150, 62, 0.18);
 }
 
 @keyframes eco-thanks-in {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: none; }
 }
 
@@ -3683,7 +3726,11 @@ a:focus-visible, button:focus-visible {
   .eco-pledge-slider-done-label { animation: none !important; }
   .eco-pledge-slider-done-label { opacity: 1 !important; transform: none !important; }
   .eco-reminder-section.has-pledged { animation: none !important; }
+  .eco-pledge-thanks-wrap { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .eco-pledge-thanks-icon { animation: none !important; opacity: 1 !important; transform: none !important; }
   .eco-pledge-thanks { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .eco-pledge-slider-wrap.is-leaving { transition: none !important; opacity: 0 !important; }
+  .eco-pledge-slider-thumb { animation: none !important; }
   .eco-reminder-section.is-fading { transition: none !important; }
   .eco-reminder-eyebrow,
   .eco-reminder-title,
