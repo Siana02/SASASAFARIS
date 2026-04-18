@@ -52,7 +52,6 @@ const PledgeSlider = ({ onPledge, labelIdle, labelDone }) => {
   const handlePointerDown = (e) => {
     if (done) return;
     dragging.current = true;
-    startX.current = e.clientX;
     setDraggingStyle(true);
     e.currentTarget.setPointerCapture(e.pointerId);
   };
