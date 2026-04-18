@@ -211,10 +211,8 @@
     "copyright": "SASA Safaris. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "cookiePolicy": "Cookie Policy",
-    "termsOfService": "Terms of Service"
-  },
-  "gallery": {
-    "title": "Memories"
+    "termsOfService": "Terms of Service",
+    "marswebzCredit": "This website was designed by"
   },
   "viewDetails": {
     "packageNotFound": "Package not found",

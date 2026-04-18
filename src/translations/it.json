@@ -7,7 +7,7 @@
     "about": "Chi Siamo",
     "contacts": "Contatti",
     "gallery": "Galleria",
-    "privacy": "Privacy Policy",
+    "privacy": "Informativa sulla Privacy",
     "blog": "Blog"
   },
   "hero": {
@@ -211,10 +211,8 @@
     "copyright": "SASA Safaris. Tutti i diritti riservati.",
     "privacyPolicy": "Politica sulla Privacy",
     "cookiePolicy": "Politica sui Cookie",
-    "termsOfService": "Termini di Servizio"
-  },
-  "gallery": {
-    "title": "Ricordi"
+    "termsOfService": "Termini di Servizio",
+    "marswebzCredit": "Questo sito è stato progettato da"
   },
   "viewDetails": {
     "packageNotFound": "Pacchetto non trovato",

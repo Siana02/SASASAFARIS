@@ -150,7 +150,7 @@ const Footer = () => {
 
         {/* Designer credit */}
         <div className="marswebz-credit">
-          This website was designed by{" "}
+          {t('footer.marswebzCredit')}{" "}
           <a
             href="https://marswebz.vercel.app/"
             target="_blank"
