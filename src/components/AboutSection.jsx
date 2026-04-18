@@ -18,51 +18,30 @@ import {
   MaasaiMara,
   TsavoEast1,
 } from "../assets/images";
+import { useLanguage } from "../hooks/useLanguage";
 
 const AboutSection = () => {
+  const { t } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "About Us — SASA Safaris Africa";
   }, []);
 
   const values = [
-    {
-      icon: <Footprints size={28} />,
-      title: "Expert Local Guides",
-      desc: "Our certified guides are born and raised in Africa. They know every trail, every watering hole, every story the land holds.",
-    },
-    {
-      icon: <Heart size={28} />,
-      title: "Guest-First Always",
-      desc: "Every itinerary is built around you — your pace, your passions, your comfort. Your experience is our obsession.",
-    },
-    {
-      icon: <Leaf size={28} />,
-      title: "Responsible Tourism",
-      desc: "We tread lightly. We give back. Every safari supports local communities and conservation efforts across Kenya.",
-    },
-    {
-      icon: <Star size={28} />,
-      title: "Bespoke Experiences",
-      desc: "No cookie-cutter packages. From honeymoon escapes to family adventures — we craft journeys as unique as you are.",
-    },
-    {
-      icon: <Shield size={28} />,
-      title: "Safety & Trust",
-      desc: "Your safety is our priority. All our vehicles, routes, and partners meet the highest standards of care and reliability.",
-    },
-    {
-      icon: <Globe size={28} />,
-      title: "Deep Local Knowledge",
-      desc: "From Maasai Mara to Watamu's reefs — our roots in East Africa mean you discover places most visitors never see.",
-    },
+    { icon: <Footprints size={28} />, title: t('aboutPage.value1Title'), desc: t('aboutPage.value1Desc') },
+    { icon: <Heart size={28} />,      title: t('aboutPage.value2Title'), desc: t('aboutPage.value2Desc') },
+    { icon: <Leaf size={28} />,       title: t('aboutPage.value3Title'), desc: t('aboutPage.value3Desc') },
+    { icon: <Star size={28} />,       title: t('aboutPage.value4Title'), desc: t('aboutPage.value4Desc') },
+    { icon: <Shield size={28} />,     title: t('aboutPage.value5Title'), desc: t('aboutPage.value5Desc') },
+    { icon: <Globe size={28} />,      title: t('aboutPage.value6Title'), desc: t('aboutPage.value6Desc') },
   ];
 
   const stats = [
-    { value: "500+", label: "Happy Travellers" },
-    { value: "10+", label: "Destinations" },
-    { value: "98%", label: "Would Return" },
-    { value: "5★", label: "Average Rating" },
+    { value: "500+", label: t('aboutPage.stat1') },
+    { value: "10+",  label: t('aboutPage.stat2') },
+    { value: "98%",  label: t('aboutPage.stat3') },
+    { value: "5★",   label: t('aboutPage.stat4') },
   ];
 
   return (
@@ -74,19 +53,17 @@ const AboutSection = () => {
       >
         <div className="about-page-hero-overlay" />
         <div className="about-page-hero-content">
-          <p className="about-page-eyebrow">Our Story</p>
-          <h1 className="about-page-hero-title">Born in Africa.<br />Built for You.</h1>
+          <p className="about-page-eyebrow">{t('aboutPage.eyebrow')}</p>
+          <h1 className="about-page-hero-title">{t('aboutPage.heroTitle')}</h1>
           <p className="about-page-hero-subtitle">
-            SASA Safaris Africa is a boutique safari company rooted in
-            Watamu, Kenya — crafting deeply personal journeys through the
-            continent's most breathtaking landscapes since our founding.
+            {t('aboutPage.heroSubtitle')}
           </p>
           <div className="about-page-hero-ctas">
             <Link to="/contact" className="about-cta-primary">
-              Plan Your Safari
+              {t('aboutPage.planSafari')}
             </Link>
             <a href="#our-story" className="about-cta-secondary">
-              Our Story ↓
+              {t('aboutPage.ourStoryLink')}
             </a>
           </div>
         </div>
@@ -113,26 +90,11 @@ const AboutSection = () => {
             </div>
           </div>
           <div className="about-story-text">
-            <p className="about-story-eyebrow">How It All Began</p>
-            <h2 className="about-story-title">A Passion for Africa,<br />Shared with the World</h2>
-            <p className="about-story-body">
-              SASA Safaris Africa was born from a deep love of East Africa's
-              wild places. Founded in Watamu on Kenya's coral coast, we started
-              with a single promise: to show travellers the Africa that locals
-              know — raw, generous, and unforgettable.
-            </p>
-            <p className="about-story-body">
-              Our lead guide Sule and our small, passionate team have spent
-              years building relationships with the communities, conservancies,
-              and coastal operators that make each journey extraordinary. We
-              believe the best safaris aren't sold — they're crafted, story by
-              story, guest by guest.
-            </p>
-            <p className="about-story-body">
-              From the red-dust plains of Maasai Mara to the turquoise waters
-              off Watamu, every destination we share holds a piece of our
-              hearts. We invite you to come and find yours.
-            </p>
+            <p className="about-story-eyebrow">{t('aboutPage.storyEyebrow')}</p>
+            <h2 className="about-story-title">{t('aboutPage.storyTitle')}</h2>
+            <p className="about-story-body">{t('aboutPage.storyBody1')}</p>
+            <p className="about-story-body">{t('aboutPage.storyBody2')}</p>
+            <p className="about-story-body">{t('aboutPage.storyBody3')}</p>
           </div>
         </div>
       </section>
@@ -146,16 +108,11 @@ const AboutSection = () => {
           <img src={SafariHero} alt="Safari experience" className="about-dest-img" />
         </div>
         <div className="about-dest-text">
-          <p className="about-story-eyebrow">Where We Take You</p>
-          <h2 className="about-story-title">Kenya's Most<br />Iconic Landscapes</h2>
-          <p className="about-story-body">
-            We specialise in East Africa — with a particular depth of knowledge
-            along Kenya's coast and in its legendary national parks and
-            conservancies. Every destination in our portfolio has been scouted,
-            walked, and loved by our own guides.
-          </p>
+          <p className="about-story-eyebrow">{t('aboutPage.destEyebrow')}</p>
+          <h2 className="about-story-title">{t('aboutPage.destTitle')}</h2>
+          <p className="about-story-body">{t('aboutPage.destBody')}</p>
           <a href="/#destinations" className="about-cta-primary" style={{ display: "inline-flex" }}>
-            Explore Destinations
+            {t('aboutPage.exploreDestinations')}
           </a>
         </div>
         </section>
@@ -163,10 +120,10 @@ const AboutSection = () => {
       <section className="about-values-section">
         <div className="about-values-inner">
           <div className="about-values-header">
-            <p className="about-story-eyebrow">What We Stand For</p>
-            <h2 className="about-story-title">Our Guiding Principles</h2>
+            <p className="about-story-eyebrow">{t('aboutPage.valuesEyebrow')}</p>
+            <h2 className="about-story-title">{t('aboutPage.valuesTitle')}</h2>
             <p className="about-values-subtitle">
-              Six commitments that shape every safari we create.
+              {t('aboutPage.valuesSubtitle')}
             </p>
           </div>
           <div className="about-values-grid">
@@ -185,36 +142,24 @@ const AboutSection = () => {
       <section className="about-team-section">
         <div className="about-team-inner">
           <div className="about-team-text">
-            <p className="about-story-eyebrow">The People Behind the Magic</p>
-            <h2 className="about-story-title">Meet Our Team</h2>
-            <p className="about-story-body">
-              At the heart of every SASA safari is our tight-knit team of local
-              experts. Our head guide <strong>Sule</strong> has been leading
-              travellers through Kenya's wild places for years, building a
-              reputation for warmth, encyclopaedic wildlife knowledge, and an
-              uncanny ability to spot the perfect moment.
-            </p>
-            <p className="about-story-body">
-              Together, our team speaks English, Italian, and Swahili — and
-              we're fluent in the language of genuine hospitality. You're not a
-              booking reference to us; you're a guest we're honoured to host.
-            </p>
+            <p className="about-story-eyebrow">{t('aboutPage.teamEyebrow')}</p>
+            <h2 className="about-story-title">{t('aboutPage.teamTitle')}</h2>
+            <p className="about-story-body">{t('aboutPage.teamBody1')}</p>
+            <p className="about-story-body">{t('aboutPage.teamBody2')}</p>
             <div className="about-team-tags">
-              <span className="about-team-tag"><Users size={14} /> Small Group Specialists</span>
-              <span className="about-team-tag"><Globe size={14} /> Multilingual Guides</span>
-              <span className="about-team-tag"><Leaf size={14} /> Conservation-Minded</span>
+              <span className="about-team-tag"><Users size={14} /> {t('aboutPage.tag1')}</span>
+              <span className="about-team-tag"><Globe size={14} /> {t('aboutPage.tag2')}</span>
+              <span className="about-team-tag"><Leaf size={14} /> {t('aboutPage.tag3')}</span>
             </div>
           </div>
           <div className="about-team-quote-card">
             <div className="about-team-quote-mark">"</div>
             <blockquote className="about-team-quote">
-              Africa has a way of getting into your soul. My goal on every
-              safari is to make sure you feel what I feel every single time
-              I step out into the bush — complete wonder.
+              {t('aboutPage.quote')}
             </blockquote>
             <div className="about-team-attribution">
-              <span className="about-team-name">Sule</span>
-              <span className="about-team-role">Head Guide & Founder, SASA Safaris Africa</span>
+              <span className="about-team-name">{t('aboutPage.quoteName')}</span>
+              <span className="about-team-role">{t('aboutPage.quoteRole')}</span>
             </div>
           </div>
         </div>
@@ -227,16 +172,16 @@ const AboutSection = () => {
       >
         <div className="about-cta-banner-overlay" />
         <div className="about-cta-banner-content">
-          <h2 className="about-cta-banner-title">Ready to Experience Africa?</h2>
+          <h2 className="about-cta-banner-title">{t('aboutPage.ctaBannerTitle')}</h2>
           <p className="about-cta-banner-subtitle">
-            Tell us your dream and we'll craft the safari of a lifetime — just for you.
+            {t('aboutPage.ctaBannerSubtitle')}
           </p>
           <div className="about-page-hero-ctas">
             <Link to="/contact" className="about-cta-primary">
-              Start Planning
+              {t('aboutPage.startPlanning')}
             </Link>
             <a href="/#destinations" className="about-cta-secondary">
-              View Destinations
+              {t('aboutPage.viewDestinations')}
             </a>
           </div>
         </div>

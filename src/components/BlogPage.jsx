@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { blogArticles, featuredArticle } from "../data/BlogData";
 import LazyImage from "./LazyImage";
+import { useLanguage } from "../hooks/useLanguage";
 
 const PRESS_QUOTES = [
   {
@@ -74,7 +75,9 @@ const ArticlePullQuote = ({ pullQuote }) => {
 };
 
 // ── Individual full-article view ────────────────────────────────────────────
-const ArticleView = ({ article, onBack }) => (
+const ArticleView = ({ article, onBack }) => {
+  const { t } = useLanguage();
+  return (
   <article className="blog-article-full">
     <div className="blog-article-full__hero">
       <LazyImage
@@ -100,7 +103,7 @@ const ArticleView = ({ article, onBack }) => (
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <polyline points="15 18 9 12 15 6" />
         </svg>
-        Back to Blog
+        {t('blog.backToBlog')}
       </button>
 
       {/* Key stats callout */}
@@ -122,7 +125,7 @@ const ArticleView = ({ article, onBack }) => (
 
       <div className="blog-article-full__cta">
         <Link to="/contact" className="dest-cta">
-          Plan Your Safari
+          {t('blog.planSafari')}
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
@@ -131,10 +134,13 @@ const ArticleView = ({ article, onBack }) => (
       </div>
     </div>
   </article>
-);
+  );
+};
 
 // ── Article card ─────────────────────────────────────────────────────────────
-const ArticleCard = ({ article, featured, onClick }) => (
+const ArticleCard = ({ article, featured, onClick }) => {
+  const { t } = useLanguage();
+  return (
   <article
     className={`blog-card${featured ? " blog-card--featured" : ""}`}
     onClick={() => onClick(article)}
@@ -150,7 +156,7 @@ const ArticleCard = ({ article, featured, onClick }) => (
         className="blog-card__img"
       />
       <div className="blog-card__overlay">
-        <span className="blog-card__read-cta">Read Article →</span>
+        <span className="blog-card__read-cta">{t('blog.readArticle')}</span>
       </div>
       <span className="blog-tag blog-card__tag">{article.tag}</span>
       {article.readTime && (
@@ -173,10 +179,13 @@ const ArticleCard = ({ article, featured, onClick }) => (
       )}
     </div>
   </article>
-);
+  );
+};
 
 // ── TripAdvisor Reviews Strip ─────────────────────────────────────────────────
-const TripAdvisorStrip = () => (
+const TripAdvisorStrip = () => {
+  const { t } = useLanguage();
+  return (
   <section className="blog-ta-strip" aria-label="TripAdvisor reviews">
     <div className="blog-ta-strip__inner">
       <div className="blog-ta-strip__header">
@@ -184,7 +193,7 @@ const TripAdvisorStrip = () => (
           <circle cx="12" cy="12" r="10" />
           <circle cx="12" cy="12" r="4.5" fill="#fff" />
         </svg>
-        <span className="blog-ta-strip__label">What travellers say on TripAdvisor</span>
+        <span className="blog-ta-strip__label">{t('blog.taStripLabel')}</span>
         <span className="blog-ta-strip__rating">★ 4.9 / 5</span>
       </div>
       <div className="blog-ta-strip__reviews">
@@ -201,7 +210,8 @@ const TripAdvisorStrip = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 // ── Press Quote Banner ────────────────────────────────────────────────────────
 const PressQuoteBanner = ({ quoteIndex = 0 }) => {
@@ -217,6 +227,7 @@ const PressQuoteBanner = ({ quoteIndex = 0 }) => {
 
 // ── Newsletter CTA ────────────────────────────────────────────────────────────
 const BlogNewsletter = () => {
+  const { t } = useLanguage();
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
 
@@ -230,28 +241,28 @@ const BlogNewsletter = () => {
   return (
     <section className="blog-newsletter">
       <div className="blog-newsletter__inner">
-        <span className="blog-newsletter__eyebrow">Stay Inspired</span>
-        <h2 className="blog-newsletter__title">Safari Stories, Delivered</h2>
+        <span className="blog-newsletter__eyebrow">{t('blog.newsletterEyebrow')}</span>
+        <h2 className="blog-newsletter__title">{t('blog.newsletterTitle')}</h2>
         <p className="blog-newsletter__desc">
-          Get the best travel articles, hidden gem guides, and safari planning tips straight to your inbox.
+          {t('blog.newsletterDesc')}
         </p>
         {sent ? (
           <p className="blog-newsletter__success">
-            ✓ You're in. Watch this space.
+            {t('blog.newsletterSuccess')}
           </p>
         ) : (
           <form className="blog-newsletter__form" onSubmit={handleSubmit}>
             <input
               type="email"
               className="blog-newsletter__input"
-              placeholder="Your email address"
+              placeholder={t('blog.emailPlaceholder')}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               aria-label="Email address"
             />
             <button type="submit" className="blog-newsletter__btn">
-              Subscribe
+              {t('blog.subscribe')}
             </button>
           </form>
         )}
@@ -262,6 +273,7 @@ const BlogNewsletter = () => {
 
 // ── Main BlogPage ─────────────────────────────────────────────────────────────
 const BlogPage = () => {
+  const { t } = useLanguage();
   const [activeArticle, setActiveArticle] = useState(null);
 
   if (activeArticle) {
@@ -281,10 +293,10 @@ const BlogPage = () => {
       <section className="blog-hero">
         <div className="blog-hero__overlay" />
         <div className="blog-hero__content">
-          <span className="blog-hero__eyebrow">Stories &amp; Inspiration</span>
-          <h1 className="blog-hero__title">The Sasa Safaris Journal</h1>
+          <span className="blog-hero__eyebrow">{t('blog.heroEyebrow')}</span>
+          <h1 className="blog-hero__title">{t('blog.heroTitle')}</h1>
           <p className="blog-hero__desc">
-            Travel stories, destination guides, cultural deep-dives, and everything you need to plan the journey of a lifetime.
+            {t('blog.heroDesc')}
           </p>
           <div className="blog-hero__ornament">
             <span className="blog-hero__orn-line" />
@@ -298,19 +310,19 @@ const BlogPage = () => {
       <div className="blog-hero-stats">
         <div className="blog-hero-stats__inner">
           <div className="blog-hero-stats__item">
-            <strong>4.9 ★</strong><span>TripAdvisor Travellers' Choice</span>
+            <strong>4.9 ★</strong><span>{t('blog.stat1Label')}</span>
           </div>
           <div className="blog-hero-stats__divider" aria-hidden="true" />
           <div className="blog-hero-stats__item">
-            <strong>500+</strong><span>Safaris Planned &amp; Delivered</span>
+            <strong>500+</strong><span>{t('blog.stat2Label')}</span>
           </div>
           <div className="blog-hero-stats__divider" aria-hidden="true" />
           <div className="blog-hero-stats__item">
-            <strong>1.5M+</strong><span>Wildebeest in the Great Migration</span>
+            <strong>1.5M+</strong><span>{t('blog.stat3Label')}</span>
           </div>
           <div className="blog-hero-stats__divider" aria-hidden="true" />
           <div className="blog-hero-stats__item">
-            <strong>98%</strong><span>Would Recommend</span>
+            <strong>98%</strong><span>{t('blog.stat4Label')}</span>
           </div>
         </div>
       </div>
@@ -323,7 +335,7 @@ const BlogPage = () => {
       {/* ── Featured Article ── */}
       <section className="blog-featured-wrap">
         <div className="blog-featured-label">
-          <span className="blog-section-eyebrow">Featured Read</span>
+          <span className="blog-section-eyebrow">{t('blog.featuredRead')}</span>
         </div>
         <ArticleCard
           article={featuredArticle}
@@ -338,8 +350,8 @@ const BlogPage = () => {
       {/* ── Articles Grid ── */}
       <section className="blog-grid-section">
         <div className="blog-section-header">
-          <span className="blog-section-eyebrow">All Articles</span>
-          <h2 className="blog-section-title">More from the Journal</h2>
+          <span className="blog-section-eyebrow">{t('blog.allArticlesEyebrow')}</span>
+          <h2 className="blog-section-title">{t('blog.allArticlesTitle')}</h2>
         </div>
         <div className="blog-grid">
           {blogArticles.map((article) => (

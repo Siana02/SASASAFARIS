@@ -1,70 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../hooks/useLanguage";
 
-const FAQS = [
-  {
-    id: 1,
-    emoji: "🐘",
-    question: "Is a safari safe?",
-    answer:
-      "Yes — and safer than most people expect. You'll always be guided by experienced professionals who understand the environment deeply. Your job is simply to enjoy the experience while we handle the rest.",
-  },
-  {
-    id: 2,
-    emoji: "🌍",
-    question: "When is the best time to go?",
-    answer:
-      "There's no single 'perfect' time — just different experiences. The dry season is great for wildlife viewing, while the green season offers fewer crowds and stunning landscapes.",
-  },
-  {
-    id: 3,
-    emoji: "💰",
-    question: "How much does a safari usually cost?",
-    answer:
-      "It really depends on your preferences — where you go, how long you stay, and the level of comfort you choose. That's why we tailor everything to fit your budget and style.",
-  },
-  {
-    id: 4,
-    emoji: "🎒",
-    question: "What should I pack?",
-    answer:
-      "Think light, neutral, and comfortable. We'll guide you with a full packing list, but essentials include breathable clothing, sunscreen, and a good camera.",
-  },
-  {
-    id: 5,
-    emoji: "🧭",
-    question: "Do I need to plan everything myself?",
-    answer:
-      "Not at all. That's where we come in. We design your entire journey based on your preferences — you just tell us what you're looking for.",
-  },
-  {
-    id: 6,
-    emoji: "🐾",
-    question: "Will I actually see animals?",
-    answer:
-      "While nature is never guaranteed, our guides know exactly where and when to go. Your chances of seeing incredible wildlife are very high.",
-  },
-  {
-    id: 7,
-    emoji: "✈️",
-    question: "Can you help with flights and travel logistics?",
-    answer:
-      "We focus on crafting your safari experience, but we can guide you on flights and coordinate everything to make your journey seamless.",
-  },
-  {
-    id: 8,
-    emoji: "❤️",
-    question: "Is this suitable for solo travellers or couples?",
-    answer:
-      "Absolutely. Whether you're travelling solo, as a couple, or in a group, we design the experience to match your vibe.",
-  },
-  {
-    id: 9,
-    emoji: "🌐",
-    question: "Do your tour guides speak my language?",
-    answer:
-      "Yes — we have many tour guides fluent in a number of languages, the main ones being English and Italian. However, be sure to ask for a guide who speaks your language when booking. Watamu is a vibrant tourist community and most locals also speak German, French, and Polish, among many other languages. You're in safe hands.",
-  },
+const getFAQs = (t) => [
+  { id: 1, emoji: "🐘", question: t('faq.q1'), answer: t('faq.a1') },
+  { id: 2, emoji: "🌍", question: t('faq.q2'), answer: t('faq.a2') },
+  { id: 3, emoji: "💰", question: t('faq.q3'), answer: t('faq.a3') },
+  { id: 4, emoji: "🎒", question: t('faq.q4'), answer: t('faq.a4') },
+  { id: 5, emoji: "🧭", question: t('faq.q5'), answer: t('faq.a5') },
+  { id: 6, emoji: "🐾", question: t('faq.q6'), answer: t('faq.a6') },
+  { id: 7, emoji: "✈️", question: t('faq.q7'), answer: t('faq.a7') },
+  { id: 8, emoji: "❤️", question: t('faq.q8'), answer: t('faq.a8') },
+  { id: 9, emoji: "🌐", question: t('faq.q9'), answer: t('faq.a9') },
 ];
 
 /* Animated accordion panel */
@@ -107,6 +54,8 @@ const AccordionItem = ({ item, isOpen, onToggle }) => {
 };
 
 const FAQSection = () => {
+  const { t } = useLanguage();
+  const FAQS = getFAQs(t);
   const [openId, setOpenId] = useState(null);
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -142,10 +91,10 @@ const FAQSection = () => {
       <div className="faq-inner">
         {/* Header */}
         <div className="faq-header">
-          <span className="faq-eyebrow">Before You Go…</span>
-          <h2 className="faq-title">Your Safari Questions, Answered</h2>
+          <span className="faq-eyebrow">{t('faq.eyebrow')}</span>
+          <h2 className="faq-title">{t('faq.title')}</h2>
           <p className="faq-subtitle">
-            Everything you're quietly wondering — answered honestly, so you can plan with confidence.
+            {t('faq.subtitle')}
           </p>
         </div>
 
@@ -163,9 +112,9 @@ const FAQSection = () => {
 
         {/* Bottom CTA */}
         <div className="faq-cta-wrap">
-          <p className="faq-cta-label">Still have questions?</p>
+          <p className="faq-cta-label">{t('faq.ctaLabel')}</p>
           <Link to="/contact" className="faq-cta-btn">
-            Let's plan your safari together
+            {t('faq.ctaBtn')}
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />

@@ -6,7 +6,7 @@ import { useLanguage } from '../hooks/useLanguage';
 const CookiePopup = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [visible, setVisible] = useState(false);
-  const { triggerLanguageBannerAfterCookie } = useLanguage();
+  const { t, triggerLanguageBannerAfterCookie } = useLanguage();
 
   useEffect(() => {
     const cookieConsent = localStorage.getItem('cookieConsent');
@@ -54,11 +54,11 @@ const CookiePopup = () => {
             <Cookie size={24} />
           </div>
           <div className="cookie-popup-text">
-            <p className="cookie-popup-title">We use cookies</p>
+            <p className="cookie-popup-title">{t('cookiePopup.title')}</p>
             <p className="cookie-popup-desc">
-              We use cookies to enhance your browsing experience and provide personalised content.{' '}
+              {t('cookiePopup.description')}{' '}
               <Link to="/cookies" onClick={() => dismiss('declined')} className="cookie-popup-link">
-                Learn more
+                {t('cookiePopup.learnMore')}
               </Link>
             </p>
           </div>
@@ -67,10 +67,10 @@ const CookiePopup = () => {
         {/* Buttons */}
         <div className="cookie-popup-actions">
           <button onClick={() => dismiss('declined')} className="cookie-action-decline">
-            Decline
+            {t('cookiePopup.decline')}
           </button>
           <button onClick={() => dismiss('accepted')} className="cookie-action-accept">
-            Accept All
+            {t('cookiePopup.acceptAll')}
           </button>
           <button onClick={() => dismiss('declined')} className="cookie-action-close" aria-label="Close">
             <X size={18} />
