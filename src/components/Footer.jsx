@@ -79,7 +79,7 @@ const Footer = () => {
               <li><a href="/#destinations">{t('nav.destinations')}</a></li>
               <li><Link to="/gallery">{t('footer.gallery')}</Link></li>
               <li><Link to="/blog">{t('footer.blog')}</Link></li>
-              <li><Link to="/#faq">{t('footer.faq')}</Link></li>
+              <li><a href="/#faq">{t('footer.faq')}</a></li>
               <li><Link to="/contact">{t('footer.contacts')}</Link></li>
             </ul>
           </div>
