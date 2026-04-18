@@ -19,13 +19,18 @@ import {
   TsavoEast1,
 } from "../assets/images";
 import { useLanguage } from "../hooks/useLanguage";
+import { setPageMeta } from "../utils/seo";
 
 const AboutSection = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "About Us — SASA Safaris Africa";
+    setPageMeta(
+      'About Us — Born in Africa, Built for You | Sasa Safaris Africa',
+      'Learn about Sasa Safaris Africa — a boutique safari company rooted in Watamu, Kenya. Meet our expert guides and discover our story of crafting tailor-made African safari experiences.',
+      'https://www.sasasafaris.com/about'
+    );
   }, []);
 
   const values = [

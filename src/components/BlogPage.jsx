@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { getBlogArticles, getFeaturedArticle } from "../data/BlogData";import LazyImage from "./LazyImage";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getBlogArticles, getFeaturedArticle } from "../data/BlogData";
+import LazyImage from "./LazyImage";
 import { useLanguage } from "../hooks/useLanguage";
+import { setPageMeta } from "../utils/seo";
 
 const PRESS_QUOTES = [
   {
@@ -142,12 +144,14 @@ const ArticleCard = ({ article, featured, onClick }) => {
   return (
   <article
     className={`blog-card${featured ? " blog-card--featured" : ""}`}
-    onClick={() => onClick(article)}
-    role="button"
-    tabIndex={0}
-    onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onClick(article)}
-    aria-label={`Read: ${article.title}`}
+    role="article"
   >
+    <Link
+      to={`/blog/${article.id}`}
+      className="blog-card__link"
+      aria-label={`Read: ${article.title}`}
+      tabIndex={0}
+    >
     <div className="blog-card__img-wrap">
       <LazyImage
         src={article.image}
@@ -163,7 +167,7 @@ const ArticleCard = ({ article, featured, onClick }) => {
       )}
     </div>
     <div className="blog-card__body">
-      <time className="blog-card-date">{article.date}</time>
+      <time className="blog-card-date" dateTime={article.date}>{article.date}</time>
       <h3 className="blog-card__title">{article.title}</h3>
       <p className="blog-card__excerpt">{article.excerpt}</p>
       {article.stats && (
@@ -177,6 +181,7 @@ const ArticleCard = ({ article, featured, onClick }) => {
         </ul>
       )}
     </div>
+    </Link>
   </article>
   );
 };
@@ -273,21 +278,18 @@ const BlogNewsletter = () => {
 // ── Main BlogPage ─────────────────────────────────────────────────────────────
 const BlogPage = () => {
   const { t, currentLanguage } = useLanguage();
-  const [activeArticle, setActiveArticle] = useState(null);
 
   const articles = getBlogArticles(currentLanguage);
   const featured = getFeaturedArticle(currentLanguage);
 
-  if (activeArticle) {
-    return (
-      <div className="blog-page">
-        <ArticleView
-          article={activeArticle}
-          onBack={() => setActiveArticle(null)}
-        />
-      </div>
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageMeta(
+      'The Sasa Safaris Journal — African Safari Stories & Travel Guides | Sasa Safaris Africa',
+      'Safari stories, destination guides, and Kenya travel tips from Sasa Safaris Africa. Plan your tailor-made African safari with expert insight from our guides.',
+      'https://www.sasasafaris.com/blog'
     );
-  }
+  }, []);
 
   return (
     <div className="blog-page">
@@ -342,7 +344,6 @@ const BlogPage = () => {
         <ArticleCard
           article={featured}
           featured
-          onClick={setActiveArticle}
         />
       </section>
 
@@ -360,7 +361,6 @@ const BlogPage = () => {
             <ArticleCard
               key={article.id}
               article={article}
-              onClick={setActiveArticle}
             />
           ))}
         </div>

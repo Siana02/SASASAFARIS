@@ -74,7 +74,7 @@ const BlogPreviewSection = () => {
           {previewArticles.map((article) => (
             <Link
               key={article.id}
-              to="/blog"
+              to={`/blog/${article.id}`}
               className="blog-preview-card"
               aria-label={`${t('blog.readArticle')} ${article.title}`}
             >

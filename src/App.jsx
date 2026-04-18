@@ -29,10 +29,12 @@ import GalleryStripSection from "./components/GalleryStripSection";
 import BlogPreviewSection from "./components/BlogPreviewSection";
 import FAQSection from "./components/FAQSection";
 import BlogPage from "./components/BlogPage";
+import BlogArticlePage from "./components/BlogArticlePage";
 import { MobileNavProvider } from './contexts/MobileNavContext';
 import ScrollToTop from './components/ScrollToTop';
 import { LanguageProvider } from './contexts/LanguageContext';
 import LanguageBanner from './components/LanguageBanner';
+import { setPageMeta } from './utils/seo';
 import './styles/style.css';
 
 // Collect every image URL exported from assets/images so the preload screen
@@ -44,6 +46,14 @@ const ALL_IMAGE_SRCS = Object.values(assetImages).filter(
 
 // Main landing page content
 function HomePage() {
+  useEffect(() => {
+    setPageMeta(
+      'Sasa Safaris Africa — Tailor-Made African Safaris | Kenya',
+      'Sasa Safaris Africa is a boutique safari travel company offering tailor-made African safari experiences in Kenya — Maasai Mara, Amboseli, Tsavo East, Watamu coast and beyond.',
+      'https://www.sasasafaris.com/'
+    );
+  }, []);
+
   return (
     <>
       
@@ -108,6 +118,7 @@ useEffect(() => {
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogArticlePage />} />
         <Route path="/about" element={<AboutSection />} />
         {/* add other routes as needed */}
         {/* add other routes as needed */}

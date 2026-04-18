@@ -18,6 +18,7 @@ import React, { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { getDestinationById } from "../data/destinationsData";
 import { useLanguage } from "../hooks/useLanguage";
+import { setPageMeta } from "../utils/seo";
 import {
   DolphinSafariBlue1,
   SafariBlue2,
@@ -103,7 +104,16 @@ const DestinationsPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]);
+    if (destination) {
+      setPageMeta(
+        `${destination.headline} — Kenya Safari | Sasa Safaris Africa`,
+        destination.about
+          ? destination.about.substring(0, 155) + '…'
+          : `Discover ${destination.headline} with Sasa Safaris Africa. Tailor-made African safari experience in Kenya.`,
+        `https://www.sasasafaris.com/destinations/${id}`
+      );
+    }
+  }, [id, destination]);
 
   if (!destination) {
     return (
