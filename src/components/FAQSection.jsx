@@ -58,6 +58,13 @@ const FAQS = [
     answer:
       "Absolutely. Whether you're travelling solo, as a couple, or in a group, we design the experience to match your vibe.",
   },
+  {
+    id: 9,
+    emoji: "🌐",
+    question: "Do your tour guides speak my language?",
+    answer:
+      "Yes — we have many tour guides fluent in a number of languages, the main ones being English and Italian. However, be sure to ask for a guide who speaks your language when booking. Watamu is a vibrant tourist community and most locals also speak German, French, and Polish, among many other languages. You're in safe hands.",
+  },
 ];
 
 /* Animated accordion panel */
