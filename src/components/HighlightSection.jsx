@@ -126,8 +126,9 @@ const EcoReminderSection = () => {
   const { t }      = useLanguage();
   const navigate   = useNavigate();
   const sectionRef = useRef(null);
-  const [pledged,    setPledged]    = useState(false);
+  const [pledged,      setPledged]      = useState(false);
   const [sliderLeaving, setSliderLeaving] = useState(false);
+  const [isVisible,    setIsVisible]    = useState(false);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -135,7 +136,7 @@ const EcoReminderSection = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("is-visible");
+          setIsVisible(true);
           observer.disconnect();
         }
       },
@@ -162,7 +163,7 @@ const EcoReminderSection = () => {
   return (
     <section
       ref={sectionRef}
-      className={`eco-reminder-section${pledged ? " has-pledged" : ""}`}
+      className={`eco-reminder-section${isVisible ? " is-visible" : ""}${pledged ? " has-pledged" : ""}`}
       aria-label={t("ecoReminder.ariaLabel")}
     >
       {/* Ambient background fish */}
