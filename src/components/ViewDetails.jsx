@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { packagesData } from "../data/packagesData";
 import { useLanguage } from "../hooks/useLanguage";
+import { setPageMeta } from "../utils/seo";
 
 const ViewDetails = () => {
   const { id } = useParams();
@@ -11,6 +12,17 @@ const ViewDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    const pkg = packagesData.find(p => p.id === id);
+    if (pkg) {
+      setPageMeta(
+        `${pkg.title} | Sasa Safaris Africa`,
+        pkg.overview ? pkg.overview.substring(0, 155) + '…' : `Book a tailor-made ${pkg.title} with Sasa Safaris Africa. Customised African safari experiences in Kenya.`,
+        `https://www.sasasafaris.com/viewdetails/${id}`
+      );
+    }
+  }, [id]);
 
   const packageDetails = packagesData.find(pkg => pkg.id === id);
 

@@ -1,6 +1,12 @@
 {
   "outputDirectory": "dist",
   "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "sasasafaris.com" }],
+      "destination": "https://www.sasasafaris.com/$1",
+      "permanent": true
+    },
     { "source": "/packages", "destination": "/", "permanent": true }
   ],
   "rewrites": [

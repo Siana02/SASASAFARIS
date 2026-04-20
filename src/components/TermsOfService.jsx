@@ -5,6 +5,7 @@ import {
   Bird, MessageSquare, AlertTriangle, HelpCircle, Shield, RefreshCw,
 } from "lucide-react";
 import { useLanguage } from "../hooks/useLanguage";
+import { setPageMeta } from "../utils/seo";
 
 const sectionsEn = [
   {
@@ -343,7 +344,11 @@ export default function TermsOfService() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = isIt ? "Termini e Condizioni — SASA Safaris Africa" : "Terms & Conditions — SASA Safaris Africa";
+    setPageMeta(
+      isIt ? "Termini e Condizioni — SASA Safaris Africa" : "Terms & Conditions — Sasa Safaris Africa",
+      "Read the Terms & Conditions for booking tailor-made safari experiences with Sasa Safaris Africa across Kenya and East Africa.",
+      'https://www.sasasafaris.com/terms'
+    );
   }, [isIt]);
 
   return (
