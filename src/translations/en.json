@@ -12,7 +12,7 @@
     "blog": "Blog"
   },
   "hero": {
-    "mainTitle": "TAILOR-MADE AFRICAN SAFARIS",
+    "mainTitle": "SASA SAFARIS AFRICA",
     "tagline": "Discover custom-made safaris and authentic African safari experiences — crafted just for you.",
     "title": "CRAFTED SAFARIS JUST FOR YOU",
     "description": "SEAMLESS SAFARIS TAILORED TO MATCH YOUR DESTINATIONS.",
@@ -229,7 +229,7 @@
   },
   "howWeWork": {
     "eyebrow": "How It Works",
-    "title": "Custom African Safari Experiences, Crafted Around You",
+    "title": "Design Your Safari. Your Way.",
     "step1Title": "Share Your Vision",
     "step1Desc": "Tell us your dream destination, group size & budget.",
     "step2Title": "We Design It",
@@ -372,7 +372,40 @@
     "newsletterDesc": "Get the best travel articles, hidden gem guides, and safari planning tips straight to your inbox.",
     "emailPlaceholder": "Your email address",
     "subscribe": "Subscribe",
-    "newsletterSuccess": "✓ You're in. Watch this space."
+    "newsletterSuccess": "✓ You're in. Watch this space.",
+    "pressQuotes": [
+      {
+        "text": "Kenya's Maasai Mara remains the benchmark against which all other wildlife experiences are measured.",
+        "source": "Condé Nast Traveller",
+        "year": "2025"
+      },
+      {
+        "text": "A first safari in Kenya is one of those rare travel experiences that reorders your entire perspective on the natural world.",
+        "source": "National Geographic Traveler",
+        "year": "2025"
+      },
+      {
+        "text": "Watamu is one of the most unspoiled stretches of Kenya's coast — a destination that genuinely surprises first-time visitors.",
+        "source": "Lonely Planet East Africa",
+        "year": "2024"
+      }
+    ],
+    "tripAdvisorReviews": [
+      {
+        "text": "I booked through Sasa Safaris for the first time and it exceeded every expectation. The guides were extraordinary — knowledgeable, passionate, and brilliant at finding wildlife. Saw lions, cheetah, elephant, and a leopard in two days.",
+        "author": "Catherine W.",
+        "origin": "Australia",
+        "rating": 5,
+        "trip": "Maasai Mara Safari"
+      },
+      {
+        "text": "From the moment we landed, everything was taken care of. The itinerary was perfectly balanced — not rushed, not boring. The Watamu mangrove canoe was a highlight I still talk about months later.",
+        "author": "Marco B.",
+        "origin": "Italy",
+        "rating": 5,
+        "trip": "Coastal & Safari Combo"
+      }
+    ]
   },
   "galleryPage": {
     "eyebrow": "Our World",
