@@ -132,7 +132,7 @@ const ArticleCard = ({ article, featured, onClick }) => {
       )}
     </div>
     <div className="blog-card__body">
-      <time className="blog-card-date" dateTime={article.date}>{article.date}</time>
+      <time className="blog-card-date" dateTime={article.isoDate}>{article.date}</time>
       <h3 className="blog-card__title">{article.title}</h3>
       <p className="blog-card__excerpt">{article.excerpt}</p>
       {article.stats && (
