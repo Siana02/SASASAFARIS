@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Cookie, Info, BarChart2, Sliders, Users2, Trash2, RefreshCw, Mail } from "lucide-react";
 import { useLanguage } from "../hooks/useLanguage";
+import { setPageMeta } from "../utils/seo";
 
 const sectionsEn = [
   {
@@ -232,7 +233,11 @@ export default function CookiePolicy() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = isIt ? "Politica sui Cookie — SASA Safaris Africa" : "Cookie Policy — SASA Safaris Africa";
+    setPageMeta(
+      isIt ? "Politica sui Cookie — SASA Safaris Africa" : "Cookie Policy — Sasa Safaris Africa",
+      "Read the Sasa Safaris Africa Cookie Policy. Learn what cookies we use, why we use them and how you can control your cookie preferences.",
+      'https://www.sasasafaris.com/cookies'
+    );
   }, [isIt]);
 
   return (

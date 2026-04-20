@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Shield, Eye, Lock, Share2, Settings, UserCheck, Baby, RefreshCw, Mail } from "lucide-react";
 import { useLanguage } from "../hooks/useLanguage";
+import { setPageMeta } from "../utils/seo";
 
 const sectionsEn = [
   {
@@ -208,7 +209,11 @@ export default function PrivacyPolicy() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = isIt ? "Informativa sulla Privacy — SASA Safaris Africa" : "Privacy Policy — SASA Safaris Africa";
+    setPageMeta(
+      isIt ? "Informativa sulla Privacy — SASA Safaris Africa" : "Privacy Policy — Sasa Safaris Africa",
+      "Read the Sasa Safaris Africa Privacy Policy. Learn how we collect, use and protect your personal data when you use our safari booking services.",
+      'https://www.sasasafaris.com/privacy'
+    );
   }, [isIt]);
 
   return (
