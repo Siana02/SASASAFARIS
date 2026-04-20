@@ -1,16 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../hooks/useLanguage";
 import watamuMain from "../assets/watamu-main.jpg"; // ✅ direct import
 
 const ExploreWatamu = () => {
-  const navigate = useNavigate();
-  
-
-  
-  const handleViewDetails = () => {
-    navigate("/viewdetails/explore-watamu");
-  };
+  const { t } = useLanguage();
 
   return (
     <section className="explore-watamu-section">
@@ -33,9 +27,9 @@ const ExploreWatamu = () => {
           experience that captures the soul of the Kenyan coast.
         </p>
 
-        <button className="explore-btn" onClick={handleViewDetails}>
-          View Details
-        </button>
+        <Link className="explore-btn" to="/contact">
+          Plan Your Trip
+        </Link>
       </div>
     </section>
   );

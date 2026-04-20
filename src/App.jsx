@@ -17,7 +17,6 @@ import WhyChooseUs from './components/WhyChooseUs';
 import Footer from './components/Footer';
 import ContactWidget from './components/ContactWidget';
 import CookiePopup from './components/CookiePopup';
-import ViewDetails from './components/ViewDetails'; // adjust path if needed
 import Contact from "./components/Contact";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiePolicy from "./components/CookiePolicy";
@@ -92,7 +91,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/destinations/:id" element={<DestinationsPage />} />
-        <Route path="/viewdetails/:id" element={<ViewDetails />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/cookies" element={<CookiePolicy />} />
