@@ -17,7 +17,7 @@ const blogArticlesData = [
   {
     id: "hidden-gems-watamu",
     image: WatamuMain,
-    date: "2 Marzo 2026 / March 2, 2026",
+    date: "2026-03-02",
     en: {
       title: "Top 5 Hidden Gems in Watamu, Kenya",
       excerpt:
@@ -116,7 +116,7 @@ const blogArticlesData = [
   {
     id: "swahili-dishes",
     image: WatamuCulturalTour1,
-    date: "18 Marzo 2026 / March 18, 2026",
+    date: "2026-03-18",
     en: {
       title: "Swahili Food Guide: 5 Dishes You Must Try on Kenya's Coast",
       excerpt:
@@ -215,7 +215,7 @@ const blogArticlesData = [
   {
     id: "best-time-safari-kenya",
     image: WildebeestMigration,
-    date: "5 Aprile 2026 / April 5, 2026",
+    date: "2026-04-05",
     en: {
       title: "Best Time to Go on a Safari in Kenya",
       excerpt:
@@ -314,7 +314,7 @@ const blogArticlesData = [
   {
     id: "plan-first-african-safari",
     image: ElephantSunset,
-    date: "12 Aprile 2026 / April 12, 2026",
+    date: "2026-04-12",
     en: {
       title: "How to Plan Your First African Safari: Essential First-Time Safari Tips",
       excerpt:
@@ -414,12 +414,21 @@ const blogArticlesData = [
  */
 export function getBlogArticles(lang = "en") {
   const l = lang === "it" ? "it" : "en";
-  return blogArticlesData.map(({ id, image, date, en, it }) => ({
-    id,
-    image,
-    date,
-    ...(l === "it" ? it : en),
-  }));
+  const locale = l === "it" ? "it-IT" : "en-GB";
+  return blogArticlesData.map(({ id, image, date, en, it }) => {
+    const formattedDate = new Date(date).toLocaleDateString(locale, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    return {
+      id,
+      image,
+      date: formattedDate,
+      isoDate: date,
+      ...(l === "it" ? it : en),
+    };
+  });
 }
 
 export function getFeaturedArticle(lang = "en") {

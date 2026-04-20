@@ -61,8 +61,8 @@ const BlogArticlePage = () => {
       "headline": article.title,
       "description": article.excerpt,
       "image": `https://www.sasasafaris.com${article.image}`,
-      "datePublished": article.date,
-      "dateModified": article.date,
+      "datePublished": article.isoDate,
+      "dateModified": article.isoDate,
       "author": {
         "@type": "Person",
         "name": "Sule",
@@ -121,7 +121,7 @@ const BlogArticlePage = () => {
             <span className="blog-tag">{article.tag}</span>
             <h1 className="blog-article-full__title">{article.title}</h1>
             <div className="blog-article-full__meta">
-              <time className="blog-card-date" dateTime={article.date}>{article.date}</time>
+              <time className="blog-card-date" dateTime={article.isoDate}>{article.date}</time>
               {article.readTime && (
                 <span className="blog-article-full__read-time">{article.readTime}</span>
               )}

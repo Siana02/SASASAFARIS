@@ -12,17 +12,24 @@ const HeroSection = () => {
       el.innerHTML = '';
 
       let letterIndex = 0;
-      [...text].forEach((char) => {
-        if (char === ' ') {
+      text.split(' ').forEach((word, wordIdx) => {
+        if (wordIdx > 0) {
           el.appendChild(document.createTextNode(' '));
-        } else {
+        }
+        // Wrap each word in an inline-block container so the whole word
+        // moves to the next line rather than breaking mid-character.
+        const wordEl = document.createElement('span');
+        wordEl.style.display = 'inline-block';
+        wordEl.style.whiteSpace = 'nowrap';
+        [...word].forEach((char) => {
           const span = document.createElement('span');
           span.className = 'letter';
           span.textContent = char;
           span.style.animationDelay = `${letterIndex * 0.055}s`;
-          el.appendChild(span);
+          wordEl.appendChild(span);
           letterIndex++;
-        }
+        });
+        el.appendChild(wordEl);
       });
     };
 
