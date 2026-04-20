@@ -104,7 +104,7 @@ function App() {
       </Routes>
       <Footer />
       <LanguageBanner />
-      <CookiePopup />
+      <CookiePopup preloadDone={preloadDone} />
       </MobileNavProvider>
       </LanguageProvider>
     </BrowserRouter>

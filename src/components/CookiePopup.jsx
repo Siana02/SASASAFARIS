@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { Cookie, X } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 
-const CookiePopup = () => {
+const CookiePopup = ({ preloadDone = true }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [visible, setVisible] = useState(false);
   const { t, triggerLanguageBannerAfterCookie } = useLanguage();
 
   useEffect(() => {
+    if (!preloadDone) return;
     const cookieConsent = localStorage.getItem('cookieConsent');
     if (!cookieConsent) {
       // Small delay before showing for a smooth entry
@@ -18,7 +19,7 @@ const CookiePopup = () => {
       }, 1200);
       return () => clearTimeout(t);
     }
-  }, []);
+  }, [preloadDone]);
 
   const dismiss = (choice) => {
     setVisible(false);
