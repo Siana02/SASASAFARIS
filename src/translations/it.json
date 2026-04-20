@@ -12,8 +12,8 @@
     "blog": "Blog"
   },
   "hero": {
-    "mainTitle": "SAFARI AFRICANI SU MISURA",
-    "tagline": "Safari su misura solo per te",
+    "mainTitle": "SASA SAFARIS AFRICA",
+    "tagline": "Scopri safari su misura ed esperienze autentiche di safari africano — create apposta per te.",
     "title": "SAFARI ARTIGIANALI, SOLO PER TE",
     "description": "SAFARI SENZA PROBLEMI PERSONALIZZATI PER LE TUE DESTINAZIONI.",
     "viewPackages": "Pianifica il tuo safari",
@@ -229,7 +229,7 @@
   },
   "howWeWork": {
     "eyebrow": "Come Funziona",
-    "title": "Safari su Misura per Te",
+    "title": "Il Tuo Safari. A Modo Tuo.",
     "step1Title": "Condividi la Tua Visione",
     "step1Desc": "Dicci la destinazione, il gruppo e il budget.",
     "step2Title": "Noi Lo Progettiamo",
@@ -372,7 +372,40 @@
     "newsletterDesc": "Ricevi i migliori articoli di viaggio, guide alle gemme nascoste e consigli per pianificare il tuo safari direttamente nella tua casella di posta.",
     "emailPlaceholder": "Il tuo indirizzo email",
     "subscribe": "Iscriviti",
-    "newsletterSuccess": "✓ Sei dentro. Resta sintonizzato."
+    "newsletterSuccess": "✓ Sei dentro. Resta sintonizzato.",
+    "pressQuotes": [
+      {
+        "text": "Il Masai Mara del Kenya rimane il punto di riferimento rispetto al quale si misurano tutte le altre esperienze con la fauna selvatica.",
+        "source": "Condé Nast Traveller",
+        "year": "2025"
+      },
+      {
+        "text": "Un primo safari in Kenya è una di quelle rare esperienze di viaggio che ridisegna completamente la tua prospettiva sul mondo naturale.",
+        "source": "National Geographic Traveler",
+        "year": "2025"
+      },
+      {
+        "text": "Watamu è uno dei tratti più incontaminati della costa keniota — una destinazione che sorprende davvero chi la visita per la prima volta.",
+        "source": "Lonely Planet East Africa",
+        "year": "2024"
+      }
+    ],
+    "tripAdvisorReviews": [
+      {
+        "text": "Ho prenotato con Sasa Safaris per la prima volta e ha superato ogni aspettativa. Le guide erano straordinarie — competenti, appassionate e brave a trovare fauna selvatica. In due giorni ho visto leoni, ghepardi, elefanti e un leopardo.",
+        "author": "Catherine W.",
+        "origin": "Australia",
+        "rating": 5,
+        "trip": "Safari al Maasai Mara"
+      },
+      {
+        "text": "Dal momento in cui siamo atterrati, tutto era organizzato. L'itinerario era perfettamente equilibrato — né frenetico, né noioso. Il kayak nella mangrovia di Watamu è stato un momento clou di cui parlo ancora mesi dopo.",
+        "author": "Marco B.",
+        "origin": "Italia",
+        "rating": 5,
+        "trip": "Combinata Costa & Safari"
+      }
+    ]
   },
   "galleryPage": {
     "eyebrow": "Il Nostro Mondo",

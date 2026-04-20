@@ -5,41 +5,6 @@ import LazyImage from "./LazyImage";
 import { useLanguage } from "../hooks/useLanguage";
 import { setPageMeta } from "../utils/seo";
 
-const PRESS_QUOTES = [
-  {
-    text: "Kenya's Maasai Mara remains the benchmark against which all other wildlife experiences are measured.",
-    source: "Condé Nast Traveller",
-    year: "2025",
-  },
-  {
-    text: "A first safari in Kenya is one of those rare travel experiences that reorders your entire perspective on the natural world.",
-    source: "National Geographic Traveler",
-    year: "2025",
-  },
-  {
-    text: "Watamu is one of the most unspoiled stretches of Kenya's coast — a destination that genuinely surprises first-time visitors.",
-    source: "Lonely Planet East Africa",
-    year: "2024",
-  },
-];
-
-const TRIPADVISOR_REVIEWS = [
-  {
-    text: "I booked through Sasa Safaris for the first time and it exceeded every expectation. The guides were extraordinary — knowledgeable, passionate, and brilliant at finding wildlife. Saw lions, cheetah, elephant, and a leopard in two days.",
-    author: "Catherine W.",
-    origin: "Australia",
-    rating: 5,
-    trip: "Maasai Mara Safari",
-  },
-  {
-    text: "From the moment we landed, everything was taken care of. The itinerary was perfectly balanced — not rushed, not boring. The Watamu mangrove canoe was a highlight I still talk about months later.",
-    author: "Marco B.",
-    origin: "Italy",
-    rating: 5,
-    trip: "Coastal & Safari Combo",
-  },
-];
-
 // ── Star Rating ───────────────────────────────────────────────────────────────
 const StarRating = ({ count }) => (
   <span className="bps-star-row" aria-label={`${count} stars`}>
@@ -189,6 +154,7 @@ const ArticleCard = ({ article, featured, onClick }) => {
 // ── TripAdvisor Reviews Strip ─────────────────────────────────────────────────
 const TripAdvisorStrip = () => {
   const { t } = useLanguage();
+  const reviews = t('blog.tripAdvisorReviews');
   return (
   <section className="blog-ta-strip" aria-label="TripAdvisor reviews">
     <div className="blog-ta-strip__inner">
@@ -201,7 +167,7 @@ const TripAdvisorStrip = () => {
         <span className="blog-ta-strip__rating">★ 4.9 / 5</span>
       </div>
       <div className="blog-ta-strip__reviews">
-        {TRIPADVISOR_REVIEWS.map((r) => (
+        {Array.isArray(reviews) && reviews.map((r) => (
           <blockquote key={r.author} className="blog-ta-review">
             <StarRating count={r.rating} />
             <p className="blog-ta-review__text">"{r.text}"</p>
@@ -219,7 +185,10 @@ const TripAdvisorStrip = () => {
 
 // ── Press Quote Banner ────────────────────────────────────────────────────────
 const PressQuoteBanner = ({ quoteIndex = 0 }) => {
-  const q = PRESS_QUOTES[quoteIndex];
+  const { t } = useLanguage();
+  const pressQuotes = t('blog.pressQuotes');
+  const q = Array.isArray(pressQuotes) ? pressQuotes[quoteIndex] : null;
+  if (!q) return null;
   return (
     <div className="blog-press-quote">
       <span className="blog-press-quote__mark" aria-hidden="true">"</span>

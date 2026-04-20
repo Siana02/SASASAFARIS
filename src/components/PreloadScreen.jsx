@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useImagePreloader } from '../hooks/useImagePreloader';
 
 /** Minimum time (ms) the screen is always shown — keeps the animation visible. */
-const MIN_DISPLAY_MS = 1800;
+const MIN_DISPLAY_MS = 3000;
 /** Hard cap (ms) — we never block the user longer than this regardless of slow network. */
 const MAX_WAIT_MS = 5000;
 

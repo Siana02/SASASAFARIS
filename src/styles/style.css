@@ -548,7 +548,6 @@ body {
 }
 
 .hero-main-title .letter {
-  /* kept for compatibility but no longer used */
   opacity: 0;
   display: inline-block;
   white-space: pre;
@@ -610,7 +609,7 @@ body {
   text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
-/* ── Hero tagline: "Safaris tailored just for you" ── */
+/* ── Hero tagline: "Discover custom-made safaris…" ── */
 .hero-tagline {
   font-family: var(--heading-font);
   color: #e8c97a;
@@ -621,7 +620,10 @@ body {
   margin: 0 0 2.2rem;
   text-shadow: 0 2px 12px rgba(0,0,0,0.45), 0 0 32px rgba(232,201,122,0.18);
   opacity: 0;
-  animation: heroSlideIn 1.1s cubic-bezier(.21,.7,.51,1.01) 1.1s forwards;
+  animation: heroFadeIn 1.4s ease 1.1s forwards;
+}
+@keyframes heroFadeIn {
+  to { opacity: 1; }
 }
 .hero-ctas {
   display: flex;

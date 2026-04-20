@@ -8,23 +8,26 @@ const HeroSection = () => {
   useEffect(() => {
     const animateTitle = (el) => {
       if (!el) return;
-      const words = el.textContent.trim().split(/\s+/);
+      const text = el.textContent.trim();
       el.innerHTML = '';
 
-      words.forEach((word, i) => {
-        const wordSpan = document.createElement('span');
-        wordSpan.className = 'word';
-        wordSpan.textContent = word;
-        wordSpan.style.animationDelay = `${i * 0.22}s`;
-        el.appendChild(wordSpan);
-        if (i < words.length - 1) {
+      let letterIndex = 0;
+      [...text].forEach((char) => {
+        if (char === ' ') {
           el.appendChild(document.createTextNode(' '));
+        } else {
+          const span = document.createElement('span');
+          span.className = 'letter';
+          span.textContent = char;
+          span.style.animationDelay = `${letterIndex * 0.055}s`;
+          el.appendChild(span);
+          letterIndex++;
         }
       });
     };
 
     animateTitle(mainTitleRef.current);
-  }, []);
+  }, [t]);
 
   return (
     <section className="hero">
