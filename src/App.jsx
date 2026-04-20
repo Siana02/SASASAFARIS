@@ -48,7 +48,7 @@ function HomePage() {
   useEffect(() => {
     setPageMeta(
       'Tailor-Made African Safaris | Sasa Safaris Africa',
-      'Crafting memories that last a lifetime through custom-made safaris and authentic African experiences in Kenya — Maasai Mara, Amboseli, Tsavo East, Watamu coast and beyond. Expert private safari planning from Watamu.',
+      'Crafting memories that last a lifetime through custom-made safaris and authentic African experiences.',
       'https://www.sasasafaris.com/'
     );
   }, []);
